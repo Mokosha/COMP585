@@ -53,7 +53,7 @@ class KeyFrame:
 	def __str__(self):
 		keyString = "<keyframe interpol=\"" + self.interpol + "\" value=\"" + str(self.value) + "\">\n"
 		for key in self.keys:
-			keyString += "  <key frame=\"" + key[0] +"\" value=\"" + key[1] + "\">\n"
+			keyString += "  <key frame=\"" + str(key[0]) +"\" value=\"" + str(key[1]) + "\"/>\n"
 		keyString += "</keyframe>"
 		return keyString
 			
