@@ -411,6 +411,7 @@ def Export(scene, depth=0):
 	exp += ExportAttr('colour');
 	exp += ExportAttr('static');
 	exp += ExportAttr('hidden');
+	exp += ExportAttr('cartesian');
 	
 	exp += indentStr + "<children>\n"
 	for limb in scene['children']:
