@@ -1,0 +1,810 @@
+<limb>
+  <ang>
+    <keyframe interpol="linear" value="0">
+    </keyframe>
+  </ang>
+  <dist>
+    <keyframe interpol="linear" value="0">
+    </keyframe>
+  </dist>
+  <pos>
+    <keyframe interpol="linear" value="[0, 0]">
+    </keyframe>
+  </pos>
+  <shape>
+    <texture>
+    <shape>
+    <keyframe interpol="const" value="line">
+    </keyframe>
+    </shape>
+    <file>
+    <keyframe interpol="const" value="splogoicon.png">
+    </keyframe>
+    </file>
+    <text>
+    <keyframe interpol="const" value="test">
+    </keyframe>
+    </text>
+    <fill>
+    <keyframe interpol="const" value="False">
+    </keyframe>
+    </fill>
+    <flip>
+    <keyframe interpol="const" value="True">
+    </keyframe>
+    </flip>
+    <caps>
+    <keyframe interpol="const" value="True">
+    </keyframe>
+    </caps>
+    </texture>
+  </shape>
+  <width>
+    <keyframe interpol="linear" value="7">
+    </keyframe>
+  </width>
+  <colour>
+    <keyframe interpol="linear" value="[0, 0, 0]">
+    </keyframe>
+  </colour>
+  <static>
+    <keyframe interpol="const" value="True">
+    </keyframe>
+  </static>
+  <hidden>
+    <keyframe interpol="const" value="True">
+    </keyframe>
+  </hidden>
+  <cartesian>
+    <keyframe interpol="const" value="True">
+    </keyframe>
+  </cartesian>
+  <children>
+    <limb>
+      <ang>
+        <keyframe interpol="linear" value="90">
+        </keyframe>
+      </ang>
+      <dist>
+        <keyframe interpol="linear" value="0">
+        </keyframe>
+      </dist>
+      <pos>
+        <keyframe interpol="linear" value="[320, 240]">
+        </keyframe>
+      </pos>
+      <shape>
+        <texture>
+        <text>
+        <keyframe interpol="const" value="test">
+        </keyframe>
+        </text>
+        <flip>
+        <keyframe interpol="const" value="True">
+        </keyframe>
+        </flip>
+        <caps>
+        <keyframe interpol="const" value="True">
+        </keyframe>
+        </caps>
+        <shape>
+        <keyframe interpol="const" value="line">
+        </keyframe>
+        </shape>
+        <file>
+        <keyframe interpol="const" value="splogoicon.png">
+        </keyframe>
+        </file>
+        <fill>
+        <keyframe interpol="const" value="False">
+        </keyframe>
+        </fill>
+        </texture>
+      </shape>
+      <width>
+        <keyframe interpol="linear" value="7">
+        </keyframe>
+      </width>
+      <colour>
+        <keyframe interpol="linear" value="[0, 0, 0]">
+        </keyframe>
+      </colour>
+      <static>
+        <keyframe interpol="const" value="False">
+        </keyframe>
+      </static>
+      <hidden>
+        <keyframe interpol="const" value="True">
+        </keyframe>
+      </hidden>
+      <cartesian>
+        <keyframe interpol="const" value="True">
+        </keyframe>
+      </cartesian>
+      <children>
+        <limb>
+          <ang>
+            <keyframe interpol="linear" value="270">
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe interpol="linear" value="60">
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe interpol="linear" value="[0, 0]">
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe interpol="const" value="test">
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe interpol="const" value="True">
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe interpol="const" value="True">
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe interpol="const" value="line">
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe interpol="const" value="splogoicon.png">
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe interpol="linear" value="7">
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe interpol="linear" value="[0, 0, 0]">
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb>
+              <ang>
+                <keyframe interpol="linear" value="0">
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="linear" value="36">
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="linear" value="[0, 0]">
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="circle">
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="linear" value="7">
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="linear" value="[0, 0, 0]">
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+            <limb>
+              <ang>
+                <keyframe interpol="linear" value="135">
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="linear" value="40">
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="linear" value="[0, 0]">
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="linear" value="7">
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="linear" value="[0, 0, 0]">
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </cartesian>
+              <children>
+                <limb>
+                  <ang>
+                    <keyframe interpol="linear" value="-125.077074748">
+                      <key frame="1" value="-135.537806052"/>
+                      <key frame="30" value="-101.831005182"/>
+                      <key frame="60" value="-135.537806052"/>
+                    </keyframe>
+                  </ang>
+                  <dist>
+                    <keyframe interpol="linear" value="40.0">
+                      <key frame="1" value="40"/>
+                      <key frame="30" value="40.0"/>
+                      <key frame="60" value="40"/>
+                    </keyframe>
+                  </dist>
+                  <pos>
+                    <keyframe interpol="linear" value="[0.0, 0.0]">
+                      <key frame="1" value="[0, 0]"/>
+                      <key frame="30" value="[0.0, 0.0]"/>
+                      <key frame="60" value="[0, 0]"/>
+                    </keyframe>
+                  </pos>
+                  <shape>
+                    <texture>
+                    <text>
+                    <keyframe interpol="const" value="test">
+                      <key frame="1" value="test"/>
+                      <key frame="30" value="test"/>
+                      <key frame="60" value="test"/>
+                    </keyframe>
+                    </text>
+                    <flip>
+                    <keyframe interpol="const" value="True">
+                      <key frame="1" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="60" value="True"/>
+                    </keyframe>
+                    </flip>
+                    <caps>
+                    <keyframe interpol="const" value="True">
+                      <key frame="1" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="60" value="True"/>
+                    </keyframe>
+                    </caps>
+                    <shape>
+                    <keyframe interpol="const" value="line">
+                      <key frame="1" value="line"/>
+                      <key frame="30" value="line"/>
+                      <key frame="60" value="line"/>
+                    </keyframe>
+                    </shape>
+                    <file>
+                    <keyframe interpol="const" value="splogoicon.png">
+                      <key frame="1" value="splogoicon.png"/>
+                      <key frame="30" value="splogoicon.png"/>
+                      <key frame="60" value="splogoicon.png"/>
+                    </keyframe>
+                    </file>
+                    <fill>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                    </keyframe>
+                    </fill>
+                    </texture>
+                  </shape>
+                  <width>
+                    <keyframe interpol="linear" value="7.0">
+                      <key frame="1" value="7"/>
+                      <key frame="30" value="7.0"/>
+                      <key frame="60" value="7"/>
+                    </keyframe>
+                  </width>
+                  <colour>
+                    <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                      <key frame="1" value="[0, 0, 0]"/>
+                      <key frame="30" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="60" value="[0, 0, 0]"/>
+                    </keyframe>
+                  </colour>
+                  <static>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                    </keyframe>
+                  </static>
+                  <hidden>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                    </keyframe>
+                  </hidden>
+                  <cartesian>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                    </keyframe>
+                  </cartesian>
+                  <children>
+                  </children>
+                </limb>
+              </children>
+            </limb>
+            <limb>
+              <ang>
+                <keyframe interpol="linear" value="225">
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="linear" value="40">
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="linear" value="[0, 0]">
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="linear" value="7">
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="linear" value="[0, 0, 0]">
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </cartesian>
+              <children>
+                <limb>
+                  <ang>
+                    <keyframe interpol="linear" value="-15">
+                    </keyframe>
+                  </ang>
+                  <dist>
+                    <keyframe interpol="linear" value="40">
+                    </keyframe>
+                  </dist>
+                  <pos>
+                    <keyframe interpol="linear" value="[0, 0]">
+                    </keyframe>
+                  </pos>
+                  <shape>
+                    <texture>
+                    <text>
+                    <keyframe interpol="const" value="test">
+                    </keyframe>
+                    </text>
+                    <flip>
+                    <keyframe interpol="const" value="True">
+                    </keyframe>
+                    </flip>
+                    <caps>
+                    <keyframe interpol="const" value="True">
+                    </keyframe>
+                    </caps>
+                    <shape>
+                    <keyframe interpol="const" value="line">
+                    </keyframe>
+                    </shape>
+                    <file>
+                    <keyframe interpol="const" value="splogoicon.png">
+                    </keyframe>
+                    </file>
+                    <fill>
+                    <keyframe interpol="const" value="False">
+                    </keyframe>
+                    </fill>
+                    </texture>
+                  </shape>
+                  <width>
+                    <keyframe interpol="linear" value="7">
+                    </keyframe>
+                  </width>
+                  <colour>
+                    <keyframe interpol="linear" value="[0, 0, 0]">
+                    </keyframe>
+                  </colour>
+                  <static>
+                    <keyframe interpol="const" value="False">
+                    </keyframe>
+                  </static>
+                  <hidden>
+                    <keyframe interpol="const" value="False">
+                    </keyframe>
+                  </hidden>
+                  <cartesian>
+                    <keyframe interpol="const" value="False">
+                    </keyframe>
+                  </cartesian>
+                  <children>
+                  </children>
+                </limb>
+              </children>
+            </limb>
+          </children>
+        </limb>
+        <limb>
+          <ang>
+            <keyframe interpol="linear" value="67">
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe interpol="linear" value="50">
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe interpol="linear" value="[0, 0]">
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe interpol="const" value="test">
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe interpol="const" value="True">
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe interpol="const" value="True">
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe interpol="const" value="line">
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe interpol="const" value="splogoicon.png">
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe interpol="linear" value="7">
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe interpol="linear" value="(0, 0, 0)">
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb>
+              <ang>
+                <keyframe interpol="linear" value="0">
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="linear" value="50">
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="linear" value="[0, 0]">
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="linear" value="7">
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="linear" value="[0, 0, 0]">
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+          </children>
+        </limb>
+        <limb>
+          <ang>
+            <keyframe interpol="linear" value="113">
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe interpol="linear" value="50">
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe interpol="linear" value="[0, 0]">
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe interpol="const" value="test">
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe interpol="const" value="True">
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe interpol="const" value="True">
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe interpol="const" value="line">
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe interpol="const" value="splogoicon.png">
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe interpol="linear" value="7">
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe interpol="linear" value="[0, 0, 0]">
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe interpol="const" value="False">
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb>
+              <ang>
+                <keyframe interpol="linear" value="0">
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="linear" value="50">
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="linear" value="[0, 0]">
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="linear" value="7">
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="linear" value="[0, 0, 0]">
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+          </children>
+        </limb>
+      </children>
+    </limb>
+  </children>
+</limb>

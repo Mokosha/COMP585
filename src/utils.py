@@ -18,7 +18,7 @@ def lerp(a, b, t):
 def polar2cart(angle, dist):
 
 	angle = (90 - angle) * math.pi / 180
-	x = dist * cos(angle)
-	y = dist * sin(angle)
+	x = dist * math.cos(angle)
+	y = dist * math.sin(angle)
 
 	return Vector2(x, -y)

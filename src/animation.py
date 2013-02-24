@@ -29,7 +29,7 @@ class AnimationAttribute:
 		elif value == "False":
 			return False
 
-		elif value[0] == "[":
+		elif value[0] == "[" or value[0] == "(":
 			floatList = [float(x) for x in fltRegEx.findall(value)]
 			if len(floatList) == 2:
 				return Vector2(floatList[0], floatList[1])
@@ -75,7 +75,7 @@ class AnimationAttribute:
 			return self.initialValue
 
 		if nextKey == None:
-			return self.animationKeys[nextKey]
+			return self.animationKeys[prevKey]
 
 		if self.interpolationType == "const":
 			return self.animationKeys[prevKey]
@@ -100,25 +100,26 @@ class Shape:
 	
 	def draw(self, frame, surface, pt1, pt2, color, width):
 
-		if self.attribs['shape'].getValue() == "line":
+		currentShape = self.attribs['shape'].getValue(frame)
+		if currentShape == "line":
 			x1, y1 = int(pt1.x), int(pt1.y)
 			x2, y2 = int(pt2.x), int(pt2.y)
 
-			pygame.draw.line(surface, color, (x1, y1), (x2, y2), width)
+			pygame.draw.line(surface, color, (x1, y1), (x2, y2), int(width))
 
-		elif self.attribs['shape'].getValue() == "circle":
+		elif currentShape == "circle":
 			c = (pt1 + pt2)*0.5
-			r = (pt2-pt1).magnitude * 0.5
+			r = (pt2-pt1).magnitude() * 0.5
 			
 			cx, cy = int(c.x), int(c.y)
 			
-			pygame.draw.circle(surface, color, (cx, cy), r, width)
-		elif self.attribs['shape'].getValue() == "text":
-			pass
-		elif self.attribs['shape'].getValue() == "image":
-			pass
+			pygame.draw.circle(surface, color, (cx, cy), int(r), int(width))
+		elif currentShape == "text":
+			assert not "Not implemented!"
+		elif currentShape == "image":
+			assert not "Not implemented!"
 		else:
-			pass
+			assert not "Not implemented!"
 
 class Limb:
 	
@@ -132,23 +133,27 @@ class Limb:
 			else:
 				self.attribs[child.tag] = AnimationAttribute(child)
 
+	def getAttrValue(self, name, frame):
+		return self.attribs[name].getValue(frame)
+
 	def draw(self, frame, surface, pos, ang):
 	
-		color = self.attribs['colour'].getValue(frame)
+		colorVec = self.getAttrValue('colour', frame)
+		color = pygame.Color(int(colorVec.x), int(colorVec.y), int(colorVec.z), 255)
 
-		if self.attribs['cartesian']:
+		if self.getAttrValue('cartesian', frame):
 			newAng = ang
-			newPos = pos + self.attribs['pos'].getValue(frame)
+			newPos = pos + self.getAttrValue('pos', frame)
 
 		else:
-			newAng = ang + self.attribs['ang'].getValue(frame)
-			dist = self.attribs['dist'].getValue(frame)
+			newAng = ang + self.getAttrValue('ang', frame)
+			dist = self.getAttrValue('dist', frame)
 			
 			newPos = pos + polar2cart(newAng, dist)
 
-		if not self.attribs['hidden']:
-			width = self.attribs['width'].getValue(frame)
-			self.attribs['shape'].draw(frame, surface, pos, newPos, color, width)
+		if not self.getAttrValue('hidden', frame):
+			width = self.getAttrValue('width', frame)
+			self.shape.draw(frame, surface, pos, newPos, color, width)
 
 		for limb in self.children:
 			limb.draw(frame, surface, newPos, newAng)
@@ -165,7 +170,7 @@ class Animation:
 		self.limb = Limb(root)
 
 	def draw(self, frame, surface, pos):
-		self.limb.draw(frame, surface, pos)
+		self.limb.draw(frame, surface, pos, 90)
 
 def load(filename):
 	return Animation(filename)

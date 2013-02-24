@@ -12,6 +12,8 @@ import pygame, os
 import animation
 from gameobject import *
 
+FPS = 25
+
 class AnimatedObject(GameObject):
 
 	def __init__(self, idle_name):
@@ -25,5 +27,14 @@ class AnimatedObject(GameObject):
 
 		self.animations[name] = animation.load(assets_path + os.sep + name + ".spe")
 
-	def setAnimation(self, name):
-		pass
+	def startAnimation(self, name, time):
+		self.animStartTime = time
+		self.currentAnim = self.animations[name]
+
+	def draw(self, time, surface, pos):
+		
+		# Figure out frame number
+		elapsed = time - self.animStartTime
+		frame = FPS * elapsed
+		self.currentAnim.draw(frame, surface, pos)
+		
