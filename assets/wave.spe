@@ -70,7 +70,7 @@
         </keyframe>
       </dist>
       <pos>
-        <keyframe interpol="linear" value="[320, 240]">
+        <keyframe interpol="linear" value="[0, 0]">
         </keyframe>
       </pos>
       <shape>

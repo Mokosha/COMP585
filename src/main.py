@@ -25,7 +25,7 @@ pygame.display.set_mode((WINDOW_SIZE_X, WINDOW_SIZE_Y))
 display_surface = pygame.display.get_surface()
 display_surface.fill((255, 255, 255))
 
-obj = animatedobject.AnimatedObject("wave")
+obj = animatedobject.AnimatedObject("wave", True)
 obj.startAnimation("wave", START_TIME)
 
 while True:
@@ -33,7 +33,7 @@ while True:
 	cur_time = time.clock()
 	
 	display_surface.fill((255, 255, 255))
-	obj.draw(cur_time, display_surface, (0, 0))
+	obj.draw(cur_time, display_surface, (WINDOW_SIZE_X/2, WINDOW_SIZE_Y/2))
 
 	for event in pygame.event.get():
 		if event.type in (pygame.QUIT, pygame.KEYDOWN):

@@ -60,6 +60,11 @@ class AnimationAttribute:
 
 		self.animationKeys = {int(key.get("frame")):self.loadValue(key.get("value")) for key in keyframe}
 
+		if len(self.animationKeys.keys()) > 0:
+			self.maxFrame = max(self.animationKeys.keys())
+		else:
+			self.maxFrame = 0
+
 	def getValue(self, frame):
 		prevKey = None
 		nextKey = None
@@ -98,6 +103,9 @@ class Shape:
 		for child in texture:
 			self.attribs[child.tag] = AnimationAttribute(child)
 	
+	def maxFrame(self):
+		return max(map(lambda x : x.maxFrame, self.attribs.values()))
+
 	def draw(self, frame, surface, pt1, pt2, color, width):
 
 		currentShape = self.attribs['shape'].getValue(frame)
@@ -132,6 +140,15 @@ class Limb:
 				self.shape = Shape(child)
 			else:
 				self.attribs[child.tag] = AnimationAttribute(child)
+
+		if len(self.children) > 0:
+			childMax = max(map(lambda x : x.maxFrame, self.children))
+		else:
+			childMax = 0
+
+		attribMax = max(map(lambda x : x.maxFrame, self.attribs.values()))
+		shapeMax = self.shape.maxFrame()
+		self.maxFrame = max([childMax, shapeMax, attribMax])
 
 	def getAttrValue(self, name, frame):
 		return self.attribs[name].getValue(frame)
@@ -171,6 +188,15 @@ class Animation:
 
 	def draw(self, frame, surface, pos):
 		self.limb.draw(frame, surface, pos, 90)
+
+	def setLoop(self, loop):
+		self.loop = loop
+
+	def getLoop(self):
+		return self.loop
+
+	def getMaxFrame(self):
+		return int(self.limb.maxFrame)
 
 def load(filename):
 	return Animation(filename)
