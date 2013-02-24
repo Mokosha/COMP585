@@ -36,8 +36,16 @@ while True:
 	obj.draw(cur_time, display_surface, (WINDOW_SIZE_X/2, WINDOW_SIZE_Y/2))
 
 	for event in pygame.event.get():
-		if event.type in (pygame.QUIT, pygame.KEYDOWN):
+		if event.type == pygame.QUIT:
 			sys.exit()
+		elif event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_s:
+				if obj.isPlaying():
+					obj.stopAnimation()
+				else:
+					obj.startAnimation("wave", START_TIME)
+			else:
+				sys.exit()
 
 	pygame.display.update()
 	

@@ -8,7 +8,7 @@
 # 
 ################################################################################
 
-import pygame, os
+import pygame, os, time
 import animation
 from gameobject import *
 
@@ -20,6 +20,7 @@ class AnimatedObject(GameObject):
 		self.animations = {}
 		self.loadAnim(idle_name, loop)
 		self.currentAnim = self.animations[idle_name]
+		self.animStopTime = -1
 
 	def loadAnim(self, name, loop):
 		assets_path = os.path.realpath(__file__).split(os.sep)[:-2]
@@ -30,10 +31,22 @@ class AnimatedObject(GameObject):
 
 	def startAnimation(self, name, time):
 		self.animStartTime = time
+		self.animStopTime = time - 1
 		self.currentAnim = self.animations[name]
+
+	def stopAnimation(self):
+		self.animStopTime = time.clock()
+
+	def isPlaying(self):
+		return self.animStartTime > self.animStopTime
 
 	def draw(self, time, surface, pos):
 		
+		# If the animation is stopped, then we should draw at exactly the point at which
+		# it was stopped...
+		if self.animStopTime > self.animStartTime:
+			time = self.animStopTime
+
 		# Figure out frame number
 		elapsed = time - self.animStartTime
 		frame = FPS * elapsed
