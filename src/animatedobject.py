@@ -52,7 +52,7 @@ class AnimatedObject(GameObject):
 		frame = FPS * elapsed
 
 		if self.currentAnim.loop:
-			frame = (frame % self.currentAnim.getMaxFrame()) + 1
+			frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1
 
 		self.currentAnim.draw(frame, surface, pos)
 		

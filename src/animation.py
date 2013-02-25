@@ -69,17 +69,17 @@ class AnimationAttribute:
 		prevKey = None
 		nextKey = None
 		for keyframe in self.animationKeys.keys():
-			if keyframe < frame:
+			if keyframe <= frame:
 				if prevKey == None or keyframe > prevKey:
 					prevKey = keyframe
-			elif keyframe > frame:
+			elif keyframe >= frame:
 				if nextKey == None or keyframe < nextKey:
 					nextKey = keyframe
 
 		if prevKey == None:
 			return self.initialValue
 
-		if nextKey == None:
+		if nextKey == None or nextKey == prevKey:
 			return self.animationKeys[prevKey]
 
 		if self.interpolationType == "const":
