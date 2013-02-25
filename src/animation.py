@@ -163,7 +163,7 @@ class Limb:
 			newPos = pos + self.getAttrValue('pos', frame)
 
 		else:
-			newAng = ang + self.getAttrValue('ang', frame)
+			newAng = ang - self.getAttrValue('ang', frame)
 			dist = self.getAttrValue('dist', frame)
 			
 			newPos = pos + polar2cart(newAng, dist)
@@ -187,7 +187,7 @@ class Animation:
 		self.limb = Limb(root)
 
 	def draw(self, frame, surface, pos):
-		self.limb.draw(frame, surface, pos, 90)
+		self.limb.draw(frame, surface, pos, 0)
 
 	def setLoop(self, loop):
 		self.loop = loop
