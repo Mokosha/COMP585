@@ -421,6 +421,7 @@ class BrowserDialog(widgets.WidgetContainer):
 		self.visible = False
 		self.disabled = True
 		self.organise()
+
 	def changemode(self, mode):
 		if mode == "save":
 			self.mode = "save"
@@ -434,6 +435,7 @@ class BrowserDialog(widgets.WidgetContainer):
 		else:
 			print "Invalid mode for file browser: " + mode
 			raise RuntimeError
+
 	def resize(self, pos, size):
 		self.pos = pos
 		if size[0] < 1: size[0] = 1
@@ -443,11 +445,11 @@ class BrowserDialog(widgets.WidgetContainer):
 		self.setup() 
 		self.organise()
 		self.draw()
+
 	def draw(self):
-		#self.image.fill((0,0,0))
 		self.drawwidgets()
-		
 		self.redraw = True
+
 	def organise(self):
 		self.widgets['FileName'].resize(Vector(0,self.size.y-70), Vector(self.size.x,30))
 		self.widgets['ScrollBar'].resize(Vector(self.size.x-20,0), Vector(20, self.size.y-80))
@@ -483,10 +485,14 @@ class FileBrowser(widgets.BaseWidget):
 		self.draw()
 	def lclick(self):
 		if self.hover:
+
 			self.selected = (int(self.mousepos[1] - self.pos[1] + self.offset*self.fontsize) / self.fontsize)
+
+			if self.selected >= len(self.dirlist):
+				return
+
 			path = os.path.join(self.path, self.dirlist[self.selected])
 			if os.path.isdir(os.path.join(self.path, self.dirlist[self.selected])):
-				#print os.path.join(self.path, self.dirlist[self.selected])
 				os.chdir(path)
 				self.path = os.getcwd()
 				self.setdirlist()
@@ -496,18 +502,8 @@ class FileBrowser(widgets.BaseWidget):
 				if self.container.widgets['FileName'].text == self.dirlist[self.selected]:
 					self.container.widgets['AcceptButton'].action()
 					print "lol"
-					#if path[-4:] == ".sps":
-					#	file = open(path, "r")
-					#	concatDict(self.data, pickle.Unpickler(file).load())
-					#	self.container.container.changeframe(1)
-					#	self.container.visible = False
-					#	self.container.disabled = True
 				else:
 					self.container.widgets['FileName'].changetext(self.dirlist[self.selected])
-				#if path[-4:] == ".sps":
-				#	file = open(path, "r")
-				#	concatDict(self.data, pickle.Unpickler(file).load())
-				#	self.container.container.changeframe(1)
 			self.draw()
 	def setdirlist(self):
 		self.dirlist = os.listdir(self.path)
