@@ -13,12 +13,12 @@ import math
 from lib.euclid import *
 
 def lerp(a, b, t):
-	return (1.0 - t)*a + t*b
+    return (1.0 - t)*a + t*b
 
 def polar2cart(angle, dist):
 
-	angle *= math.pi / 180.0
-	x = dist * math.cos(angle)
-	y = dist * math.sin(angle)
+    angle *= math.pi / 180.0
+    x = dist * math.cos(angle)
+    y = dist * math.sin(angle)
 
-	return Vector2(x, -y)
+    return Vector2(x, -y)

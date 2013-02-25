@@ -101,14 +101,15 @@ class Vector2:
         return 'Vector2(%.2f, %.2f)' % (self.x, self.y)
 
     def __eq__(self, other):
-			if isinstance(other, Vector2):
-				return self.x == other.x and \
-					     self.y == other.y
-			else:
-				if not other: return False
-				assert hasattr(other, '__len__') and len(other) == 2
-				return self.x == other[0] and \
-						   self.y == other[1]
+
+        if isinstance(other, Vector2):
+            return self.x == other.x and self.y == other.y
+        else:
+            if not other: 
+                return False
+
+            assert hasattr(other, '__len__') and len(other) == 2
+            return self.x == other[0] and self.y == other[1]
 
     def __ne__(self, other):
         return not self.__eq__(other)
@@ -132,8 +133,7 @@ class Vector2:
 
     def __getattr__(self, name):
         try:
-            return tuple([(self.x, self.y)['xy'.index(c)] \
-                          for c in name])
+            return tuple([(self.x, self.y)['xy'.index(c)] for c in name])
         except ValueError:
             raise AttributeError, name
 
@@ -257,14 +257,12 @@ class Vector2:
     __pos__ = __copy__
     
     def __abs__(self):
-        return math.sqrt(self.x ** 2 + \
-                         self.y ** 2)
+        return math.sqrt(self.x ** 2 + self.y ** 2)
 
     magnitude = __abs__
 
     def magnitude_squared(self):
-        return self.x ** 2 + \
-               self.y ** 2
+        return self.x ** 2 + self.y ** 2
 
     def normalize(self):
         d = self.magnitude()
@@ -276,14 +274,13 @@ class Vector2:
     def normalized(self):
         d = self.magnitude()
         if d:
-            return Vector2(self.x / d, 
-                           self.y / d)
-        return self.copy()
+            return Vector2(self.x / d, self.y / d)
+        else:
+            return self.copy()
 
     def dot(self, other):
         assert isinstance(other, Vector2)
-        return self.x * other.x + \
-               self.y * other.y
+        return self.x * other.x + self.y * other.y
 
     def cross(self):
         return Vector2(self.y, -self.x)
@@ -292,8 +289,7 @@ class Vector2:
         # assume normal is normalized
         assert isinstance(normal, Vector2)
         d = 2 * (self.x * normal.x + self.y * normal.y)
-        return Vector2(self.x - d * normal.x,
-                       self.y - d * normal.y)
+        return Vector2(self.x - d * normal.x, self.y - d * normal.y)
 
     def angle(self, other):
         """Return the angle to the vector other"""
@@ -324,16 +320,16 @@ class Vector3:
                                               self.z)
 
     def __eq__(self, other):
-			if isinstance(other, Vector3):
-				return self.x == other.x and \
-						   self.y == other.y and \
-							 self.z == other.z
-			else:
-				if not other: return False
-				assert hasattr(other, '__len__') and len(other) == 3
-				return self.x == other[0] and \
-						   self.y == other[1] and \
-							 self.z == other[2]
+            if isinstance(other, Vector3):
+                return self.x == other.x and \
+                           self.y == other.y and \
+                             self.z == other.z
+            else:
+                if not other: return False
+                assert hasattr(other, '__len__') and len(other) == 3
+                return self.x == other[0] and \
+                           self.y == other[1] and \
+                             self.z == other[2]
 
     def __ne__(self, other):
         return not self.__eq__(other)

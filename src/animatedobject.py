@@ -16,43 +16,43 @@ FPS = 25
 
 class AnimatedObject(GameObject):
 
-	def __init__(self, idle_name, loop=False):
-		self.animations = {}
-		self.loadAnim(idle_name, loop)
-		self.currentAnim = self.animations[idle_name]
-		self.animStopTime = -1
+    def __init__(self, idle_name, loop=False):
+        self.animations = {}
+        self.loadAnim(idle_name, loop)
+        self.currentAnim = self.animations[idle_name]
+        self.animStopTime = -1
 
-	def loadAnim(self, name, loop):
-		assets_path = os.path.realpath(__file__).split(os.sep)[:-2]
-		assets_path = os.sep.join(assets_path) + os.sep + "assets"
+    def loadAnim(self, name, loop):
+        assets_path = os.path.realpath(__file__).split(os.sep)[:-2]
+        assets_path = os.sep.join(assets_path) + os.sep + "assets"
 
-		self.animations[name] = animation.load(assets_path + os.sep + name + ".spe")
-		self.animations[name].setLoop(loop)
+        self.animations[name] = animation.load(assets_path + os.sep + name + ".spe")
+        self.animations[name].setLoop(loop)
 
-	def startAnimation(self, name, time):
-		self.animStartTime = time
-		self.animStopTime = time - 1
-		self.currentAnim = self.animations[name]
+    def startAnimation(self, name, time):
+        self.animStartTime = time
+        self.animStopTime = time - 1
+        self.currentAnim = self.animations[name]
 
-	def stopAnimation(self):
-		self.animStopTime = time.clock()
+    def stopAnimation(self):
+        self.animStopTime = time.clock()
 
-	def isPlaying(self):
-		return self.animStartTime > self.animStopTime
+    def isPlaying(self):
+        return self.animStartTime > self.animStopTime
 
-	def draw(self, time, surface, pos):
-		
-		# If the animation is stopped, then we should draw at exactly the point at which
-		# it was stopped...
-		if self.animStopTime > self.animStartTime:
-			time = self.animStopTime
+    def draw(self, time, surface, pos):
+        
+        # If the animation is stopped, then we should draw at exactly the point at which
+        # it was stopped...
+        if self.animStopTime > self.animStartTime:
+            time = self.animStopTime
 
-		# Figure out frame number
-		elapsed = time - self.animStartTime
-		frame = FPS * elapsed
+        # Figure out frame number
+        elapsed = time - self.animStartTime
+        frame = FPS * elapsed
 
-		if self.currentAnim.loop:
-			frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1
+        if self.currentAnim.loop:
+            frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1
 
-		self.currentAnim.draw(frame, surface, pos)
-		
+        self.currentAnim.draw(frame, surface, pos)
+        

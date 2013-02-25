@@ -16,13 +16,13 @@ import pygame
 
 class GameObject:
 
-	def __init__(self):
-		self.pos = (0, 0)
-		self.angle = 0
+    def __init__(self):
+        self.pos = (0, 0)
+        self.angle = 0
 
 
-	def render(self):
-		pass
+    def render(self):
+        pass
 
-	def accept(event):
-		pass
+    def accept(event):
+        pass
