@@ -300,6 +300,14 @@ class Vector2:
         n = other.normalized()
         return self.dot(n)*n
 
+    def rotate(self, angle):
+        ca = math.cos(angle)
+        sa = math.sin(angle)
+        return Vector2(self.x * ca - self.y * sa, self.x * sa + self.y * ca)
+
+    def rotateDeg(self, angle):
+        return self.rotate(angle * (math.pi / 180.0))
+
 class Vector3:
     __slots__ = ['x', 'y', 'z']
     __hash__ = None

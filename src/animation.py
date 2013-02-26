@@ -91,6 +91,7 @@ class AnimationAttribute:
         else:
             assert not "Unknown interpolation method!"
 
+NUM_ROUNDED_PTS = 10
 class Shape:
     
     def __init__(self, node):
@@ -110,10 +111,19 @@ class Shape:
 
         currentShape = self.attribs['shape'].getValue(frame)
         if currentShape == "line":
-            x1, y1 = int(pt1.x), int(pt1.y)
-            x2, y2 = int(pt2.x), int(pt2.y)
 
-            pygame.draw.line(surface, color, (x1, y1), (x2, y2), int(width))
+            dirVec = ((pt2-pt1).normalized() * width).rotateDeg(270.0)
+
+            startPt = pt2 + dirVec
+
+            dAngle = 180.0 / NUM_ROUNDED_PTS
+            pts = [pt2 + dirVec.rotateDeg(i * dAngle) for i in range(NUM_ROUNDED_PTS + 1)]
+            
+            dirVec = dirVec.rotateDeg(180)
+
+            pts.extend([pt1 + dirVec.rotateDeg(i * dAngle) for i in range(NUM_ROUNDED_PTS + 1)])
+
+            pygame.draw.aalines(surface, color, True, map(lambda v: [v.x, v.y], pts))
 
         elif currentShape == "circle":
             c = (pt1 + pt2)*0.5
