@@ -112,7 +112,7 @@ class Shape:
         currentShape = self.attribs['shape'].getValue(frame)
         if currentShape == "line":
 
-            dirVec = ((pt2-pt1).normalized() * width).rotateDeg(270.0)
+            dirVec = ((pt2-pt1).normalized() * width * 0.5).rotateDeg(270.0)
 
             startPt = pt2 + dirVec
 
@@ -123,15 +123,27 @@ class Shape:
 
             pts.extend([pt1 + dirVec.rotateDeg(i * dAngle) for i in range(NUM_ROUNDED_PTS + 1)])
 
-            pygame.draw.aalines(surface, color, True, map(lambda v: [v.x, v.y], pts))
+            pygame.draw.polygon(surface, color, map(lambda v: [v.x, v.y], pts))
 
         elif currentShape == "circle":
+            dirVec = pt2-pt1
             c = (pt1 + pt2)*0.5
-            r = (pt2-pt1).magnitude() * 0.5
+            r = dirVec.magnitude() * 0.5
+            dirVec.normalize()
             
-            cx, cy = int(c.x), int(c.y)
-            
-            pygame.draw.circle(surface, color, (cx, cy), int(r), int(width))
+            NUM_CIRCLE_PTS = NUM_ROUNDED_PTS * 2
+            dAngle = 360.0 / NUM_CIRCLE_PTS
+
+            outR = r+(width * 0.5)
+            outPts = [c + dirVec.rotateDeg(i * dAngle)*outR for i in range(NUM_CIRCLE_PTS + 1)]
+
+            inR = r-(width * 0.5)
+            inPts = [c + dirVec.rotateDeg(i * dAngle)*inR for i in range(NUM_CIRCLE_PTS + 1)]
+            inPts.reverse()
+
+            pts = outPts + inPts
+
+            pygame.draw.polygon(surface, color, map(lambda v: [v.x, v.y], pts))
         elif currentShape == "text":
             assert not "Not implemented!"
         elif currentShape == "image":
