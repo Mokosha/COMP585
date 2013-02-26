@@ -12,6 +12,8 @@ import sys, time
 
 import pygame
 pygame.init()
+video_info = pygame.display.Info()
+window_w, window_h = video_info.current_w, video_info.current_h
 
 import animatedobject
 
@@ -21,6 +23,7 @@ WINDOW_SIZE_Y=600
 START_TIME = time.clock()
 
 pygame.display.set_mode((WINDOW_SIZE_X, WINDOW_SIZE_Y))
+pygame.display.toggle_fullscreen()
 
 display_surface = pygame.display.get_surface()
 display_surface.fill((255, 255, 255))
@@ -30,22 +33,24 @@ obj.startAnimation("wave", START_TIME)
 
 while True:
 
-	cur_time = time.clock()
-	
-	display_surface.fill((255, 255, 255))
-	obj.draw(cur_time, display_surface, (WINDOW_SIZE_X/2, WINDOW_SIZE_Y/2))
+    cur_time = time.clock()
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_s:
+                if obj.isPlaying():
+                    obj.stopAnimation()
+                else:
+                    obj.startAnimation("wave", START_TIME)
+            else:
+                pygame.display.set_mode((window_w, window_h))
+                pygame.display.toggle_fullscreen()
+                sys.exit()
 
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			sys.exit()
-		elif event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_s:
-				if obj.isPlaying():
-					obj.stopAnimation()
-				else:
-					obj.startAnimation("wave", START_TIME)
-			else:
-				sys.exit()
+    display_surface.fill((255, 255, 255))
+    obj.draw(cur_time, display_surface, (WINDOW_SIZE_X/2, WINDOW_SIZE_Y/2))
 
-	pygame.display.update()
-	
+    pygame.display.update()
+    
