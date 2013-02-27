@@ -200,13 +200,11 @@ class StickEditor(widgets.BaseWidget):
 
     def rrelease(self):
         tedit = self.getgrab()
-        if not tedit == None:
-            if tedit in self.data['editing']:
-                self.data['editing'] = [tedit]
+        if tedit:
             self.draw()
             self.container.window.menu.showmenu([("Insert keyframe", "insertkey"), ("Edit keyframes", "editkeys"), ("Edit limb shape", "editshape"), ("Delete", "delete"), ("Copy", "copy"), ("Paste", "paste"), ("Store Selection", "selstore"), ("Recall Selection", "selrecall")], self.mousepos, self, 20)
-        elif self.cameraover(10, self.getmousepos()-self.getpos()):
-            self.container.window.menu.showmenu([("Insert keyframe", "insertcamkey"), ("Edit keyframes", "editcamkeys"), ("Edit camera shape", "editcamshape")], self.getmousepos(), self, 20)
+        elif self.cameraover(10, self.getmousepos() - self.getpos()):
+            self.container.window.menu.showmenu([("Insert keyframe", "insertcamkey"), ("Edit keyframes", "editcamkeys"), ("Edit camera shape", "editcamshape")], self.mousepos, self, 20)
 
     def always(self):
         if self.data['playing']: self.draw()

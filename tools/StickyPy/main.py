@@ -159,16 +159,17 @@ def main(screen):
 
             camera_size_y = float(data['camera']['size'].y)
             camera_size_x = float(data['camera']['size'].x)
+            camera_size = Vector(camera_size_x, camera_size_y)
 
             stick_editor_size_y = float(data['widgets'].container.widgets['StickEditor'].size.y)
             stick_editor_size_x = float(data['widgets'].container.widgets['StickEditor'].size.x)
 
-            if stick_editor_size_y / stick_editor_size_x <  camera_size_y / camera_size_x: 
-                data['zoom'] = stick_editor_size_y / camera_size_y / data['camera']['zoom'].setframe(frame)
-            else:
-                data['zoom'] = stick_editor_size_x / camera_size_x / data['camera']['zoom'].setframe(frame)
+#            if stick_editor_size_y / stick_editor_size_x <  camera_size_y / camera_size_x: 
+#                data['zoom'] = stick_editor_size_y / camera_size_y / data['camera']['zoom'].setframe(frame)
+#            else:
+#                data['zoom'] = stick_editor_size_x / camera_size_x / data['camera']['zoom'].setframe(frame)
             
-            data['panning'] = -Vector(data['camera']['pos'].setframe(frame))
+            data['panning'] = -Vector(data['camera']['pos'].setframe(frame)) - camera_size * 0.5
             data['widgets'].container.changeframe(frame)
         
         if len(events) == 1 and mousebut[0] and not mousebut[1] and not mousebut[2]: 
