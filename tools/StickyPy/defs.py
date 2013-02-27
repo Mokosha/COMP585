@@ -325,39 +325,45 @@ def interpolateConst(frame, keys):
             val = key[1]
     return val
 
-def interpolateLinear(frame, keys):
+def lerp(a, b, t):
+    return ((1-t)*a + t*b)
+
+def interpolate(frame, keys, interpolationType = "linear"):
     prevkey = keys[0]
     inter = True
     if len(keys) == 1:
-        val = keys[0][1]
-    else:
-        try:
-            for key in keys:
-                if key[0] > frame:
-                    break
-                elif key[0] == frame:
-                    inter = False
-                    val = key[1]
-                    break
-                else:
-                    prevkey = key
-            if key == prevkey:
-                val = key[1]
+        return keys[0][1]
+
+    try:
+        for key in keys:
+            if key[0] > frame:
+                break
+            elif key[0] == frame:
                 inter = False
-            if inter:
-                if type(key[1]) == type([]) or type(key[1]) == type(Vector(0,0)) or type(key[1]) == type(()):
-                    val = []
-                    for i in range(len(key[1])):
-                        d = (float(prevkey[1][i]) - float(key[1][i])) / (float(prevkey[0]) - float(key[0]))
-                        m = frame - prevkey[0]
-                        val.append(d*m+prevkey[1][i])
-                else:
-                    d = (float(prevkey[1]) - float(key[1])) / (float(prevkey[0]) - float(key[0]))
-                    m = frame - prevkey[0]
-                    val = d*m+prevkey[1]
-        except:
-            val = interpolateConst(frame, keys)
-    return val
+                val = key[1]
+                break
+            else:
+                prevkey = key
+
+        if key == prevkey:
+            val = key[1]
+            inter = False
+
+        if inter:
+            t = (float(frame) - float(prevkey[0])) / (float(key[0]) - float(prevkey[0]))
+            if interpolationType == "smoothstep":
+                t = t * t * (3 - (2 * t))
+
+            if type(key[1]) == type([]) or type(key[1]) == type(Vector(0,0)) or type(key[1]) == type(()):
+                val = []
+                for i in range(len(key[1])):
+                    val.append(lerp(prevkey[1][i], key[1][i], t))
+            else:
+                val = lerp(prevkey[1], key[1], t)
+
+        return val
+    except:
+        return interpolateConst(frame, keys)
 
 indentWidth = 2
 def indentLines(textToIndent, levels):
