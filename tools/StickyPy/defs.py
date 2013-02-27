@@ -135,21 +135,6 @@ def drawcircle(image, colour, origin, radius, width=0):
         if int(radius-(width/2)) > 0: pygame.draw.circle(circle, [0,0,0,0], intlist([circle.get_width()/2, circle.get_height()/2]), abs(int(radius-(width/2))))
         image.blit(circle, [origin[0] - (circle.get_width()/2), origin[1] - (circle.get_height()/2)])
 
-#def drawaacircle(image, colour, origin, radius, width=0):
-#    if width == 0:
-#        aacircle(image,colour,origin,radius)
-#        pygame.draw.circle(image,colour,origin,radius)
-#    else:
-#        for i in range(width*3):
-#            aacircle(image, colour, origin, radius + (i/3) - (width/3))
-
-#def aacircle(image, colour, origin, radius):
-#    poly = []
-#    circ = int(2 * pi * radius*2)
-#    for i in range(circ):
-#        poly.append(translate(polar2cart(i/float(circ)*360,float(radius)), origin))
-#    pygame.draw.aalines(image, colour, True, poly)
-
 def drawaacircle(image, colour, origin, radius, width=0):
     radius = 2*radius
     if radius > 65535/2: radius = 65535/2
@@ -179,42 +164,34 @@ def drawStick(Surface, Stick, Offset, DrawVertices = False, SizeRatio = 1, Selec
         Colour = ForceColour
     
     if DrawVertices:
-        selected = False
-        for vert in SelectedVerts:
-            if Stick is vert: selected = True
+        selected = Stick in SelectedVerts
+        if Stick['cartesian'].value:
+            selected_color = (255, 136, 0) if selected else (0, 136, 255)
+        else:
+            selected_color = (255, 0, 0) if selected else (0, 255, 0)
+        selected_width = abs(int((Stick['width'].value/2+2)*SizeRatio))
     
     if Stick['cartesian'].value:
+
         NewOffset = Vector(Offset) + Vector(Stick['pos'].value) * SizeRatio
+
         if DrawVertices:
-            if selected:
-                pygame.draw.circle(Surface, (255, 136, 0), intlist(NewOffset), abs(int((Stick['width'].value/2+2)*SizeRatio)))
-            else:
-                pygame.draw.circle(Surface, (0, 136, 255), intlist(NewOffset), abs(int((Stick['width'].value/2+2)*SizeRatio)))
+            pygame.draw.circle(Surface, selected_color, intlist(NewOffset), selected_width)
     else:
+
         Off = polar2cart(Stick['ang'].value + AngOff, Stick['dist'].value * SizeRatio)
         NewOffset = [Offset[0] + Off[0], Offset[1] + Off[1]]
+
         if DrawVertices:
-            if selected:
-                pygame.draw.circle(Surface, (255, 0, 0), intlist(NewOffset), abs(int((Stick['width'].value/2+2)*SizeRatio)))
-            else:
-                pygame.draw.circle(Surface, (0, 255, 0), intlist(NewOffset), abs(int((Stick['width'].value/2+2)*SizeRatio)))
+            pygame.draw.circle(Surface, selected_color, intlist(NewOffset), selected_width)
+
     if not Stick['hidden'].value and not DrawVertices:
-        #if Stick['shape'].value == 0:
-        #    drawline(Surface, Colour, Offset, NewOffset, Stick['width'].value * SizeRatio, True)
-        #elif Stick['shape'].value == 1:
-        #    drawcircle(Surface, Colour, Vector((Offset[0] + NewOffset[0]) / 2, (Offset[1] + NewOffset[1]) / 2), Stick['dist'].value * SizeRatio / 2, Stick['width'].value * SizeRatio)
-        #else:
         Stick['shape'].draw(Surface, Vector(Offset), Vector(NewOffset), Stick, SizeRatio)
     
     Offset = NewOffset
     
     for seg in Stick['children']:
         Surface = drawStick(Surface, seg, deepcopy(Offset), DrawVertices, SizeRatio, SelectedVerts, Stick['ang'].value + AngOff, ForceColour)
-        #thread.start_new_thread(drawStick, (Surface, seg, deepcopy(Offset), DrawVertices, SizeRatio, SelectedVerts, Stick['ang'].value + AngOff, ForceColour))
-    #threads -= 1
-    
-    #while not threads == 0: pass
-    
     return Surface
 
 def gather(limbs, Stick, Offset, SizeRatio = 1, AngOff = 0):
@@ -261,17 +238,15 @@ def getGrab(mousepos, Stick, Offset = Vector(0, 0), SizeRatio = 1, AngOff = 0):
         Off = polar2cart(Stick['ang'].value + AngOff, Stick['dist'].value * SizeRatio)
         Offset += Vector(Off[0], Off[1])
     
-    grab = None
-    if sqrt((mousepos[0] - Offset[0]) ** 2 + (mousepos[1] - Offset[1]) ** 2) < (Stick['width'].value/2+2)*SizeRatio:
-        grab = Stick
-        #print grab
-    elif len(Stick['children']) > 0:
-        for seg in Stick['children']:
+    if len(Stick['children']) > 0:
+         for seg in Stick['children']:
             tgrab = getGrab(mousepos, seg, Offset, SizeRatio, Stick['ang'].value + AngOff)
-            if not tgrab == None:
-                grab = tgrab
+            if tgrab: return tgrab
+
+    if sqrt((mousepos[0] - Offset[0]) ** 2 + (mousepos[1] - Offset[1]) ** 2) < (Stick['width'].value/2+2)*SizeRatio:
+        return Stick
     
-    return grab
+    return None
 
 # Perform the vertex grabbing action, like rotating and moving
 def doGrab(mousepos, Stick, drag, stretchmode = False, Offset = Vector(0,0), SizeRatio = 1, AngOff = 0):

@@ -58,7 +58,7 @@ class AppWidgets(widgets.WidgetContainer):
         self.widgets = {'AddButton':AddButton(Vector(10,300), Vector(canvaspos[0]-30,30), self, data),
                         'lblSelAdd':widgets.Label(Vector(10,200), Vector(canvaspos[0]-30,30), "Preset sticks:", (255,255,255)),
                         'SelAddButton':SelAddButton(Vector(10,250), Vector(canvaspos[0]-30,30), self, data),
-                        'StickEditor': editor.StickEditor(Vector(200,50), Vector(size.x-canvaspos.x, size.y-canvaspos.y-90), self, data),
+                        'StickEditor': editor.StickEditor(Vector(200,50), Vector(size.x-canvaspos.x, size.y-canvaspos.y-20), self, data),
                         'KeyFrameEditor':keyframeeditor.KeyFrameWidget(Vector(0,size[1]-200-20), Vector(size[0],200), self, mainwindow, data),
                         'ShapeEditor':shapeeditor.ShapeEditor(Vector(size[0]-300,100), Vector(300,size[1]-100), self, mainwindow, data),
                         'PlayButton':PlayButton(Vector(10,350), Vector(canvaspos[0]-30,30), self, data),

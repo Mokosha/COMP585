@@ -33,41 +33,92 @@ version = "Alpha 20"
 screensize = Vector([1024,768])
 pygame.display.set_icon(pygame.image.load("splogoicon.png"))
 pygame.display.set_caption("StickyPy")
-screen = pygame.display.set_mode(screensize, pygame.RESIZABLE)# + pygame.HWSURFACE + pygame.DOUBLEBUF)
+screen = pygame.display.set_mode(screensize, pygame.RESIZABLE)
 
 def main(screen):
     sys.setrecursionlimit(10000)
     pygame.key.set_repeat(250, 25)
     
+    CAMERA_SIZE_X = 640
+    CAMERA_SIZE_Y = 480
+
     canvaspos = Vector(200,50)
     canvassize = screensize-canvaspos
     canvas = pygame.Surface(canvassize)
-    limb = dict(ang=KeyFrame(0), dist=KeyFrame(0), pos=KeyFrame(Vector(0,0)), shape=Texture(shape="line"), width=KeyFrame(7), colour=KeyFrame([0,0,0]), cartesian=KeyFrame(False, False, "const"), static=KeyFrame(False, False, "const"), hidden=KeyFrame(False, False, "const"), children=[])
+    # Defaults for a 'stick' piece...
+    limb = dict(
+        ang=KeyFrame(0), 
+        dist=KeyFrame(0), 
+        pos=KeyFrame(Vector(0,0)), 
+        shape=Texture(shape="line"), 
+        width=KeyFrame(4), 
+        colour=KeyFrame([0,0,0]), 
+        cartesian=KeyFrame(False, False, "const"), 
+        static=KeyFrame(False, False, "const"), 
+        hidden=KeyFrame(False, False, "const"), 
+        children=[]
+    )
         
     # Define the default StickMan
-    StickMan = dict(deepcopy(limb), pos=KeyFrame(Vector(640/2, 480 / 2)), ang=KeyFrame(90), cartesian=KeyFrame(True, False, "const"), hidden=KeyFrame(True, False, "const"), children=[
-                    dict(deepcopy(limb), ang=KeyFrame(270), dist=KeyFrame(60), children=[
-                                dict(deepcopy(limb), ang=KeyFrame(0), dist=KeyFrame(36), shape=Texture(shape="circle")),
-                                dict(deepcopy(limb), ang=KeyFrame(135), dist=KeyFrame(40), children=[
-                                            dict(deepcopy(limb), ang=KeyFrame(15), dist=KeyFrame(40))
-                                ]),
-                                dict(deepcopy(limb), ang=KeyFrame(225), dist=KeyFrame(40), children=[
-                                            dict(deepcopy(limb), ang=KeyFrame(-15), dist=KeyFrame(40))
-                                ])
-                    ]),
-                    dict(deepcopy(limb), ang=KeyFrame(67), dist=KeyFrame(50), colour=KeyFrame((0,0,0)), children=[
-                                dict(deepcopy(limb), ang=KeyFrame(0), dist=KeyFrame(50))
-                    ]),
-                    dict(deepcopy(limb), ang=KeyFrame(113), dist=KeyFrame(50), width=KeyFrame(7), children=[
-                                dict(deepcopy(limb), ang=KeyFrame(0), dist=KeyFrame(50))
-                    ])
-            ]) 
+    StickMan = dict(deepcopy(limb), 
+                    pos=KeyFrame(Vector(0, 0)), 
+                    ang=KeyFrame(90), 
+                    cartesian=KeyFrame(True, False, "const"), 
+                    hidden=KeyFrame(True, False, "const"), 
+                    children=[dict(deepcopy(limb), #Torso
+                                   ang=KeyFrame(270), 
+                                   dist=KeyFrame(60), 
+                                   children=[dict(deepcopy(limb), # head
+                                                  ang=KeyFrame(0), 
+                                                  dist=KeyFrame(36), 
+                                                  shape=Texture(shape="circle")
+                                             ), 
+                                             dict(deepcopy(limb), # Left arm
+                                                  ang=KeyFrame(135), 
+                                                  dist=KeyFrame(40), 
+                                                  children=[dict(deepcopy(limb), # Left Forearm
+                                                                 ang=KeyFrame(15), 
+                                                                 dist=KeyFrame(40)
+                                                            )         
+                                                           ]
+                                             ),
+                                             dict(deepcopy(limb), # Right arm
+                                                  ang=KeyFrame(225), 
+                                                  dist=KeyFrame(40), 
+                                                  children=[dict(deepcopy(limb), # Right forearm
+                                                                 ang=KeyFrame(-15), 
+                                                                 dist=KeyFrame(40)
+                                                            )
+                                                           ]
+                                             )
+                                            ]
+                              ),
+                              dict(deepcopy(limb), # Left leg
+                                   ang=KeyFrame(67), 
+                                   dist=KeyFrame(50), 
+                                   children=[dict(deepcopy(limb), # Left shin
+                                                  ang=KeyFrame(0), 
+                                                  dist=KeyFrame(50)
+                                             )
+                                            ]
+                              ),
+                              dict(deepcopy(limb), # Right leg
+                                   ang=KeyFrame(113), 
+                                   dist=KeyFrame(50), 
+                                   children=[dict(deepcopy(limb), # Right shin
+                                                  ang=KeyFrame(0), 
+                                                  dist=KeyFrame(50)
+                                             )
+                                            ]
+                              )
+                             ]
+               ) 
     
     # Make the default animation
     MainStick = dict(limb, cartesian=KeyFrame(True, False, "const"), static=KeyFrame(True, False, "const"), hidden=KeyFrame(True, False, "const"), children=[deepcopy(StickMan)])
     
     # Define all the defaul application values
-    cam = {'pos':KeyFrame(Vector(0,0)), 'zoom':KeyFrame(1), 'size':Vector(640,480)}
+    cam = {'pos':KeyFrame(Vector(-CAMERA_SIZE_X * 0.5, -CAMERA_SIZE_Y * 0.5)), 'zoom':KeyFrame(1), 'size':Vector(CAMERA_SIZE_X,CAMERA_SIZE_Y)}
     data = {'scene':MainStick,
             'camera':cam, # All animation stuff for the camera goes here
             'panning':Vector(0,0), # View panning (Units, not pixels!)
@@ -91,15 +142,9 @@ def main(screen):
     blank.fill((0,0,0))
     
     clock = pygame.time.Clock() # Clock object for timing and stuff
-
-    #oldmousebut = pygame.mouse.get_pressed()
-    
-    #edited = True
-    
     firstloop = True # If the main loop is on its first time through
     
     while True:
-        #starttime = pygame.time.get_ticks()
         events = []
         if not data['playing'] and not firstloop: events += [pygame.event.wait()]
         events += pygame.event.get()
@@ -107,22 +152,28 @@ def main(screen):
         mousebut = pygame.mouse.get_pressed()
         keys = pygame.key.get_pressed()
         
-        #data['panning'] += Vector(1,1)
         if data['playing']:
             frame = (pygame.time.get_ticks() - data['playingstart']) / (float(1000)/data['framerate'])+1
-            #print int(frame)
-            if frame >= data['framelimit'][1]: data['playingstart'] = pygame.time.get_ticks()
-            #print float(data['widgets'].container.widgets['StickEditor'].size.y) / float(data['widgets'].container.widgets['StickEditor'].size.x), data['camera']['size'].y / data['camera']['size'].x
-            if float(data['widgets'].container.widgets['StickEditor'].size.y) / float(data['widgets'].container.widgets['StickEditor'].size.x) < float(data['camera']['size'].y) / data['camera']['size'].x: 
-                data['zoom'] = float(data['widgets'].container.widgets['StickEditor'].size.y) / data['camera']['size'].y / data['camera']['zoom'].setframe(frame)
+            if frame >= data['framelimit'][1]: 
+                data['playingstart'] = pygame.time.get_ticks()
+
+            camera_size_y = float(data['camera']['size'].y)
+            camera_size_x = float(data['camera']['size'].x)
+
+            stick_editor_size_y = float(data['widgets'].container.widgets['StickEditor'].size.y)
+            stick_editor_size_x = float(data['widgets'].container.widgets['StickEditor'].size.x)
+
+            if stick_editor_size_y / stick_editor_size_x <  camera_size_y / camera_size_x: 
+                data['zoom'] = stick_editor_size_y / camera_size_y / data['camera']['zoom'].setframe(frame)
             else:
-                data['zoom'] = float(data['widgets'].container.widgets['StickEditor'].size.x) / data['camera']['size'].x / data['camera']['zoom'].setframe(frame)
+                data['zoom'] = stick_editor_size_x / camera_size_x / data['camera']['zoom'].setframe(frame)
             
             data['panning'] = -Vector(data['camera']['pos'].setframe(frame))
-            #print data['zoom']
             data['widgets'].container.changeframe(frame)
         
-        if len(events) == 1 and mousebut[0] and not mousebut[1] and not mousebut[2]: clock.tick(30)
+        if len(events) == 1 and mousebut[0] and not mousebut[1] and not mousebut[2]: 
+            clock.tick(30)
+
         for event in events:
             if event.type == pygame.VIDEORESIZE:
                 screensize.x = event.w
@@ -137,17 +188,9 @@ def main(screen):
         if keys[pygame.K_ESCAPE]: sys.exit()
         
         data['widgets'].update(screen, keys, mousepos, mousebut, events)
-        #screen.blit(data['widgets'].image, data['widgets'].pos)
         
         pygame.display.flip()
-        #pygame.display.update(data['widgets'].updaterects)
-        
-        #oldmousebut = mousebut
-        
         firstloop = False
-        
-        #if 1000 / float(pygame.time.get_ticks() - starttime) > 115:
-        #print 1000 / float(pygame.time.get_ticks() - starttime)
         
 mouse = [
         "           XX           ",
@@ -200,16 +243,14 @@ mouse = [
         "                        ",
         "                        ",
         "                        "]  # Possibly use this mouse in extrude mode
+
 m = pygame.cursors.compile(mouse, ".", "X")
-#pygame.mouse.set_cursor((24,24), (12,12), m[0], m[1])
-#pygame.mouse.set_cursor((24,24), (0,0), m[0], m[1])
-#main(screen)
 
 def timer():
     while True:
         pygame.time.wait(350)
         pygame.event.post(pygame.event.Event(pygame.NOEVENT))
+
 thread.start_new_thread(timer, ())
 
-#cProfile.run('main(screen)')
 main(screen)
