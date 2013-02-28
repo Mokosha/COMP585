@@ -23,7 +23,7 @@ WINDOW_SIZE_Y=600
 START_TIME = time.clock()
 
 pygame.display.set_mode((WINDOW_SIZE_X, WINDOW_SIZE_Y))
-pygame.display.toggle_fullscreen()
+fullscreen = pygame.display.toggle_fullscreen()
 
 display_surface = pygame.display.get_surface()
 display_surface.fill((255, 255, 255))
@@ -45,8 +45,9 @@ while True:
                 else:
                     obj.startAnimation("wave", START_TIME)
             else:
-                pygame.display.set_mode((window_w, window_h))
-                pygame.display.toggle_fullscreen()
+                if fullscreen:
+                    pygame.display.set_mode((window_w, window_h))
+                    pygame.display.toggle_fullscreen()
                 sys.exit()
 
     display_surface.fill((255, 255, 255))
