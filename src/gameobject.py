@@ -60,14 +60,15 @@ class AABoundingBox:
 
         return True
 
-class GameObject:
+class GameObject(object):
 
     def __init__(self):
-        self.pos = (0, 0)
+        super(GameObject, self).__init__()
+        self.pos = Vector2(0, 0)
         self.angle = 0
         self.aabb = AABoundingBox()
 
-    def render(self):
+    def render(self, campos):
         pass
 
     def accept(self, event):

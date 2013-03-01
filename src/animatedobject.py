@@ -11,20 +11,21 @@
 import pygame, os, time
 import animation
 from gameobject import *
+from utils import *
 
 FPS = 25
 
 class AnimatedObject(GameObject):
 
     def __init__(self, idle_name, loop=False):
+        super(AnimatedObject, self).__init__()
         self.animations = {}
         self.loadAnim(idle_name, loop)
         self.currentAnim = self.animations[idle_name]
         self.animStopTime = -1
 
     def loadAnim(self, name, loop):
-        assets_path = os.path.realpath(__file__).split(os.sep)[:-2]
-        assets_path = os.sep.join(assets_path) + os.sep + "assets"
+        assets_path = getRootPath() + os.sep + "assets"
 
         self.animations[name] = animation.load(assets_path + os.sep + name + ".spe")
         self.animations[name].setLoop(loop)
@@ -40,7 +41,7 @@ class AnimatedObject(GameObject):
     def isPlaying(self):
         return self.animStartTime > self.animStopTime
 
-    def draw(self, time, surface, pos):
+    def render(self, time, surface, campos):
         
         # If the animation is stopped, then we should draw at exactly the point at which
         # it was stopped...
@@ -54,5 +55,6 @@ class AnimatedObject(GameObject):
         if self.currentAnim.loop:
             frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1
 
-        self.currentAnim.draw(frame, surface, pos)
+        renderpos = world2screenPos(campos, self.pos)
+        self.currentAnim.draw(frame, surface, renderpos)
         
