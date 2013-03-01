@@ -17,7 +17,8 @@ Installation:
 
 #### Windows 7: ####
 1. Download and install [Git](http://msysgit.github.com/). I recommend Git for Windows, but Msys Git works just as well.
-2. Open a git shell and create a clone of COMP 585 Project repository: 
+2. Open a git shell and [setup an SSH key](https://help.github.com/articles/generating-ssh-keys).
+2. In the same git shell, create a clone of COMP 585 Project repository: 
 ```
 
         $ mkdir COMP585
@@ -42,7 +43,8 @@ run the command 'python'. Navigate to the COMP 585 repository via the 'cd' comma
 #### OS X: ####
 1. Download and install [Git](http://code.google.com/p/git-osx-installer/)
 2. Open up the Terminal application: Click on the desktop, and then press Command-Shift-U. Scroll down and double-click on the terminal app.
-3. Setup is easy:
+2. [Setup an SSH key](https://help.github.com/articles/generating-ssh-keys).
+3. Now cloning the repository is easy:
 ```
 
         $ cd ~
