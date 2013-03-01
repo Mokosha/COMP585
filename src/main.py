@@ -28,8 +28,8 @@ fullscreen = pygame.display.toggle_fullscreen()
 display_surface = pygame.display.get_surface()
 display_surface.fill((255, 255, 255))
 
-obj = animatedobject.AnimatedObject("wave", True)
-obj.startAnimation("wave", START_TIME)
+obj = animatedobject.AnimatedObject("smooth-idle", True)
+obj.startAnimation("smooth-idle", START_TIME)
 
 while True:
 
@@ -43,7 +43,7 @@ while True:
                 if obj.isPlaying():
                     obj.stopAnimation()
                 else:
-                    obj.startAnimation("wave", START_TIME)
+                    obj.startAnimation("smooth-idle", START_TIME)
             else:
                 if fullscreen:
                     pygame.display.set_mode((window_w, window_h))
