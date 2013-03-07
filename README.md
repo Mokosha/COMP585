@@ -10,6 +10,9 @@ Requirements:
 * [Python 2.7](http://www.python.org/download/releases/2.7/)
 * [PyGame 1.9](http://pygame.org/download.shtml) (Make sure you get the one for Python 2.7)
 
+Note: OS X 1.5 and above come with a preinstalled version of Python. Make sure that when you
+go to download PyGame that you're getting the one that's specific for your version of OS X.
+
 ---
 
 Installation:
