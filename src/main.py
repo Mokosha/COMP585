@@ -9,27 +9,37 @@
 ################################################################################
 
 import sys, time
+from utils import *
 
 import pygame
 pygame.init()
+pygame.display.set_mode((screenSizeX(), screenSizeY()))
+
+import animatedobject, colorvortex
+from lib.euclid import *
+
 video_info = pygame.display.Info()
 window_w, window_h = video_info.current_w, video_info.current_h
 
-import animatedobject
-
-WINDOW_SIZE_X=800
-WINDOW_SIZE_Y=600
-
 START_TIME = time.clock()
 
-pygame.display.set_mode((WINDOW_SIZE_X, WINDOW_SIZE_Y))
-fullscreen = pygame.display.toggle_fullscreen()
+#fullscreen = pygame.display.toggle_fullscreen()
+fullscreen = False
 
 display_surface = pygame.display.get_surface()
 display_surface.fill((255, 255, 255))
 
-obj = animatedobject.AnimatedObject("wave", True)
-obj.startAnimation("wave", START_TIME)
+camera_pos = Vector2(0, 0)
+
+player = animatedobject.AnimatedObject("smooth-idle", True)
+player.startAnimation("smooth-idle", START_TIME)
+
+# Move it to the center of the screen just for funsies...
+player.pos = screen2worldPos(camera_pos, 0.5 * Vector2(screenSizeX(), screenSizeY()))
+
+cv = colorvortex.ColorVortex(Vector2(1, 1))
+
+game_objects = [player, cv]
 
 while True:
 
@@ -43,7 +53,7 @@ while True:
                 if obj.isPlaying():
                     obj.stopAnimation()
                 else:
-                    obj.startAnimation("wave", START_TIME)
+                    obj.startAnimation("smooth-idle", START_TIME)
             else:
                 if fullscreen:
                     pygame.display.set_mode((window_w, window_h))
@@ -51,7 +61,8 @@ while True:
                 sys.exit()
 
     display_surface.fill((255, 255, 255))
-    obj.draw(cur_time, display_surface, (WINDOW_SIZE_X/2, WINDOW_SIZE_Y/2))
+    for obj in game_objects:
+        obj.render(cur_time, display_surface, camera_pos)
 
     pygame.display.update()
     

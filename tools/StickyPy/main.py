@@ -164,13 +164,20 @@ def main(screen):
             stick_editor_size_y = float(data['widgets'].container.widgets['StickEditor'].size.y)
             stick_editor_size_x = float(data['widgets'].container.widgets['StickEditor'].size.x)
 
-#            if stick_editor_size_y / stick_editor_size_x <  camera_size_y / camera_size_x: 
-#                data['zoom'] = stick_editor_size_y / camera_size_y / data['camera']['zoom'].setframe(frame)
-#            else:
-#                data['zoom'] = stick_editor_size_x / camera_size_x / data['camera']['zoom'].setframe(frame)
+            if stick_editor_size_y / stick_editor_size_x <  camera_size_y / camera_size_x: 
+                data['zoom'] = stick_editor_size_y / camera_size_y / data['camera']['zoom'].setframe(frame)
+            else:
+                data['zoom'] = stick_editor_size_x / camera_size_x / data['camera']['zoom'].setframe(frame)
+
+            camera_pos = Vector(data['camera']['pos'].setframe(frame))
+            stick_editor_pos = -Vector(stick_editor_size_x * 0.5, stick_editor_size_y * 0.5)
             
-            data['panning'] = -Vector(data['camera']['pos'].setframe(frame)) - camera_size * 0.5
+            data['panning'] = stick_editor_pos - camera_pos
             data['widgets'].container.changeframe(frame)
+        else:
+            data['panning'] = Vector(0.0, 0.0)
+            data['zoom'] = 1.0
+            data['widgets'].container.widgets['StickEditor'].draw()
         
         if len(events) == 1 and mousebut[0] and not mousebut[1] and not mousebut[2]: 
             clock.tick(30)

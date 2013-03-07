@@ -501,7 +501,6 @@ class FileBrowser(widgets.BaseWidget):
             else:
                 if self.container.widgets['FileName'].text == self.dirlist[self.selected]:
                     self.container.widgets['AcceptButton'].action()
-                    print "lol"
                 else:
                     self.container.widgets['FileName'].changetext(self.dirlist[self.selected])
             self.draw()

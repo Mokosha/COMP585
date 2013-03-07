@@ -45,8 +45,8 @@ class KeyFrame:
             val = self.value
         elif self.interpol == "const":
             val =  defs.interpolateConst(frame, self.keys)
-        elif self.interpol == "linear":
-            val = defs.interpolateLinear(frame, self.keys)
+        else:
+            val = defs.interpolate(frame, self.keys, self.interpol)
         self.value = val
         self.frame = frame
         return val

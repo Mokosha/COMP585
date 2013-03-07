@@ -1,0 +1,1496 @@
+<limb>
+  <ang>
+    <keyframe interpol="smoothstep" value="0.0">
+      <key frame="1" value="0"/>
+      <key frame="30" value="0.0"/>
+      <key frame="60" value="0.0"/>
+      <key frame="141" value="0.0"/>
+      <key frame="180" value="0"/>
+    </keyframe>
+  </ang>
+  <dist>
+    <keyframe interpol="smoothstep" value="0.0">
+      <key frame="1" value="0"/>
+      <key frame="30" value="0.0"/>
+      <key frame="60" value="0.0"/>
+      <key frame="141" value="0.0"/>
+      <key frame="180" value="0"/>
+    </keyframe>
+  </dist>
+  <pos>
+    <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+      <key frame="1" value="[0, 0]"/>
+      <key frame="30" value="[0.0, 0.0]"/>
+      <key frame="60" value="[0.0, 0.0]"/>
+      <key frame="141" value="[0.0, 0.0]"/>
+      <key frame="180" value="[0, 0]"/>
+    </keyframe>
+  </pos>
+  <shape>
+    <texture>
+    <shape>
+    <keyframe interpol="const" value="line">
+      <key frame="1" value="line"/>
+      <key frame="30" value="line"/>
+      <key frame="60" value="line"/>
+      <key frame="141" value="line"/>
+      <key frame="180" value="line"/>
+    </keyframe>
+    </shape>
+    <file>
+    <keyframe interpol="const" value="splogoicon.png">
+      <key frame="1" value="splogoicon.png"/>
+      <key frame="30" value="splogoicon.png"/>
+      <key frame="60" value="splogoicon.png"/>
+      <key frame="141" value="splogoicon.png"/>
+      <key frame="180" value="splogoicon.png"/>
+    </keyframe>
+    </file>
+    <text>
+    <keyframe interpol="const" value="test">
+      <key frame="1" value="test"/>
+      <key frame="30" value="test"/>
+      <key frame="60" value="test"/>
+      <key frame="141" value="test"/>
+      <key frame="180" value="test"/>
+    </keyframe>
+    </text>
+    <fill>
+    <keyframe interpol="const" value="False">
+      <key frame="1" value="False"/>
+      <key frame="30" value="False"/>
+      <key frame="60" value="False"/>
+      <key frame="141" value="False"/>
+      <key frame="180" value="False"/>
+    </keyframe>
+    </fill>
+    <flip>
+    <keyframe interpol="const" value="True">
+      <key frame="1" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="141" value="True"/>
+      <key frame="180" value="True"/>
+    </keyframe>
+    </flip>
+    <caps>
+    <keyframe interpol="const" value="True">
+      <key frame="1" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="141" value="True"/>
+      <key frame="180" value="True"/>
+    </keyframe>
+    </caps>
+    </texture>
+  </shape>
+  <width>
+    <keyframe interpol="smoothstep" value="4.0">
+      <key frame="1" value="4"/>
+      <key frame="30" value="4.0"/>
+      <key frame="60" value="4.0"/>
+      <key frame="141" value="4.0"/>
+      <key frame="180" value="4"/>
+    </keyframe>
+  </width>
+  <colour>
+    <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+      <key frame="1" value="[0, 0, 0]"/>
+      <key frame="30" value="[0.0, 0.0, 0.0]"/>
+      <key frame="60" value="[0.0, 0.0, 0.0]"/>
+      <key frame="141" value="[0.0, 0.0, 0.0]"/>
+      <key frame="180" value="[0, 0, 0]"/>
+    </keyframe>
+  </colour>
+  <static>
+    <keyframe interpol="const" value="True">
+      <key frame="1" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="141" value="True"/>
+      <key frame="180" value="True"/>
+    </keyframe>
+  </static>
+  <hidden>
+    <keyframe interpol="const" value="True">
+      <key frame="1" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="141" value="True"/>
+      <key frame="180" value="True"/>
+    </keyframe>
+  </hidden>
+  <cartesian>
+    <keyframe interpol="const" value="True">
+      <key frame="1" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="141" value="True"/>
+      <key frame="180" value="True"/>
+    </keyframe>
+  </cartesian>
+  <children>
+    <limb>
+      <ang>
+        <keyframe interpol="smoothstep" value="90.0">
+          <key frame="1" value="90"/>
+          <key frame="30" value="90.0"/>
+          <key frame="60" value="90.0"/>
+          <key frame="90" value="90.0"/>
+          <key frame="141" value="90.0"/>
+          <key frame="180" value="90"/>
+        </keyframe>
+      </ang>
+      <dist>
+        <keyframe interpol="smoothstep" value="0.0">
+          <key frame="1" value="0"/>
+          <key frame="30" value="0.0"/>
+          <key frame="60" value="0.0"/>
+          <key frame="90" value="0.0"/>
+          <key frame="141" value="0.0"/>
+          <key frame="180" value="0"/>
+        </keyframe>
+      </dist>
+      <pos>
+        <keyframe interpol="smoothstep" value="[0.0, -0.8444444444444444]">
+          <key frame="1" value="[0, 0]"/>
+          <key frame="30" value="[0.0, 0.0]"/>
+          <key frame="60" value="[0.0, 0.0]"/>
+          <key frame="90" value="[0.0, -2.0]"/>
+          <key frame="141" value="[0.0, -0.8666666666666667]"/>
+          <key frame="180" value="[0, 0]"/>
+        </keyframe>
+      </pos>
+      <shape>
+        <texture>
+        <text>
+        <keyframe interpol="const" value="test">
+          <key frame="1" value="test"/>
+          <key frame="30" value="test"/>
+          <key frame="60" value="test"/>
+          <key frame="90" value="test"/>
+          <key frame="141" value="test"/>
+          <key frame="180" value="test"/>
+        </keyframe>
+        </text>
+        <flip>
+        <keyframe interpol="const" value="True">
+          <key frame="1" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="90" value="True"/>
+          <key frame="141" value="True"/>
+          <key frame="180" value="True"/>
+        </keyframe>
+        </flip>
+        <caps>
+        <keyframe interpol="const" value="True">
+          <key frame="1" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="90" value="True"/>
+          <key frame="141" value="True"/>
+          <key frame="180" value="True"/>
+        </keyframe>
+        </caps>
+        <shape>
+        <keyframe interpol="const" value="line">
+          <key frame="1" value="line"/>
+          <key frame="30" value="line"/>
+          <key frame="60" value="line"/>
+          <key frame="90" value="line"/>
+          <key frame="141" value="line"/>
+          <key frame="180" value="line"/>
+        </keyframe>
+        </shape>
+        <file>
+        <keyframe interpol="const" value="splogoicon.png">
+          <key frame="1" value="splogoicon.png"/>
+          <key frame="30" value="splogoicon.png"/>
+          <key frame="60" value="splogoicon.png"/>
+          <key frame="90" value="splogoicon.png"/>
+          <key frame="141" value="splogoicon.png"/>
+          <key frame="180" value="splogoicon.png"/>
+        </keyframe>
+        </file>
+        <fill>
+        <keyframe interpol="const" value="False">
+          <key frame="1" value="False"/>
+          <key frame="30" value="False"/>
+          <key frame="60" value="False"/>
+          <key frame="90" value="False"/>
+          <key frame="141" value="False"/>
+          <key frame="180" value="False"/>
+        </keyframe>
+        </fill>
+        </texture>
+      </shape>
+      <width>
+        <keyframe interpol="smoothstep" value="4.0">
+          <key frame="1" value="4"/>
+          <key frame="30" value="4.0"/>
+          <key frame="60" value="4.0"/>
+          <key frame="90" value="4.0"/>
+          <key frame="141" value="4.0"/>
+          <key frame="180" value="4"/>
+        </keyframe>
+      </width>
+      <colour>
+        <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+          <key frame="1" value="[0, 0, 0]"/>
+          <key frame="30" value="[0.0, 0.0, 0.0]"/>
+          <key frame="60" value="[0.0, 0.0, 0.0]"/>
+          <key frame="90" value="[0.0, 0.0, 0.0]"/>
+          <key frame="141" value="[0.0, 0.0, 0.0]"/>
+          <key frame="180" value="[0, 0, 0]"/>
+        </keyframe>
+      </colour>
+      <static>
+        <keyframe interpol="const" value="False">
+          <key frame="1" value="False"/>
+          <key frame="30" value="False"/>
+          <key frame="60" value="False"/>
+          <key frame="90" value="False"/>
+          <key frame="141" value="False"/>
+          <key frame="180" value="False"/>
+        </keyframe>
+      </static>
+      <hidden>
+        <keyframe interpol="const" value="True">
+          <key frame="1" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="90" value="True"/>
+          <key frame="141" value="True"/>
+          <key frame="180" value="True"/>
+        </keyframe>
+      </hidden>
+      <cartesian>
+        <keyframe interpol="const" value="True">
+          <key frame="1" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="90" value="True"/>
+          <key frame="141" value="True"/>
+          <key frame="180" value="True"/>
+        </keyframe>
+      </cartesian>
+      <children>
+        <limb>
+          <ang>
+            <keyframe interpol="smoothstep" value="269.577777778">
+              <key frame="1" value="270"/>
+              <key frame="38" value="270.0"/>
+              <key frame="60" value="270.0"/>
+              <key frame="90" value="269.0"/>
+              <key frame="180" value="270"/>
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe interpol="smoothstep" value="60.0">
+              <key frame="1" value="60"/>
+              <key frame="38" value="60.0"/>
+              <key frame="60" value="60.0"/>
+              <key frame="90" value="60.0"/>
+              <key frame="180" value="60"/>
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+              <key frame="1" value="[0, 0]"/>
+              <key frame="38" value="[0.0, 0.0]"/>
+              <key frame="60" value="[0.0, 0.0]"/>
+              <key frame="90" value="[0.0, 0.0]"/>
+              <key frame="180" value="[0, 0]"/>
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe interpol="const" value="test">
+              <key frame="1" value="test"/>
+              <key frame="38" value="test"/>
+              <key frame="60" value="test"/>
+              <key frame="90" value="test"/>
+              <key frame="180" value="test"/>
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe interpol="const" value="True">
+              <key frame="1" value="True"/>
+              <key frame="38" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="90" value="True"/>
+              <key frame="180" value="True"/>
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe interpol="const" value="True">
+              <key frame="1" value="True"/>
+              <key frame="38" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="90" value="True"/>
+              <key frame="180" value="True"/>
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe interpol="const" value="line">
+              <key frame="1" value="line"/>
+              <key frame="38" value="line"/>
+              <key frame="60" value="line"/>
+              <key frame="90" value="line"/>
+              <key frame="180" value="line"/>
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe interpol="const" value="splogoicon.png">
+              <key frame="1" value="splogoicon.png"/>
+              <key frame="38" value="splogoicon.png"/>
+              <key frame="60" value="splogoicon.png"/>
+              <key frame="90" value="splogoicon.png"/>
+              <key frame="180" value="splogoicon.png"/>
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="38" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe interpol="smoothstep" value="4.0">
+              <key frame="1" value="4"/>
+              <key frame="38" value="4.0"/>
+              <key frame="60" value="4.0"/>
+              <key frame="90" value="4.0"/>
+              <key frame="180" value="4"/>
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+              <key frame="1" value="[0, 0, 0]"/>
+              <key frame="38" value="[0.0, 0.0, 0.0]"/>
+              <key frame="60" value="[0.0, 0.0, 0.0]"/>
+              <key frame="90" value="[0.0, 0.0, 0.0]"/>
+              <key frame="180" value="[0, 0, 0]"/>
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="38" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="38" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="38" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb>
+              <ang>
+                <keyframe interpol="smoothstep" value="0.633333333333">
+                  <key frame="1" value="0"/>
+                  <key frame="30" value="2.0"/>
+                  <key frame="60" value="2.0"/>
+                  <key frame="180" value="0"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="smoothstep" value="36.0">
+                  <key frame="1" value="36"/>
+                  <key frame="30" value="36.0"/>
+                  <key frame="60" value="36.0"/>
+                  <key frame="180" value="36"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="30" value="[0.0, 0.0]"/>
+                  <key frame="60" value="[0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                  <key frame="1" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="180" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="circle">
+                  <key frame="1" value="circle"/>
+                  <key frame="30" value="circle"/>
+                  <key frame="60" value="circle"/>
+                  <key frame="180" value="circle"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="180" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="smoothstep" value="4.0">
+                  <key frame="1" value="4"/>
+                  <key frame="30" value="4.0"/>
+                  <key frame="60" value="4.0"/>
+                  <key frame="180" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="60" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+            <limb>
+              <ang>
+                <keyframe interpol="smoothstep" value="162.861169512">
+                  <key frame="1" value="165.618605409"/>
+                  <key frame="30" value="167.618605409"/>
+                  <key frame="60" value="169.218605409"/>
+                  <key frame="141" value="162.788605409"/>
+                  <key frame="180" value="165.618605409"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="smoothstep" value="35.0">
+                  <key frame="1" value="35.0"/>
+                  <key frame="30" value="35.0"/>
+                  <key frame="60" value="35.0"/>
+                  <key frame="141" value="35.0"/>
+                  <key frame="180" value="35.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="30" value="[0.0, 0.0]"/>
+                  <key frame="60" value="[0.0, 0.0]"/>
+                  <key frame="141" value="[0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                  <key frame="1" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="141" value="test"/>
+                  <key frame="180" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="141" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="141" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                  <key frame="1" value="line"/>
+                  <key frame="30" value="line"/>
+                  <key frame="60" value="line"/>
+                  <key frame="141" value="line"/>
+                  <key frame="180" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="141" value="splogoicon.png"/>
+                  <key frame="180" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="smoothstep" value="4.0">
+                  <key frame="1" value="4"/>
+                  <key frame="30" value="4.0"/>
+                  <key frame="60" value="4.0"/>
+                  <key frame="141" value="4.0"/>
+                  <key frame="180" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="60" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="141" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+                <limb>
+                  <ang>
+                    <keyframe interpol="smoothstep" value="7.64497647509">
+                      <key frame="1" value="3.52406171529"/>
+                      <key frame="30" value="1.52406171529"/>
+                      <key frame="60" value="-1.92406171529"/>
+                      <key frame="141" value="7.75342160035"/>
+                      <key frame="180" value="3.52406171529"/>
+                    </keyframe>
+                  </ang>
+                  <dist>
+                    <keyframe interpol="smoothstep" value="35.0">
+                      <key frame="1" value="35.0"/>
+                      <key frame="30" value="35.0"/>
+                      <key frame="60" value="35.0"/>
+                      <key frame="141" value="35.0"/>
+                      <key frame="180" value="35.0"/>
+                    </keyframe>
+                  </dist>
+                  <pos>
+                    <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+                      <key frame="1" value="[0, 0]"/>
+                      <key frame="30" value="[0.0, 0.0]"/>
+                      <key frame="60" value="[0.0, 0.0]"/>
+                      <key frame="141" value="[0.0, 0.0]"/>
+                      <key frame="180" value="[0, 0]"/>
+                    </keyframe>
+                  </pos>
+                  <shape>
+                    <texture>
+                    <text>
+                    <keyframe interpol="const" value="test">
+                      <key frame="1" value="test"/>
+                      <key frame="30" value="test"/>
+                      <key frame="60" value="test"/>
+                      <key frame="141" value="test"/>
+                      <key frame="180" value="test"/>
+                    </keyframe>
+                    </text>
+                    <flip>
+                    <keyframe interpol="const" value="True">
+                      <key frame="1" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="141" value="True"/>
+                      <key frame="180" value="True"/>
+                    </keyframe>
+                    </flip>
+                    <caps>
+                    <keyframe interpol="const" value="True">
+                      <key frame="1" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="141" value="True"/>
+                      <key frame="180" value="True"/>
+                    </keyframe>
+                    </caps>
+                    <shape>
+                    <keyframe interpol="const" value="line">
+                      <key frame="1" value="line"/>
+                      <key frame="30" value="line"/>
+                      <key frame="60" value="line"/>
+                      <key frame="141" value="line"/>
+                      <key frame="180" value="line"/>
+                    </keyframe>
+                    </shape>
+                    <file>
+                    <keyframe interpol="const" value="splogoicon.png">
+                      <key frame="1" value="splogoicon.png"/>
+                      <key frame="30" value="splogoicon.png"/>
+                      <key frame="60" value="splogoicon.png"/>
+                      <key frame="141" value="splogoicon.png"/>
+                      <key frame="180" value="splogoicon.png"/>
+                    </keyframe>
+                    </file>
+                    <fill>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                    </fill>
+                    </texture>
+                  </shape>
+                  <width>
+                    <keyframe interpol="smoothstep" value="4.0">
+                      <key frame="1" value="4"/>
+                      <key frame="30" value="4.0"/>
+                      <key frame="60" value="4.0"/>
+                      <key frame="141" value="4.0"/>
+                      <key frame="180" value="4"/>
+                    </keyframe>
+                  </width>
+                  <colour>
+                    <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+                      <key frame="1" value="[0, 0, 0]"/>
+                      <key frame="30" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="60" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="141" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="180" value="[0, 0, 0]"/>
+                    </keyframe>
+                  </colour>
+                  <static>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                  </static>
+                  <hidden>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                  </hidden>
+                  <cartesian>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                  </cartesian>
+                  <children>
+                  </children>
+                </limb>
+              </children>
+            </limb>
+            <limb>
+              <ang>
+                <keyframe interpol="smoothstep" value="203.57655666">
+                  <key frame="1" value="198.434948823"/>
+                  <key frame="30" value="202.0"/>
+                  <key frame="60" value="199.286989765"/>
+                  <key frame="141" value="203.711862129"/>
+                  <key frame="180" value="198.434948823"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="smoothstep" value="35.0">
+                  <key frame="1" value="35.0"/>
+                  <key frame="30" value="35.0"/>
+                  <key frame="60" value="35.0"/>
+                  <key frame="141" value="35.0"/>
+                  <key frame="180" value="35.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="30" value="[0.0, 0.0]"/>
+                  <key frame="60" value="[0.0, 0.0]"/>
+                  <key frame="141" value="[0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                  <key frame="1" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="141" value="test"/>
+                  <key frame="180" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="141" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="141" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                  <key frame="1" value="line"/>
+                  <key frame="30" value="line"/>
+                  <key frame="60" value="line"/>
+                  <key frame="141" value="line"/>
+                  <key frame="180" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="141" value="splogoicon.png"/>
+                  <key frame="180" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="smoothstep" value="4.0">
+                  <key frame="1" value="4"/>
+                  <key frame="30" value="4.0"/>
+                  <key frame="60" value="4.0"/>
+                  <key frame="141" value="4.0"/>
+                  <key frame="180" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="60" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="141" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="141" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+                <limb>
+                  <ang>
+                    <keyframe interpol="smoothstep" value="-31.4474429855">
+                      <key frame="1" value="-23.7792378573"/>
+                      <key frame="30" value="-25.7792378573"/>
+                      <key frame="60" value="-23.3792378573"/>
+                      <key frame="141" value="-31.6492378573"/>
+                      <key frame="180" value="-23.7792378573"/>
+                    </keyframe>
+                  </ang>
+                  <dist>
+                    <keyframe interpol="smoothstep" value="35.0">
+                      <key frame="1" value="35.0"/>
+                      <key frame="30" value="35.0"/>
+                      <key frame="60" value="35.0"/>
+                      <key frame="141" value="35.0"/>
+                      <key frame="180" value="35.0"/>
+                    </keyframe>
+                  </dist>
+                  <pos>
+                    <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+                      <key frame="1" value="[0, 0]"/>
+                      <key frame="30" value="[0.0, 0.0]"/>
+                      <key frame="60" value="[0.0, 0.0]"/>
+                      <key frame="141" value="[0.0, 0.0]"/>
+                      <key frame="180" value="[0, 0]"/>
+                    </keyframe>
+                  </pos>
+                  <shape>
+                    <texture>
+                    <text>
+                    <keyframe interpol="const" value="test">
+                      <key frame="1" value="test"/>
+                      <key frame="30" value="test"/>
+                      <key frame="60" value="test"/>
+                      <key frame="141" value="test"/>
+                      <key frame="180" value="test"/>
+                    </keyframe>
+                    </text>
+                    <flip>
+                    <keyframe interpol="const" value="True">
+                      <key frame="1" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="141" value="True"/>
+                      <key frame="180" value="True"/>
+                    </keyframe>
+                    </flip>
+                    <caps>
+                    <keyframe interpol="const" value="True">
+                      <key frame="1" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="141" value="True"/>
+                      <key frame="180" value="True"/>
+                    </keyframe>
+                    </caps>
+                    <shape>
+                    <keyframe interpol="const" value="line">
+                      <key frame="1" value="line"/>
+                      <key frame="30" value="line"/>
+                      <key frame="60" value="line"/>
+                      <key frame="141" value="line"/>
+                      <key frame="180" value="line"/>
+                    </keyframe>
+                    </shape>
+                    <file>
+                    <keyframe interpol="const" value="splogoicon.png">
+                      <key frame="1" value="splogoicon.png"/>
+                      <key frame="30" value="splogoicon.png"/>
+                      <key frame="60" value="splogoicon.png"/>
+                      <key frame="141" value="splogoicon.png"/>
+                      <key frame="180" value="splogoicon.png"/>
+                    </keyframe>
+                    </file>
+                    <fill>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                    </fill>
+                    </texture>
+                  </shape>
+                  <width>
+                    <keyframe interpol="smoothstep" value="4.0">
+                      <key frame="1" value="4"/>
+                      <key frame="30" value="4.0"/>
+                      <key frame="60" value="4.0"/>
+                      <key frame="141" value="4.0"/>
+                      <key frame="180" value="4"/>
+                    </keyframe>
+                  </width>
+                  <colour>
+                    <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+                      <key frame="1" value="[0, 0, 0]"/>
+                      <key frame="30" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="60" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="141" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="180" value="[0, 0, 0]"/>
+                    </keyframe>
+                  </colour>
+                  <static>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                  </static>
+                  <hidden>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                  </hidden>
+                  <cartesian>
+                    <keyframe interpol="const" value="False">
+                      <key frame="1" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="141" value="False"/>
+                      <key frame="180" value="False"/>
+                    </keyframe>
+                  </cartesian>
+                  <children>
+                  </children>
+                </limb>
+              </children>
+            </limb>
+          </children>
+        </limb>
+        <limb>
+          <ang>
+            <keyframe interpol="smoothstep" value="73.4760314331">
+              <key frame="1" value="74.3204758776"/>
+              <key frame="90" value="72.3204758776"/>
+              <key frame="180" value="74.3204758776"/>
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe interpol="smoothstep" value="40.0">
+              <key frame="1" value="40.0"/>
+              <key frame="90" value="40.0"/>
+              <key frame="180" value="40.0"/>
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+              <key frame="1" value="[0, 0]"/>
+              <key frame="90" value="[0.0, 0.0]"/>
+              <key frame="180" value="[0, 0]"/>
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe interpol="const" value="test">
+              <key frame="1" value="test"/>
+              <key frame="90" value="test"/>
+              <key frame="180" value="test"/>
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe interpol="const" value="True">
+              <key frame="1" value="True"/>
+              <key frame="90" value="True"/>
+              <key frame="180" value="True"/>
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe interpol="const" value="True">
+              <key frame="1" value="True"/>
+              <key frame="90" value="True"/>
+              <key frame="180" value="True"/>
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe interpol="const" value="line">
+              <key frame="1" value="line"/>
+              <key frame="90" value="line"/>
+              <key frame="180" value="line"/>
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe interpol="const" value="splogoicon.png">
+              <key frame="1" value="splogoicon.png"/>
+              <key frame="90" value="splogoicon.png"/>
+              <key frame="180" value="splogoicon.png"/>
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe interpol="smoothstep" value="4.0">
+              <key frame="1" value="4"/>
+              <key frame="90" value="4.0"/>
+              <key frame="180" value="4"/>
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+              <key frame="1" value="[0, 0, 0]"/>
+              <key frame="90" value="[0.0, 0.0, 0.0]"/>
+              <key frame="180" value="[0, 0, 0]"/>
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb>
+              <ang>
+                <keyframe interpol="smoothstep" value="23.7508285187">
+                  <key frame="1" value="22.484161852"/>
+                  <key frame="90" value="25.484161852"/>
+                  <key frame="180" value="22.484161852"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="smoothstep" value="40.0">
+                  <key frame="1" value="40.0"/>
+                  <key frame="90" value="40.0"/>
+                  <key frame="180" value="40.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="90" value="[0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                  <key frame="1" value="test"/>
+                  <key frame="90" value="test"/>
+                  <key frame="180" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="90" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="90" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                  <key frame="1" value="line"/>
+                  <key frame="90" value="line"/>
+                  <key frame="180" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="90" value="splogoicon.png"/>
+                  <key frame="180" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="smoothstep" value="4.0">
+                  <key frame="1" value="4"/>
+                  <key frame="90" value="4.0"/>
+                  <key frame="180" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="90" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+          </children>
+        </limb>
+        <limb>
+          <ang>
+            <keyframe interpol="smoothstep" value="87.8825255355">
+              <key frame="1" value="88.7269699799"/>
+              <key frame="90" value="86.7269699799"/>
+              <key frame="180" value="88.7269699799"/>
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe interpol="smoothstep" value="40.0">
+              <key frame="1" value="40.0"/>
+              <key frame="90" value="40.0"/>
+              <key frame="180" value="40.0"/>
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+              <key frame="1" value="[0, 0]"/>
+              <key frame="90" value="[0.0, 0.0]"/>
+              <key frame="180" value="[0, 0]"/>
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe interpol="const" value="test">
+              <key frame="1" value="test"/>
+              <key frame="90" value="test"/>
+              <key frame="180" value="test"/>
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe interpol="const" value="True">
+              <key frame="1" value="True"/>
+              <key frame="90" value="True"/>
+              <key frame="180" value="True"/>
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe interpol="const" value="True">
+              <key frame="1" value="True"/>
+              <key frame="90" value="True"/>
+              <key frame="180" value="True"/>
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe interpol="const" value="line">
+              <key frame="1" value="line"/>
+              <key frame="90" value="line"/>
+              <key frame="180" value="line"/>
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe interpol="const" value="splogoicon.png">
+              <key frame="1" value="splogoicon.png"/>
+              <key frame="90" value="splogoicon.png"/>
+              <key frame="180" value="splogoicon.png"/>
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe interpol="smoothstep" value="4.0">
+              <key frame="1" value="4"/>
+              <key frame="90" value="4.0"/>
+              <key frame="180" value="4"/>
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+              <key frame="1" value="[0, 0, 0]"/>
+              <key frame="90" value="[0.0, 0.0, 0.0]"/>
+              <key frame="180" value="[0, 0, 0]"/>
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe interpol="const" value="False">
+              <key frame="1" value="False"/>
+              <key frame="90" value="False"/>
+              <key frame="180" value="False"/>
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb>
+              <ang>
+                <keyframe interpol="smoothstep" value="20.1116914497">
+                  <key frame="1" value="19.2672470052"/>
+                  <key frame="90" value="21.2672470052"/>
+                  <key frame="180" value="19.2672470052"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe interpol="smoothstep" value="40.0">
+                  <key frame="1" value="40.0"/>
+                  <key frame="90" value="40.0"/>
+                  <key frame="180" value="40.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0]">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="90" value="[0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe interpol="const" value="test">
+                  <key frame="1" value="test"/>
+                  <key frame="90" value="test"/>
+                  <key frame="180" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="90" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe interpol="const" value="True">
+                  <key frame="1" value="True"/>
+                  <key frame="90" value="True"/>
+                  <key frame="180" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe interpol="const" value="line">
+                  <key frame="1" value="line"/>
+                  <key frame="90" value="line"/>
+                  <key frame="180" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe interpol="const" value="splogoicon.png">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="90" value="splogoicon.png"/>
+                  <key frame="180" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe interpol="smoothstep" value="4.0">
+                  <key frame="1" value="4"/>
+                  <key frame="90" value="4.0"/>
+                  <key frame="180" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe interpol="smoothstep" value="[0.0, 0.0, 0.0]">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="90" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="180" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe interpol="const" value="False">
+                  <key frame="1" value="False"/>
+                  <key frame="90" value="False"/>
+                  <key frame="180" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+          </children>
+        </limb>
+      </children>
+    </limb>
+  </children>
+</limb>

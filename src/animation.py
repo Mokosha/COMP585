@@ -88,6 +88,11 @@ class AnimationAttribute:
             keyDist = nextKey - prevKey
             pct = ((frame - prevKey) * 1.0) / keyDist
             return lerp(self.animationKeys[prevKey], self.animationKeys[nextKey], pct)
+        elif self.interpolationType == "smoothstep":
+            keyDist = nextKey - prevKey
+            pct = ((frame - prevKey) * 1.0) / keyDist
+            pct = pct * pct * (3.0 - (2.0 * pct))
+            return lerp(self.animationKeys[prevKey], self.animationKeys[nextKey], pct)        
         else:
             assert not "Unknown interpolation method!"
 
