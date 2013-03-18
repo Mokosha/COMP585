@@ -15,9 +15,11 @@ import pygame
 pygame.init()
 pygame.display.set_mode((screenSizeX(), screenSizeY()))
 
-import animatedobject, colorvortex, eventmanager
+import animatedobject, colorvortex
+from eventmanager import Events, InputManager
 from lib.euclid import *
 
+# Initialize Display
 video_info = pygame.display.Info()
 window_w, window_h = video_info.current_w, video_info.current_h
 
@@ -29,39 +31,36 @@ fullscreen = False
 display_surface = pygame.display.get_surface()
 display_surface.fill((255, 255, 255))
 
+# Define current camera
 camera_pos = Vector2(0, 0)
 
+# Initialize Player...
 player = animatedobject.AnimatedObject("smooth-idle", True)
 player.startAnimation("smooth-idle", START_TIME)
-
-# Move it to the center of the screen just for funsies...
 player.pos = screen2worldPos(camera_pos, 0.5 * Vector2(screenSizeX(), screenSizeY()))
 
+# !FIXME!
 cv = colorvortex.ColorVortex(Vector2(1, 1))
 
 game_objects = [player, cv]
 paused = False
 
+# Initialize input handler
+inputhandler = InputManager()
+
 while True:
 
     cur_time = time.clock()
     
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    inputhandler.handleEvents()
+
+    for event in inputhandler.getCurrentEvents():
+        if event == Events.QUIT:
+            pygame.display.set_mode((window_w, window_h))
+            pygame.display.toggle_fullscreen()
             sys.exit()
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_s:
-                if obj.isPlaying():
-                    obj.stopAnimation()
-                else:
-                    obj.startAnimation("smooth-idle", START_TIME)
-            elif event.key == pygame.K_SPACE:
-                paused = not paused
-            else:
-                if fullscreen:
-                    pygame.display.set_mode((window_w, window_h))
-                    pygame.display.toggle_fullscreen()
-                sys.exit()
+        elif event == Events.PAUSE:
+            paused = not paused
 
     if paused:
         continue

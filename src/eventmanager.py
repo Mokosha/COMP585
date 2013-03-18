@@ -36,13 +36,16 @@ keyboardMapping = {
 
 class InputManager:
 
-    def __init__():
+    def __init__(self):
         pass
 
-    def handleEvents():
+    def handleEvents(self):
         self.currentEvents = []
         for event in pygame.event.get():
-            self.currentEvents.append(keyboardMapping[event])
+            if event.type == pygame.KEYDOWN and event.key in keyboardMapping:
+                self.currentEvents.append(keyboardMapping[event.key])
+            elif event.type == pygame.QUIT:
+                self.currentEvents.append(Events.QUIT)
 
-    def getCurrentEvents():
+    def getCurrentEvents(self):
         return self.currentEvents
