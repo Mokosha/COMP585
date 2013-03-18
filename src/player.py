@@ -10,6 +10,7 @@
 
 import pygame, os, time
 import animation
+from eventmanager import Events, InputManager
 from animatedobject import *
 from utils import *
 
@@ -22,4 +23,10 @@ class Player(AnimatedObject):
         # Initially start in the middle of the screen.
         self.pos = screen2worldPos(Vector2(0, 0), 0.5 * Vector2(screenSizeX(), screenSizeY()))
 
-
+    def update(self, inputManager):
+        if inputManager.isCurrentEvent(Events.MOVE_LEFT):
+            #move left
+            pass
+        elif inputManager.isCurrentEvent(Events.MOVE_RIGHT):
+            #move right
+            pass

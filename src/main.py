@@ -46,22 +46,28 @@ paused = False
 # Initialize input handler
 inputhandler = InputManager()
 
+def handleAdministrivia(inputManager):
+
+    if inputManager.isCurrentEvent(Events.QUIT):
+        pygame.display.set_mode((window_w, window_h))
+        pygame.display.toggle_fullscreen()
+        sys.exit()
+    elif inputManager.isCurrentEvent(Events.PAUSE):
+        global paused
+        paused = not paused
+
 while True:
 
     cur_time = time.clock()
     
     inputhandler.handleEvents()
-
-    for event in inputhandler.getCurrentEvents():
-        if event == Events.QUIT:
-            pygame.display.set_mode((window_w, window_h))
-            pygame.display.toggle_fullscreen()
-            sys.exit()
-        elif event == Events.PAUSE:
-            paused = not paused
-
+    
+    handleAdministrivia(inputhandler)
+    
     if paused:
         continue
+
+    player.update(inputhandler)
 
     display_surface.fill((255, 255, 255))
     for obj in game_objects:
