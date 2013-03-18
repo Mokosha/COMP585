@@ -40,16 +40,22 @@ player.pos = screen2worldPos(camera_pos, 0.5 * Vector2(screenSizeX(), screenSize
 cv = colorvortex.ColorVortex(Vector2(1, 1))
 
 game_objects = [player, cv]
-
+x = screenSizeX()
 while True:
 
     cur_time = time.clock()
-    
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_s:
+            if event.key == pygame.K_RIGHT:
+                x += 10
+                player.pos = screen2worldPos(camera_pos, 0.5 * Vector2(x, screenSizeY()))
+            elif event.key == pygame.K_LEFT:
+                x -= 10
+                player.pos = screen2worldPos(camera_pos, 0.5 * Vector2(x, screenSizeY()))
+            elif event.key == pygame.K_s:
                 if obj.isPlaying():
                     obj.stopAnimation()
                 else:
