@@ -15,7 +15,7 @@ import pygame
 pygame.init()
 pygame.display.set_mode((screenSizeX(), screenSizeY()))
 
-import animatedobject, colorvortex
+import animatedobject, colorvortex, player
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -35,9 +35,7 @@ display_surface.fill((255, 255, 255))
 camera_pos = Vector2(0, 0)
 
 # Initialize Player...
-player = animatedobject.AnimatedObject("smooth-idle", True)
-player.startAnimation("smooth-idle", START_TIME)
-player.pos = screen2worldPos(camera_pos, 0.5 * Vector2(screenSizeX(), screenSizeY()))
+player = player.Player()
 
 # !FIXME!
 cv = colorvortex.ColorVortex(Vector2(1, 1))
