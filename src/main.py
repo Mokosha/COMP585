@@ -15,7 +15,7 @@ import pygame
 pygame.init()
 pygame.display.set_mode((screenSizeX(), screenSizeY()))
 
-import animatedobject, colorvortex
+import animatedobject, colorvortex, eventmanager
 from lib.euclid import *
 
 video_info = pygame.display.Info()
