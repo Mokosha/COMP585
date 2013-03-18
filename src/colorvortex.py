@@ -12,7 +12,7 @@
 #
 ################################################################################
 
-import pygame, time
+import pygame, time, copy
 
 from gameobject import *
 from lib.euclid import *
@@ -27,13 +27,13 @@ VORTEX_FRAMES = 8
 VORTEX_SPRITES = 2
 
 # This is the speed at which the vortices spin... This is measured in time between frames.
-VORTEX_SPIN_SPEED = 0.02
+VORTEX_SPIN_SPEED = 0.01
 
 class ColorVortex(GameObject):
     spritesheet = pygame.image.load(getRootPath() + os.sep + "assets" + os.sep + "colorvortex.png")
     spritesheet = pygame.transform.smoothscale(spritesheet.convert_alpha(), (2 * COLOR_VORTEX_SCREEN_SIZE, COLOR_VORTEX_SCREEN_SIZE))
 
-    def __init__(self, pos):
+    def __init__(self, pos, color=pygame.Color("blue")):
         super(ColorVortex, self).__init__()
         self.pos = pos
 
@@ -44,6 +44,25 @@ class ColorVortex(GameObject):
         self.frame = 0
         self.last_update = time.clock()
 
+        # Go through the spritesheet for this and change every white color
+        # to the one that we passed in...
+        self.spritesheet = ColorVortex.spritesheet.copy()
+        self.spritesheet.lock()
+        for x in range(COLOR_VORTEX_SCREEN_SIZE * 2):
+            for y in range(COLOR_VORTEX_SCREEN_SIZE):
+                c = self.spritesheet.get_at((x, y))
+                thresh = 15
+                cr, cg, cb, ca = c.normalize()
+                newColor = pygame.Color(
+                    int(cr * color.r), 
+                    int(cg * color.g), 
+                    int(cb * color.b), 
+                    int(ca * 255))
+                self.spritesheet.set_at((x, y), newColor)
+        self.spritesheet.unlock()
+
+        self.color = color
+
     def render(self, time, surface, campos):
         
         rot = int(self.frame / 2)
@@ -52,7 +71,7 @@ class ColorVortex(GameObject):
         if rot >= 2:
             side = 1 - side
 
-        surf = pygame.transform.rotate(ColorVortex.spritesheet, -90 * rot)
+        surf = pygame.transform.rotate(self.spritesheet, -90 * rot)
         maskRect = pygame.Rect(
             side * ((rot + 1) % 2) * COLOR_VORTEX_SCREEN_SIZE, 
             side * (rot % 2) * COLOR_VORTEX_SCREEN_SIZE, 
