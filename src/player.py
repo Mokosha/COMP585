@@ -17,6 +17,8 @@ from utils import *
 class Player(AnimatedObject):
 
     def __init__(self):
+	
+	self.currentColor = pygame.color.Color("white")
         super(Player, self).__init__("smooth-idle")
         self.startAnimation("smooth-idle", time.clock())
 
@@ -31,15 +33,15 @@ class Player(AnimatedObject):
             #move right
             pass
 	elif inputManager.isCurrentEvent(Events.CHANGE_COLOR_1):
-		#get color 1
-		pass
+		self.currentColor = pygame.color.Color("red")
+		print(self.currentColor)
 	elif inputManager.isCurrentEvent(Events.CHANGE_COLOR_2):
-		#get color 2
-		pass
+		self.currentColor = pygame.color.Color("green")
+		print(self.currentColor)
 	elif inputManager.isCurrentEvent(Events.CHANGE_COLOR_3):
-		#get color 3
-		pass
+		self.currentColor = pygame.color.Color("blue")
+		print(self.currentColor)
 	elif inputManager.isCurrentEvent(Events.RESET_COLOR):
-		#reset color
-		pass
+		self.currentColor = pygame.color.Color("white")
+		print(self.currentColor)
 		
