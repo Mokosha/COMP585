@@ -49,3 +49,6 @@ class InputManager:
 
     def getCurrentEvents(self):
         return self.currentEvents
+
+    def isCurrentEvent(self, event):
+        return event in self.currentEvents
