@@ -34,3 +34,15 @@ keyboardMapping = {
     pygame.K_e : Events.CHANGE_COLOR_3,
 }
 
+class InputManager:
+
+    def __init__():
+        pass
+
+    def handleEvents():
+        self.currentEvents = []
+        for event in pygame.event.get():
+            self.currentEvents.append(keyboardMapping[event])
+
+    def getCurrentEvents():
+        return self.currentEvents
