@@ -46,8 +46,11 @@ class ColorVortex(GameObject):
 
     def render(self, time, surface, campos):
         
-        side = self.frame % 2
         rot = int(self.frame / 2)
+        side = self.frame % 2
+
+        if rot >= 2:
+            side = 1 - side
 
         surf = pygame.transform.rotate(ColorVortex.spritesheet, -90 * rot)
         maskRect = pygame.Rect(

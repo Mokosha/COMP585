@@ -41,6 +41,8 @@ cv = colorvortex.ColorVortex(Vector2(1, 1))
 
 game_objects = [player, cv]
 x = screenSizeX()
+paused = False
+
 while True:
 
     cur_time = time.clock()
@@ -60,11 +62,16 @@ while True:
                     obj.stopAnimation()
                 else:
                     obj.startAnimation("smooth-idle", START_TIME)
+            elif event.key == pygame.K_SPACE:
+                paused = not paused
             else:
                 if fullscreen:
                     pygame.display.set_mode((window_w, window_h))
                     pygame.display.toggle_fullscreen()
                 sys.exit()
+
+    if paused:
+        continue
 
     display_surface.fill((255, 255, 255))
     for obj in game_objects:
