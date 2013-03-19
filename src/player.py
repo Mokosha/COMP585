@@ -17,8 +17,8 @@ from utils import *
 class Player(AnimatedObject):
 
     def __init__(self):
-        super(Player, self).__init__("smooth-idle")
-        self.startAnimation("smooth-idle", time.clock())
+        super(Player, self).__init__("smooth-idle", True)
+        self.startAnimation("smooth-idle", time.time())
 
         # Initially start in the middle of the screen.
         self.pos = screen2worldPos(Vector2(0, 0), 0.5 * Vector2(screenSizeX(), screenSizeY()))
