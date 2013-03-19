@@ -58,7 +58,7 @@ def handleAdministrivia(inputManager):
 
 while True:
 
-    cur_time = time.clock()
+    cur_time = time.time()
     
     inputhandler.handleEvents()
     

@@ -27,7 +27,7 @@ VORTEX_FRAMES = 8
 VORTEX_SPRITES = 2
 
 # This is the speed at which the vortices spin... This is measured in time between frames.
-VORTEX_SPIN_SPEED = 0.01
+VORTEX_SPIN_SPEED = 0.1
 
 class ColorVortex(GameObject):
     spritesheet = pygame.image.load(getRootPath() + os.sep + "assets" + os.sep + "colorvortex.png")
