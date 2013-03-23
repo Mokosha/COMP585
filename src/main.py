@@ -15,7 +15,7 @@ import pygame
 pygame.init()
 pygame.display.set_mode((screenSizeX(), screenSizeY()))
 
-import animatedobject, colorvortex, player
+import animatedobject, colorvortex, player, world
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -45,6 +45,8 @@ paused = False
 
 # Initialize input handler
 inputhandler = InputManager()
+
+world = world.World("start")
 
 def handleAdministrivia(inputManager):
 
