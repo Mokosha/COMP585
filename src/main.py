@@ -58,6 +58,17 @@ def handleAdministrivia(inputManager):
         global paused
         paused = not paused
 
+def render():
+    display_surface.fill((255, 255, 255))
+
+    world.render(cur_time, display_surface, camera_pos)
+
+    for obj in game_objects:
+        obj.render(cur_time, display_surface, camera_pos)
+
+    pygame.display.update()
+    
+
 while True:
 
     cur_time = time.clock()
@@ -71,9 +82,4 @@ while True:
 
     player.update(inputhandler)
 
-    display_surface.fill((255, 255, 255))
-    for obj in game_objects:
-        obj.render(cur_time, display_surface, camera_pos)
-
-    pygame.display.update()
-    
+    render()

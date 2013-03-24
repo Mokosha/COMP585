@@ -13,9 +13,10 @@ import pygame
 
 from lib.euclid import *
 from gameobject import *
+from utils import *
 
 class Collider(GameObject):
-    DEBUG = False
+    DEBUG = True
     
     def __init__(self, pos, width, height, angle):
         super(Collider, self).__init__()
@@ -28,10 +29,12 @@ class Collider(GameObject):
 
     def render(self, time, surface, campos):
         if Collider.DEBUG:
-            left = world2screen(self.aabb.minval.x)
-            top = world2screen(self.aabb.maxval.y)
+            topleft = Vector2(self.aabb.minval.x, self.aabb.maxval.y)
+            left = world2screenPos(campos, topleft).x
+            top = world2screenPos(campos, topleft).y
             width = world2screen(self.aabb.maxx() - self.aabb.minx())
             height = world2screen(self.aabb.maxy() - self.aabb.miny())
             r = pygame.Rect(left, top, width, height)
-            pygame.draw.rect(surface, pygame.color(1.0, 0.5, 0.5), r, 2)
+            c = pygame.Color(255, 128, 128, 255)
+            pygame.draw.rect(surface, c, r, 2)
             
