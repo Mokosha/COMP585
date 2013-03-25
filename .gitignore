@@ -2,6 +2,7 @@
 *~
 \#*\#
 *\#
+*.\#*
 
 # Make sure to ignore compiled python files.
 *.pyc
