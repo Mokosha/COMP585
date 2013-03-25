@@ -80,8 +80,6 @@ while True:
     if paused:
         continue
 
-    camera_pos.x += 0.001
-
     player.update(inputhandler)
 
     render()

@@ -16,7 +16,7 @@ from gameobject import *
 from utils import *
 
 class Collider(GameObject):
-    DEBUG = True
+    DEBUG = False
     
     def __init__(self, pos, width, height, angle):
         super(Collider, self).__init__()
