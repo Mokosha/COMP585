@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 from utils import *
 from gameobject import *
 from collider import *
+from colorvortex import *
 
 class Zone:
 
@@ -48,9 +49,21 @@ class Zone:
         else:
             raise NameError(child.tag + ": Undefined collider")
 
+    def loadColorVortex(self, node):
+        assert len(list(node)) == 0
+
+        wx = float(node.attrib["x"])
+        wy = float(node.attrib["y"])
+
+        colors = map(lambda x: int(255.0 * float(x)), node.attrib["color"].split(" "))
+
+        return ColorVortex(Vector2(wx, wy))
+
     def loadObject(self, node):
         if node.tag == "collider":
             return self.loadCollider(node)
+        elif node.tag == "colorvortex":
+            return self.loadColorVortex(node)
         else:
             raise NameError(node.tag + ": Undefined object")
 
