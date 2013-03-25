@@ -20,13 +20,16 @@ class Zone:
     ZONE_SIZE_Y = 10
 
     def __init__(self, levelDir, zone):
-        tree = ET.parse(levelDir + os.sep + str(zone) + ".lvl")
+        basename = levelDir + os.sep + str(zone)
+        tree = ET.parse(basename + ".lvl")
         root = tree.getroot()
         assert root.tag == "zone"
 
         self.objects = []
         for child in root:
             self.objects.append( self.loadObject(child) )
+
+        self.background = pygame.image.load(basename + ".png")
 
     def loadCollider(self, node):
         children = list(node)
@@ -71,26 +74,39 @@ class World:
     def queryObjects(self, zone):
         return self.zones[zone].objects
 
-    # !FIXME! This returns all of the objects in the visible zones. It doesn't check
-    # to see whether or not the objects are actually visible...
-    #
-    # !FIXME! This function also assumes that we have no vertically spaced zones.
-    def queryVisibleObjects(self, campos):
+    def getVisibleZones(self, campos):
         camSizeX = screen2world(screenSizeX())
         camSizeY = screen2world(screenSizeY())
 
         visibleStart = int(campos.x / Zone.ZONE_SIZE_X)
         visibleEnd = int( (campos.x + camSizeX) / Zone.ZONE_SIZE_X )
 
-        toReturn = []
-        for i in range(visibleStart, visibleEnd+1):
-            if i >= len(self.zones):
-                break
+        return range(visibleStart, visibleEnd + 1)
 
-            toReturn = toReturn + self.queryObjects(i)
-
-        return toReturn
-
+    # !FIXME! This returns all of the objects in the visible zones. It doesn't check
+    # to see whether or not the objects are actually visible...
+    #
+    # !FIXME! This function also assumes that we have no vertically spaced zones.
     def render(self, time, surface, campos):
-        for obj in self.queryVisibleObjects(campos):
-            obj.render(time, surface, campos)
+
+        for zone in self.getVisibleZones(campos):
+
+            if zone >= len(self.zones):
+                continue
+
+            zoneSize = Vector2(Zone.ZONE_SIZE_X, Zone.ZONE_SIZE_Y)
+            zonePos = Vector2(zone * Zone.ZONE_SIZE_X, Zone.ZONE_SIZE_Y )
+
+            screenZonePos = world2screenPos(campos, zonePos)
+            screenZoneSize = world2screen(zoneSize)
+
+            zoneRect = pygame.Rect(
+                screenZonePos.x,
+                screenZonePos.y,
+                screenZoneSize.x,
+                screenZoneSize.y)
+
+            surface.blit( self.zones[zone].background, zoneRect )
+
+            for obj in self.queryObjects(zone):
+                obj.render(time, surface, campos)
