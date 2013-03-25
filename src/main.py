@@ -37,10 +37,7 @@ camera_pos = Vector2(0, 0)
 # Initialize Player...
 player = player.Player()
 
-# !FIXME!
-cv = colorvortex.ColorVortex(Vector2(1, 1))
-
-game_objects = [player, cv]
+game_objects = [player]
 paused = False
 
 # Initialize input handler
