@@ -5,3 +5,6 @@
 
 # Make sure to ignore compiled python files.
 *.pyc
+
+# Ignore OS X Directory files
+.DS_Store
