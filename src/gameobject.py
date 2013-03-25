@@ -68,7 +68,7 @@ class GameObject(object):
         self.angle = 0
         self.aabb = AABoundingBox()
 
-    def render(self, campos):
+    def render(self, time, surface, campos):
         pass
 
     def accept(self, event):

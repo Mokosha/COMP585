@@ -15,7 +15,7 @@ import pygame
 pygame.init()
 pygame.display.set_mode((screenSizeX(), screenSizeY()))
 
-import animatedobject, colorvortex, player
+import animatedobject, colorvortex, player, world
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -46,6 +46,8 @@ paused = False
 # Initialize input handler
 inputhandler = InputManager()
 
+world = world.World("start")
+
 def handleAdministrivia(inputManager):
 
     if inputManager.isCurrentEvent(Events.QUIT):
@@ -55,6 +57,17 @@ def handleAdministrivia(inputManager):
     elif inputManager.isCurrentEvent(Events.PAUSE):
         global paused
         paused = not paused
+
+def render():
+    display_surface.fill((255, 255, 255))
+
+    world.render(cur_time, display_surface, camera_pos)
+
+    for obj in game_objects:
+        obj.render(cur_time, display_surface, camera_pos)
+
+    pygame.display.update()
+    
 
 while True:
 
@@ -67,11 +80,8 @@ while True:
     if paused:
         continue
 
+    camera_pos.x += 0.001
+
     player.update(inputhandler)
 
-    display_surface.fill((255, 255, 255))
-    for obj in game_objects:
-        obj.render(cur_time, display_surface, camera_pos)
-
-    pygame.display.update()
-    
+    render()
