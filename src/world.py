@@ -57,7 +57,7 @@ class Zone:
 
         colors = map(lambda x: int(255.0 * float(x)), node.attrib["color"].split(" "))
 
-        return ColorVortex(Vector2(wx, wy))
+        return ColorVortex(Vector2(wx, wy), pygame.Color(colors[0], colors[1], colors[2], 255))
 
     def loadObject(self, node):
         if node.tag == "collider":
