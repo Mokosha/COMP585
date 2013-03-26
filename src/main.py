@@ -47,6 +47,9 @@ paused = False
 # Initialize input handler
 inputhandler = InputManager()
 
+#allows continuous movement (delay, interval)
+pygame.key.set_repeat(50,50)
+
 def handleAdministrivia(inputManager):
 
     if inputManager.isCurrentEvent(Events.QUIT):
@@ -60,7 +63,6 @@ def handleAdministrivia(inputManager):
 while True:
 
     cur_time = time.clock()
-    
     inputhandler.handleEvents()
     
     handleAdministrivia(inputhandler)
@@ -68,6 +70,8 @@ while True:
         continue
 
     player.update(inputhandler)
+    player.gravity()
+    player.jump()
 
     display_surface.fill((255, 255, 255))
     for obj in game_objects:
