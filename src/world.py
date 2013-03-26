@@ -43,8 +43,12 @@ class Zone:
 
             width = float(child.attrib["width"])
             height = float(child.attrib["height"])
+
+            angle = 0.0
+            if "angle" in child.attrib.iterkeys():
+                angle = float(child.attrib["angle"])
             
-            collider = Collider(Vector2(x, y), width, height, 0)
+            collider = Collider(Vector2(x, y), width, height, angle)
             return collider
         else:
             raise NameError(child.tag + ": Undefined collider")

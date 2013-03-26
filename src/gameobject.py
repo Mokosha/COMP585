@@ -12,14 +12,14 @@
 #
 ################################################################################
 
-import pygame
+import pygame, sys
 
 from lib.euclid import *
 
 class AABoundingBox:
     def __init__(self):
-        self.minval = Vector2(0, 0)
-        self.maxval = Vector2(0, 0)
+        self.minval = Vector2(sys.float_info.max, sys.float_info.max)
+        self.maxval = Vector2(-sys.float_info.max, -sys.float_info.max)
 
     def maxx(self):
         return self.maxval.x
@@ -42,13 +42,13 @@ class AABoundingBox:
         self.minval.x = min(self.minx(), point.x)
         self.minval.y = min(self.miny(), point.y)
 
-    def collide(self, point):
+    def collidePoint(self, point):
         collision = True
         collision = collision and point.y > self.minval.y and point.y < self.maxval.y
         collision = collision and point.x > self.minval.x and point.x < self.maxval.x
         return collision
 
-    def collide(self, box):
+    def collideBox(self, box):
         if(box.minx() > self.maxx()):
             return False
         if(box.maxx() < self.minx()):
@@ -59,6 +59,27 @@ class AABoundingBox:
             return False
 
         return True
+
+    def getPoints(self):
+        pts = [self.minval]
+        pts.append(Vector2(self.minval.x, self.maxval.y))
+        pts.append(self.maxval)
+        pts.append(Vector2(self.maxval.x, self.minval.y))
+        return pts
+
+    # Assume that the polygon is simply a list of vertices...
+    def collidePolygon(self, polygon):
+        
+        # Check collision against each axis
+        collisionX = False
+        collisionY = False
+        for point in polygon:
+            if point.x >= self.minval.x and point.x <= self.maxval.x:
+                collisionX = True
+            if point.y >= self.minval.y and point.y <= self.maxval.y:
+                collisionY = True
+
+        return collisionX and collisionY
 
 class GameObject(object):
 
