@@ -53,15 +53,14 @@ class Player(AnimatedObject):
     def changeColor(self,toChangeColor):
 	myLimb = self.currentAnim.limb
 	self.iterateChangeColor(myLimb, toChangeColor)
-	
-	
-    def iterateChangeColor(self, limb, toChangeColor):
+
+    def iterateChangeColor(self, limb, c):
 	animationKeys = limb.attribs['colour'].animationKeys
 	for keyframe in animationKeys.keys():
-		animationKeys[keyframe] = Vector3(toChangeColor.r,toChangeColor.g,toChangeColor.b)
+            animationKeys[keyframe] = Vector3(c.r, c.g, c.b)
 	if limb.children:
-		for child in limb.children:
-			self.iterateChangeColor(child, toChangeColor)
+            for child in limb.children:
+                self.iterateChangeColor(child, c)
 
     def update(self, inputManager):
 
