@@ -21,7 +21,7 @@ class Player(AnimatedObject):
 
 	self.currentColor = pygame.color.Color("black")
         super(Player, self).__init__("smooth-idle", True)
-        self.startAnimation("smooth-idle", time.time())
+        self.loadAnim("walk", True)
 
         # Initially start in the middle of the screen.
         self.pos = screen2worldPos(Vector2(0, 0), 0.5 * Vector2(screenSizeX(), screenSizeY()))
