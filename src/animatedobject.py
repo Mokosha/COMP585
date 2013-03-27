@@ -23,6 +23,7 @@ class AnimatedObject(GameObject):
         self.loadAnim(idle_name, loop)
         self.currentAnim = self.animations[idle_name]
         self.animStopTime = -1
+        self.animStartTime = time.time()
 
     def loadAnim(self, name, loop):
         assets_path = getRootPath() + os.sep + "assets"
