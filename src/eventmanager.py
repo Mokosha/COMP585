@@ -59,3 +59,9 @@ class InputManager:
 
     def removeCurrentEvent(self, event):
         self.currentEvents = filter(lambda x : x != event, self.currentEvents)
+
+    # returns true if the event is in the list and then removes it
+    def debounceEvent(self, event):
+        fired = self.isCurrentEvent(event)
+        self.removeCurrentEvent(event)
+        return fired

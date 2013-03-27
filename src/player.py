@@ -89,25 +89,21 @@ class Player(AnimatedObject):
             else:
                 self.setVelocity(0)
 
-	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_1):
+	if inputManager.debounceEvent(Events.CHANGE_COLOR_1):
             self.currentColor.r = min(self.currentColor.r + 128, 255)
             self.changeColor(self.currentColor)
-            inputManager.removeCurrentEvent(Events.CHANGE_COLOR_1)
 
-	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_2):
+	if inputManager.debounceEvent(Events.CHANGE_COLOR_2):
             self.currentColor.g = min(self.currentColor.g + 128, 255)
             self.changeColor(self.currentColor)
-            inputManager.removeCurrentEvent(Events.CHANGE_COLOR_2)
 
-	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_3):
+	if inputManager.debounceEvent(Events.CHANGE_COLOR_3):
             self.currentColor.b = min(self.currentColor.b + 128, 255)
             self.changeColor(self.currentColor)
-            inputManager.removeCurrentEvent(Events.CHANGE_COLOR_3)
 
-	if inputManager.isCurrentEvent(Events.RESET_COLOR):
+	if inputManager.debounceEvent(Events.RESET_COLOR):
             self.currentColor = pygame.color.Color("black")
             self.changeColor(self.currentColor)
-            inputManager.removeCurrentEvent(Events.RESET_COLOR)
                 
         if len(inputManager.getCurrentEvents()) == 0:
             self.startAnimation("smooth-idle", time.time())
