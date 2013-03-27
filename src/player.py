@@ -51,9 +51,7 @@ class Player(AnimatedObject):
         self.velocity = value
 
     def changeColor(self,toChangeColor):
-	myAnimations = self.animations
-	idleAnimation = myAnimations["smooth-idle"]
-	myLimb = idleAnimation.limb
+	myLimb = self.currentAnim.limb
 	self.iterateChangeColor(myLimb, toChangeColor)
 	
 	
