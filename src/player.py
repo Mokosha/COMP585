@@ -88,27 +88,35 @@ class Player(AnimatedObject):
                 self.setVelocity(300)
             else:
                 self.setVelocity(0)
+
 	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_1):
 		if (self.currentColor.r == 0):
 			self.currentColor = pygame.color.Color(128, self.currentColor.g, self.currentColor.b)
 		elif (self.currentColor.r == 128):
 			self.currentColor = pygame.color.Color(255, self.currentColor.g, self.currentColor.b)
 		self.changeColor(self.currentColor)
+                inputManager.removeCurrentEvent(Events.CHANGE_COLOR_1)
+
 	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_2):
 		if (self.currentColor.g == 0):
 			self.currentColor = pygame.color.Color(self.currentColor.r, 128, self.currentColor.b)
 		elif (self.currentColor.g == 128):
 			self.currentColor = pygame.color.Color(self.currentColor.r, 255, self.currentColor.b)
 		self.changeColor(self.currentColor)
+                inputManager.removeCurrentEvent(Events.CHANGE_COLOR_2)
+
 	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_3):
 		if (self.currentColor.b == 0):
 			self.currentColor = pygame.color.Color(self.currentColor.r, self.currentColor.g, 128)
 		elif (self.currentColor.b == 128):
 			self.currentColor = pygame.color.Color(self.currentColor.r, self.currentColor.g, 255)
 		self.changeColor(self.currentColor)
+                inputManager.removeCurrentEvent(Events.CHANGE_COLOR_3)
+
 	if inputManager.isCurrentEvent(Events.RESET_COLOR):
 		self.currentColor = pygame.color.Color("black")
 		self.changeColor(self.currentColor)
+                inputManager.removeCurrentEvent(Events.RESET_COLOR)
 
     def gravity(self):
         #if not on ground/ground hitbox

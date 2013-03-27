@@ -44,9 +44,6 @@ inputhandler = InputManager()
 
 world = world.World("start")
 
-#allows continuous movement (delay, interval)
-pygame.key.set_repeat(50,50)
-
 def handleAdministrivia(inputManager):
 
     if inputManager.isCurrentEvent(Events.QUIT):
