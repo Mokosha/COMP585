@@ -35,9 +35,8 @@ display_surface.fill((255, 255, 255))
 camera_pos = Vector2(0, 0)
 
 # Initialize Player...
-player = player.Player()
-
-game_objects = [player]
+p = player.Player()
+game_objects = [p]
 paused = False
 
 # Initialize input handler
@@ -71,15 +70,15 @@ def render():
 
 while True:
 
-    cur_time = time.clock()
+    cur_time = time.time()
     inputhandler.handleEvents()
     
     handleAdministrivia(inputhandler)
     if paused:
         continue
 
-    player.update(inputhandler)
-    player.gravity()
-    player.jump()
+    p.update(inputhandler)
+    p.gravity()
+    p.jump()
 
     render()
