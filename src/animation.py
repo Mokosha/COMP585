@@ -206,6 +206,7 @@ class Animation:
 
     def __init__(self, filename):
         self.loadFile(filename)
+        self.name = filename.split(os.sep)[-1][:-4]
 
     def loadFile(self, filename):
         tree = ET.parse(filename)

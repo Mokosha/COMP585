@@ -31,7 +31,14 @@ class AnimatedObject(GameObject):
         self.animations[name] = animation.load(assets_path + os.sep + name + ".spe")
         self.animations[name].setLoop(loop)
 
+        print "Loaded " + name + " with " + str(self.animations[name].getMaxFrame()) + " frames"
+
     def startAnimation(self, name, time):
+
+        # Is the animation already started?
+        if name == self.currentAnim.name:
+            return
+
         self.animStartTime = time
         self.animStopTime = time - 1
         self.currentAnim = self.animations[name]
