@@ -64,45 +64,52 @@ class Player(AnimatedObject):
 			self.iterateChangeColor(child, toChangeColor)
 
     def update(self, inputManager):
+
         if inputManager.isCurrentEvent(Events.MOVE_LEFT):
             x = self.getX() - 15
             y = self.getY()
             self.setX(x)
             self.pos = screen2worldPos(Vector2(0, 0), 0.5 * Vector2(x , y))
-        elif inputManager.isCurrentEvent(Events.MOVE_RIGHT):
+
+            self.startAnimation("walk", time.time())
+
+        if inputManager.isCurrentEvent(Events.MOVE_RIGHT):
             x = self.getX() + 15
             y = self.getY()
             self.setX(x)
             self.pos = screen2worldPos(Vector2(0, 0), 0.5 * Vector2(x , y))
-        elif inputManager.isCurrentEvent(Events.JUMP):
+
+            self.startAnimation("walk", time.time())
+
+        if inputManager.isCurrentEvent(Events.JUMP):
             #if on ground/ground hitbox
             #if self.getY().collides()?:
             if self.velocity == 0:
                 self.setVelocity(300)
             else:
                 self.setVelocity(0)
-	elif inputManager.isCurrentEvent(Events.CHANGE_COLOR_1):
+	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_1):
 		if (self.currentColor.r == 0):
 			self.currentColor = pygame.color.Color(128, self.currentColor.g, self.currentColor.b)
 		elif (self.currentColor.r == 128):
 			self.currentColor = pygame.color.Color(255, self.currentColor.g, self.currentColor.b)
 		self.changeColor(self.currentColor)
-	elif inputManager.isCurrentEvent(Events.CHANGE_COLOR_2):
+	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_2):
 		if (self.currentColor.g == 0):
 			self.currentColor = pygame.color.Color(self.currentColor.r, 128, self.currentColor.b)
 		elif (self.currentColor.g == 128):
 			self.currentColor = pygame.color.Color(self.currentColor.r, 255, self.currentColor.b)
 		self.changeColor(self.currentColor)
-	elif inputManager.isCurrentEvent(Events.CHANGE_COLOR_3):
+	if inputManager.isCurrentEvent(Events.CHANGE_COLOR_3):
 		if (self.currentColor.b == 0):
 			self.currentColor = pygame.color.Color(self.currentColor.r, self.currentColor.g, 128)
 		elif (self.currentColor.b == 128):
 			self.currentColor = pygame.color.Color(self.currentColor.r, self.currentColor.g, 255)
 		self.changeColor(self.currentColor)
-	elif inputManager.isCurrentEvent(Events.RESET_COLOR):
+	if inputManager.isCurrentEvent(Events.RESET_COLOR):
 		self.currentColor = pygame.color.Color("black")
 		self.changeColor(self.currentColor)
-			
+
     def gravity(self):
         #if not on ground/ground hitbox
         if self.getY() < screenSizeY():
