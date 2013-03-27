@@ -117,6 +117,9 @@ class Player(AnimatedObject):
 		self.currentColor = pygame.color.Color("black")
 		self.changeColor(self.currentColor)
                 inputManager.removeCurrentEvent(Events.RESET_COLOR)
+                
+        if len(inputManager.getCurrentEvents()) == 0:
+            self.startAnimation("smooth-idle", time.time())
 
     def gravity(self):
         #if not on ground/ground hitbox
