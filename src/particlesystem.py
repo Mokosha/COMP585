@@ -12,7 +12,7 @@ from lib.euclid import *
 from gameobject import *
 from utils import *
 
-class ParticleDomain: 
+class ParticleDomain(object): 
 
     def __init__(self):
         pass
@@ -44,7 +44,7 @@ class CircleDomain(ParticleDomain):
     def within(self, pos):
         return (self.center - pos).magnitude < self.radius
 
-class Particle:
+class Particle(object):
 
     def __init__(self, sprite):
         self.sprite = sprite
@@ -65,7 +65,7 @@ class Particle:
     def render(self, surface, campos):
         
         # Figure out the size of the sprite in pixels:
-        ssz = world2screen(self.size)
+        ssz = int(world2screen(self.size))
 
         # Scale it based on this size and apply the color mask
         final = pygame.transform.scale(self.sprite, (ssz, ssz))
@@ -86,7 +86,7 @@ class Particle:
         r.left = c - (w * 0.5)
         surface.blit(final, r)
 
-class ParticleAction:
+class ParticleAction(object):
     
     def __init__(self):
         self.emitter = False
@@ -99,7 +99,7 @@ class EmitAction(ParticleAction):
 
     def __init__(self, rate):
         super(EmitAction, self).__init__()
-        self.rate = rate
+        self.rate = float(rate)
         self.numDead = 0
         self.emitter = True
 
@@ -120,10 +120,10 @@ class EmitAction(ParticleAction):
             particle.lastupdate = time
 
             if self.posDomain != None:
-                particle.pos = posDomain.random()
+                particle.pos = self.posDomain.random()
 
             if self.velDomain != None:
-                particle.vel = velDomain.random()
+                particle.vel = self.velDomain.random()
 
 class KillAction(ParticleAction):
     def __init__(self, domain):
