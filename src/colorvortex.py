@@ -14,6 +14,7 @@
 
 import pygame, time, copy
 
+from particlesystem import *
 from gameobject import *
 from lib.euclid import *
 from utils import *
@@ -44,6 +45,14 @@ class ColorVortex(GameObject):
         self.frame = 0
         self.last_update = time.clock()
 
+        self.ps = ParticleSystem(20)
+        emitter = EmitAction(10)
+        emitter.addPosDomain(CircleDomain(self.pos, 0.1))
+        emitter.addVelDomain(CircleDomain(Vector2(0.0, 0.1), 0.05))
+
+        self.ps.addAction(emitter)
+        self.ps.addAction(ForceAction(Vector2(0.0, -0.1)))
+
         # Go through the spritesheet for this and change every white color
         # to the one that we passed in...
         self.spritesheet = ColorVortex.spritesheet.copy()
@@ -64,6 +73,8 @@ class ColorVortex(GameObject):
         self.color = color
 
     def render(self, time, surface, campos):
+
+        self.ps.render(time, surface, campos)
         
         rot = int(self.frame / 2)
         side = self.frame % 2
