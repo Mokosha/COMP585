@@ -54,6 +54,7 @@ class ColorVortex(GameObject):
         emitter = EmitAction(0.08)
         emitter.addPosDomain(CircleDomain(self.pos, 0.1))
         emitter.addVelDomain(CircleDomain(Vector2(0.0, 2.0), 1.0))
+        emitter.addColorDomain(PointDomain(Vector3(255, 255, 0)))
 
         self.ps.addAction(emitter)
         self.ps.addAction(ForceAction(Vector2(0.0, -5.0)))

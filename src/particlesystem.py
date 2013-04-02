@@ -44,6 +44,17 @@ class CircleDomain(ParticleDomain):
     def within(self, pos):
         return (self.center - pos).magnitude < self.radius
 
+class PointDomain(ParticleDomain):
+    def __init__(self, pt):
+        super(ParticleDomain, self).__init__()
+        self.pt = pt
+
+    def random(self):
+        return self.pt
+
+    def within(self, pos):
+        return (self.pt - pos).magnitude < 1e-6
+
 class Particle(object):
 
     def __init__(self, sprite):
@@ -109,6 +120,9 @@ class EmitAction(ParticleAction):
     def addVelDomain(self, d):
         self.velDomain = d
 
+    def addColorDomain(self, d):
+        self.colDomain = d
+
     def act(self, particle, time):
         if particle.alive:
             return
@@ -123,6 +137,10 @@ class EmitAction(ParticleAction):
 
             if self.velDomain != None:
                 particle.vel = self.velDomain.random()
+
+            if self.colDomain != None:
+                c = self.colDomain.random()
+                particle.setColor(pygame.Color(c.x, c.y, c.z))
 
 class KillAction(ParticleAction):
     def __init__(self, domain):
