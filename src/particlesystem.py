@@ -168,6 +168,7 @@ class EmitAction(ParticleAction):
 
         freq = self.rate / self.numDead
         if random.random() < freq:
+            particle.reinit()
             particle.alive = True
             particle.lastupdate = time
 
