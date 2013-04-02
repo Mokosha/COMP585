@@ -189,6 +189,14 @@ class KillAction(ParticleAction):
         if self.domain.within(particle.pos):
             particle.alive = False
 
+class KillFadedAction(ParticleAction):
+    def __init__(self):
+        super(KillFadedAction, self).__init__()
+
+    def act(self, particle, time):
+        if particle.alpha < 5:
+            particle.alive = False
+
 class ForceAction(ParticleAction):
     def __init__(self, force):
         super(ForceAction, self).__init__()

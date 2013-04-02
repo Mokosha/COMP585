@@ -60,6 +60,8 @@ class ColorVortex(GameObject):
         self.ps.addAction(ForceAction(Vector2(0.0, -3.0)))
         self.ps.addAction(SpinAction(230.0))
         self.ps.addAction(MoveAction())
+        self.ps.addAction(FadeAction(170.0))
+        self.ps.addAction(KillFadedAction())
 
         # Go through the spritesheet for this and change every white color
         # to the one that we passed in...
