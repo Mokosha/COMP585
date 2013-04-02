@@ -59,8 +59,15 @@ class Particle(object):
 
     def __init__(self, sprite):
         self.sprite = sprite
-        self.colorImage = pygame.Surface((1, 1))
-        self.setColor(pygame.Color(255, 255, 255, 255))
+        self.colorImage = pygame.Surface((1, 1), pygame.SRCALPHA, 32)
+        self.colorImage = self.colorImage.convert_alpha()
+        self.reinit()
+
+    def reinit(self):
+        self.__color = Vector3(255.0, 255.0, 255.0)
+        self.__alpha = 255.0
+        self.updateColor()
+
         self.pos = Vector2(0, 0)
         self.vel = Vector2(0, 0)
         self.lastupdate = -1
@@ -69,11 +76,50 @@ class Particle(object):
         self.angle = 0.0
         self.size = 0.25
 
-    def setColor(self, color):
-        self.color = color
-        self.colorImage.fill(self.color)
+    def updateColor(self):
+        color = self.color
+        alpha = self.alpha
+        c = pygame.Color(int(color.x), int(color.y), int(color.z), int(alpha))
+        self.colorImage.fill(c)
 
+    def setColor(self, color):
+
+        self.__color.x = clamp(color.x, 0.0, 255.0)
+        self.__color.y = clamp(color.y, 0.0, 255.0)
+        self.__color.z = clamp(color.z, 0.0, 255.0)
+
+        self.updateColor()
+
+    def getColor(self):
+        return self.__color
+    
+    def delColor(self):
+        del self.__color
+
+    def setAlpha(self, alpha):
+        self.__alpha = clamp(alpha, 0.0, 255.0)
+        self.updateColor()
+
+    def getAlpha(self):
+        return self.__alpha
+    
+    def delAlpha(self):
+        del self.__alpha
+
+    color = property(getColor, setColor, delColor, "Particle color")
+    alpha = property(getAlpha, setAlpha, delAlpha, "Particle alpha")
+
+    def printNumTranslucentPixels(self, surface, szx, szy):
+        print "Num transparent: " + str(
+            len(
+                filter(
+                    lambda x: x.a > 0 and x.a < 255, 
+                    [surface.get_at((x, y)) for x in range(szx) for y in range(szy)])))
+        
     def render(self, surface, campos):
+
+        if not self.alive:
+            return
         
         # Figure out the size of the sprite in pixels:
         ssz = int(world2screen(self.size))
@@ -82,7 +128,7 @@ class Particle(object):
         final = pygame.transform.scale(self.sprite, (ssz, ssz))
         finalcolor = pygame.transform.scale(self.colorImage, (ssz, ssz))
 
-        final.blit(finalcolor, (0, 0), None, pygame.BLEND_MULT)
+        final.blit(finalcolor, (0, 0), None, pygame.BLEND_RGBA_MULT)
 
         # Rotate it by the correct angle...
         final = pygame.transform.rotate(final, self.angle)
@@ -139,8 +185,7 @@ class EmitAction(ParticleAction):
                 particle.vel = self.velDomain.random()
 
             if self.colDomain != None:
-                c = self.colDomain.random()
-                particle.setColor(pygame.Color(c.x, c.y, c.z))
+                particle.color = self.colDomain.random()
 
 class KillAction(ParticleAction):
     def __init__(self, domain):
@@ -174,6 +219,22 @@ class MoveAction(ParticleAction):
             return
 
         particle.pos += dt * particle.vel
+
+class FadeAction(ParticleAction):
+    def __init__(self, rate):
+        super(FadeAction, self).__init__()
+        self.rate = rate
+
+    def act(self, particle, time):
+
+        if not particle.alive:
+            return
+
+        dt = time - particle.lastupdate
+        if dt <= 0:
+            return
+
+        particle.alpha -= dt * self.rate
 
 class ParticleSystem(GameObject):
 
