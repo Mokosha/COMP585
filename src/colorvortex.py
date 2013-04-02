@@ -34,6 +34,11 @@ class ColorVortex(GameObject):
     spritesheet = pygame.image.load(getRootPath() + os.sep + "assets" + os.sep + "colorvortex.png")
     spritesheet = pygame.transform.smoothscale(spritesheet.convert_alpha(), (2 * COLOR_VORTEX_SCREEN_SIZE, COLOR_VORTEX_SCREEN_SIZE))
 
+    def setpos(self, newpos):
+        for emitter in filter(lambda x: x.emitter, self.ps.actions):
+            emitter.addPosDomain(CircleDomain(newpos, 0.1))
+        self.__pos = newpos
+
     def __init__(self, pos, color=pygame.Color("blue")):
         super(ColorVortex, self).__init__()
         self.pos = pos

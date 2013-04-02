@@ -62,6 +62,17 @@ class AABoundingBox:
 
 class GameObject(object):
 
+    def getpos(self):
+        return self.__pos
+
+    def setpos(self, newpos):
+        self.__pos = newpos
+
+    def delpos(self):
+        del self.__pos
+
+    pos = property(getpos, setpos, delpos, "World space position of this game object")
+
     def __init__(self):
         super(GameObject, self).__init__()
         self.pos = Vector2(0, 0)
