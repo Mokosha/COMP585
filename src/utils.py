@@ -26,6 +26,9 @@ def polar2cart(angle, dist):
 
     return Vector2(x, -y)
 
+def clamp(a, low, high):
+    return max(low, min(a, high))
+
 #
 # Logistics
 #
