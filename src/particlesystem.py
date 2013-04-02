@@ -143,8 +143,8 @@ class ForceAction(ParticleAction):
         if dt <= 0:
             return
 
-        f = (self.force * dt) / particle.mass
-        particle.vel += f
+        a = self.force / particle.mass
+        particle.vel += a * dt
 
 class MoveAction(ParticleAction):
     def __init__(self):
