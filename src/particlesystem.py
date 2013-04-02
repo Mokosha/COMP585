@@ -33,7 +33,7 @@ class CircleDomain(ParticleDomain):
 
     def random(self):
         randomr = random.random()
-        randomr = math.sqrt(randomr)
+        randomr = math.sqrt(randomr) * self.radius
         a = random.random() * 2 * math.pi
 
         dx = randomr * math.cos(a)
