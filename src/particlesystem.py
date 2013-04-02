@@ -110,7 +110,7 @@ class EmitAction(ParticleAction):
         self.velDomain = d
 
     def act(self, particle, time):
-        if not particle.alive:
+        if particle.alive:
             return
 
         freq = self.rate / self.numDead
