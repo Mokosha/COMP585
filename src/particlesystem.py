@@ -110,10 +110,6 @@ class EmitAction(ParticleAction):
         self.velDomain = d
 
     def act(self, particle, time):
-        dt = time - particle.lastupdate
-        if dt <= 0:
-            return
-
         if not particle.alive:
             return
 
@@ -149,6 +145,17 @@ class ForceAction(ParticleAction):
 
         f = (self.force * dt) / particle.mass
         particle.vel += f
+
+class MoveAction(ParticleAction):
+    def __init__(self):
+        super(MoveAction, self).__init__()
+
+    def act(self, particle, time):
+        dt = time - particle.lastupdate
+        if dt <= 0:
+            return
+
+        particle.pos += dt * particle.vel
 
 class ParticleSystem(GameObject):
 
