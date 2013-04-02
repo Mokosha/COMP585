@@ -20,8 +20,24 @@ from eventmanager import Events, InputManager
 from lib.euclid import *
 
 # Initialize Display
-video_info = pygame.display.Info()
-window_w, window_h = video_info.current_w, video_info.current_h
+display_info = pygame.display.Info()
+
+print "Display is hardware accelerated: " + str(display_info.hw)
+print "Windowed display modes can be used: " + str(display_info.wm)
+print "Megabytes of video memory: " + str(display_info.video_mem)
+print "Number of bits used to store each pixel: " + str(display_info.bitsize)
+print "Number of bytes used to store each pixel: " + str(display_info.bytesize)
+print "Four values used to pack RGBA values into pixels: " + str(display_info.masks)
+print "Four values used to pack RGBA values into pixels: " + str(display_info.shifts)
+print "Four values used to pack RGBA values into pixels: " + str(display_info.losses)
+print "Hardware surface blitting is accelerated: " + str(display_info.blit_hw)
+print "Hardware surface colorkey blitting is accelerated: " + str(display_info.blit_hw_CC)
+print "Hardware surface pixel alpha blitting is accelerated: " + str(display_info.blit_hw_A)
+print "Software surface blitting is accelerated: " + str(display_info.blit_sw)
+print "Software surface colorkey blitting is accelerated: " + str(display_info.blit_sw_CC)
+print "Software surface pixel alpha blitting is accelerated: " + str(display_info.blit_sw_A)
+
+window_w, window_h = display_info.current_w, display_info.current_h
 
 START_TIME = time.clock()
 
@@ -29,7 +45,6 @@ START_TIME = time.clock()
 fullscreen = False
 
 display_surface = pygame.display.get_surface()
-display_surface.fill((255, 255, 255))
 
 # Define current camera
 camera_pos = Vector2(0, 0)
