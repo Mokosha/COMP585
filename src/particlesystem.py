@@ -82,8 +82,8 @@ class Particle(object):
         h = r.height
         c = world2screenPos(campos, self.pos)
 
-        r.top = c - (h * 0.5)
-        r.left = c - (w * 0.5)
+        r.top = c.x - (h * 0.5)
+        r.left = c.y - (w * 0.5)
         surface.blit(final, r)
 
 class ParticleAction(object):
@@ -114,8 +114,11 @@ class EmitAction(ParticleAction):
         if dt <= 0:
             return
 
+        if not particle.alive:
+            return
+
         freq = self.rate / self.numDead
-        if not particle.alive and random.random() < freq:
+        if random.random() < freq:
             particle.alive = True
             particle.lastupdate = time
 
