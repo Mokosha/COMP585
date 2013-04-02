@@ -71,7 +71,7 @@ class Particle(object):
         final = pygame.transform.scale(self.sprite, (ssz, ssz))
         finalcolor = pygame.transform.scale(self.colorImage, (ssz, ssz))
 
-        final.blit(finalcolor, (0, 0))
+        final.blit(finalcolor, (0, 0), None, pygame.BLEND_MULT)
 
         # Rotate it by the correct angle...
         final = pygame.transform.rotate(final, self.angle)
