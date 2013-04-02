@@ -95,7 +95,10 @@ class ColorVortex(GameObject):
             COLOR_VORTEX_SCREEN_SIZE, 
             COLOR_VORTEX_SCREEN_SIZE)
 
-        renderPos = world2screenPos(campos, self.pos - (0.5 * Vector2(COLOR_VORTEX_WORLD_SIZE, COLOR_VORTEX_WORLD_SIZE)))
+        renderPos = world2screenPos(campos, self.pos)
+        renderPos.x -= 0.5 * COLOR_VORTEX_SCREEN_SIZE
+        renderPos.y -= 0.5 * COLOR_VORTEX_SCREEN_SIZE
+
         renderRect = pygame.Rect(renderPos, (COLOR_VORTEX_SCREEN_SIZE, COLOR_VORTEX_SCREEN_SIZE))
         surface.blit(surf, renderRect, maskRect)
 
