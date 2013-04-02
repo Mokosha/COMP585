@@ -82,8 +82,8 @@ class Particle(object):
         h = r.height
         c = world2screenPos(campos, self.pos)
 
-        r.top = c.x - (h * 0.5)
-        r.left = c.y - (w * 0.5)
+        r.left = c.x - (h * 0.5)
+        r.top = c.y - (w * 0.5)
         surface.blit(final, r)
 
 class ParticleAction(object):
