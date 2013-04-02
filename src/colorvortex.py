@@ -51,12 +51,12 @@ class ColorVortex(GameObject):
         self.last_update = time.clock()
 
         self.ps = ParticleSystem(20)
-        emitter = EmitAction(10)
+        emitter = EmitAction(0.08)
         emitter.addPosDomain(CircleDomain(self.pos, 0.1))
-        emitter.addVelDomain(CircleDomain(Vector2(0.0, 0.1), 0.05))
+        emitter.addVelDomain(CircleDomain(Vector2(0.0, 2.0), 1.0))
 
         self.ps.addAction(emitter)
-        self.ps.addAction(ForceAction(Vector2(0.0, -0.1)))
+        self.ps.addAction(ForceAction(Vector2(0.0, -5.0)))
         self.ps.addAction(MoveAction())
 
         # Go through the spritesheet for this and change every white color

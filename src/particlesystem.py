@@ -56,7 +56,7 @@ class Particle(object):
         self.mass = 1.0
         self.alive = False
         self.angle = 0.0
-        self.size = 0.1
+        self.size = 0.25
 
     def setColor(self, color):
         self.color = color
