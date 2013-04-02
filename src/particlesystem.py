@@ -236,6 +236,28 @@ class FadeAction(ParticleAction):
 
         particle.alpha -= dt * self.rate
 
+# Spin the particle in terms of degrees per second...
+class SpinAction(ParticleAction):
+    def __init__(self, rate):
+        super(SpinAction, self).__init__()
+        self.rate = rate
+
+    def act(self, particle, time):
+        
+        if not particle.alive:
+            return
+
+        dt = time - particle.lastupdate
+        if dt <= 0:
+            return
+
+        particle.angle += self.rate * dt
+        while particle.angle < 0:
+            particle.angle += 360
+
+        while particle.angle > 360:
+            particle.angle -= 360
+
 class ParticleSystem(GameObject):
 
     def __init__(self, maxParticles, sprite="star"):

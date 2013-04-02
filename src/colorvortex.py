@@ -28,7 +28,7 @@ VORTEX_FRAMES = 8
 VORTEX_SPRITES = 2
 
 # This is the speed at which the vortices spin... This is measured in time between frames.
-VORTEX_SPIN_SPEED = 0.1
+VORTEX_SPIN_SPEED = 0.07
 
 class ColorVortex(GameObject):
     spritesheet = pygame.image.load(getRootPath() + os.sep + "assets" + os.sep + "colorvortex.png")
@@ -52,12 +52,13 @@ class ColorVortex(GameObject):
 
         self.ps = ParticleSystem(20)
         emitter = EmitAction(0.08)
-        emitter.addPosDomain(CircleDomain(self.pos, 0.1))
-        emitter.addVelDomain(CircleDomain(Vector2(0.0, 2.0), 1.0))
-        emitter.addColorDomain(PointDomain(Vector3(255, 255, 0)))
+        emitter.addPosDomain(CircleDomain(self.pos, 0.07))
+        emitter.addVelDomain(CircleDomain(Vector2(0.0, 1.5), 0.7))
+        emitter.addColorDomain(PointDomain(Vector3(color.r, color.g, color.b)))
 
         self.ps.addAction(emitter)
-        self.ps.addAction(ForceAction(Vector2(0.0, -5.0)))
+        self.ps.addAction(ForceAction(Vector2(0.0, -3.0)))
+        self.ps.addAction(SpinAction(230.0))
         self.ps.addAction(MoveAction())
 
         # Go through the spritesheet for this and change every white color
