@@ -109,13 +109,6 @@ class Particle(object):
     color = property(getColor, setColor, delColor, "Particle color")
     alpha = property(getAlpha, setAlpha, delAlpha, "Particle alpha")
 
-    def printNumTranslucentPixels(self, surface, szx, szy):
-        print "Num transparent: " + str(
-            len(
-                filter(
-                    lambda x: x.a > 0 and x.a < 255, 
-                    [surface.get_at((x, y)) for x in range(szx) for y in range(szy)])))
-        
     def render(self, surface, campos):
 
         if not self.alive:
