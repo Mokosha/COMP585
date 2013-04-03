@@ -25,6 +25,7 @@ class AnimatedObject(GameObject):
         self.animStopTime = -1
         self.animStartTime = time.time()
         self.animElapsedTime = 0.0
+        self.color = None
 
     def loadAnim(self, name, loop):
         assets_path = getRootPath() + os.sep + "assets"
@@ -68,5 +69,5 @@ class AnimatedObject(GameObject):
             frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1
 
         renderpos = world2screenPos(campos, self.pos)
-        self.currentAnim.draw(frame, surface, renderpos)
+        self.currentAnim.draw(frame, surface, renderpos, self.color)
         

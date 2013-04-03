@@ -180,10 +180,12 @@ class Limb:
     def getAttrValue(self, name, frame):
         return self.attribs[name].getValue(frame)
 
-    def draw(self, frame, surface, pos, ang):
+    def draw(self, frame, surface, pos, ang, colorOverride=None):
     
-        colorVec = self.getAttrValue('colour', frame)
-        color = pygame.Color(int(colorVec.x), int(colorVec.y), int(colorVec.z), 255)
+        color = colorOverride
+        if color == None:
+            colorVec = self.getAttrValue('colour', frame)
+            color = pygame.Color(int(colorVec.x), int(colorVec.y), int(colorVec.z), 255)
 
         if self.getAttrValue('cartesian', frame):
             newAng = ang
@@ -200,7 +202,7 @@ class Limb:
             self.shape.draw(frame, surface, pos, newPos, color, width)
 
         for limb in self.children:
-            limb.draw(frame, surface, newPos, newAng)
+            limb.draw(frame, surface, newPos, newAng, colorOverride)
     
 class Animation:
 
@@ -214,8 +216,8 @@ class Animation:
         assert root.tag == "limb"
         self.limb = Limb(root)
 
-    def draw(self, frame, surface, pos):
-        self.limb.draw(frame, surface, pos, 0)
+    def draw(self, frame, surface, pos, color=None):
+        self.limb.draw(frame, surface, pos, 0, color)
 
     def setLoop(self, loop):
         self.loop = loop
