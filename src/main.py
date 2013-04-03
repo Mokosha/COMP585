@@ -48,6 +48,8 @@ display_surface = pygame.display.get_surface()
 
 # Define current camera
 camera_pos = Vector2(0, 0)
+CAMERA_BOUNDARY_SIZE = 1.0
+CAMERA_DRAG_SIZE = 0.5
 
 # Initialize Player...
 p = player.Player()
@@ -78,7 +80,30 @@ def render():
         obj.render(cur_time, display_surface, camera_pos)
 
     pygame.display.update()
+
+def processCamera():
+
+    global camera_pos
+    global p
+
+    windowSzX = screen2world(window_w)
+    windowSzY = screen2world(window_h)
     
+    camminx = camera_pos.x + CAMERA_BOUNDARY_SIZE
+    cammaxx = camera_pos.x + windowSzX - CAMERA_BOUNDARY_SIZE
+
+    camminy = camera_pos.y + CAMERA_BOUNDARY_SIZE
+    cammaxy = camera_pos.y + windowSzY - CAMERA_BOUNDARY_SIZE
+
+    if p.pos.x > cammaxx:
+        camera_pos.x += p.pos.x - cammaxx
+    elif p.pos.x < camminx:
+        camera_pos.x -= camminx - p.pos.x
+
+    if p.pos.y > cammaxy:
+        camera_pos.y += p.pos.y - cammaxy
+    elif p.pos.y < camminy:
+        camera_pos.y -= camminy - p.pos.y
 
 while True:
 
@@ -92,5 +117,7 @@ while True:
     p.update(inputhandler)
     p.gravity()
     p.jump()
+
+    processCamera()
 
     render()
