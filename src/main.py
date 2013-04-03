@@ -97,7 +97,6 @@ def processCamera():
 
     windowSzX = screen2world(window_w)
     windowSzY = screen2world(window_h)
-    print windowSzX, windowSzY
     
     cammin = Vector2(camera_pos.x + CAMERA_BOUNDARY_SIZE, camera_pos.y + CAMERA_BOUNDARY_SIZE)
     cammax = Vector2(camera_pos.x + windowSzX - CAMERA_BOUNDARY_SIZE, camera_pos.y + windowSzY - CAMERA_BOUNDARY_SIZE)
