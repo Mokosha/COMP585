@@ -79,10 +79,13 @@ class GameObject(object):
         self.angle = 0
         self.aabb = AABoundingBox()
 
-    def render(self, time, surface, campos):
+    def render(self, surface, campos):
         pass
 
     def accept(self, event):
+        pass
+
+    def process(self, dt):
         pass
 
     def collide(self, box):

@@ -24,6 +24,7 @@ class AnimatedObject(GameObject):
         self.currentAnim = self.animations[idle_name]
         self.animStopTime = -1
         self.animStartTime = time.time()
+        self.animElapsedTime = 0.0
 
     def loadAnim(self, name, loop):
         assets_path = getRootPath() + os.sep + "assets"
@@ -40,6 +41,7 @@ class AnimatedObject(GameObject):
             return
 
         self.animStartTime = time
+        self.animElapsedTime = 0.0
         self.animStopTime = time - 1
         self.currentAnim = self.animations[name]
 
@@ -49,16 +51,18 @@ class AnimatedObject(GameObject):
     def isPlaying(self):
         return self.animStartTime > self.animStopTime
 
-    def render(self, time, surface, campos):
+    def process(self, dt):
         
         # If the animation is stopped, then we should draw at exactly the point at which
         # it was stopped...
+        self.animElapsedTime += dt
         if self.animStopTime > self.animStartTime:
-            time = self.animStopTime
+            self.animElapsedTime = self.animStopTime - self.animStartTime
+
+    def render(self, surface, campos):
 
         # Figure out frame number
-        elapsed = time - self.animStartTime
-        frame = FPS * elapsed
+        frame = FPS * self.animElapsedTime
 
         if self.currentAnim.loop:
             frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1

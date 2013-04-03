@@ -48,7 +48,7 @@ class ColorVortex(GameObject):
         self.aabb.add_point(pos + halfVortexSize)
 
         self.frame = 0
-        self.last_update = time.clock()
+        self.elapsed = 0.0
 
         self.ps = ParticleSystem(20)
         emitter = EmitAction(0.08)
@@ -82,9 +82,17 @@ class ColorVortex(GameObject):
 
         self.color = color
 
-    def render(self, time, surface, campos):
+    def process(self, dt):
+        self.elapsed += dt
+        if self.elapsed > VORTEX_SPIN_SPEED:
+            self.frame = (self.frame + 1) % VORTEX_FRAMES
+            self.elapsed = 0.0
 
-        self.ps.render(time, surface, campos)
+        self.ps.process(dt)
+
+    def render(self, surface, campos):
+
+        self.ps.render(surface, campos)
         
         rot = int(self.frame / 2)
         side = self.frame % 2
@@ -105,10 +113,6 @@ class ColorVortex(GameObject):
 
         renderRect = pygame.Rect(renderPos, (COLOR_VORTEX_SCREEN_SIZE, COLOR_VORTEX_SCREEN_SIZE))
         surface.blit(surf, renderRect, maskRect)
-
-        if time > self.last_update + VORTEX_SPIN_SPEED:
-            self.frame = (self.frame + 1) % VORTEX_FRAMES
-            self.last_update = time
 
     def accept(self, event):
         pass

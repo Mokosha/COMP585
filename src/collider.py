@@ -27,7 +27,7 @@ class Collider(GameObject):
         self.aabb.add_point(pos - diag)
         self.aabb.add_point(pos + diag)
 
-    def render(self, time, surface, campos):
+    def render(self, surface, campos):
         if Collider.DEBUG:
             topleft = Vector2(self.aabb.minval.x, self.aabb.maxval.y)
             left = world2screenPos(campos, topleft).x

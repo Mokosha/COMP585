@@ -142,7 +142,7 @@ class ParticleAction(object):
         self.emitter = False
 
     # Perform an action on a particle....
-    def act(self, particle, time):
+    def act(self, particle, dt):
         pass
 
 class EmitAction(ParticleAction):
@@ -162,7 +162,7 @@ class EmitAction(ParticleAction):
     def addColorDomain(self, d):
         self.colDomain = d
 
-    def act(self, particle, time):
+    def act(self, particle, dt):
         if particle.alive:
             return
 
@@ -170,7 +170,6 @@ class EmitAction(ParticleAction):
         if random.random() < freq:
             particle.reinit()
             particle.alive = True
-            particle.lastupdate = time
 
             if self.posDomain != None:
                 particle.pos = self.posDomain.random()
@@ -186,7 +185,7 @@ class KillAction(ParticleAction):
         super(KillAction, self).__init__()
         self.domain = domain
 
-    def act(self, particle, time):
+    def act(self, particle, dt):
         if self.domain.within(particle.pos):
             particle.alive = False
 
@@ -194,7 +193,7 @@ class KillFadedAction(ParticleAction):
     def __init__(self):
         super(KillFadedAction, self).__init__()
 
-    def act(self, particle, time):
+    def act(self, particle, dt):
         if particle.alpha < 5:
             particle.alive = False
 
@@ -203,11 +202,7 @@ class ForceAction(ParticleAction):
         super(ForceAction, self).__init__()
         self.force = force
 
-    def act(self, particle, time):
-        dt = time - particle.lastupdate
-        if dt <= 0:
-            return
-
+    def act(self, particle, dt):
         a = self.force / particle.mass
         particle.vel += a * dt
 
@@ -215,11 +210,7 @@ class MoveAction(ParticleAction):
     def __init__(self):
         super(MoveAction, self).__init__()
 
-    def act(self, particle, time):
-        dt = time - particle.lastupdate
-        if dt <= 0:
-            return
-
+    def act(self, particle, dt):
         particle.pos += dt * particle.vel
 
 class FadeAction(ParticleAction):
@@ -227,13 +218,9 @@ class FadeAction(ParticleAction):
         super(FadeAction, self).__init__()
         self.rate = rate
 
-    def act(self, particle, time):
+    def act(self, particle, dt):
 
         if not particle.alive:
-            return
-
-        dt = time - particle.lastupdate
-        if dt <= 0:
             return
 
         particle.alpha -= dt * self.rate
@@ -244,13 +231,9 @@ class SpinAction(ParticleAction):
         super(SpinAction, self).__init__()
         self.rate = rate
 
-    def act(self, particle, time):
+    def act(self, particle, dt):
         
         if not particle.alive:
-            return
-
-        dt = time - particle.lastupdate
-        if dt <= 0:
             return
 
         particle.angle += self.rate * dt
@@ -281,7 +264,7 @@ class ParticleSystem(GameObject):
     def addAction(self, action):
         self.actions.append(action)
 
-    def process(self, time):
+    def process(self, dt):
 
         # Make sure to update all emitters...
         dead = filter(lambda y: not y.alive, self.particles)
@@ -291,15 +274,10 @@ class ParticleSystem(GameObject):
 
         for action in self.actions:
             for particle in self.particles:
-                action.act(particle, time)
+                action.act(particle, dt)
 
-        for particle in self.particles:
-            particle.lastupdate = time
-
-    def render(self, time, surface, campos):
+    def render(self, surface, campos):
         
-        self.process(time)
-
         for particle in self.particles:
             if particle.alive:
                 particle.render(surface, campos)

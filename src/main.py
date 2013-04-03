@@ -78,22 +78,18 @@ def handleAdministrivia(inputManager):
 def render():
     display_surface.fill((255, 255, 255))
 
-    world.render(cur_time, display_surface, camera_pos)
+    world.render(display_surface, camera_pos)
 
     for obj in game_objects:
-        obj.render(cur_time, display_surface, camera_pos)
+        obj.render(display_surface, camera_pos)
 
     pygame.display.update()
 
-def processCamera():
+def processCamera(dt):
 
     global camera_pos
     global p
     global camera_update
-
-    dt = time.time() - camera_update
-    if dt <= 0.0:
-        return
 
     windowSzX = screen2world(window_w)
     windowSzY = screen2world(window_h)
@@ -140,11 +136,26 @@ def processCamera():
     elif p.pos.y < cammin.y:
         camera_pos.y = p.pos.y - CAMERA_BOUNDARY_SIZE
 
-    camera_update = time.time()
+def process(dt):
+
+    world.process(camera_pos, dt)
+
+    for obj in game_objects:
+        obj.process(dt)
+
+    processCamera(dt)
+
+last_time = time.time()
 
 while True:
 
     cur_time = time.time()
+    dt = cur_time - last_time
+    if dt <= 0:
+        time.sleep(0.001)
+        last_time = cur_time
+        continue
+
     inputhandler.handleEvents()
     
     handleAdministrivia(inputhandler)
@@ -155,7 +166,8 @@ while True:
     p.gravity()
     p.jump()
 
-    processCamera()
+    process(dt)
 
     render()
 
+    last_time = cur_time

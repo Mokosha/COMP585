@@ -96,11 +96,16 @@ class World:
 
         return range(visibleStart, visibleEnd + 1)
 
+    def process(self, campos, dt):
+        for zone in self.getVisibleZones(campos):
+            for obj in self.queryObjects(zone):
+                obj.process(dt)
+
     # !FIXME! This returns all of the objects in the visible zones. It doesn't check
     # to see whether or not the objects are actually visible...
     #
     # !FIXME! This function also assumes that we have no vertically spaced zones.
-    def render(self, time, surface, campos):
+    def render(self, surface, campos):
 
         for zone in self.getVisibleZones(campos):
 
@@ -122,4 +127,4 @@ class World:
             surface.blit( self.zones[zone].background, zoneRect )
 
             for obj in self.queryObjects(zone):
-                obj.render(time, surface, campos)
+                obj.render(surface, campos)
