@@ -48,8 +48,12 @@ display_surface = pygame.display.get_surface()
 
 # Define current camera
 camera_pos = Vector2(0, 0)
-CAMERA_BOUNDARY_SIZE = 1.0
-CAMERA_DRAG_SIZE = 0.5
+camera_update = time.time()
+CAMERA_BOUNDARY_SIZE = 2.0
+CAMERA_DRAG_CENTER = True
+CAMERA_DRAG_PCT_X = 0.3
+CAMERA_DRAG_PCT_Y = 0.4
+CAMERA_DRAG_SPEED = 8.0
 
 # Initialize Player...
 p = player.Player()
@@ -85,25 +89,59 @@ def processCamera():
 
     global camera_pos
     global p
+    global camera_update
+
+    dt = time.time() - camera_update
+    if dt <= 0.0:
+        return
 
     windowSzX = screen2world(window_w)
     windowSzY = screen2world(window_h)
+    print windowSzX, windowSzY
     
-    camminx = camera_pos.x + CAMERA_BOUNDARY_SIZE
-    cammaxx = camera_pos.x + windowSzX - CAMERA_BOUNDARY_SIZE
+    cammin = Vector2(camera_pos.x + CAMERA_BOUNDARY_SIZE, camera_pos.y + CAMERA_BOUNDARY_SIZE)
+    cammax = Vector2(camera_pos.x + windowSzX - CAMERA_BOUNDARY_SIZE, camera_pos.y + windowSzY - CAMERA_BOUNDARY_SIZE)
 
-    camminy = camera_pos.y + CAMERA_BOUNDARY_SIZE
-    cammaxy = camera_pos.y + windowSzY - CAMERA_BOUNDARY_SIZE
+    desiredmin = Vector2(camera_pos.x + windowSzX * CAMERA_DRAG_PCT_X, camera_pos.y + windowSzY * CAMERA_DRAG_PCT_Y)
+    desiredmax = desiredmin
 
-    if p.pos.x > cammaxx:
-        camera_pos.x += p.pos.x - cammaxx
-    elif p.pos.x < camminx:
-        camera_pos.x -= camminx - p.pos.x
+    if p.pos.x > desiredmax.x:
+        dist = p.pos.x - desiredmax.x
+        if dist < 0.001:
+            camera_pos.x += dist
+        else:
+            camera_pos.x += dt * CAMERA_DRAG_SPEED * dist
+    elif p.pos.x < desiredmin.x:
+        dist = desiredmin.x - p.pos.x
+        if dist < 0.001:
+            camera_pos.x -= dist
+        else:
+            camera_pos.x -= dt * CAMERA_DRAG_SPEED * dist
 
-    if p.pos.y > cammaxy:
-        camera_pos.y += p.pos.y - cammaxy
-    elif p.pos.y < camminy:
-        camera_pos.y -= camminy - p.pos.y
+    if p.pos.y > desiredmax.y:
+        dist = p.pos.y - desiredmax.y
+        if dist < 0.001:
+            camera_pos.y += dist
+        else:
+            camera_pos.y += dt * CAMERA_DRAG_SPEED * dist
+    elif p.pos.y < desiredmin.y:
+        dist = desiredmin.y - p.pos.y
+        if dist < 0.001:
+            camera_pos.y -= dist
+        else:
+            camera_pos.y -= dt * CAMERA_DRAG_SPEED * dist
+
+    if p.pos.x > cammax.x:
+        camera_pos.x = p.pos.x + CAMERA_BOUNDARY_SIZE - windowSzX
+    elif p.pos.x < cammin.x:
+        camera_pos.x = p.pos.x - CAMERA_BOUNDARY_SIZE
+
+    if p.pos.y > cammax.y:
+        camera_pos.y = p.pos.y + CAMERA_BOUNDARY_SIZE - windowSzY
+    elif p.pos.y < cammin.y:
+        camera_pos.y = p.pos.y - CAMERA_BOUNDARY_SIZE
+
+    camera_update = time.time()
 
 while True:
 
@@ -121,3 +159,4 @@ while True:
     processCamera()
 
     render()
+
