@@ -143,6 +143,7 @@ def process(dt):
     for obj in game_objects:
         obj.process(dt)
 
+    p.process(dt)
     processCamera(dt)
 
 last_time = time.time()
@@ -163,8 +164,6 @@ while True:
         continue
 
     p.update(inputhandler)
-    p.gravity()
-    p.jump()
 
     process(dt)
 
