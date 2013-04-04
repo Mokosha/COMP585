@@ -85,6 +85,7 @@ class World:
                 break;
 
     def queryObjects(self, zone):
+        if zone < 0 or zone >= len(self.zones): return []
         return self.zones[zone].objects
 
     def getVisibleZones(self, campos):
