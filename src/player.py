@@ -104,7 +104,7 @@ class Player(AnimatedObject):
         cpts = collider.getPoints()
         canchor = None
         for pt in cpts:
-            behind = all(map(lambda x: (x - pt).dot(n) < 0, [p for p in cpts if not p is pt]))
+            behind = all(map(lambda x: (x - pt).dot(n) <= 0, [p for p in cpts if not p is pt]))
             if behind:
                 canchor = pt
                 break
