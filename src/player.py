@@ -181,12 +181,12 @@ class Player(AnimatedObject):
             # Skip initial upper points
             if sp.upper and lastLowerPoint == None:
                 if nextLowerPoint.pos.x == sp.pos.x:
-                    difference = max(difference, sp.pos.y - nextLowerPoint.y)
+                    difference = max(difference, sp.pos.y - nextLowerPoint.pos.y)
                 lastUpperPoint = sp
                 continue
             elif not sp.upper and lastUpperPoint == None:
                 if nextUpperPoint.pos.x == sp.pos.x:
-                    difference = max(difference, nextUpperPoint.y - sp.pos.y)
+                    difference = max(difference, nextUpperPoint.pos.y - sp.pos.y)
                 lastLowerPoint = sp
                 continue
 
