@@ -161,6 +161,7 @@ class World:
                 zoneObjs = self.queryObjects(zone)
                 self.zones[zone].objects = [x for x in zoneObjs if not x is obj]
                 self.zones[objz].objects.append(obj)
+                obj.zone = objz
 
         # Do collision detection for dynamic objects
         dynamicObjs = filter(lambda x: x.dynamic, objs)
