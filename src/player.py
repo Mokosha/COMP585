@@ -14,6 +14,13 @@ import animation
 from eventmanager import Events, InputManager
 from animatedobject import *
 from utils import *
+from collider import *
+
+# Simple game object that we put in our level definition files to figure out
+# where to load the player in each zone...
+class PlayerStartGizmo(GameObject):
+    def __init__(self):
+        super(PlayerStartGizmo, self).__init__()
 
 class Player(AnimatedObject):
 
@@ -29,13 +36,15 @@ class Player(AnimatedObject):
 
         # Initially start in the middle of the screen.
         self.pos = screen2worldPos(Vector2(0, 0), 0.5 * Vector2(screenSizeX(), screenSizeY()))
-
-
         self.vel = Vector2(0,0)
+        self.acc = Player.ACCELERATION
+
+        self.collidedLastFrame = False
+
         self.velocity = 0
         self.yGravity = 2
         self.yVelocity = 5
-		
+        self.dynamic = True
 	
     def getVelocity(self):
         return self.velocity
@@ -79,10 +88,30 @@ class Player(AnimatedObject):
         if len(inputManager.getCurrentEvents()) == 0:
             self.startAnimation("smooth-idle", time.time())
             self.vel = Vector2(0,0)
+
+    def collide(self, obj):        
+        
+        if isinstance(obj, Collider) and obj.collide(self):
             
+            # !FIXME! Assume that the player aabb corners are within the collider...
+            objx = Vector2(1, 0).rotateDeg(obj.angle)
+            objy = Vector2(0, 1).rotateDeg(obj.angle)
+
+            objw = obj.aabb.maxval.x - obj.aabb.minval.x
+            objh = obj.aabb.maxval.y - obj.aabb.minval.y
+
+            # !FIXME! ... really
+            self.vel = Vector2(0, 0)
+            self.acc = Vector2(0, 0)
+            self.collidedLastFrame = True
+
     def process(self, dt): 
-        super(Player, self).process(dt)
-        self.vel += Player.ACCELERATION * dt		
+        self.vel += self.acc * dt	
         self.pos += self.vel * dt
-        if (self.pos.y < 3.0):
-            self.pos.y = 3.0
+
+        if self.collidedLastFrame:
+            self.acc = Player.ACCELERATION
+
+        self.collidedLastFrame = False
+
+        super(Player, self).process(dt)

@@ -55,9 +55,6 @@ CAMERA_DRAG_PCT_X = 0.3
 CAMERA_DRAG_PCT_Y = 0.4
 CAMERA_DRAG_SPEED = 8.0
 
-# Initialize Player...
-p = player.Player()
-game_objects = [p]
 paused = False
 
 # Initialize input handler
@@ -80,16 +77,14 @@ def render():
 
     world.render(display_surface, camera_pos)
 
-    for obj in game_objects:
-        obj.render(display_surface, camera_pos)
-
     pygame.display.update()
 
-def processCamera(dt):
+def processCamera(world, dt):
 
     global camera_pos
-    global p
     global camera_update
+
+    p = world.getPlayer()
 
     windowSzX = screen2world(window_w)
     windowSzY = screen2world(window_h)
@@ -139,12 +134,7 @@ def processCamera(dt):
 def process(dt):
 
     world.process(camera_pos, dt)
-
-    for obj in game_objects:
-        obj.process(dt)
-
-    p.process(dt)
-    processCamera(dt)
+    processCamera(world, dt)
 
 last_time = time.time()
 
@@ -163,7 +153,7 @@ while True:
     if paused:
         continue
 
-    p.update(inputhandler)
+    world.getPlayer().update(inputhandler)
 
     process(dt)
 

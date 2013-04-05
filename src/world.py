@@ -13,6 +13,7 @@ from utils import *
 from gameobject import *
 from collider import *
 from colorvortex import *
+from player import *
 
 class Zone:
 
@@ -26,9 +27,19 @@ class Zone:
         root = tree.getroot()
         assert root.tag == "zone"
 
+        self.zone = zone
         self.objects = []
+        self.playerStart = None
+        hasPlayerStart = False
         for child in root:
-            self.objects.append( self.loadObject(child) )
+            o = self.loadObject(child)
+            o.zone = zone
+            self.objects.append( o )
+            if isinstance(o, PlayerStartGizmo):
+                hasPlayerStart = True
+
+        if not hasPlayerStart:
+            print "WARNING: Zone " + str(zone) + " has no player start gizmo!"
 
         self.background = pygame.image.load(basename + ".png")
 
@@ -63,11 +74,28 @@ class Zone:
 
         return ColorVortex(Vector2(wx, wy), pygame.Color(colors[0], colors[1], colors[2], 255))
 
+    def loadPlayer(self, node):
+
+        if self.playerStart != None:
+            print "WARNING: Zone " + str(self.zone) + " has multiple player start gizmos!"
+
+        p = PlayerStartGizmo()
+        x = float(node.attrib["x"])
+        y = float(node.attrib["y"])
+        p.pos = Vector2(x, y)
+        self.playerStart = p
+        return p
+
+    def getPlayerStartGizmo(self):
+        return self.playerStart
+
     def loadObject(self, node):
         if node.tag == "collider":
             return self.loadCollider(node)
         elif node.tag == "colorvortex":
             return self.loadColorVortex(node)
+        elif node.tag == "playerstart":
+            return self.loadPlayer(node)
         else:
             raise NameError(node.tag + ": Undefined object")
 
@@ -81,12 +109,29 @@ class World:
 
         zone=0
         self.zones = []
+        self.player = None
+
         while True:
             try:
                 self.zones.append(Zone(levelDir, zone))
                 zone = zone + 1
             except IOError:
                 break;
+
+        for zone in self.zones:
+            ps = zone.getPlayerStartGizmo()
+            if ps != None:
+                self.player = Player()
+                self.player.pos = ps.pos
+                zone.objects.append(self.player)
+                break
+
+        if self.player == None:
+            print "WARNING: Level " + levelname + " has no player start gizmos!"
+            exit(1)
+
+    def getPlayer(self):
+        return self.player
 
     def queryObjects(self, zone):
         if zone < 0 or zone >= len(self.zones): return []
@@ -102,9 +147,27 @@ class World:
         return range(visibleStart, visibleEnd + 1)
 
     def process(self, campos, dt):
+
+        objs = set()
         for zone in self.getVisibleZones(campos):
-            for obj in self.queryObjects(zone):
-                obj.process(dt)
+            objs = objs | set(self.queryObjects(zone))
+
+        for obj in objs:
+            obj.process(dt)
+
+            # Make sure that all objects return to their proper zones...
+            objz = int(obj.pos.x / 10)
+            if objz != obj.zone:
+                zoneObjs = self.queryObjects(zone)
+                self.zones[zone].objects = [x for x in zoneObjs if not x is obj]
+                self.zones[objz].objects.append(obj)
+
+        # Do collision detection for dynamic objects
+        dynamicObjs = filter(lambda x: x.dynamic, objs)
+        collisions = [(x, y) for x in dynamicObjs for y in objs if not x is y]
+        for collision in collisions:
+            a, b = collision
+            a.collide(b)
 
     # !FIXME! This returns all of the objects in the visible zones. It doesn't check
     # to see whether or not the objects are actually visible...
