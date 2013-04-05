@@ -89,9 +89,8 @@ class Player(AnimatedObject):
             self.startAnimation("smooth-idle", time.time())
             self.vel = Vector2(0,0)
 
-    def colliderResponse(self, collider):
+    def colliderResponse(self, collider, n):
 
-        n = (-self.vel).normalized()
         pts = self.aabb.getPoints()
 
         anchor = None
@@ -233,7 +232,7 @@ class Player(AnimatedObject):
     def collide(self, obj):        
         
         if isinstance(obj, Collider) and obj.collide(self):
-            self.colliderResponse(obj)
+            self.colliderResponse(obj, Vector2(0, 1))
 
     def process(self, dt): 
         self.vel += self.acc * dt	
