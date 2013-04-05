@@ -52,6 +52,15 @@ class AnimatedObject(GameObject):
     def isPlaying(self):
         return self.animStartTime > self.animStopTime
 
+    def getCurrentFrame(self):
+        # Figure out frame number
+        frame = FPS * self.animElapsedTime
+
+        if self.currentAnim.loop:
+            frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1
+
+        return frame
+
     def process(self, dt):
         
         # If the animation is stopped, then we should draw at exactly the point at which
@@ -60,14 +69,27 @@ class AnimatedObject(GameObject):
         if self.animStopTime > self.animStartTime:
             self.animElapsedTime = self.animStopTime - self.animStartTime
 
+        # Update AABB
+        self.aabb.removeAll()
+
+        def populateAABB(aabb, limb, frame, pos, ang, offset):
+
+            dummyCam = Vector2(0, 0)
+            aabb.add_point(pos + offset)
+
+            sspos = world2screenPos(dummyCam, pos)
+            for child in limb.children:
+                newsspos, newang = child.computeNewPos(frame, sspos, ang)
+                newpos = screen2worldPos(dummyCam, newsspos)
+                populateAABB(aabb, child, frame, newpos, newang, offset)
+
+        populateAABB(self.aabb, 
+                     self.currentAnim.limb, 
+                     self.getCurrentFrame(), 
+                     Vector2(0, 0), 0, 
+                     self.pos)
+
     def render(self, surface, campos):
-
-        # Figure out frame number
-        frame = FPS * self.animElapsedTime
-
-        if self.currentAnim.loop:
-            frame = (frame % (self.currentAnim.getMaxFrame() - 1)) + 1
-
+        super(AnimatedObject, self).render(surface, campos)
         renderpos = world2screenPos(campos, self.pos)
-        self.currentAnim.draw(frame, surface, renderpos, self.color)
-        
+        self.currentAnim.draw(self.getCurrentFrame(), surface, renderpos, self.color)
