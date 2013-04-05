@@ -29,6 +29,38 @@ def polar2cart(angle, dist):
 def clamp(a, low, high):
     return max(low, min(a, high))
 
+def lineSegIntersect(l1, l2):
+    
+    # Parametric representation
+    A, B = l1[0], l1[1]
+    C, D = l2[0], l2[1]
+
+    BmA = B - A
+    BmA3 = Vector3(BmA.x, BmA.y, 0)
+
+    DmC = D - C
+    DmC3 = Vector3(DmC.x, DmC.y, 0)
+
+    A3 = Vector3(A.x, A.y, 0)
+    B3 = Vector3(B.x, B.y, 0)
+    C3 = Vector3(C.x, C.y, 0)
+    D3 = Vector3(D.x, D.y, 0)
+
+    collision = True
+    if BmA3.cross(D3 - A3).dot(BmA3.cross(C3 - A3)) >= 0:
+        collision = False
+
+    if DmC3.cross(A3 - C3).dot(DmC3.cross(B3 - C3)) >= 0:
+        collision = False
+
+    return collision
+#    if not collision:
+#        return None
+#
+#    DmC.normalize()
+#    LHS = C + (A - C).dot(DmC) * DmC - A
+#    RHS = B - A - (B - A).dot(DmC) * DmC
+
 #
 # Logistics
 #
