@@ -109,7 +109,7 @@ class AABoundingBox:
 
 class GameObject(object):
 
-    DEBUG = True
+    DEBUG = False
 
     def getpos(self):
         return self.__pos
