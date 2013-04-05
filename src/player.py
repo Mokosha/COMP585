@@ -89,21 +89,151 @@ class Player(AnimatedObject):
             self.startAnimation("smooth-idle", time.time())
             self.vel = Vector2(0,0)
 
+    def colliderResponse(self, collider):
+
+        n = (-self.vel).normalized()
+        pts = self.aabb.getPoints()
+
+        anchor = None
+        for pt in self.aabb.getPoints():
+
+            behind = any(map(lambda x: (x - pt).dot(n) < 0, pts))
+            if not behind:
+                anchor = pt
+                break
+
+        cpts = collider.getPoints()
+        canchor = None
+        for pt in cpts:
+            behind = all(map(lambda x: (x - pt).dot(n) < 0, [p for p in cpts if not p is pt]))
+            if behind:
+                canchor = pt
+                break
+
+        # !FIXME! This assumes that the player and collider are both OBBs
+        lowerShell = []
+        for i in range(len(pts)):
+            A = pts[i]
+            B = pts[(i+1) % len(pts)]
+            C = pts[(i+2) % len(pts)]
+
+            if B is anchor:
+                lowerShell = [A, B, C]
+                break
+
+        upperShell = []
+        for i in range(len(cpts)):
+            A = cpts[i]
+            B = cpts[(i+1) % len(cpts)]
+            C = cpts[(i+2) % len(cpts)]
+
+            if B is canchor:
+                upperShell = [A, B, C]
+                break
+
+        # convert both shells to new coordinate system
+        yAxis = n
+        xAxis = n.rotateDeg(-90)
+
+        lowerShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), lowerShell)
+        upperShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), upperShell)
+
+        lowerShell = sorted(lowerShell, key=lambda v: v.x)
+        upperShell = sorted(upperShell, key=lambda v: v.x)
+
+        class ShellPt:
+            def __init__(self, pos, upper):
+                self.pos = pos
+                self.upper = upper
+
+        # Merge sort...
+        shellPts = []
+        i, j = 0, 0
+        while i < len(lowerShell) and j < len(upperShell):
+            if lowerShell[i].x < upperShell[j].x:
+                shellPts.append(ShellPt(lowerShell[i], False))
+                i += 1
+            else:
+                shellPts.append(ShellPt(upperShell[j], True))
+                j += 1
+
+        if i < len(lowerShell):
+            shellPts += map(lambda x: ShellPt(x, False), lowerShell[i:])
+
+        if j < len(upperShell):
+            shellPts += map(lambda x: ShellPt(x, True), upperShell[j:])
+
+        # Search for largest difference
+        difference = 0.0
+        lastUpperPoint = None
+        lastLowerPoint = None
+
+        for i in range(len(shellPts)):
+
+            sp = shellPts[i]
+            nextUpperPoint = next((pt for pt in shellPts[i:] if pt.upper), None)
+            if not nextUpperPoint:
+                break
+
+            nextLowerPoint = next((pt for pt in shellPts[i:] if not pt.upper), None)
+            if not nextLowerPoint:
+                break
+
+            # Skip initial upper points
+            if sp.upper and lastLowerPoint == None:
+                if nextLowerPoint.pos.x == sp.pos.x:
+                    difference = max(difference, sp.pos.y - nextLowerPoint.y)
+                lastUpperPoint = sp
+                continue
+            elif not sp.upper and lastUpperPoint == None:
+                if nextUpperPoint.pos.x == sp.pos.x:
+                    difference = max(difference, nextUpperPoint.y - sp.pos.y)
+                lastLowerPoint = sp
+                continue
+
+            ly = sp.pos.y
+            uy = ly
+
+            if not sp.upper:
+
+                # Calculate the line going through the upper points...
+                lup = lastUpperPoint.pos
+                nup = nextUpperPoint.pos
+                if lup.y == nup.y:
+                    uy = max(lup.y, nup.y)
+                else:
+                    m = (nup.y - lup.y) / (nup.x - lup.x)
+                    b = lup.y - m * lup.x
+                    uy = m * sp.pos.x + b
+
+            # Last lower point exists here...
+            else: #sp.upper
+
+                llp = lastLowerPoint.pos
+                nlp = nextLowerPoint.pos
+
+                if llp.y == nlp.y:
+                    ly = min(llp.y, nlp.y)
+                else:
+                    m = (nlp.y - llp.y) / (nlp.x - llp.x)
+                    b = llp.y - m * llp.x
+                    ly = m * sp.pos.x + b
+
+            d = uy - ly
+            if d > difference: difference = d
+
+        # End for loop
+
+        # First move the player out of collision.
+        self.pos += n * difference
+
+        # Then, set the component of his velocity to be zero in this component...
+        self.vel = Vector2(0,0)
+
     def collide(self, obj):        
         
         if isinstance(obj, Collider) and obj.collide(self):
-            
-            # !FIXME! Assume that the player aabb corners are within the collider...
-            objx = Vector2(1, 0).rotateDeg(obj.angle)
-            objy = Vector2(0, 1).rotateDeg(obj.angle)
-
-            objw = obj.aabb.maxval.x - obj.aabb.minval.x
-            objh = obj.aabb.maxval.y - obj.aabb.minval.y
-
-            # !FIXME! ... really
-            self.vel = Vector2(0, 0)
-            self.acc = Vector2(0, 0)
-            self.collidedLastFrame = True
+            self.colliderResponse(obj)
 
     def process(self, dt): 
         self.vel += self.acc * dt	
