@@ -4,7 +4,7 @@
     <box x="1.0" y="1.8" width="2.0" height="0.1" />
   </collider>
   <collider type="box">
-    <box x="3.2" y="1.62" width="2.5" height="0.1" angle="-6.0"/>
+    <box x="3.2" y="1.63" width="2.5" height="0.1" angle="-8.0"/>
   </collider>
   <collider type="box">
     <box x="5.7" y="1.38" width="2.5" height="0.1" angle="-3.0"/>
