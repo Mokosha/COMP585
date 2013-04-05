@@ -25,7 +25,6 @@ class Collider(GameObject):
         self.aabb.removeAll()
         self.aabb.add_point(pos - diag)
         self.aabb.add_point(pos + diag)
-        self.colliding = False
 
     def getPoints(self):
         pts = self.aabb.getPoints()
@@ -46,5 +45,4 @@ class Collider(GameObject):
         pts = map(lambda x: x.rotateDeg(-self.angle), pts)
         pts = map(lambda x: self.pos + x, pts)
 
-        self.colliding = self.aabb.collidePolygon(pts)
-        return self.colliding
+        return self.aabb.collidePolygon(pts)
