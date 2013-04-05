@@ -25,7 +25,7 @@ class PlayerStartGizmo(GameObject):
 class Player(AnimatedObject):
 
     MOVE_SPEED_X = 2.0
-    INITIAL_JUMP = 10.0
+    INITIAL_JUMP = 4.0
     ACCELERATION = Vector2(0,-9.8)
 
     def __init__(self):
@@ -41,17 +41,8 @@ class Player(AnimatedObject):
 
         self.collidedLastFrame = False
 
-        self.velocity = 0
-        self.yGravity = 2
-        self.yVelocity = 5
         self.dynamic = True
 	
-    def getVelocity(self):
-        return self.velocity
-	
-    def setVelocity(self, value):
-        self.velocity = value
-
     def changeColor(self,toChangeColor):
 	myLimb = self.currentAnim.limb
         self.color = self.currentColor
@@ -59,15 +50,16 @@ class Player(AnimatedObject):
     def update(self, inputManager):
 
         if inputManager.isCurrentEvent(Events.MOVE_LEFT):
-            self.vel = Vector2(-Player.MOVE_SPEED_X,0)
+            self.vel.x = -Player.MOVE_SPEED_X
             self.startAnimation("walk", time.time())
 
         if inputManager.isCurrentEvent(Events.MOVE_RIGHT):
-            self.vel = Vector2(Player.MOVE_SPEED_X,0)
+            self.vel.x = Player.MOVE_SPEED_X
             self.startAnimation("walk", time.time())
 
         if inputManager.isCurrentEvent(Events.JUMP):
-            self.vel = Vector2(0, Player.INITIAL_JUMP)
+            if self.collidedLastFrame:
+                self.vel = Vector2(0, Player.INITIAL_JUMP)
 
         if inputManager.debounceEvent(Events.CHANGE_COLOR_1):
             self.currentColor.r = min(self.currentColor.r + 128, 255)
@@ -87,7 +79,7 @@ class Player(AnimatedObject):
                 
         if len(inputManager.getCurrentEvents()) == 0:
             self.startAnimation("smooth-idle", time.time())
-            self.vel = Vector2(0,0)
+            self.vel.x = 0
 
     def colliderResponse(self, collider, n):
 
@@ -233,6 +225,7 @@ class Player(AnimatedObject):
         
         if isinstance(obj, Collider) and obj.collide(self):
             self.colliderResponse(obj, Vector2(0, 1))
+            self.collidedLastFrame = True
 
     def process(self, dt): 
         self.vel += self.acc * dt	
