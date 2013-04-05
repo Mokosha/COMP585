@@ -16,8 +16,6 @@ from gameobject import *
 from utils import *
 
 class Collider(GameObject):
-    DEBUG = False
-    
     def __init__(self, pos, width, height, angle):
         super(Collider, self).__init__()
         self.pos = pos
@@ -28,6 +26,15 @@ class Collider(GameObject):
         self.aabb.add_point(pos - diag)
         self.aabb.add_point(pos + diag)
         self.colliding = False
+
+    def getPoints(self):
+        pts = self.aabb.getPoints()
+
+        pts = map(lambda x: x - self.pos, pts)
+        pts = map(lambda x: x.rotateDeg(self.angle), pts)
+        pts = map(lambda x: self.pos + x, pts)
+
+        return pts
 
     def collide(self, obj):
         
