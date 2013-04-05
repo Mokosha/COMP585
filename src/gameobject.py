@@ -15,11 +15,15 @@
 import pygame, sys
 
 from lib.euclid import *
+from utils import *
 
 class AABoundingBox:
     def __init__(self):
+        self.removeAll()
+
+    def removeAll(self):
         self.minval = Vector2(sys.float_info.max, sys.float_info.max)
-        self.maxval = Vector2(-sys.float_info.max, -sys.float_info.max)
+        self.maxval = Vector2(-sys.float_info.max, -sys.float_info.max)        
 
     def maxx(self):
         return self.maxval.x
@@ -62,26 +66,50 @@ class AABoundingBox:
 
     def getPoints(self):
         pts = [self.minval]
-        pts.append(Vector2(self.minval.x, self.maxval.y))
-        pts.append(self.maxval)
         pts.append(Vector2(self.maxval.x, self.minval.y))
+        pts.append(self.maxval)
+        pts.append(Vector2(self.minval.x, self.maxval.y))
         return pts
 
-    # Assume that the polygon is simply a list of vertices...
+    # Assume that the polygon is simply a list of vertices, and simply
+    # do a SAT on it...
     def collidePolygon(self, polygon):
-        
-        # Check collision against each axis
-        collisionX = False
-        collisionY = False
-        for point in polygon:
-            if point.x >= self.minval.x and point.x <= self.maxval.x:
-                collisionX = True
-            if point.y >= self.minval.y and point.y <= self.maxval.y:
-                collisionY = True
 
-        return collisionX and collisionY
+        if len(polygon) == 0:
+            return False
+
+        if self.collidePoint(polygon[0]):
+            return True
+
+        if len(polygon) == 1:
+            return False
+
+        def testSides(polyA, polyB):
+
+            pt1 = polyA[0]
+            for i in range(1, len(polyA)+1):
+                idx = i % len(polyA)
+                pt2 = polyA[idx]
+
+                # Project all points to the line perpendicular to this edge
+                yAxis = (pt1 - pt2).normalized()
+                xAxis = yAxis.rotateDeg(-90)
+
+                trpts = map(lambda x: x - pt2, polyB)
+                if all(map(lambda x: x.dot(xAxis) < 0, trpts)):
+                    return False
+
+                pt1 = pt2
+
+            return True
+
+        boxpts = self.getPoints()
+        collision = testSides(polygon, boxpts) and testSides(boxpts, polygon)
+        return collision
 
 class GameObject(object):
+
+    DEBUG = True
 
     def getpos(self):
         return self.__pos
@@ -98,10 +126,25 @@ class GameObject(object):
         super(GameObject, self).__init__()
         self.pos = Vector2(0, 0)
         self.angle = 0
+
         self.aabb = AABoundingBox()
+        self.aabb.add_point(self.pos)
+
+        self.dynamic = False
+        self.zone = -1
 
     def render(self, surface, campos):
-        pass
+        if GameObject.DEBUG:
+
+            pts = self.aabb.getPoints()
+
+            pts = map(lambda x: x - self.pos, pts)
+            pts = map(lambda x: x.rotateDeg(self.angle), pts)
+            pts = map(lambda x: x + self.pos, pts)
+            pts = map(lambda x: world2screenPos(campos, x), pts)
+
+            c = pygame.Color(255, 128, 128, 255)
+            pygame.draw.polygon(surface, c, pts, 2)
 
     def accept(self, event):
         pass
@@ -109,5 +152,5 @@ class GameObject(object):
     def process(self, dt):
         pass
 
-    def collide(self, box):
-        return self.aabb.collide(box)
+    def collide(self, obj):
+        return False

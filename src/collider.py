@@ -24,29 +24,20 @@ class Collider(GameObject):
         self.angle = angle
         
         diag = Vector2(width * 0.5, height * 0.5)
+        self.aabb.removeAll()
         self.aabb.add_point(pos - diag)
         self.aabb.add_point(pos + diag)
+        self.colliding = False
 
-    def render(self, surface, campos):
-        if Collider.DEBUG:
-            pts = self.aabb.getPoints()
-
-            pts = map(lambda x: x - self.pos, pts)
-            pts = map(lambda x: x.rotateDeg(self.angle), pts)
-            pts = map(lambda x: x + self.pos, pts)
-            pts = map(lambda x: world2screenPos(campos, x), pts)
-
-            c = pygame.Color(255, 128, 128, 255)
-            pygame.draw.polygon(surface, c, pts, 2)
-
-    def testAgainst(self, collider):
+    def collide(self, obj):
         
         # Rotate all the points of the colliders so that
         # this collider lines up with the x/y axes
-        pts = collider.getPoints()
+        pts = obj.aabb.getPoints()
 
         pts = map(lambda x: x - self.pos, pts)
         pts = map(lambda x: x.rotateDeg(-self.angle), pts)
         pts = map(lambda x: self.pos + x, pts)
 
-        return self.aabb.collidePolygon(pts)
+        self.colliding = self.aabb.collidePolygon(pts)
+        return self.colliding
