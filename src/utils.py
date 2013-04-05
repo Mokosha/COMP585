@@ -46,20 +46,13 @@ def lineSegIntersect(l1, l2):
     C3 = Vector3(C.x, C.y, 0)
     D3 = Vector3(D.x, D.y, 0)
 
-    collision = True
     if BmA3.cross(D3 - A3).dot(BmA3.cross(C3 - A3)) >= 0:
-        collision = False
+        return False
 
     if DmC3.cross(A3 - C3).dot(DmC3.cross(B3 - C3)) >= 0:
-        collision = False
+        return False
 
-    return collision
-#    if not collision:
-#        return None
-#
-#    DmC.normalize()
-#    LHS = C + (A - C).dot(DmC) * DmC - A
-#    RHS = B - A - (B - A).dot(DmC) * DmC
+    return True
 
 #
 # Logistics
