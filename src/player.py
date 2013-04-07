@@ -126,11 +126,19 @@ class Player(AnimatedObject):
         yAxis = n
         xAxis = n.rotateDeg(-90)
 
-        lowerShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), lowerShell)
-        upperShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), upperShell)
+        def monotonic(shell):
+            for i in range(len(shell)-1):
+                if shell[i].x > shell[i+1].x:
+                    return False
+            return True
 
-        lowerShell = sorted(lowerShell, key=lambda v: v.x)
-        upperShell = sorted(upperShell, key=lambda v: v.x)
+        lowerShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), lowerShell)
+        if not monotonic(lowerShell):
+            lowerShell = list(reversed(lowerShell))
+
+        upperShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), upperShell)
+        if not monotonic(upperShell):
+            upperShell = list(reversed(upperShell))
 
         class ShellPt:
             def __init__(self, pos, upper):
