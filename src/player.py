@@ -224,8 +224,20 @@ class Player(AnimatedObject):
     def collide(self, obj):        
         
         if isinstance(obj, Collider) and obj.collide(self):
-            self.colliderResponse(obj, Vector2(0, 1))
+
+            # Figure out the direction at which we want to push the player out of
+            # the collider. 
+            n = Vector2(0, 1).rotateDeg(obj.angle)
+            horiz = abs(n.dot(Vector2(0, 1))) < abs(n.dot(Vector2(1, 0)))
+
+            direction = Vector2(0, 1 if self.vel.y <= 0 else -1)
+            if horiz:
+                direction = Vector2(1 if self.vel.x <= 0 else -1, 0)
+
+            self.colliderResponse(obj, direction)
             self.collidedLastFrame = True
+
+            self.resetAABB()
 
     def process(self, dt): 
         self.vel += self.acc * dt	
