@@ -61,13 +61,7 @@ class AnimatedObject(GameObject):
 
         return frame
 
-    def process(self, dt):
-        
-        # If the animation is stopped, then we should draw at exactly the point at which
-        # it was stopped...
-        self.animElapsedTime += dt
-        if self.animStopTime > self.animStartTime:
-            self.animElapsedTime = self.animStopTime - self.animStartTime
+    def resetAABB(self):
 
         # Update AABB
         self.aabb.removeAll()
@@ -88,6 +82,17 @@ class AnimatedObject(GameObject):
                      self.getCurrentFrame(), 
                      Vector2(0, 0), 0, 
                      self.pos)
+
+
+    def process(self, dt):
+
+        # If the animation is stopped, then we should draw at exactly the point at which
+        # it was stopped...
+        self.animElapsedTime += dt
+        if self.animStopTime > self.animStartTime:
+            self.animElapsedTime = self.animStopTime - self.animStartTime
+
+        self.resetAABB()
 
     def render(self, surface, campos):
         super(AnimatedObject, self).render(surface, campos)
