@@ -1,39 +1,32 @@
-<limb>
+<limb name="main">
   <ang>
-    <keyframe interpol="linear" value="0.0">
+    <keyframe interpol="smoothstep" value="0">
       <key frame="1" value="0"/>
       <key frame="10" value="0.0"/>
       <key frame="20" value="0.0"/>
       <key frame="21" value="0.0"/>
       <key frame="30" value="0.0"/>
       <key frame="40" value="0.0"/>
-      <key frame="50" value="0.0"/>
-      <key frame="60" value="0.0"/>
     </keyframe>
   </ang>
   <dist>
-    <keyframe interpol="linear" value="0.0">
+    <keyframe interpol="smoothstep" value="0">
       <key frame="1" value="0"/>
       <key frame="10" value="0.0"/>
       <key frame="20" value="0.0"/>
       <key frame="21" value="0.0"/>
       <key frame="30" value="0.0"/>
       <key frame="40" value="0.0"/>
-      <key frame="50" value="0.0"/>
-      <key frame="60" value="0.0"/>
     </keyframe>
   </dist>
   <pos>
-    <keyframe interpol="linear" value="[0.0, 0.0]">
+    <keyframe interpol="smoothstep" value="[0, 0]">
       <key frame="1" value="[0, 0]"/>
       <key frame="10" value="[0.0, 0.0]"/>
       <key frame="20" value="[0.0, 0.0]"/>
       <key frame="21" value="[0.0, 0.0]"/>
       <key frame="30" value="[0.0, 0.0]"/>
       <key frame="40" value="[0.0, 0.0]"/>
-      <key frame="50" value="[0.0, 0.0]"/>
-      <key frame="60" value="[0.0, 0.0]"/>
-
     </keyframe>
   </pos>
   <shape>
@@ -46,8 +39,6 @@
       <key frame="21" value="test"/>
       <key frame="30" value="test"/>
       <key frame="40" value="test"/>
-      <key frame="50" value="test"/>
-      <key frame="60" value="test"/>
     </keyframe>
     </text>
     <flip>
@@ -58,8 +49,6 @@
       <key frame="21" value="True"/>
       <key frame="30" value="True"/>
       <key frame="40" value="True"/>
-      <key frame="50" value="True"/>
-      <key frame="60" value="True"/>
     </keyframe>
     </flip>
     <caps>
@@ -70,8 +59,6 @@
       <key frame="21" value="True"/>
       <key frame="30" value="True"/>
       <key frame="40" value="True"/>
-      <key frame="50" value="True"/>
-      <key frame="60" value="True"/>
     </keyframe>
     </caps>
     <shape>
@@ -82,8 +69,6 @@
       <key frame="21" value="line"/>
       <key frame="30" value="line"/>
       <key frame="40" value="line"/>
-      <key frame="50" value="line"/>
-      <key frame="60" value="line"/>
     </keyframe>
     </shape>
     <file>
@@ -94,8 +79,6 @@
       <key frame="21" value="splogoicon.png"/>
       <key frame="30" value="splogoicon.png"/>
       <key frame="40" value="splogoicon.png"/>
-      <key frame="50" value="splogoicon.png"/>
-      <key frame="60" value="splogoicon.png"/>
     </keyframe>
     </file>
     <fill>
@@ -106,108 +89,90 @@
       <key frame="21" value="False"/>
       <key frame="30" value="False"/>
       <key frame="40" value="False"/>
-      <key frame="50" value="False"/>
-      <key frame="60" value="False"/>
     </keyframe>
     </fill>
     </texture>
   </shape>
   <width>
-    <keyframe interpol="linear" value="4.0">
+    <keyframe interpol="smoothstep" value="4">
       <key frame="1" value="4"/>
       <key frame="10" value="4.0"/>
       <key frame="20" value="4.0"/>
       <key frame="21" value="4.0"/>
       <key frame="30" value="4.0"/>
       <key frame="40" value="4.0"/>
-      <key frame="50" value="4.0"/>
-      <key frame="60" value="4.0"/>
     </keyframe>
   </width>
   <colour>
-    <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+    <keyframe interpol="smoothstep" value="[0, 0, 0]">
       <key frame="1" value="[0, 0, 0]"/>
       <key frame="10" value="[0.0, 0.0, 0.0]"/>
       <key frame="20" value="[0.0, 0.0, 0.0]"/>
       <key frame="21" value="[0.0, 0.0, 0.0]"/>
       <key frame="30" value="[0.0, 0.0, 0.0]"/>
       <key frame="40" value="[0.0, 0.0, 0.0]"/>
-      <key frame="50" value="[0.0, 0.0, 0.0]"/>
-      <key frame="60" value="[0.0, 0.0, 0.0]"/>
     </keyframe>
   </colour>
   <static>
-    <keyframe interpol="linear" value="1.0">
+    <keyframe interpol="smoothstep" value="True">
       <key frame="1" value="True"/>
       <key frame="10" value="1.0"/>
       <key frame="20" value="1.0"/>
       <key frame="21" value="1.0"/>
       <key frame="30" value="1.0"/>
       <key frame="40" value="1.0"/>
-      <key frame="50" value="1.0"/>
-      <key frame="60" value="True"/>
     </keyframe>
   </static>
   <hidden>
-    <keyframe interpol="linear" value="1.0">
+    <keyframe interpol="smoothstep" value="True">
       <key frame="1" value="True"/>
       <key frame="10" value="1.0"/>
       <key frame="20" value="1.0"/>
       <key frame="21" value="1.0"/>
       <key frame="30" value="1.0"/>
       <key frame="40" value="1.0"/>
-      <key frame="50" value="1.0"/>
-      <key frame="60" value="True"/>
     </keyframe>
   </hidden>
   <cartesian>
-    <keyframe interpol="linear" value="1.0">
+    <keyframe interpol="smoothstep" value="True">
       <key frame="1" value="True"/>
       <key frame="10" value="1.0"/>
       <key frame="20" value="1.0"/>
       <key frame="21" value="1.0"/>
       <key frame="30" value="1.0"/>
       <key frame="40" value="1.0"/>
-      <key frame="50" value="1.0"/>
-      <key frame="60" value="True"/>
     </keyframe>
   </cartesian>
   <children>
-    <limb>
+    <limb name="root">
       <ang>
-        <keyframe interpol="linear" value="90.0">
+        <keyframe interpol="smoothstep" value="90">
           <key frame="1" value="90"/>
           <key frame="10" value="90.0"/>
           <key frame="20" value="90.0"/>
           <key frame="21" value="90.0"/>
           <key frame="30" value="90.0"/>
           <key frame="40" value="90.0"/>
-          <key frame="50" value="90.0"/>
-          <key frame="60" value="90"/>
         </keyframe>
       </ang>
       <dist>
-        <keyframe interpol="linear" value="0.0">
+        <keyframe interpol="smoothstep" value="0">
           <key frame="1" value="0"/>
           <key frame="10" value="0.0"/>
           <key frame="20" value="0.0"/>
           <key frame="21" value="0.0"/>
           <key frame="30" value="0.0"/>
           <key frame="40" value="0.0"/>
-          <key frame="50" value="0.0"/>
-          <key frame="60" value="0"/>
         </keyframe>
       </dist>
       <pos>
-        <keyframe interpol="linear" value="[0.0, 0.0]">
+        <keyframe interpol="smoothstep" value="[0.0, 0.0]">
           <key frame="1" value="[0.0, 0.0]"/>
           <key frame="10" value="[0.0, 0.0]"/>
           <key frame="20" value="[0.0, 0.0]"/>
           <key frame="21" value="[0.0, 0.0]"/>
           <key frame="30" value="[0.0, 0.0]"/>
           <key frame="40" value="[0.0, 0.0]"/>
-          <key frame="50" value="[0.0, 0.0]"/>
-          <key frame="60" value="[0.0, 0.0]"/>
         </keyframe>
       </pos>
       <shape>
@@ -220,8 +185,6 @@
           <key frame="21" value="test"/>
           <key frame="30" value="test"/>
           <key frame="40" value="test"/>
-          <key frame="50" value="test"/>
-          <key frame="60" value="test"/>
         </keyframe>
         </text>
         <flip>
@@ -232,8 +195,6 @@
           <key frame="21" value="True"/>
           <key frame="30" value="True"/>
           <key frame="40" value="True"/>
-          <key frame="50" value="True"/>
-          <key frame="60" value="True"/>
         </keyframe>
         </flip>
         <caps>
@@ -244,8 +205,6 @@
           <key frame="21" value="True"/>
           <key frame="30" value="True"/>
           <key frame="40" value="True"/>
-          <key frame="50" value="True"/>
-          <key frame="60" value="True"/>
         </keyframe>
         </caps>
         <shape>
@@ -256,8 +215,6 @@
           <key frame="21" value="line"/>
           <key frame="30" value="line"/>
           <key frame="40" value="line"/>
-          <key frame="50" value="line"/>
-          <key frame="60" value="line"/>
         </keyframe>
         </shape>
         <file>
@@ -268,8 +225,6 @@
           <key frame="21" value="splogoicon.png"/>
           <key frame="30" value="splogoicon.png"/>
           <key frame="40" value="splogoicon.png"/>
-          <key frame="50" value="splogoicon.png"/>
-          <key frame="60" value="splogoicon.png"/>
         </keyframe>
         </file>
         <fill>
@@ -280,108 +235,90 @@
           <key frame="21" value="False"/>
           <key frame="30" value="False"/>
           <key frame="40" value="False"/>
-          <key frame="50" value="False"/>
-          <key frame="60" value="False"/>
         </keyframe>
         </fill>
         </texture>
       </shape>
       <width>
-        <keyframe interpol="linear" value="4.0">
+        <keyframe interpol="smoothstep" value="4">
           <key frame="1" value="4"/>
           <key frame="10" value="4.0"/>
           <key frame="20" value="4.0"/>
           <key frame="21" value="4.0"/>
           <key frame="30" value="4.0"/>
           <key frame="40" value="4.0"/>
-          <key frame="50" value="4.0"/>
-          <key frame="60" value="4"/>
         </keyframe>
       </width>
       <colour>
-        <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+        <keyframe interpol="smoothstep" value="[0, 0, 0]">
           <key frame="1" value="[0, 0, 0]"/>
           <key frame="10" value="[0.0, 0.0, 0.0]"/>
           <key frame="20" value="[0.0, 0.0, 0.0]"/>
           <key frame="21" value="[0.0, 0.0, 0.0]"/>
           <key frame="30" value="[0.0, 0.0, 0.0]"/>
           <key frame="40" value="[0.0, 0.0, 0.0]"/>
-          <key frame="50" value="[0.0, 0.0, 0.0]"/>
-          <key frame="60" value="[0, 0, 0]"/>
         </keyframe>
       </colour>
       <static>
-        <keyframe interpol="const" value="False">
+        <keyframe interpol="smoothstep" value="False">
           <key frame="1" value="False"/>
           <key frame="10" value="False"/>
           <key frame="20" value="False"/>
           <key frame="21" value="False"/>
           <key frame="30" value="False"/>
           <key frame="40" value="False"/>
-          <key frame="50" value="False"/>
-          <key frame="60" value="False"/>
         </keyframe>
       </static>
       <hidden>
-        <keyframe interpol="const" value="True">
+        <keyframe interpol="smoothstep" value="True">
           <key frame="1" value="True"/>
           <key frame="10" value="True"/>
           <key frame="20" value="True"/>
           <key frame="21" value="True"/>
           <key frame="30" value="True"/>
           <key frame="40" value="True"/>
-          <key frame="50" value="True"/>
-          <key frame="60" value="True"/>
         </keyframe>
       </hidden>
       <cartesian>
-        <keyframe interpol="const" value="True">
+        <keyframe interpol="smoothstep" value="True">
           <key frame="1" value="True"/>
           <key frame="10" value="True"/>
           <key frame="20" value="True"/>
           <key frame="21" value="True"/>
           <key frame="30" value="True"/>
           <key frame="40" value="True"/>
-          <key frame="50" value="True"/>
-          <key frame="60" value="True"/>
         </keyframe>
       </cartesian>
       <children>
-        <limb>
+        <limb name="torso">
           <ang>
-            <keyframe interpol="linear" value="270.0">
+            <keyframe interpol="smoothstep" value="270">
               <key frame="1" value="270"/>
               <key frame="10" value="270.0"/>
               <key frame="20" value="270.0"/>
               <key frame="21" value="270.0"/>
               <key frame="30" value="270.0"/>
               <key frame="40" value="270.0"/>
-              <key frame="50" value="270.0"/>
-              <key frame="60" value="270"/>
             </keyframe>
           </ang>
           <dist>
-            <keyframe interpol="linear" value="60.0">
+            <keyframe interpol="smoothstep" value="60">
               <key frame="1" value="60"/>
               <key frame="10" value="60.0"/>
               <key frame="20" value="60.0"/>
               <key frame="21" value="60.0"/>
               <key frame="30" value="60.0"/>
               <key frame="40" value="60.0"/>
-              <key frame="50" value="60.0"/>
-              <key frame="60" value="60"/>
             </keyframe>
           </dist>
           <pos>
-            <keyframe interpol="linear" value="[0.0, 0.0]">
+            <keyframe interpol="smoothstep" value="[0, 0]">
               <key frame="1" value="[0, 0]"/>
               <key frame="10" value="[0.0, 0.0]"/>
               <key frame="20" value="[0.0, 0.0]"/>
               <key frame="21" value="[0.0, 0.0]"/>
               <key frame="30" value="[0.0, 0.0]"/>
               <key frame="40" value="[0.0, 0.0]"/>
-              <key frame="50" value="[0.0, 0.0]"/>
-              <key frame="60" value="[0, 0]"/>
             </keyframe>
           </pos>
           <shape>
@@ -394,8 +331,6 @@
               <key frame="21" value="test"/>
               <key frame="30" value="test"/>
               <key frame="40" value="test"/>
-              <key frame="50" value="test"/>
-              <key frame="60" value="test"/>
             </keyframe>
             </text>
             <flip>
@@ -406,8 +341,6 @@
               <key frame="21" value="True"/>
               <key frame="30" value="True"/>
               <key frame="40" value="True"/>
-              <key frame="50" value="True"/>
-              <key frame="60" value="True"/>
             </keyframe>
             </flip>
             <caps>
@@ -418,8 +351,6 @@
               <key frame="21" value="True"/>
               <key frame="30" value="True"/>
               <key frame="40" value="True"/>
-              <key frame="50" value="True"/>
-              <key frame="60" value="True"/>
             </keyframe>
             </caps>
             <shape>
@@ -430,8 +361,6 @@
               <key frame="21" value="line"/>
               <key frame="30" value="line"/>
               <key frame="40" value="line"/>
-              <key frame="50" value="line"/>
-              <key frame="60" value="line"/>
             </keyframe>
             </shape>
             <file>
@@ -442,8 +371,6 @@
               <key frame="21" value="splogoicon.png"/>
               <key frame="30" value="splogoicon.png"/>
               <key frame="40" value="splogoicon.png"/>
-              <key frame="50" value="splogoicon.png"/>
-              <key frame="60" value="splogoicon.png"/>
             </keyframe>
             </file>
             <fill>
@@ -454,108 +381,90 @@
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
             </fill>
             </texture>
           </shape>
           <width>
-            <keyframe interpol="linear" value="4.0">
+            <keyframe interpol="smoothstep" value="4">
               <key frame="1" value="4"/>
               <key frame="10" value="4.0"/>
               <key frame="20" value="4.0"/>
               <key frame="21" value="4.0"/>
               <key frame="30" value="4.0"/>
               <key frame="40" value="4.0"/>
-              <key frame="50" value="4.0"/>
-              <key frame="60" value="4"/>
             </keyframe>
           </width>
           <colour>
-            <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+            <keyframe interpol="smoothstep" value="[0, 0, 0]">
               <key frame="1" value="[0, 0, 0]"/>
               <key frame="10" value="[0.0, 0.0, 0.0]"/>
               <key frame="20" value="[0.0, 0.0, 0.0]"/>
               <key frame="21" value="[0.0, 0.0, 0.0]"/>
               <key frame="30" value="[0.0, 0.0, 0.0]"/>
               <key frame="40" value="[0.0, 0.0, 0.0]"/>
-              <key frame="50" value="[0.0, 0.0, 0.0]"/>
-              <key frame="60" value="[0, 0, 0]"/>
             </keyframe>
           </colour>
           <static>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </static>
           <hidden>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </hidden>
           <cartesian>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </cartesian>
           <children>
-            <limb>
+            <limb name="head">
               <ang>
-                <keyframe interpol="linear" value="0.0">
+                <keyframe interpol="smoothstep" value="0">
                   <key frame="1" value="0"/>
                   <key frame="10" value="0.0"/>
                   <key frame="20" value="0.0"/>
                   <key frame="21" value="0.0"/>
                   <key frame="30" value="0.0"/>
                   <key frame="40" value="0.0"/>
-                  <key frame="50" value="0.0"/>
-                  <key frame="60" value="0"/>
                 </keyframe>
               </ang>
               <dist>
-                <keyframe interpol="linear" value="36.0">
+                <keyframe interpol="smoothstep" value="36">
                   <key frame="1" value="36"/>
                   <key frame="10" value="36.0"/>
                   <key frame="20" value="36.0"/>
                   <key frame="21" value="36.0"/>
                   <key frame="30" value="36.0"/>
                   <key frame="40" value="36.0"/>
-                  <key frame="50" value="36.0"/>
-                  <key frame="60" value="36"/>
                 </keyframe>
               </dist>
               <pos>
-                <keyframe interpol="linear" value="[0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0]">
                   <key frame="1" value="[0, 0]"/>
                   <key frame="10" value="[0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0]"/>
                 </keyframe>
               </pos>
               <shape>
@@ -568,8 +477,6 @@
                   <key frame="21" value="test"/>
                   <key frame="30" value="test"/>
                   <key frame="40" value="test"/>
-                  <key frame="50" value="test"/>
-                  <key frame="60" value="test"/>
                 </keyframe>
                 </text>
                 <flip>
@@ -580,8 +487,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </flip>
                 <caps>
@@ -592,8 +497,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </caps>
                 <shape>
@@ -604,8 +507,6 @@
                   <key frame="21" value="circle"/>
                   <key frame="30" value="circle"/>
                   <key frame="40" value="circle"/>
-                  <key frame="50" value="circle"/>
-                  <key frame="60" value="circle"/>
                 </keyframe>
                 </shape>
                 <file>
@@ -616,8 +517,6 @@
                   <key frame="21" value="splogoicon.png"/>
                   <key frame="30" value="splogoicon.png"/>
                   <key frame="40" value="splogoicon.png"/>
-                  <key frame="50" value="splogoicon.png"/>
-                  <key frame="60" value="splogoicon.png"/>
                 </keyframe>
                 </file>
                 <fill>
@@ -628,110 +527,92 @@
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
                 </fill>
                 </texture>
               </shape>
               <width>
-                <keyframe interpol="linear" value="4.0">
+                <keyframe interpol="smoothstep" value="4">
                   <key frame="1" value="4"/>
                   <key frame="10" value="4.0"/>
                   <key frame="20" value="4.0"/>
                   <key frame="21" value="4.0"/>
                   <key frame="30" value="4.0"/>
                   <key frame="40" value="4.0"/>
-                  <key frame="50" value="4.0"/>
-                  <key frame="60" value="4"/>
                 </keyframe>
               </width>
               <colour>
-                <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0, 0]">
                   <key frame="1" value="[0, 0, 0]"/>
                   <key frame="10" value="[0.0, 0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0, 0]"/>
                 </keyframe>
               </colour>
               <static>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </static>
               <hidden>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </hidden>
               <cartesian>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </cartesian>
               <children>
               </children>
             </limb>
-            <limb>
+            <limb name="arml">
               <ang>
-                <keyframe interpol="linear" value="164.979059473">
+                <keyframe interpol="smoothstep" value="165.62">
                   <key frame="1" value="165.62"/>
                   <key frame="10" value="165.62"/>
                   <key frame="20" value="215.134193057"/>
                   <key frame="21" value="191.976132444"/>
                   <key frame="30" value="159.623564786"/>
                   <key frame="40" value="213.178511659"/>
-                  <key frame="50" value="222.709389957"/>
-                  <key frame="60" value="165.62"/>
                 </keyframe>
               </ang>
               <dist>
-                <keyframe interpol="linear" value="35.0">
+                <keyframe interpol="smoothstep" value="35.0">
                   <key frame="1" value="35.0"/>
                   <key frame="10" value="35.0"/>
                   <key frame="20" value="35.0"/>
                   <key frame="21" value="35.0"/>
                   <key frame="30" value="35.0"/>
                   <key frame="40" value="35.0"/>
-                  <key frame="50" value="35.0"/>
-                  <key frame="60" value="35.0"/>
                 </keyframe>
               </dist>
               <pos>
-                <keyframe interpol="linear" value="[0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0]">
                   <key frame="1" value="[0, 0]"/>
                   <key frame="10" value="[0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0]"/>
                 </keyframe>
               </pos>
               <shape>
@@ -744,8 +625,6 @@
                   <key frame="21" value="test"/>
                   <key frame="30" value="test"/>
                   <key frame="40" value="test"/>
-                  <key frame="50" value="test"/>
-                  <key frame="60" value="test"/>
                 </keyframe>
                 </text>
                 <flip>
@@ -756,8 +635,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </flip>
                 <caps>
@@ -768,8 +645,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </caps>
                 <shape>
@@ -780,8 +655,6 @@
                   <key frame="21" value="line"/>
                   <key frame="30" value="line"/>
                   <key frame="40" value="line"/>
-                  <key frame="50" value="line"/>
-                  <key frame="60" value="line"/>
                 </keyframe>
                 </shape>
                 <file>
@@ -792,8 +665,6 @@
                   <key frame="21" value="splogoicon.png"/>
                   <key frame="30" value="splogoicon.png"/>
                   <key frame="40" value="splogoicon.png"/>
-                  <key frame="50" value="splogoicon.png"/>
-                  <key frame="60" value="splogoicon.png"/>
                 </keyframe>
                 </file>
                 <fill>
@@ -804,108 +675,90 @@
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
                 </fill>
                 </texture>
               </shape>
               <width>
-                <keyframe interpol="linear" value="4.0">
+                <keyframe interpol="smoothstep" value="4">
                   <key frame="1" value="4"/>
                   <key frame="10" value="4.0"/>
                   <key frame="20" value="4.0"/>
                   <key frame="21" value="4.0"/>
                   <key frame="30" value="4.0"/>
                   <key frame="40" value="4.0"/>
-                  <key frame="50" value="4.0"/>
-                  <key frame="60" value="4"/>
                 </keyframe>
               </width>
               <colour>
-                <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0, 0]">
                   <key frame="1" value="[0, 0, 0]"/>
                   <key frame="10" value="[0.0, 0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0, 0]"/>
                 </keyframe>
               </colour>
               <static>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </static>
               <hidden>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </hidden>
               <cartesian>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </cartesian>
               <children>
-                <limb>
+                <limb name="farml">
                   <ang>
-                    <keyframe interpol="linear" value="-57.0837815808">
+                    <keyframe interpol="smoothstep" value="-36.5701733739">
                       <key frame="1" value="-36.5701733739"/>
                       <key frame="10" value="-78.6210097066"/>
                       <key frame="20" value="-68.10825728"/>
                       <key frame="21" value="-67.0569820373"/>
                       <key frame="30" value="-57.5955048533"/>
                       <key frame="40" value="-52.4782721278"/>
-                      <key frame="50" value="-59.0212851588"/>
-                      <key frame="60" value="3.524"/>
                     </keyframe>
                   </ang>
                   <dist>
-                    <keyframe interpol="linear" value="35.0">
+                    <keyframe interpol="smoothstep" value="35.0">
                       <key frame="1" value="35.0"/>
                       <key frame="10" value="35.0"/>
                       <key frame="20" value="35.0"/>
                       <key frame="21" value="35.0"/>
                       <key frame="30" value="35.0"/>
                       <key frame="40" value="35.0"/>
-                      <key frame="50" value="35.0"/>
-                      <key frame="60" value="35.0"/>
                     </keyframe>
                   </dist>
                   <pos>
-                    <keyframe interpol="linear" value="[0.0, 0.0]">
+                    <keyframe interpol="smoothstep" value="[0, 0]">
                       <key frame="1" value="[0, 0]"/>
                       <key frame="10" value="[0.0, 0.0]"/>
                       <key frame="20" value="[0.0, 0.0]"/>
                       <key frame="21" value="[0.0, 0.0]"/>
                       <key frame="30" value="[0.0, 0.0]"/>
                       <key frame="40" value="[0.0, 0.0]"/>
-                      <key frame="50" value="[0.0, 0.0]"/>
-                      <key frame="60" value="[0, 0]"/>
                     </keyframe>
                   </pos>
                   <shape>
@@ -918,8 +771,6 @@
                       <key frame="21" value="test"/>
                       <key frame="30" value="test"/>
                       <key frame="40" value="test"/>
-                      <key frame="50" value="test"/>
-                      <key frame="60" value="test"/>
                     </keyframe>
                     </text>
                     <flip>
@@ -930,8 +781,6 @@
                       <key frame="21" value="True"/>
                       <key frame="30" value="True"/>
                       <key frame="40" value="True"/>
-                      <key frame="50" value="True"/>
-                      <key frame="60" value="True"/>
                     </keyframe>
                     </flip>
                     <caps>
@@ -942,8 +791,6 @@
                       <key frame="21" value="True"/>
                       <key frame="30" value="True"/>
                       <key frame="40" value="True"/>
-                      <key frame="50" value="True"/>
-                      <key frame="60" value="True"/>
                     </keyframe>
                     </caps>
                     <shape>
@@ -954,8 +801,6 @@
                       <key frame="21" value="line"/>
                       <key frame="30" value="line"/>
                       <key frame="40" value="line"/>
-                      <key frame="50" value="line"/>
-                      <key frame="60" value="line"/>
                     </keyframe>
                     </shape>
                     <file>
@@ -966,8 +811,6 @@
                       <key frame="21" value="splogoicon.png"/>
                       <key frame="30" value="splogoicon.png"/>
                       <key frame="40" value="splogoicon.png"/>
-                      <key frame="50" value="splogoicon.png"/>
-                      <key frame="60" value="splogoicon.png"/>
                     </keyframe>
                     </file>
                     <fill>
@@ -978,70 +821,58 @@
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                     </fill>
                     </texture>
                   </shape>
                   <width>
-                    <keyframe interpol="linear" value="4.0">
+                    <keyframe interpol="smoothstep" value="4">
                       <key frame="1" value="4"/>
                       <key frame="10" value="4.0"/>
                       <key frame="20" value="4.0"/>
                       <key frame="21" value="4.0"/>
                       <key frame="30" value="4.0"/>
                       <key frame="40" value="4.0"/>
-                      <key frame="50" value="4.0"/>
-                      <key frame="60" value="4"/>
                     </keyframe>
                   </width>
                   <colour>
-                    <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                    <keyframe interpol="smoothstep" value="[0, 0, 0]">
                       <key frame="1" value="[0, 0, 0]"/>
                       <key frame="10" value="[0.0, 0.0, 0.0]"/>
                       <key frame="20" value="[0.0, 0.0, 0.0]"/>
                       <key frame="21" value="[0.0, 0.0, 0.0]"/>
                       <key frame="30" value="[0.0, 0.0, 0.0]"/>
                       <key frame="40" value="[0.0, 0.0, 0.0]"/>
-                      <key frame="50" value="[0.0, 0.0, 0.0]"/>
-                      <key frame="60" value="[0, 0, 0]"/>
                     </keyframe>
                   </colour>
                   <static>
-                    <keyframe interpol="const" value="False">
+                    <keyframe interpol="smoothstep" value="False">
                       <key frame="1" value="False"/>
                       <key frame="10" value="False"/>
                       <key frame="20" value="False"/>
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                   </static>
                   <hidden>
-                    <keyframe interpol="const" value="False">
+                    <keyframe interpol="smoothstep" value="False">
                       <key frame="1" value="False"/>
                       <key frame="10" value="False"/>
                       <key frame="20" value="False"/>
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                   </hidden>
                   <cartesian>
-                    <keyframe interpol="const" value="False">
+                    <keyframe interpol="smoothstep" value="False">
                       <key frame="1" value="False"/>
                       <key frame="10" value="False"/>
                       <key frame="20" value="False"/>
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                   </cartesian>
                   <children>
@@ -1049,41 +880,35 @@
                 </limb>
               </children>
             </limb>
-            <limb>
+            <limb name="armr">
               <ang>
-                <keyframe interpol="linear" value="226.178138085">
+                <keyframe interpol="smoothstep" value="211.70142967">
                   <key frame="1" value="211.70142967"/>
                   <key frame="10" value="232.594643369"/>
                   <key frame="20" value="196.14433878"/>
                   <key frame="21" value="213.231711068"/>
                   <key frame="30" value="233.130102354"/>
                   <key frame="40" value="163.610459666"/>
-                  <key frame="50" value="153.434948823"/>
-                  <key frame="60" value="198.4"/>
                 </keyframe>
               </ang>
               <dist>
-                <keyframe interpol="linear" value="35.0">
+                <keyframe interpol="smoothstep" value="35.0">
                   <key frame="1" value="35.0"/>
                   <key frame="10" value="35.0"/>
                   <key frame="20" value="35.0"/>
                   <key frame="21" value="35.0"/>
                   <key frame="30" value="35.0"/>
                   <key frame="40" value="35.0"/>
-                  <key frame="50" value="35.0"/>
-                  <key frame="60" value="35.0"/>
                 </keyframe>
               </dist>
               <pos>
-                <keyframe interpol="linear" value="[0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0]">
                   <key frame="1" value="[0, 0]"/>
                   <key frame="10" value="[0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0]"/>
                 </keyframe>
               </pos>
               <shape>
@@ -1096,8 +921,6 @@
                   <key frame="21" value="test"/>
                   <key frame="30" value="test"/>
                   <key frame="40" value="test"/>
-                  <key frame="50" value="test"/>
-                  <key frame="60" value="test"/>
                 </keyframe>
                 </text>
                 <flip>
@@ -1108,8 +931,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </flip>
                 <caps>
@@ -1120,8 +941,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </caps>
                 <shape>
@@ -1132,8 +951,6 @@
                   <key frame="21" value="line"/>
                   <key frame="30" value="line"/>
                   <key frame="40" value="line"/>
-                  <key frame="50" value="line"/>
-                  <key frame="60" value="line"/>
                 </keyframe>
                 </shape>
                 <file>
@@ -1144,8 +961,6 @@
                   <key frame="21" value="splogoicon.png"/>
                   <key frame="30" value="splogoicon.png"/>
                   <key frame="40" value="splogoicon.png"/>
-                  <key frame="50" value="splogoicon.png"/>
-                  <key frame="60" value="splogoicon.png"/>
                 </keyframe>
                 </file>
                 <fill>
@@ -1156,108 +971,90 @@
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
                 </fill>
                 </texture>
               </shape>
               <width>
-                <keyframe interpol="linear" value="4.0">
+                <keyframe interpol="smoothstep" value="4">
                   <key frame="1" value="4"/>
                   <key frame="10" value="4.0"/>
                   <key frame="20" value="4.0"/>
                   <key frame="21" value="4.0"/>
                   <key frame="30" value="4.0"/>
                   <key frame="40" value="4.0"/>
-                  <key frame="50" value="4.0"/>
-                  <key frame="60" value="4"/>
                 </keyframe>
               </width>
               <colour>
-                <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0, 0]">
                   <key frame="1" value="[0, 0, 0]"/>
                   <key frame="10" value="[0.0, 0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0, 0]"/>
                 </keyframe>
               </colour>
               <static>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </static>
               <hidden>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </hidden>
               <cartesian>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </cartesian>
               <children>
-                <limb>
+                <limb name="farmr">
                   <ang>
-                    <keyframe interpol="linear" value="-65.4082743202">
+                    <keyframe interpol="smoothstep" value="-51.9167180902">
                       <key frame="1" value="-51.9167180902"/>
                       <key frame="10" value="-85.133527343"/>
                       <key frame="20" value="-76.8291455073"/>
                       <key frame="21" value="-61.7944674442"/>
                       <key frame="30" value="-68.5247636715"/>
                       <key frame="40" value="-37.3598701586"/>
-                      <key frame="50" value="-51.916"/>
-                      <key frame="60" value="-23.78"/>
                     </keyframe>
                   </ang>
                   <dist>
-                    <keyframe interpol="linear" value="35.0">
+                    <keyframe interpol="smoothstep" value="35.0">
                       <key frame="1" value="35.0"/>
                       <key frame="10" value="35.0"/>
                       <key frame="20" value="35.0"/>
                       <key frame="21" value="35.0"/>
                       <key frame="30" value="35.0"/>
                       <key frame="40" value="35.0"/>
-                      <key frame="50" value="35.0"/>
-                      <key frame="60" value="35.0"/>
                     </keyframe>
                   </dist>
                   <pos>
-                    <keyframe interpol="linear" value="[0.0, 0.0]">
+                    <keyframe interpol="smoothstep" value="[0, 0]">
                       <key frame="1" value="[0, 0]"/>
                       <key frame="10" value="[0.0, 0.0]"/>
                       <key frame="20" value="[0.0, 0.0]"/>
                       <key frame="21" value="[0.0, 0.0]"/>
                       <key frame="30" value="[0.0, 0.0]"/>
                       <key frame="40" value="[0.0, 0.0]"/>
-                      <key frame="50" value="[0.0, 0.0]"/>
-                      <key frame="60" value="[0, 0]"/>
                     </keyframe>
                   </pos>
                   <shape>
@@ -1270,8 +1067,6 @@
                       <key frame="21" value="test"/>
                       <key frame="30" value="test"/>
                       <key frame="40" value="test"/>
-                      <key frame="50" value="test"/>
-                      <key frame="60" value="test"/>
                     </keyframe>
                     </text>
                     <flip>
@@ -1282,8 +1077,6 @@
                       <key frame="21" value="True"/>
                       <key frame="30" value="True"/>
                       <key frame="40" value="True"/>
-                      <key frame="50" value="True"/>
-                      <key frame="60" value="True"/>
                     </keyframe>
                     </flip>
                     <caps>
@@ -1294,8 +1087,6 @@
                       <key frame="21" value="True"/>
                       <key frame="30" value="True"/>
                       <key frame="40" value="True"/>
-                      <key frame="50" value="True"/>
-                      <key frame="60" value="True"/>
                     </keyframe>
                     </caps>
                     <shape>
@@ -1306,8 +1097,6 @@
                       <key frame="21" value="line"/>
                       <key frame="30" value="line"/>
                       <key frame="40" value="line"/>
-                      <key frame="50" value="line"/>
-                      <key frame="60" value="line"/>
                     </keyframe>
                     </shape>
                     <file>
@@ -1318,8 +1107,6 @@
                       <key frame="21" value="splogoicon.png"/>
                       <key frame="30" value="splogoicon.png"/>
                       <key frame="40" value="splogoicon.png"/>
-                      <key frame="50" value="splogoicon.png"/>
-                      <key frame="60" value="splogoicon.png"/>
                     </keyframe>
                     </file>
                     <fill>
@@ -1330,70 +1117,58 @@
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                     </fill>
                     </texture>
                   </shape>
                   <width>
-                    <keyframe interpol="linear" value="4.0">
+                    <keyframe interpol="smoothstep" value="4">
                       <key frame="1" value="4"/>
                       <key frame="10" value="4.0"/>
                       <key frame="20" value="4.0"/>
                       <key frame="21" value="4.0"/>
                       <key frame="30" value="4.0"/>
                       <key frame="40" value="4.0"/>
-                      <key frame="50" value="4.0"/>
-                      <key frame="60" value="4"/>
                     </keyframe>
                   </width>
                   <colour>
-                    <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                    <keyframe interpol="smoothstep" value="[0, 0, 0]">
                       <key frame="1" value="[0, 0, 0]"/>
                       <key frame="10" value="[0.0, 0.0, 0.0]"/>
                       <key frame="20" value="[0.0, 0.0, 0.0]"/>
                       <key frame="21" value="[0.0, 0.0, 0.0]"/>
                       <key frame="30" value="[0.0, 0.0, 0.0]"/>
                       <key frame="40" value="[0.0, 0.0, 0.0]"/>
-                      <key frame="50" value="[0.0, 0.0, 0.0]"/>
-                      <key frame="60" value="[0, 0, 0]"/>
                     </keyframe>
                   </colour>
                   <static>
-                    <keyframe interpol="const" value="False">
+                    <keyframe interpol="smoothstep" value="False">
                       <key frame="1" value="False"/>
                       <key frame="10" value="False"/>
                       <key frame="20" value="False"/>
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                   </static>
                   <hidden>
-                    <keyframe interpol="const" value="False">
+                    <keyframe interpol="smoothstep" value="False">
                       <key frame="1" value="False"/>
                       <key frame="10" value="False"/>
                       <key frame="20" value="False"/>
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                   </hidden>
                   <cartesian>
-                    <keyframe interpol="const" value="False">
+                    <keyframe interpol="smoothstep" value="False">
                       <key frame="1" value="False"/>
                       <key frame="10" value="False"/>
                       <key frame="20" value="False"/>
                       <key frame="21" value="False"/>
                       <key frame="30" value="False"/>
                       <key frame="40" value="False"/>
-                      <key frame="50" value="False"/>
-                      <key frame="60" value="False"/>
                     </keyframe>
                   </cartesian>
                   <children>
@@ -1403,41 +1178,35 @@
             </limb>
           </children>
         </limb>
-        <limb>
+        <limb name="legl">
           <ang>
-            <keyframe interpol="linear" value="59.2032242479">
+            <keyframe interpol="smoothstep" value="62.7004277887">
               <key frame="1" value="62.7004277887"/>
               <key frame="10" value="62.7003492152"/>
               <key frame="20" value="90.0"/>
               <key frame="21" value="60.9453959009"/>
               <key frame="30" value="55.9228047199"/>
               <key frame="40" value="88.727"/>
-              <key frame="50" value="104.381394591"/>
-              <key frame="60" value="74.32"/>
             </keyframe>
           </ang>
           <dist>
-            <keyframe interpol="linear" value="40.0">
+            <keyframe interpol="smoothstep" value="40.0">
               <key frame="1" value="40.0"/>
               <key frame="10" value="40.0"/>
               <key frame="20" value="40.0"/>
               <key frame="21" value="40.0"/>
               <key frame="30" value="40.0"/>
               <key frame="40" value="40.0"/>
-              <key frame="50" value="40.0"/>
-              <key frame="60" value="40.0"/>
             </keyframe>
           </dist>
           <pos>
-            <keyframe interpol="linear" value="[0.0, 0.0]">
+            <keyframe interpol="smoothstep" value="[0, 0]">
               <key frame="1" value="[0, 0]"/>
               <key frame="10" value="[0.0, 0.0]"/>
               <key frame="20" value="[0.0, 0.0]"/>
               <key frame="21" value="[0.0, 0.0]"/>
               <key frame="30" value="[0.0, 0.0]"/>
               <key frame="40" value="[0.0, 0.0]"/>
-              <key frame="50" value="[0.0, 0.0]"/>
-              <key frame="60" value="[0, 0]"/>
             </keyframe>
           </pos>
           <shape>
@@ -1450,8 +1219,6 @@
               <key frame="21" value="test"/>
               <key frame="30" value="test"/>
               <key frame="40" value="test"/>
-              <key frame="50" value="test"/>
-              <key frame="60" value="test"/>
             </keyframe>
             </text>
             <flip>
@@ -1462,8 +1229,6 @@
               <key frame="21" value="True"/>
               <key frame="30" value="True"/>
               <key frame="40" value="True"/>
-              <key frame="50" value="True"/>
-              <key frame="60" value="True"/>
             </keyframe>
             </flip>
             <caps>
@@ -1474,8 +1239,6 @@
               <key frame="21" value="True"/>
               <key frame="30" value="True"/>
               <key frame="40" value="True"/>
-              <key frame="50" value="True"/>
-              <key frame="60" value="True"/>
             </keyframe>
             </caps>
             <shape>
@@ -1486,8 +1249,6 @@
               <key frame="21" value="line"/>
               <key frame="30" value="line"/>
               <key frame="40" value="line"/>
-              <key frame="50" value="line"/>
-              <key frame="60" value="line"/>
             </keyframe>
             </shape>
             <file>
@@ -1498,8 +1259,6 @@
               <key frame="21" value="splogoicon.png"/>
               <key frame="30" value="splogoicon.png"/>
               <key frame="40" value="splogoicon.png"/>
-              <key frame="50" value="splogoicon.png"/>
-              <key frame="60" value="splogoicon.png"/>
             </keyframe>
             </file>
             <fill>
@@ -1510,108 +1269,90 @@
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
             </fill>
             </texture>
           </shape>
           <width>
-            <keyframe interpol="linear" value="4.0">
+            <keyframe interpol="smoothstep" value="4">
               <key frame="1" value="4"/>
               <key frame="10" value="4.0"/>
               <key frame="20" value="4.0"/>
               <key frame="21" value="4.0"/>
               <key frame="30" value="4.0"/>
               <key frame="40" value="4.0"/>
-              <key frame="50" value="4.0"/>
-              <key frame="60" value="4"/>
             </keyframe>
           </width>
           <colour>
-            <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+            <keyframe interpol="smoothstep" value="[0, 0, 0]">
               <key frame="1" value="[0, 0, 0]"/>
               <key frame="10" value="[0.0, 0.0, 0.0]"/>
               <key frame="20" value="[0.0, 0.0, 0.0]"/>
               <key frame="21" value="[0.0, 0.0, 0.0]"/>
               <key frame="30" value="[0.0, 0.0, 0.0]"/>
               <key frame="40" value="[0.0, 0.0, 0.0]"/>
-              <key frame="50" value="[0.0, 0.0, 0.0]"/>
-              <key frame="60" value="[0, 0, 0]"/>
             </keyframe>
           </colour>
           <static>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </static>
           <hidden>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </hidden>
           <cartesian>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </cartesian>
           <children>
-            <limb>
+            <limb name="shinl">
               <ang>
-                <keyframe interpol="linear" value="4.15180414525">
+                <keyframe interpol="smoothstep" value="83.0208808699">
                   <key frame="1" value="83.0208808699"/>
                   <key frame="10" value="-3.64393671815"/>
                   <key frame="20" value="-3.01278750418"/>
                   <key frame="21" value="89.3959867775"/>
                   <key frame="30" value="3.46722682806"/>
                   <key frame="40" value="10.313"/>
-                  <key frame="50" value="41.2402017361"/>
-                  <key frame="60" value="22.48"/>
                 </keyframe>
               </ang>
               <dist>
-                <keyframe interpol="linear" value="40.0">
+                <keyframe interpol="smoothstep" value="40.0">
                   <key frame="1" value="40.0"/>
                   <key frame="10" value="40.0"/>
                   <key frame="20" value="40.0"/>
                   <key frame="21" value="40.0"/>
                   <key frame="30" value="40.0"/>
                   <key frame="40" value="40.0"/>
-                  <key frame="50" value="40.0"/>
-                  <key frame="60" value="40.0"/>
                 </keyframe>
               </dist>
               <pos>
-                <keyframe interpol="linear" value="[0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0]">
                   <key frame="1" value="[0, 0]"/>
                   <key frame="10" value="[0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0]"/>
                 </keyframe>
               </pos>
               <shape>
@@ -1624,8 +1365,6 @@
                   <key frame="21" value="test"/>
                   <key frame="30" value="test"/>
                   <key frame="40" value="test"/>
-                  <key frame="50" value="test"/>
-                  <key frame="60" value="test"/>
                 </keyframe>
                 </text>
                 <flip>
@@ -1636,8 +1375,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </flip>
                 <caps>
@@ -1648,8 +1385,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </caps>
                 <shape>
@@ -1660,8 +1395,6 @@
                   <key frame="21" value="line"/>
                   <key frame="30" value="line"/>
                   <key frame="40" value="line"/>
-                  <key frame="50" value="line"/>
-                  <key frame="60" value="line"/>
                 </keyframe>
                 </shape>
                 <file>
@@ -1672,8 +1405,6 @@
                   <key frame="21" value="splogoicon.png"/>
                   <key frame="30" value="splogoicon.png"/>
                   <key frame="40" value="splogoicon.png"/>
-                  <key frame="50" value="splogoicon.png"/>
-                  <key frame="60" value="splogoicon.png"/>
                 </keyframe>
                 </file>
                 <fill>
@@ -1684,70 +1415,58 @@
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
                 </fill>
                 </texture>
               </shape>
               <width>
-                <keyframe interpol="linear" value="4.0">
+                <keyframe interpol="smoothstep" value="4">
                   <key frame="1" value="4"/>
                   <key frame="10" value="4.0"/>
                   <key frame="20" value="4.0"/>
                   <key frame="21" value="4.0"/>
                   <key frame="30" value="4.0"/>
                   <key frame="40" value="4.0"/>
-                  <key frame="50" value="4.0"/>
-                  <key frame="60" value="4"/>
                 </keyframe>
               </width>
               <colour>
-                <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0, 0]">
                   <key frame="1" value="[0, 0, 0]"/>
                   <key frame="10" value="[0.0, 0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0, 0]"/>
                 </keyframe>
               </colour>
               <static>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </static>
               <hidden>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </hidden>
               <cartesian>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </cartesian>
               <children>
@@ -1755,41 +1474,35 @@
             </limb>
           </children>
         </limb>
-        <limb>
+        <limb name="legr">
           <ang>
-            <keyframe interpol="linear" value="102.50201386">
+            <keyframe interpol="smoothstep" value="88.727">
               <key frame="1" value="88.727"/>
               <key frame="10" value="107.102728969"/>
               <key frame="20" value="58.2985703305"/>
               <key frame="21" value="87.0643265536"/>
               <key frame="30" value="106.990823292"/>
               <key frame="40" value="62.1027289691"/>
-              <key frame="50" value="63.4349488229"/>
-              <key frame="60" value="88.727"/>
             </keyframe>
           </ang>
           <dist>
-            <keyframe interpol="linear" value="40.0">
+            <keyframe interpol="smoothstep" value="40.0">
               <key frame="1" value="40.0"/>
               <key frame="10" value="40.0"/>
               <key frame="20" value="40.0"/>
               <key frame="21" value="40.0"/>
               <key frame="30" value="40.0"/>
               <key frame="40" value="40.0"/>
-              <key frame="50" value="40.0"/>
-              <key frame="60" value="40.0"/>
             </keyframe>
           </dist>
           <pos>
-            <keyframe interpol="linear" value="[0.0, 0.0]">
+            <keyframe interpol="smoothstep" value="[0, 0]">
               <key frame="1" value="[0, 0]"/>
               <key frame="10" value="[0.0, 0.0]"/>
               <key frame="20" value="[0.0, 0.0]"/>
               <key frame="21" value="[0.0, 0.0]"/>
               <key frame="30" value="[0.0, 0.0]"/>
               <key frame="40" value="[0.0, 0.0]"/>
-              <key frame="50" value="[0.0, 0.0]"/>
-              <key frame="60" value="[0, 0]"/>
             </keyframe>
           </pos>
           <shape>
@@ -1802,8 +1515,6 @@
               <key frame="21" value="test"/>
               <key frame="30" value="test"/>
               <key frame="40" value="test"/>
-              <key frame="50" value="test"/>
-              <key frame="60" value="test"/>
             </keyframe>
             </text>
             <flip>
@@ -1814,8 +1525,6 @@
               <key frame="21" value="True"/>
               <key frame="30" value="True"/>
               <key frame="40" value="True"/>
-              <key frame="50" value="True"/>
-              <key frame="60" value="True"/>
             </keyframe>
             </flip>
             <caps>
@@ -1826,8 +1535,6 @@
               <key frame="21" value="True"/>
               <key frame="30" value="True"/>
               <key frame="40" value="True"/>
-              <key frame="50" value="True"/>
-              <key frame="60" value="True"/>
             </keyframe>
             </caps>
             <shape>
@@ -1838,8 +1545,6 @@
               <key frame="21" value="line"/>
               <key frame="30" value="line"/>
               <key frame="40" value="line"/>
-              <key frame="50" value="line"/>
-              <key frame="60" value="line"/>
             </keyframe>
             </shape>
             <file>
@@ -1850,8 +1555,6 @@
               <key frame="21" value="splogoicon.png"/>
               <key frame="30" value="splogoicon.png"/>
               <key frame="40" value="splogoicon.png"/>
-              <key frame="50" value="splogoicon.png"/>
-              <key frame="60" value="splogoicon.png"/>
             </keyframe>
             </file>
             <fill>
@@ -1862,108 +1565,90 @@
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
             </fill>
             </texture>
           </shape>
           <width>
-            <keyframe interpol="linear" value="4.0">
+            <keyframe interpol="smoothstep" value="4">
               <key frame="1" value="4"/>
               <key frame="10" value="4.0"/>
               <key frame="20" value="4.0"/>
               <key frame="21" value="4.0"/>
               <key frame="30" value="4.0"/>
               <key frame="40" value="4.0"/>
-              <key frame="50" value="4.0"/>
-              <key frame="60" value="4"/>
             </keyframe>
           </width>
           <colour>
-            <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+            <keyframe interpol="smoothstep" value="[0, 0, 0]">
               <key frame="1" value="[0, 0, 0]"/>
               <key frame="10" value="[0.0, 0.0, 0.0]"/>
               <key frame="20" value="[0.0, 0.0, 0.0]"/>
               <key frame="21" value="[0.0, 0.0, 0.0]"/>
               <key frame="30" value="[0.0, 0.0, 0.0]"/>
               <key frame="40" value="[0.0, 0.0, 0.0]"/>
-              <key frame="50" value="[0.0, 0.0, 0.0]"/>
-              <key frame="60" value="[0, 0, 0]"/>
             </keyframe>
           </colour>
           <static>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </static>
           <hidden>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </hidden>
           <cartesian>
-            <keyframe interpol="const" value="False">
+            <keyframe interpol="smoothstep" value="False">
               <key frame="1" value="False"/>
               <key frame="10" value="False"/>
               <key frame="20" value="False"/>
               <key frame="21" value="False"/>
               <key frame="30" value="False"/>
               <key frame="40" value="False"/>
-              <key frame="50" value="False"/>
-              <key frame="60" value="False"/>
             </keyframe>
           </cartesian>
           <children>
-            <limb>
+            <limb name="shinr">
               <ang>
-                <keyframe interpol="linear" value="55.3318898967">
+                <keyframe interpol="smoothstep" value="10.3135613105">
                   <key frame="1" value="10.3135613105"/>
                   <key frame="10" value="-0.534518707314"/>
                   <key frame="20" value="92.6989645751"/>
                   <key frame="21" value="2.4486864372"/>
                   <key frame="30" value="50.9071936177"/>
                   <key frame="40" value="95.1541564073"/>
-                  <key frame="50" value="10.3135"/>
-                  <key frame="60" value="19.267"/>
                 </keyframe>
               </ang>
               <dist>
-                <keyframe interpol="linear" value="40.0">
+                <keyframe interpol="smoothstep" value="40.0">
                   <key frame="1" value="40.0"/>
                   <key frame="10" value="40.0"/>
                   <key frame="20" value="40.0"/>
                   <key frame="21" value="40.0"/>
                   <key frame="30" value="40.0"/>
                   <key frame="40" value="40.0"/>
-                  <key frame="50" value="40.0"/>
-                  <key frame="60" value="40.0"/>
                 </keyframe>
               </dist>
               <pos>
-                <keyframe interpol="linear" value="[0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0]">
                   <key frame="1" value="[0, 0]"/>
                   <key frame="10" value="[0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0]"/>
                 </keyframe>
               </pos>
               <shape>
@@ -1976,8 +1661,6 @@
                   <key frame="21" value="test"/>
                   <key frame="30" value="test"/>
                   <key frame="40" value="test"/>
-                  <key frame="50" value="test"/>
-                  <key frame="60" value="test"/>
                 </keyframe>
                 </text>
                 <flip>
@@ -1988,8 +1671,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </flip>
                 <caps>
@@ -2000,8 +1681,6 @@
                   <key frame="21" value="True"/>
                   <key frame="30" value="True"/>
                   <key frame="40" value="True"/>
-                  <key frame="50" value="True"/>
-                  <key frame="60" value="True"/>
                 </keyframe>
                 </caps>
                 <shape>
@@ -2012,8 +1691,6 @@
                   <key frame="21" value="line"/>
                   <key frame="30" value="line"/>
                   <key frame="40" value="line"/>
-                  <key frame="50" value="line"/>
-                  <key frame="60" value="line"/>
                 </keyframe>
                 </shape>
                 <file>
@@ -2024,8 +1701,6 @@
                   <key frame="21" value="splogoicon.png"/>
                   <key frame="30" value="splogoicon.png"/>
                   <key frame="40" value="splogoicon.png"/>
-                  <key frame="50" value="splogoicon.png"/>
-                  <key frame="60" value="splogoicon.png"/>
                 </keyframe>
                 </file>
                 <fill>
@@ -2036,70 +1711,58 @@
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
                 </fill>
                 </texture>
               </shape>
               <width>
-                <keyframe interpol="linear" value="4.0">
+                <keyframe interpol="smoothstep" value="4">
                   <key frame="1" value="4"/>
                   <key frame="10" value="4.0"/>
                   <key frame="20" value="4.0"/>
                   <key frame="21" value="4.0"/>
                   <key frame="30" value="4.0"/>
                   <key frame="40" value="4.0"/>
-                  <key frame="50" value="4.0"/>
-                  <key frame="60" value="4"/>
                 </keyframe>
               </width>
               <colour>
-                <keyframe interpol="linear" value="[0.0, 0.0, 0.0]">
+                <keyframe interpol="smoothstep" value="[0, 0, 0]">
                   <key frame="1" value="[0, 0, 0]"/>
                   <key frame="10" value="[0.0, 0.0, 0.0]"/>
                   <key frame="20" value="[0.0, 0.0, 0.0]"/>
                   <key frame="21" value="[0.0, 0.0, 0.0]"/>
                   <key frame="30" value="[0.0, 0.0, 0.0]"/>
                   <key frame="40" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="50" value="[0.0, 0.0, 0.0]"/>
-                  <key frame="60" value="[0, 0, 0]"/>
                 </keyframe>
               </colour>
               <static>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </static>
               <hidden>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </hidden>
               <cartesian>
-                <keyframe interpol="const" value="False">
+                <keyframe interpol="smoothstep" value="False">
                   <key frame="1" value="False"/>
                   <key frame="10" value="False"/>
                   <key frame="20" value="False"/>
                   <key frame="21" value="False"/>
                   <key frame="30" value="False"/>
                   <key frame="40" value="False"/>
-                  <key frame="50" value="False"/>
-                  <key frame="60" value="False"/>
                 </keyframe>
               </cartesian>
               <children>
