@@ -559,7 +559,7 @@ class BrowserAcceptButton(widgets.Button):
                 pickle.Pickler(file).dump({'scene':self.data['scene'], 'camera':self.data['camera'], 'framerate':self.data['framerate'], 'framelimit':self.data['framelimit']})
         elif self.container.mode == "load":
             if  path[-4:] == ".sps":
-                file = open(path, "r")
+                file = open(path, "rU")
                 concatDict(self.data, pickle.Unpickler(file).load())
                 self.container.container.widgets['StartFrameScrollBox'].changetext(str(self.data['framelimit'][0]))
                 self.container.container.widgets['EndFrameScrollBox'].changetext(str(self.data['framelimit'][1]))
