@@ -162,22 +162,27 @@ class KeyFrameEditor(widgets.BaseWidget):
     def rrelease(self):
         if self.hover and self.selected:
             self.selectedkey = self.getdrag()
+
+            menuoptions = []
             if not self.selectedkey == None:
-                self.container.window.menu.showmenu([("Delete keyframe", "deletekey"), ("Go to frame", "gotoframe")], self.container.window.mousepos, self, 15)
+                menuoptions.append(("Delete keyframe", "deletekey"))
+                menuoptions.append(("Go to frame", "gotoframe"))
+                menuoptions.append(("Set linear interpolation", "linear"))
+                menuoptions.append(("Set smoothstep interpolation", "smoothstep"))
             else:
-                self.container.window.menu.showmenu([("Insert Keyframe", "insertkey"), ("Close keyframe editor", "closeeditor")], self.container.window.mousepos, self, 15)
+                menuoptions.append(("Insert Keyframe", "insertkey"))
+                menuoptions.append(("Close keyframe editor", "closeeditor"))
+
+            self.container.window.menu.showmenu(menuoptions, self.container.window.mousepos, self, 15)
+
     def mousemove(self):
         if self.select[0] and self.select[2] == "lasso":
             self.select[1] += [self.mousepos - self.pos]
-        #print self.drag
         if self.mousebut[1] and self.selected:
             self.pan += self.mousepos.x - self.oldmousepos.x
         if not self.drag == None:
             for i in range(len(self.editing)):
-                #self.editing[i] = [self.dragpos[i][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom, self.editing[i][1]] #self.mousepos.x / 4 - self.textwidth / 4
                 self.editing[i][0] = self.dragpos[i][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
-                
-            #print self.drag
             for currkey in self.keys:
                 for key in currkey.values():
                     if isinstance(key, KeyFrame): key.sort()
@@ -193,8 +198,6 @@ class KeyFrameEditor(widgets.BaseWidget):
                 for currkey in self.keys:
                     for keyfr in currkey.values():
                         if isinstance(keyfr, KeyFrame):
-                            #print "test", keyfr.keys, self.selected
-                            #for i in range(keyfr.keys.count(key)):
                             keyfr.keys = [k for k in keyfr.keys if not k is key]
                             keyfr.setframe(self.data['frame'])
             self.draw()
@@ -206,6 +209,14 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.container.window.menu.showmenu([("Not supported yet", "none")], self.mousepos, self, 20)
         elif selected == "closeeditor":
             self.container.close()
+        elif selected == "linear" or selected == "smoothstep":
+            for key in self.editing:
+                for currkey in self.keys:
+                    for keyfr in currkey.values():
+                        if isinstance(keyfr, KeyFrame):
+                            keyfr.interpol = selected
+            self.draw()
+
     def getkeypos(self, key, row):
         return (key[0]*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/len(self.keys[0])*row+(self.size[1]/len(self.keys[0]))/2 - self.texkeyon.get_height()/2)
     def draw(self):
