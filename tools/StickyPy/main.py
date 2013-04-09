@@ -47,6 +47,7 @@ def main(screen):
     canvas = pygame.Surface(canvassize)
     # Defaults for a 'stick' piece...
     limb = dict(
+        name="",
         ang=KeyFrame(0), 
         dist=KeyFrame(0), 
         pos=KeyFrame(Vector(0,0)), 
@@ -60,32 +61,39 @@ def main(screen):
     )
         
     # Define the default StickMan
-    StickMan = dict(deepcopy(limb), 
+    StickMan = dict(deepcopy(limb),
+                    name="root",
                     pos=KeyFrame(Vector(0, 0)), 
                     ang=KeyFrame(90), 
                     cartesian=KeyFrame(True, False, "const"), 
                     hidden=KeyFrame(True, False, "const"), 
                     children=[dict(deepcopy(limb), #Torso
+                                   name="torso",
                                    ang=KeyFrame(270), 
                                    dist=KeyFrame(60), 
                                    children=[dict(deepcopy(limb), # head
+                                                  name="head",
                                                   ang=KeyFrame(0), 
                                                   dist=KeyFrame(36), 
                                                   shape=Texture(shape="circle")
                                              ), 
                                              dict(deepcopy(limb), # Left arm
+                                                  name="arml",
                                                   ang=KeyFrame(135), 
                                                   dist=KeyFrame(40), 
                                                   children=[dict(deepcopy(limb), # Left Forearm
+                                                                 name="farml",
                                                                  ang=KeyFrame(15), 
                                                                  dist=KeyFrame(40)
                                                             )         
                                                            ]
                                              ),
                                              dict(deepcopy(limb), # Right arm
+                                                  name="armr",
                                                   ang=KeyFrame(225), 
                                                   dist=KeyFrame(40), 
                                                   children=[dict(deepcopy(limb), # Right forearm
+                                                                 name="farmr",
                                                                  ang=KeyFrame(-15), 
                                                                  dist=KeyFrame(40)
                                                             )
@@ -94,18 +102,22 @@ def main(screen):
                                             ]
                               ),
                               dict(deepcopy(limb), # Left leg
+                                   name="legl",
                                    ang=KeyFrame(67), 
                                    dist=KeyFrame(50), 
                                    children=[dict(deepcopy(limb), # Left shin
+                                                  name="shinl",
                                                   ang=KeyFrame(0), 
                                                   dist=KeyFrame(50)
                                              )
                                             ]
                               ),
                               dict(deepcopy(limb), # Right leg
+                                   name="legr",
                                    ang=KeyFrame(113), 
                                    dist=KeyFrame(50), 
                                    children=[dict(deepcopy(limb), # Right shin
+                                                  name="shinr",
                                                   ang=KeyFrame(0), 
                                                   dist=KeyFrame(50)
                                              )
@@ -115,10 +127,19 @@ def main(screen):
                ) 
     
     # Make the default animation
-    MainStick = dict(limb, cartesian=KeyFrame(True, False, "const"), static=KeyFrame(True, False, "const"), hidden=KeyFrame(True, False, "const"), children=[deepcopy(StickMan)])
+    MainStick = dict(limb,
+                     name="main",
+                     cartesian=KeyFrame(True, False, "const"),
+                     static=KeyFrame(True, False, "const"),
+                     hidden=KeyFrame(True, False, "const"),
+                     children=[deepcopy(StickMan)]
+    )
     
     # Define all the defaul application values
-    cam = {'pos':KeyFrame(Vector(-CAMERA_SIZE_X * 0.5, -CAMERA_SIZE_Y * 0.5)), 'zoom':KeyFrame(1), 'size':Vector(CAMERA_SIZE_X,CAMERA_SIZE_Y)}
+    cam = {'pos': KeyFrame( Vector(-CAMERA_SIZE_X * 0.5, -CAMERA_SIZE_Y * 0.5)),
+           'zoom':KeyFrame(1),
+           'size':Vector(CAMERA_SIZE_X,CAMERA_SIZE_Y)}
+
     data = {'scene':MainStick,
             'camera':cam, # All animation stuff for the camera goes here
             'panning':Vector(0,0), # View panning (Units, not pixels!)

@@ -376,7 +376,7 @@ def Export(scene, depth=0):
     depthStr = " " * (indentWidth * depth)
     indentStr = " " * (indentWidth * (depth + 1))
 
-    exp = depthStr + "<limb>\n"
+    exp = depthStr + "<limb name=\"" + str(scene['name']) + "\">\n"
 
     def ExportAttr(attr):
         ret = indentStr + "<" + attr + ">\n"
@@ -424,4 +424,19 @@ def insertKey(keyframe, key, interpol="linear"):
 
 def concatDict(dict1, dict2):
     for item in dict2.items():
-        dict1[item[0]] = item[1]
+        k = item[0]
+        v = item[1]
+
+        if isinstance(v, dict):
+            concatDict(dict1[k], v)
+        elif isinstance(v, list):
+
+            assert len(dict1[k]) == len(v)
+
+            for i in range(len(v)):
+                if isinstance(v[i], dict):
+                    concatDict(dict1[k][i], v[i])
+                else:
+                    dict1[k][i] = v[i]
+        else:
+            dict1[k] = v
