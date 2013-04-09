@@ -576,7 +576,24 @@ class BrowserAcceptButton(widgets.Button):
                 filename += ".spe"
 
             file = open(filename, "w")
-            file.write(Export(self.data['scene']))
+            exportstr = Export(self.data['scene']).split("\n")
+            def framelimit(s):
+                idx = s.find("<key frame=\"")
+                if idx > 0:
+                    fnstr = s[idx+12:]
+                    endq = fnstr.find("\"")
+                    frame = int(fnstr[:endq])
+
+                    limit = self.data['framelimit']
+                    if frame < limit[0] or frame > limit[1]:
+                        return False
+
+                    return True
+                else:
+                    return True
+
+            exportstr = filter(framelimit, exportstr)
+            file.write("\n".join(exportstr))
 
         self.container.visible = False
         self.container.disabled = True

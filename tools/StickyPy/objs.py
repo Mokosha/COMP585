@@ -28,6 +28,15 @@ class KeyFrame:
             self.keys = []
             self.value = keys
         self.frame = 1
+
+    def limitkeys(self, limits):
+        ret = deepcopy(self)
+        for key in self.keys:
+            f = key[0]
+            if f < limits[0] or f > limits[1]:
+                ret.removeframe(f)
+
+        return ret
         
     def __getitem__(self, *args):
         if len(args) > 1: raise RuntimeError
