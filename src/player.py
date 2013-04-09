@@ -31,7 +31,7 @@ class Player(AnimatedObject):
     def __init__(self):
 
         self.currentColor = pygame.color.Color("black")
-        super(Player, self).__init__("smooth-idle", True)
+        super(Player, self).__init__("idle", True)
         self.loadAnim("walk", True)
 
         # Initially start in the middle of the screen.
@@ -78,7 +78,7 @@ class Player(AnimatedObject):
             self.changeColor(self.currentColor)
                 
         if len(inputManager.getCurrentEvents()) == 0:
-            self.startAnimation("smooth-idle", time.time())
+            self.startAnimation("idle", time.time())
             self.vel.x = 0
 
     def colliderResponse(self, collider, n):
