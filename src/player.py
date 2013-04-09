@@ -58,7 +58,7 @@ class Player(AnimatedObject):
             self.startAnimation("walk", time.time())
 
         if inputManager.isCurrentEvent(Events.JUMP):
-            if self.collidedLastFrame:
+            if self.collidedLastFrame and self.vel.y == 0.0:
                 self.vel = Vector2(0, Player.INITIAL_JUMP)
 
         if inputManager.debounceEvent(Events.CHANGE_COLOR_1):
