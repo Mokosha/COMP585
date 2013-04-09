@@ -226,9 +226,6 @@ class Player(AnimatedObject):
         # First move the player out of collision.
         self.pos += n * difference
 
-        # Then, set the component of his velocity to be zero in this component...
-        self.vel = Vector2(0,0)
-
     def collide(self, obj):        
         
         if isinstance(obj, Collider) and obj.collide(self):
@@ -243,6 +240,13 @@ class Player(AnimatedObject):
                 direction = Vector2(1 if self.vel.x <= 0 else -1, 0)
 
             self.colliderResponse(obj, direction)
+
+            # Then, set the component of his velocity to be zero in this component...
+            if horiz:
+                self.vel.x = 0.0
+            else:
+                self.vel.y = 0.0
+
             self.collidedLastFrame = True
 
             self.resetAABB()
