@@ -15,7 +15,8 @@ import pygame
 pygame.init()
 pygame.display.set_mode((screenSizeX(), screenSizeY()))
 
-import animatedobject, colorvortex, player, world, menumanager
+import animatedobject, colorvortex, player, world
+from menumanager import PauseMenu
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -72,10 +73,7 @@ def handleAdministrivia(inputManager):
         pygame.display.toggle_fullscreen()
         sys.exit()
     elif inputManager.isCurrentEvent(Events.PAUSE):
-        global paused
-        paused = not paused
-	if paused:
-		pausemenu.initMenu(display_surface)
+	PauseMenu().run(display_surface)
 	pygame.display.flip()
 	inputManager.removeCurrentEvent(Events.PAUSE)
 	
@@ -164,8 +162,6 @@ while True:
     inputhandler.handleEvents()
     
     handleAdministrivia(inputhandler)
-    if paused:
-        continue
 
     p.update(inputhandler)
     p.gravity()
