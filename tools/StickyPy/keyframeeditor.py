@@ -18,6 +18,8 @@ import pygame, widgets
 from objs import *
 from defs import *
 
+W_SZ_Y = 100
+
 class KeyFrameWidget(widgets.WidgetContainer):
     def __init__(self, pos, size, container, mainwindow, data):
         self.setupcontainer(pos, size, mainwindow, container, data)

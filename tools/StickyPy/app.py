@@ -57,7 +57,7 @@ class AppWidgets(widgets.WidgetContainer):
                         'lblSelAdd':widgets.Label(Vector(10,200), Vector(canvaspos[0]-30,30), "Preset sticks:", (255,255,255)),
                         'SelAddButton':SelAddButton(Vector(10,250), Vector(canvaspos[0]-30,30), self, data),
                         'StickEditor': editor.StickEditor(Vector(200,50), Vector(size.x-canvaspos.x, size.y-canvaspos.y-20), self, data),
-                        'KeyFrameEditor':keyframeeditor.KeyFrameWidget(Vector(0,size[1]-200-20), Vector(size[0],200), self, mainwindow, data),
+                        'KeyFrameEditor':keyframeeditor.KeyFrameWidget(Vector(0,size[1]-keyframeeditor.W_SZ_Y-20), Vector(size[0],keyframeeditor.W_SZ_Y), self, mainwindow, data),
                         'ShapeEditor':shapeeditor.ShapeEditor(Vector(size[0]-300,100), Vector(300,size[1]-100), self, mainwindow, data),
                         'PlayButton':PlayButton(Vector(10,350), Vector(canvaspos[0]-30,30), self, data),
                         'CameraKeysButton':CameraKeysButton(Vector(10,500), Vector(canvaspos[0]-30,30), self, data),
@@ -122,7 +122,7 @@ class AppWidgets(widgets.WidgetContainer):
     def organise(self):
         self.widgets['StickEditor'].resize(self.widgets['StickEditor'].pos, Vector(self.size.x-self.widgets['StickEditor'].pos.x - (self.widgets['ShapeEditor'].size.x if self.widgets['ShapeEditor'].visible else 0),
                                            self.size.y-self.widgets['StickEditor'].pos.y-20 - (self.widgets['KeyFrameEditor'].size.y if self.widgets['KeyFrameEditor'].visible else 0)))
-        self.widgets['KeyFrameEditor'].resize(Vector(0, self.size.y-200-20), Vector(self.size.x,200))
+        self.widgets['KeyFrameEditor'].resize(Vector(0, self.size.y-keyframeeditor.W_SZ_Y-20), Vector(self.size.x,keyframeeditor.W_SZ_Y))
         self.widgets['ShapeEditor'].resize(Vector(self.size[0]-300,50), Vector(300,self.size[1]-70))
         self.widgets['FrameScrollBar'].resize(Vector(0, self.size.y-self.widgets['FrameScrollBar'].size.y), Vector(self.size.x, self.widgets['FrameScrollBar'].size.y))
         self.widgets['EditorMenuBar'].resize(Vector(0, 0), Vector(self.size.x, self.widgets['EditorMenuBar'].size.y))
