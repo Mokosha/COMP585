@@ -23,7 +23,6 @@ import thread
 
 class StickFigureApp(widgets.MainWindow):
     def __init__(self, size, data):
-        #self.setupwindow()
         self.data = data
         self.resources = AppResources()
         self.container = AppWidgets((0,0), size, self, data)
@@ -31,7 +30,6 @@ class StickFigureApp(widgets.MainWindow):
 
 class AppResources(Resource):
     def setup(self):
-        #self.addrec("", pygame.image.load(""))
         self.addrec("topgradient", pygame.image.load("topgradient.png"))
         self.addrec("buttonup", pygame.image.load("buttonup.png").convert())
         self.addrec("buttondown", pygame.image.load("buttondown.png").convert())
