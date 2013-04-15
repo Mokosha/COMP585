@@ -28,6 +28,7 @@ class KeyFrameWidget(widgets.WidgetContainer):
         self.order = ['KeyFrameEditor', 'CloseKeyEditorButton']
         self.visible = False
         self.organise()
+
     def resize(self, pos, size):
         self.pos = pos
         #self.image.fill((0,0,0))if size[0] < 1: size[0] = 1
@@ -37,19 +38,24 @@ class KeyFrameWidget(widgets.WidgetContainer):
         self.setup()
         self.organise()
         self.draw()
+
     def changekeys(self, keys):
         self.widgets['KeyFrameEditor'].changekeys(keys)
+
     def close(self):
         self.visible = False
         self.window.fullredraw = True
         self.container.organise()
+
     def show(self):
         self.visible = True
         self.window.fullredraw = True
         self.container.organise()
+
     def draw(self):
         self.drawwidgets()
         self.redraw = True
+
     def organise(self):
         self.widgets['KeyFrameEditor'].resize(Vector(30,0), self.size - Vector(30,0))
 
@@ -70,44 +76,60 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.size = size
         self.image = pygame.Surface(self.size)
         if self.container.visible: self.draw()
+
     def changekeys(self, keys):
         self.keys = keys
         maxwidth = 0
+
+        self.validKeys = []
         if not self.keys == []:
             for item in self.keys[0].keys():
                 twidth = self.font.render(item, True, (0,0,0)).get_width()
                 if twidth > maxwidth: maxwidth = twidth
+
+            for i in range(len(self.keys[0])):
+                kf = self.keys[0].values()[i]
+                if isinstance(kf, KeyFrame) and kf.keyed:
+                    self.validKeys.append(i)
+
         self.textwidth = maxwidth
+
         if self.visible:
             self.draw()
             self.container.organise()
+
     def getCollide(self, map):
         list = []
-        for currkey in self.keys:
-            for i in range(len(currkey)):
-                if isinstance(currkey.values()[i], KeyFrame):
-                    for key in currkey.values()[i].keys:
-                        point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, i)
-                        if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
-                            list.append(key)
+        for kn in range(len(self.validKeys)):
+
+            i = self.validKeys[kn]
+            for key in self.keys[0].values()[i].keys:
+                point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
+
+                if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
+                    list.append(key)
+
         return list
+
     def getdrag(self):
-        for currkey in self.keys:
-            for i in range(len(currkey)):
-                if isinstance(currkey[currkey.keys()[i]], KeyFrame):
-                    for key in currkey[currkey.keys()[i]].keys:
-                        if pygame.Rect(self.getkeypos(key, i), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
-                            return key
+        for kn in range(len(self.validKeys)):
+            i = self.validKeys[kn]
+            for key in self.keys[0][self.keys[0].keys()[i]].keys:
+                if pygame.Rect(self.getkeypos(key, kn), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
+                    return key
+
     def mwheelup(self):
         if self.hover:
             self.zoom *= 1.2
             if self.zoom > 48: self.zoom = 48
             self.draw()
+
     def mwheeldown(self):
         if self.hover:
             self.zoom /= 1.2
             if self.zoom < 0.01: self.zoom = 0.01
             self.draw()
+
     def lclick(self):
         if self.hover and self.selected:
             self.drag = self.getdrag()
@@ -137,6 +159,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.dragmouse = self.mousepos
             self.selected = self.drag
             self.draw()
+
     def lrelease(self):
         if self.container.visible:
             self.drag = None
@@ -220,35 +243,43 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.draw()
 
     def getkeypos(self, key, row):
-        return (key[0]*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/len(self.keys[0])*row+(self.size[1]/len(self.keys[0]))/2 - self.texkeyon.get_height()/2)
+        dy = len(self.validKeys)
+        return (key[0]*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/dy*row+(self.size[1]/dy)/2 - self.texkeyon.get_height()/2)
+
     def draw(self):
-        if not self.container.visible: return
+
+        if not self.container.visible: 
+            return
+
         self.image.fill((100,100,100))
         if not self.keys == [] and self.keys[0].keys().count('colour') > 0 and False:
             for i in range(200):
                 colour = deepcopy(self.keys[0]['colour'])
                 rect = pygame.Rect((i*self.zoom+self.textwidth+self.pan, self.size[1]/len(self.keys[0])* self.keys[0].keys().index('colour') +(self.size[1]/len(self.keys[0]))/2 - 10), (self.zoom, 20))
                 pygame.draw.rect(self.image, colour.setframe(i), rect)
+
         #TODO: textwidth?
         pygame.draw.line(self.image, (0,0,0), (self.data['frame']*self.zoom+self.textwidth+self.pan,0), (self.data['frame']*self.zoom+self.textwidth+self.pan,self.size[1]), 3)
-        if not self.keys == []:
-            for i in range(len(self.keys[0])):
-                fontrender = self.font.render(self.keys[0].keys()[i], True, (0,0,0))
-                self.image.blit(fontrender, (0,self.size[1]/len(self.keys[0])*i+(self.size[1]/len(self.keys[0]))/2 - fontrender.get_height()/2))
-                pygame.draw.line(self.image, (0,0,0), (self.textwidth,self.size[1]/len(self.keys[0])*i+(self.size[1]/len(self.keys[0]))/2), (self.size[0],self.size[1]/len(self.keys[0])*i+(self.size[1]/len(self.keys[0]))/2))
+
+        for kn in range(len(self.validKeys)):
+            i = self.validKeys[kn]
+            fontrender = self.font.render(self.keys[0].keys()[i], True, (0,0,0))
+            
+            dy = len(self.validKeys)
+            self.image.blit(fontrender, (0,self.size[1]/dy*kn+(self.size[1]/dy)/2 - fontrender.get_height()/2))
+            pygame.draw.line(self.image, (0,0,0), (self.textwidth,self.size[1]/dy*kn+(self.size[1]/dy)/2), (self.size[0],self.size[1]/dy*kn+(self.size[1]/dy)/2))
                 
-        for currkey in self.keys:
-            for i in range(len(currkey)):
-                if isinstance(currkey.values()[i], KeyFrame):
-                    for key in currkey.values()[i].keys:
-                        selected = False
-                        for editkey in self.editing:
-                            if key is editkey: selected = True
-                        if selected:
-                            self.image.blit(self.texkeyon, self.getkeypos(key, i))
-                        else:
-                            self.image.blit(self.texkeyoff, self.getkeypos(key, i))
-                            
+        for kn in range(len(self.validKeys)):
+            i = self.validKeys[kn]
+            for key in self.keys[0].values()[i].keys:
+                selected = False
+                for editkey in self.editing:
+                    if key is editkey: selected = True
+                if selected:
+                    self.image.blit(self.texkeyon, self.getkeypos(key, kn))
+                else:
+                    self.image.blit(self.texkeyoff, self.getkeypos(key, kn))
+
         if self.selected and self.select[0]:
             if self.select[2] == "box":
                 pygame.draw.rect(self.image, (0,0,0), pygame.Rect(self.select[1] - self.pos, self.mousepos - self.select[1]), 2)
