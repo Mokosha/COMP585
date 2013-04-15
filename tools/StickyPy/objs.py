@@ -19,14 +19,15 @@ from copy import deepcopy
 
 #Key: [frame, value]
 class KeyFrame:
-    def __init__(self, keys, keyed = False, interpol="linear"):
+    def __init__(self, default, keyed = True, interpol="linear"):
         self.interpol = interpol
+        self.keyed = keyed
         if keyed:
-            self.keys = keys
-            self.value = keys[0]
+            self.keys = [[1, default]]
+            self.value = default
         else:
             self.keys = []
-            self.value = keys
+            self.value = default
         self.frame = 1
 
     def limitkeys(self, limits):
@@ -43,7 +44,11 @@ class KeyFrame:
         return self.keys[args[0]]
     
     def insertkey(self, key=None):
+
+        if not self.keyed: return
+
         if key == None: key = [self.frame, self.value]
+
         self.removeframe(key[0])
         self.keys.append(key)
         self.clean()
@@ -59,6 +64,7 @@ class KeyFrame:
         self.value = val
         self.frame = frame
         return val
+
     def __str__(self):
         keyString = "<keyframe interpol=\"" + self.interpol + "\" value=\"" + str(self.value) + "\">\n"
         for key in self.keys:
@@ -70,15 +76,17 @@ class KeyFrame:
         if len(self.keys) > 1:
             self.sort()
             self.removedoubles()
+
     def sort(self):
         if len(self.keys) > 1:
             self.keys.sort()
+
     def removeframe(self, frame):
-            self.keys = [self.keys[i] for i in range(len(self.keys)) if not self.keys[i][0] == frame]
+        self.keys = [self.keys[i] for i in range(len(self.keys)) if not self.keys[i][0] == frame]
+
     def removedoubles(self):
         if len(self.keys) > 1:
             self.keys = [self.keys[i] for i in range(len(self.keys)) if i == len(self.keys)-1 or not self.keys[i][0] == self.keys[i+1][0]]
-            #self.keys = [self.keys[i] for i in range(len(self.keys)) if i == len(self.keys)-1 or not self.keys[i][0] == self.keys[i-1][0]]
 
 class Vector:
     def __init__(self, x, y=None):
