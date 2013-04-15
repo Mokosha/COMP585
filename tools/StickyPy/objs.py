@@ -66,10 +66,26 @@ class KeyFrame:
         return val
 
     def __str__(self):
-        keyString = "<keyframe interpol=\"" + self.interpol + "\" value=\"" + str(self.value) + "\">\n"
-        for key in self.keys:
-            keyString += "  <key frame=\"" + str(key[0]) +"\" value=\"" + str(key[1]) + "\"/>\n"
-        keyString += "</keyframe>"
+        keyString = "<keyframe"
+        keyString += " value=\"" 
+        keyString += str(self.value) 
+        keyString += "\""
+        if self.keyed:
+            keyString += " interpol=\"" 
+            keyString += self.interpol 
+            keyString += "\">\n"
+
+            for key in self.keys:
+                keyString += "  <key frame=\""
+                keyString += str(key[0])
+                keyString += "\" value=\""
+                keyString += str(key[1])
+                keyString += "\"/>\n"
+
+            keyString += "</keyframe>"
+        else:
+            keyString += " />"
+
         return keyString
             
     def clean(self):
