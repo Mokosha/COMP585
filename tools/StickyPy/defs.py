@@ -415,13 +415,6 @@ def gatherKeyFrames(Stick):
         keys += gatherKeyFrames(child)
     return keys
 
-def insertKey(keyframe, key, interpol="linear"):
-    if isinstance(keyframe, KeyFrame):
-        keyframe.keys.append(key)
-        keyframe.clean()
-    else:
-        keyframe = KeyFrame([key], interpol)
-
 def concatDict(dict1, dict2):
     for item in dict2.items():
         k = item[0]
