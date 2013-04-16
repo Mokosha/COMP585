@@ -127,6 +127,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             i = self.validKeys[kn]
             for key in self.keys[0].values()[i].keys:
                 point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
+                point = Vector(int(point.x), int(point.y))
                 if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
                     collisions.append(key)
 
