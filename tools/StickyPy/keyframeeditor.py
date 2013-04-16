@@ -41,6 +41,9 @@ class KeyFrameWidget(widgets.WidgetContainer):
     def changekeys(self, keys):
         self.widgets['KeyFrameEditor'].changekeys(keys)
 
+    def updatezoom(self, frame_range):
+        self.widgets['KeyFrameEditor'].updatezoom(frame_range)
+
     def close(self):
         self.visible = False
         self.window.fullredraw = True
@@ -68,15 +71,32 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.fontsize = 16
         self.select = [False,None, "box"]
         self.zoom = 4
+        self.maxzoom = 48.0
+        self.minzoom = 0.01
         self.pan = 0
         self.visible = True
         self.font = pygame.font.Font(pygame.font.get_default_font(), self.fontsize)
+
+        self.keys = []
+        self.textwidth = 0
+        self.range = [1, 2]
 
     def resize(self, pos, size):
         self.pos = pos
         self.size = size
         self.image = pygame.Surface(self.size)
         if self.container.visible: self.draw()
+
+    def updatezoom(self, frame_range=None):
+
+        if frame_range == None:
+            frame_range = self.range
+
+        width = self.size.x - self.textwidth - 2*self.texkeyoff.get_size()[0]
+        self.minzoom = float(width) / (frame_range[1] - frame_range[0])
+
+        self.zoom = self.minzoom
+        self.range = frame_range
 
     def changekeys(self, keys):
         self.keys = keys
@@ -95,22 +115,22 @@ class KeyFrameEditor(widgets.BaseWidget):
 
         self.textwidth = maxwidth
 
+        self.updatezoom()
         if self.visible:
             self.draw()
             self.container.organise()
 
     def getCollide(self, map):
-        list = []
+        collisions = []
         for kn in range(len(self.validKeys)):
 
             i = self.validKeys[kn]
             for key in self.keys[0].values()[i].keys:
                 point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
-
                 if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
-                    list.append(key)
+                    collisions.append(key)
 
-        return list
+        return collisions
 
     def getdrag(self):
         for kn in range(len(self.validKeys)):
@@ -121,14 +141,12 @@ class KeyFrameEditor(widgets.BaseWidget):
 
     def mwheelup(self):
         if self.hover:
-            self.zoom *= 1.2
-            if self.zoom > 48: self.zoom = 48
+            self.zoom = min(self.zoom * 1.2, self.maxzoom)
             self.draw()
 
     def mwheeldown(self):
         if self.hover:
-            self.zoom /= 1.2
-            if self.zoom < 0.01: self.zoom = 0.01
+            self.zoom = max(self.zoom / 1.2, self.minzoom)
             self.draw()
 
     def lclick(self):
@@ -259,7 +277,7 @@ class KeyFrameEditor(widgets.BaseWidget):
 
     def getkeypos(self, key, row):
         dy = len(self.validKeys)
-        return (key[0]*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/dy*row+(self.size[1]/dy)/2 - self.texkeyon.get_height()/2)
+        return ((key[0]-1)*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/dy*row+(self.size[1]/dy)/2 - self.texkeyon.get_height()/2)
 
     def draw(self):
 

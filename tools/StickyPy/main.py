@@ -157,6 +157,8 @@ def main(screen):
             'PresetFigures':{'StickMan':StickMan}, # Dictionary of figure presets for adding to the scene
             'version':version} # StickyPy version (string)
     data['widgets'] = StickFigureApp(screensize, data) # Define the main application
+
+    data['widgets'].container.widgets['KeyFrameEditor'].updatezoom(data['framelimit'])
     
     # Set blank image for fast screen filling
     blank = screen.copy()

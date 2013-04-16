@@ -283,10 +283,15 @@ class StartFrameScrollBox(widgets.NumberScrollBox):
         self.draw()
     def edited(self):
         try:
-            if int(float(self.text)) < self.data['framelimit'][1]:
-                self.data['framelimit'][0] = int(float(self.text))
-                self.container.widgets['FrameScrollBar'].range[0] = self.data['framelimit'][0]
-                self.container.widgets['FrameScrollBar'].draw()
+            val = int(float(self.text))
+            if val >= self.data['framelimit'][1]:
+                return
+
+            self.data['framelimit'][0] = val
+            self.container.widgets['FrameScrollBar'].range[0] = val
+            self.container.widgets['FrameScrollBar'].draw()
+
+            self.container.widgets['KeyFrameEditor'].updatezoom(self.data['framelimit'])
         except:
             pass
 
@@ -303,10 +308,15 @@ class EndFrameScrollBox(widgets.NumberScrollBox):
         self.draw()
     def edited(self):
         try:
-            if int(float(self.text)) > self.data['framelimit'][0]:
-                self.data['framelimit'][1] = int(float(self.text))
-                self.container.widgets['FrameScrollBar'].range[1] = self.data['framelimit'][1]
-                self.container.widgets['FrameScrollBar'].draw() 
+            val = int(float(self.text))
+            if val <= self.data['framelimit'][0]:
+                return
+
+            self.data['framelimit'][1] = val
+            self.container.widgets['FrameScrollBar'].range[1] = val
+            self.container.widgets['FrameScrollBar'].draw()
+
+            self.container.widgets['KeyFrameEditor'].updatezoom(self.data['framelimit'])
         except:
             pass
 
