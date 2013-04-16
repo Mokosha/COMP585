@@ -38,8 +38,8 @@ class KeyFrameWidget(widgets.WidgetContainer):
         self.organise()
         self.draw()
 
-    def changekeys(self, keys):
-        self.widgets['KeyFrameEditor'].changekeys(keys)
+    def changelimbs(self, limbs):
+        self.widgets['KeyFrameEditor'].changelimbs(limbs)
 
     def updatezoom(self, frame_range):
         self.widgets['KeyFrameEditor'].updatezoom(frame_range)
@@ -77,7 +77,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.visible = True
         self.font = pygame.font.Font(pygame.font.get_default_font(), self.fontsize)
 
-        self.keys = []
+        self.limbs = []
         self.textwidth = 0
         self.range = [1, 2]
 
@@ -98,18 +98,18 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.zoom = self.minzoom
         self.range = frame_range
 
-    def changekeys(self, keys):
-        self.keys = keys
+    def changelimbs(self, keys):
+        self.limbs = keys
         maxwidth = 0
 
         self.validKeys = []
-        if not self.keys == []:
-            for item in self.keys[0].keys():
+        if not self.limbs == []:
+            for item in self.limbs[0].keys():
                 twidth = self.font.render(item, True, (0,0,0)).get_width()
                 if twidth > maxwidth: maxwidth = twidth
 
-            for i in range(len(self.keys[0])):
-                kf = self.keys[0].values()[i]
+            for i in range(len(self.limbs[0])):
+                kf = self.limbs[0].values()[i]
                 if isinstance(kf, KeyFrame) and kf.keyed:
                     self.validKeys.append(i)
 
@@ -125,7 +125,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         for kn in range(len(self.validKeys)):
 
             i = self.validKeys[kn]
-            for key in self.keys[0].values()[i].keys:
+            for key in self.limbs[0].values()[i].keys:
                 point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
                 point = Vector(int(point.x), int(point.y))
                 if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
@@ -136,7 +136,7 @@ class KeyFrameEditor(widgets.BaseWidget):
     def getdrag(self):
         for kn in range(len(self.validKeys)):
             i = self.validKeys[kn]
-            for key in self.keys[0][self.keys[0].keys()[i]].keys:
+            for key in self.limbs[0][self.limbs[0].keys()[i]].keys:
                 if pygame.Rect(self.getkeypos(key, kn), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
                     return key
 
@@ -191,9 +191,9 @@ class KeyFrameEditor(widgets.BaseWidget):
     def lrelease(self):
         if self.container.visible:
             self.drag = None
-            for currkey in self.keys:
-                for key in currkey.values():
-                    if isinstance(key, KeyFrame): key.clean()
+            for limb in self.limbs:
+                for attribute in limb.values():
+                    if isinstance(attribute, KeyFrame): attribute.clean()
             self.draw()
                     
         if self.select[0]:
@@ -239,9 +239,9 @@ class KeyFrameEditor(widgets.BaseWidget):
         if not self.drag == None:
             for i in range(len(self.editing)):
                 self.editing[i][0] = self.dragpos[i][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
-            for currkey in self.keys:
-                for key in currkey.values():
-                    if isinstance(key, KeyFrame): key.sort()
+            for limb in self.limbs:
+                for attr in limb.values():
+                    if isinstance(attr, KeyFrame): attr.sort()
             self.container.container.changeframe(self.data['frame'])
         if self.visible and self.hover:
             self.draw()
@@ -268,7 +268,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         elif selected == "insertkey":
             frame, attrib = self.getposkey(self.menumousepos)
 
-            for limb in self.keys:
+            for limb in self.limbs:
                 k = limb.keys()[self.validKeys[attrib]]
 
                 oldframe = limb[k].frame
@@ -282,9 +282,9 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.container.close()
         elif selected == "linear" or selected == "smoothstep":
             for key in self.editing:
-                for currkey in self.keys:
-                    for keyfr in currkey.values():
-                        if isinstance(keyfr, KeyFrame):
+                for limb in self.limbs:
+                    for attr in currkey.values():
+                        if isinstance(attr, KeyFrame):
                             keyfr.interpol = selected
             self.draw()
 
@@ -313,7 +313,7 @@ class KeyFrameEditor(widgets.BaseWidget):
 
         for kn in range(len(self.validKeys)):
             i = self.validKeys[kn]
-            fontrender = self.font.render(self.keys[0].keys()[i], True, (0,0,0))
+            fontrender = self.font.render(self.limbs[0].keys()[i], True, (0,0,0))
             
             dy = len(self.validKeys)
             self.image.blit(fontrender, (0,self.size[1]/dy*kn+(self.size[1]/dy)/2 - fontrender.get_height()/2))
@@ -321,7 +321,7 @@ class KeyFrameEditor(widgets.BaseWidget):
                 
         for kn in range(len(self.validKeys)):
             i = self.validKeys[kn]
-            for key in self.keys[0].values()[i].keys:
+            for key in self.limbs[0].values()[i].keys:
                 selected = False
                 for editkey in self.editing:
                     if key is editkey: selected = True

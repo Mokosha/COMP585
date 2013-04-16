@@ -187,7 +187,7 @@ class EditorMenuBar(widgets.MenuBar):
                 self.container.organise()
 
         elif selected == "editkeys":
-            self.container.widgets['KeyFrameEditor'].changekeys(self.data['editing'])
+            self.container.widgets['KeyFrameEditor'].changelimbs(self.data['editing'])
             self.container.widgets['KeyFrameEditor'].show()
 
         elif selected == "showabout":
@@ -365,7 +365,7 @@ class CameraKeysButton(widgets.Button):
         self.comment = "Edit the keyframes of the camera (blue rectangle)"
     def lrelease(self):
         if self.hover and self.selected:
-            self.container.widgets['KeyFrameEditor'].changekeys([self.data['camera']])
+            self.container.widgets['KeyFrameEditor'].changelimbs([self.data['camera']])
             self.container.widgets['KeyFrameEditor'].show()
         self.draw()
         
@@ -382,31 +382,6 @@ class SelAddButton(widgets.Button):
         self.draw()
     def menuaction(self, selection):
         self.changelabel(selection)
-
-#class AboutDialog(widgets.BaseWidget):
-#    def __init__(self, pos, version, data):
-#        self.pos = pos
-#        self.data = data
-#        self.image = pygame.image.load("logo.png")
-#        font = pygame.font.Font(pygame.font.get_default_font(), 15)
-#        self.size = Vector(self.image.get_size())
-#        self.image.blit(font.render("Version: " + version, True, (0,0,0)), (1,self.size.y-16))
-#        self.visible = False
-#        
-#        self.oldkeys = []
-#        self.oldmousepos = (0,0)
-#        self.oldmousebut = (False,False,False)
-#        self.oldhover = False
-#        self.disabled = False
-#        self.hover = False
-#        self.comment = ""
-#        self.redraw = False
-#    def mousemove(self):
-#        self.visible = False
-#        self.disabled = True
-#        self.data['fullredraw'] = True
-#    def draw(self):
-#        pass
 
 class AboutDialog(widgets.BaseWidget):
     def setup(self):
