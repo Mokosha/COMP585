@@ -81,6 +81,8 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.textwidth = 0
         self.range = [1, 2]
 
+        self.clipboard = []
+
     def resize(self, pos, size):
         self.pos = pos
         self.size = size
@@ -220,6 +222,8 @@ class KeyFrameEditor(widgets.BaseWidget):
 
             menuoptions = []
             if not self.selectedkey == None:
+                menuoptions.append(("Cut", "cutkey"))
+                menuoptions.append(("Copy", "copykey"))
                 menuoptions.append(("Delete keyframe", "deletekey"))
                 menuoptions.append(("Go to frame", "gotoframe"))
                 menuoptions.append(("Set linear interpolation", "linear"))
@@ -249,16 +253,34 @@ class KeyFrameEditor(widgets.BaseWidget):
     def always(self):
         if self.data['playing'] and self.visible:
             self.draw()
+    
+    def deletekey(self, key):
+        for limb in self.limbs:
+            for attr in limb.values():
+                if not isinstance(attr, KeyFrame):
+                    continue
+
+                attr.keys = [k for k in attr.keys if not k is key]
+                attr.setframe(self.data['frame'])
 
     def menuaction(self, selected):
+
         if selected == "deletekey":
             for key in self.editing:
-                for currkey in self.keys:
-                    for keyfr in currkey.values():
-                        if isinstance(keyfr, KeyFrame):
-                            keyfr.keys = [k for k in keyfr.keys if not k is key]
-                            keyfr.setframe(self.data['frame'])
+                self.deletekey(key)
             self.draw()
+
+        elif selected == "cutkey":
+            self.clipboard = []
+            for key in self.editing:
+                self.clipboard.append(key)
+                self.deletekey(key)
+            self.draw()
+
+        elif selected == "copykey":
+            self.clipboard = []
+            for key in self.editing:
+                self.clipboard.append(key)
 
         elif selected == "gotoframe":
             self.data['frame'] = self.selectedkey[0]
