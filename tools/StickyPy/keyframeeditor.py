@@ -233,6 +233,10 @@ class KeyFrameEditor(widgets.BaseWidget):
                 menuoptions.append(("Close keyframe editor", "closeeditor"))
 
             self.menumousepos = self.mousepos - self.pos
+
+            if len(self.clipboard) > 0 and self.menumousepos[0] > self.textwidth:
+                menuoptions.append(("Paste", "pastekey"))
+
             self.container.window.menu.showmenu(menuoptions, self.container.window.mousepos, self, 15)
 
     def mousemove(self):
@@ -281,6 +285,9 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.clipboard = []
             for key in self.editing:
                 self.clipboard.append(key)
+
+        elif selected == "pastekey":
+            pass
 
         elif selected == "gotoframe":
             self.data['frame'] = self.selectedkey[0]
