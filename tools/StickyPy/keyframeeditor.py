@@ -31,7 +31,6 @@ class KeyFrameWidget(widgets.WidgetContainer):
 
     def resize(self, pos, size):
         self.pos = pos
-        #self.image.fill((0,0,0))if size[0] < 1: size[0] = 1
         if size[1] < 1: size[1] = 1
         self.size = size
         self.image = pygame.Surface(self.size)
@@ -60,6 +59,7 @@ class KeyFrameWidget(widgets.WidgetContainer):
         self.widgets['KeyFrameEditor'].resize(Vector(30,0), self.size - Vector(30,0))
 
 class KeyFrameEditor(widgets.BaseWidget):
+
     def setup(self):
         self.editing = []
         self.texkeyon = self.container.window.resources['key']
@@ -71,6 +71,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.pan = 0
         self.visible = True
         self.font = pygame.font.Font(pygame.font.get_default_font(), self.fontsize)
+
     def resize(self, pos, size):
         self.pos = pos
         self.size = size
@@ -131,34 +132,42 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.draw()
 
     def lclick(self):
-        if self.hover and self.selected:
-            self.drag = self.getdrag()
-            if not self.drag == None:
-                if self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]:
-                    contains = False
-                    for key in self.editing:
-                        if key is self.drag:
-                            contains = True
-                            if len(self.editing) > 1: self.editing = [k for k in self.editing if not k is key]
-                            break
-                    #print self.data['editing']
-                    if not contains: self.editing += [self.drag]
-                else:
-                    contains = False
-                    for key in self.editing:
-                        if key is self.drag:
-                            contains = True
-                            break
-                    if not contains: self.editing = [self.drag]
-            elif self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
-                self.select = [True, [self.mousepos - self.pos], "lasso"]
+        if not self.hover or not self.selected:
+            return
+
+        self.drag = self.getdrag()
+        if self.drag != None:
+            if self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]:
+                contains = False
+                for key in self.editing:
+
+                    if key is self.drag:
+                        contains = True
+                        if len(self.editing) > 1: 
+                            self.editing = [k for k in self.editing if not k is key]
+                        break
+
+                if not contains: 
+                    self.editing += [self.drag]
             else:
-                self.select = [True, self.mousepos, "box"]
-            self.dragging = True
-            self.dragpos = deepcopy(self.editing)
-            self.dragmouse = self.mousepos
-            self.selected = self.drag
-            self.draw()
+                contains = False
+                for key in self.editing:
+                    if key is self.drag:
+                        contains = True
+                        break
+
+                if not contains: 
+                    self.editing = [self.drag]
+
+        elif self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
+            self.select = [True, [self.mousepos - self.pos], "lasso"]
+        else:
+            self.select = [True, self.mousepos, "box"]
+        self.dragging = True
+        self.dragpos = deepcopy(self.editing)
+        self.dragmouse = self.mousepos
+        self.selected = self.drag
+        self.draw()
 
     def lrelease(self):
         if self.container.visible:
@@ -182,8 +191,10 @@ class KeyFrameEditor(widgets.BaseWidget):
                 self.editing = self.getCollide(map)
             self.select[0] = False
             self.draw()
+
     def mclick(self):
         pass
+
     def rrelease(self):
         if self.hover and self.selected:
             self.selectedkey = self.getdrag()
@@ -231,6 +242,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.container.changeframe(self.data['frame'])
             self.draw()
         elif selected == "insertkey":
+            print self.mousepos
             self.container.window.menu.showmenu([("Not supported yet", "none")], self.mousepos, self, 20)
         elif selected == "closeeditor":
             self.container.close()
@@ -242,6 +254,9 @@ class KeyFrameEditor(widgets.BaseWidget):
                             keyfr.interpol = selected
             self.draw()
 
+    def getmousekey(self):
+        pass
+
     def getkeypos(self, key, row):
         dy = len(self.validKeys)
         return (key[0]*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/dy*row+(self.size[1]/dy)/2 - self.texkeyon.get_height()/2)
@@ -252,14 +267,9 @@ class KeyFrameEditor(widgets.BaseWidget):
             return
 
         self.image.fill((100,100,100))
-        if not self.keys == [] and self.keys[0].keys().count('colour') > 0 and False:
-            for i in range(200):
-                colour = deepcopy(self.keys[0]['colour'])
-                rect = pygame.Rect((i*self.zoom+self.textwidth+self.pan, self.size[1]/len(self.keys[0])* self.keys[0].keys().index('colour') +(self.size[1]/len(self.keys[0]))/2 - 10), (self.zoom, 20))
-                pygame.draw.rect(self.image, colour.setframe(i), rect)
 
-        #TODO: textwidth?
-        pygame.draw.line(self.image, (0,0,0), (self.data['frame']*self.zoom+self.textwidth+self.pan,0), (self.data['frame']*self.zoom+self.textwidth+self.pan,self.size[1]), 3)
+        line_x = (self.data['frame'] - 1)*self.zoom+self.textwidth+self.pan
+        pygame.draw.line(self.image, (0,0,0), (line_x, 0), (line_x, self.size[1]), 3)
 
         for kn in range(len(self.validKeys)):
             i = self.validKeys[kn]

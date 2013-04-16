@@ -3,6 +3,7 @@ from objs import *
 from defs import *
 
 class StickEditor(widgets.BaseWidget):
+
     def setup(self):
         self.viewdrag = False
         self.image.fill((255,255,255))
@@ -11,6 +12,7 @@ class StickEditor(widgets.BaseWidget):
         self.cameradrag = [0] #0:Off, 1:Camera Drag, 2:Camera Resize
         self.select = [False,None, "box"]
         self.drawonion()
+
     def resize(self, pos, size):
         self.pos = pos
         if size[0] < 1: size[0] = 1
@@ -21,7 +23,6 @@ class StickEditor(widgets.BaseWidget):
 
     def getpos(self):
         return Vector(-(self.size[0] * 0.5), -(self.size[1] * 0.5))
-#        return Vector(self.pos - (self.size[0] * 0.5), self.pos[1] - (self.size[1] * 0.5))
 
     def getmousepos(self):
         mouse_pos_x = self.mousepos[0] - (self.size[0] * 0.5)

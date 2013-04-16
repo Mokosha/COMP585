@@ -61,8 +61,6 @@ class AppWidgets(widgets.WidgetContainer):
                         'ShapeEditor':shapeeditor.ShapeEditor(Vector(size[0]-300,100), Vector(300,size[1]-100), self, mainwindow, data),
                         'PlayButton':PlayButton(Vector(10,350), Vector(canvaspos[0]-30,30), self, data),
                         'CameraKeysButton':CameraKeysButton(Vector(10,500), Vector(canvaspos[0]-30,30), self, data),
-                        #'lblFileName':widgets.Label(Vector(10,400), Vector(canvaspos[0]-30,30), "File name:", (255,255,255)),
-                        #'FileName':widgets.TextBox(Vector(10,450), Vector(canvaspos[0]-30,30), self, data),
                         'StretchCheckBox':StretchCheckBox(Vector(10,100), Vector(canvaspos[0]-30,30), self, data),
                         'ExtrudeCheckBox':ExtrudeCheckBox(Vector(10,150), Vector(canvaspos[0]-30,30), self, data),
                         'lblFrame':widgets.Label(Vector(10,550), Vector(canvaspos[0]/2-30,30), "Frame:", (255,255,255)),
@@ -77,21 +75,22 @@ class AppWidgets(widgets.WidgetContainer):
                         'AboutDialog':AboutDialog(Vector(0,0), Vector(0,0), self, data),
                         'QuitDialog':QuitDialog(Vector(size)/2-Vector(200,80)/2, Vector(200,80), self, mainwindow, data),
                         'BrowserDialog':BrowserDialog(Vector(0,0), size, self, mainwindow, data),}
-        #self.widgets['FileName'].textboxsetup("test")
         
         # Set the display order
-        self.order = ['EditorMenuBar', 'StickEditor', 'PlayButton', 'CameraKeysButton', #'lblFileName', 'FileName',
+        self.order = ['EditorMenuBar', 'StickEditor', 'PlayButton', 'CameraKeysButton',
                     'lblFrame', 'FrameScrollBox', 'lblFrameRate', 'FrameRateScrollBox', 'lblFrameLimit',
                     'StartFrameScrollBox', 'EndFrameScrollBox', 'StretchCheckBox', 'ExtrudeCheckBox',
                     'AddButton', 'SelAddButton', 'lblSelAdd', 'FrameScrollBar',
                     'KeyFrameEditor', 'ShapeEditor', 'QuitDialog', 'AboutDialog', 'BrowserDialog']
-        self.organise() # Properly organise the widgets 
+        self.organise()
+
     def handleevent(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 if self.widgets['StickEditor'].selected: self.changeframe(self.data['frame']+1)
             if event.key == pygame.K_LEFT:
                 if self.widgets['StickEditor'].selected: self.changeframe(self.data['frame']-1)
+
     def changeframe(self, frame, updatescrollbar=True):
         self.data['frame'] = frame
         changeFrame(self.data['scene'], int(frame))
@@ -101,24 +100,21 @@ class AppWidgets(widgets.WidgetContainer):
         if not self.data['editing'] == []: self.widgets['ShapeEditor'].changelimb()
         self.widgets['FrameScrollBox'].changetext(str(int(frame)))
         
-        if self.data['OnionSkinning']: self.widgets['StickEditor'].drawonion() #thread.start_new_thread(self.widgets['StickEditor'].drawonion, ())
+        if self.data['OnionSkinning']: self.widgets['StickEditor'].drawonion() 
         self.widgets['StickEditor'].draw()
         if self.widgets['KeyFrameEditor'].visible: self.widgets['KeyFrameEditor'].draw()
         if updatescrollbar:
             self.widgets['FrameScrollBar'].scrollto(frame)
-    def draw(self):
-        #self.image.fill((0,0,0))
-        #self.image.blit(pygame.transform.scale(self.topgradient, (self.size.x, self.topgradient.get_height())), (0,0))
-        self.drawwidgets()
-#        self.mousemask.set_alpha(100)
-#        self.image.blit(self.mousemask, (0,0))
-#        self.mousemask.set_alpha(255)
 
+    def draw(self):
+        self.drawwidgets()
         self.redraw = True
+
     def drawbase(self):
         self.image.fill((0,0,0))
         self.image.blit(pygame.transform.scale(self.topgradient, (self.size.x, self.topgradient.get_height())), (0,0))
         self.window.fullredraw = True
+
     def organise(self):
         self.widgets['StickEditor'].resize(self.widgets['StickEditor'].pos, Vector(self.size.x-self.widgets['StickEditor'].pos.x - (self.widgets['ShapeEditor'].size.x if self.widgets['ShapeEditor'].visible else 0),
                                            self.size.y-self.widgets['StickEditor'].pos.y-20 - (self.widgets['KeyFrameEditor'].size.y if self.widgets['KeyFrameEditor'].visible else 0)))
@@ -132,7 +128,21 @@ class AppWidgets(widgets.WidgetContainer):
         vertobjs = 12
         top = 100
         botspace = 50 + (self.widgets['KeyFrameEditor'].size.y if self.widgets['KeyFrameEditor'].visible else 0)
-        objs = [['StretchCheckBox'], ['ExtrudeCheckBox'], ['lblSelAdd'], ['SelAddButton'], ['AddButton'], ['PlayButton'], ['CameraKeysButton'], ['lblFrame', 'FrameScrollBox'], ['lblFrameLimit'], ['StartFrameScrollBox', 'EndFrameScrollBox'], ['lblFrameRate'], ['FrameRateScrollBox']]
+        objs = [
+            ['StretchCheckBox'], 
+            ['ExtrudeCheckBox'], 
+            ['lblSelAdd'], 
+            ['SelAddButton'], 
+            ['AddButton'], 
+            ['PlayButton'], 
+            ['CameraKeysButton'], 
+            ['lblFrame', 'FrameScrollBox'], 
+            ['lblFrameLimit'], 
+            ['StartFrameScrollBox', 'EndFrameScrollBox'], 
+            ['lblFrameRate'], 
+            ['FrameRateScrollBox']
+        ]
+
         for i in range(min(12,len(objs))):
             for obj in objs[i]:
                 self.widgets[obj].pos.y = (self.size.y-top-botspace)/vertobjs*i+top
@@ -143,71 +153,82 @@ class EditorMenuBar(widgets.MenuBar):
                         ("Edit", [("Delete", "delete"), ("Shape", "editshape"), ("Keyframes", "editkeys"), ("Toggle OnionSkinning", "toggleonion")]), ("Help",[("About", "showabout"), ("StickyPy Website", "website"), ("StickyPy Tutorial", "tutorial")])])
         self.texback = self.container.window.resources['textbox']
         self.draw()
+
     def menuaction(self, selected):
         if selected == "new":
             self.data['scene'] = dict(self.data['scene'], cartesian=KeyFrame(True), static=KeyFrame(True), hidden=KeyFrame(True), children=[])
             self.container.changeframe(1)
+
         if selected == "quit":
             self.container.widgets['QuitDialog'].disabled = False
             self.container.widgets['QuitDialog'].visible = True
+
         elif selected == "save":
             self.container.widgets['BrowserDialog'].visible = True
             self.container.widgets['BrowserDialog'].disabled = False
             self.container.widgets['BrowserDialog'].changemode("save")
-            #filename = "test"
-            #if len(self.container.widgets['FileName'].text) > 0: filename = self.container.widgets['FileName'].text 
-            #file = open(filename + ".sps", "w")
-            #pickle.Pickler(file).dump({'scene':self.data['scene'], 'camera':self.data['camera'], 'framerate':self.data['framerate'], 'framelimit':self.data['framelimit']})
+
         elif selected == "open":
-            #filename = "test"
-            #if len(self.container.widgets['FileName'].text) > 0: filename = self.container.widgets['FileName'].text
-            #file = open(filename + ".sps", "r")
-            #concatDict(self.data, pickle.Unpickler(file).load())
-            #self.container.changeframe(1)
             self.container.widgets['BrowserDialog'].visible = True
             self.container.widgets['BrowserDialog'].disabled = False
             self.container.widgets['BrowserDialog'].changemode("load")
+
         elif selected == "delete":
             deleteVerts(self.data['editing'], self.data['scene'])
+
         elif selected == "toggleonion":
             self.data['OnionSkinning'] = not self.data['OnionSkinning']
             self.container.widgets['StickEditor'].draw()
+
         elif selected == "editshape":
             if not self.data['editing'] == []:
                 self.container.widgets['ShapeEditor'].visible = True
                 self.container.widgets['ShapeEditor'].changelimb()
                 self.container.organise()
+
         elif selected == "editkeys":
             self.container.widgets['KeyFrameEditor'].changekeys(self.data['editing'])
             self.container.widgets['KeyFrameEditor'].show()
+
         elif selected == "showabout":
             print "StickyPy - Python Stick Figure Animation Program by Joshua Worth. Version: " + self.data['version']
             self.container.widgets['AboutDialog'].visible = True
             self.container.widgets['AboutDialog'].enable()
+
         elif selected == "website":
             webbrowser.open("http://stickypy.sourceforge.net")
+
         elif selected == "tutorial":
             webbrowser.open("http://stickypy.sourceforge.net/texttutorial.html")
+
         elif selected == "render":
             for i in range(self.data['framelimit'][1]):
                 self.data['playing'] = True
                 self.container.changeframe(i)
-                if float(self.data['widgets'].container.widgets['StickEditor'].size.y) / float(self.data['widgets'].container.widgets['StickEditor'].size.x) < float(self.data['camera']['size'].y) / self.data['camera']['size'].x: 
-                    self.data['zoom'] = float(self.data['widgets'].container.widgets['StickEditor'].size.y) / self.data['camera']['size'].y / self.data['camera']['zoom'].setframe(i)
+
+                editorsize_x = float(self.data['widgets'].container.widgets['StickEditor'].size.x)
+                editorsize_y = float(self.data['widgets'].container.widgets['StickEditor'].size.y)
+                camsize_x = float(self.data['camera']['size'].x)
+                camsize_y = float(self.data['camera']['size'].y)
+                if editorsize_y / editorsize_x < camsize_y / camsize_x: 
+                    self.data['zoom'] = editorsize_y / camsize_y / self.data['camera']['zoom'].setframe(i)
                 else:
-                    self.data['zoom'] = float(self.data['widgets'].container.widgets['StickEditor'].size.x) / self.data['camera']['size'].x / self.data['camera']['zoom'].setframe(i)
+                    self.data['zoom'] = editorsize_x / camsize_x / self.data['camera']['zoom'].setframe(i)
                 
                 self.data['panning'] = -Vector(self.data['camera']['pos'].setframe(i))*self.data['zoom']
                 pygame.image.save(self.container.widgets['StickEditor'].image, "render/"+("0"*(4-len(str(i)))+str(i))+".jpg")
                 self.data['playing'] = False
+
         elif selected == "export":
             self.container.widgets['BrowserDialog'].visible = True
             self.container.widgets['BrowserDialog'].disabled = False
             self.container.widgets['BrowserDialog'].changemode("export")
 
 class FrameScrollBar(widgets.ScrollBar):
+
     def setup(self):
         self.scrollbarsetup(False, self.data['framelimit'], 1)
+
     def always(self):
         if self.data['playing']:
             if self.drag:
@@ -215,6 +236,7 @@ class FrameScrollBar(widgets.ScrollBar):
             else:
                 self.value = float(self.data['frame'])
                 self.draw()
+
     def scroll(self):
         if self.value < self.range[0]: self.value = self.range[0]
         if self.value > self.range[1]: self.value = self.range[1]
