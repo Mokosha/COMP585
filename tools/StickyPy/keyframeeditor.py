@@ -228,6 +228,7 @@ class KeyFrameEditor(widgets.BaseWidget):
                 menuoptions.append(("Insert Keyframe", "insertkey"))
                 menuoptions.append(("Close keyframe editor", "closeeditor"))
 
+            self.menumousepos = self.mousepos - self.pos
             self.container.window.menu.showmenu(menuoptions, self.container.window.mousepos, self, 15)
 
     def mousemove(self):
@@ -244,9 +245,11 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.container.container.changeframe(self.data['frame'])
         if self.visible and self.hover:
             self.draw()
+
     def always(self):
         if self.data['playing'] and self.visible:
             self.draw()
+
     def menuaction(self, selected):
         if selected == "deletekey":
             for key in self.editing:
@@ -256,13 +259,25 @@ class KeyFrameEditor(widgets.BaseWidget):
                             keyfr.keys = [k for k in keyfr.keys if not k is key]
                             keyfr.setframe(self.data['frame'])
             self.draw()
+
         elif selected == "gotoframe":
             self.data['frame'] = self.selectedkey[0]
             self.container.changeframe(self.data['frame'])
             self.draw()
+
         elif selected == "insertkey":
-            print self.mousepos
-            self.container.window.menu.showmenu([("Not supported yet", "none")], self.mousepos, self, 20)
+            frame, attrib = self.getposkey(self.menumousepos)
+
+            for limb in self.keys:
+                k = limb.keys()[self.validKeys[attrib]]
+
+                oldframe = limb[k].frame
+                limb[k].setframe(frame)
+                limb[k].insertkey()
+                limb[k].setframe(oldframe)
+            
+            self.draw()
+
         elif selected == "closeeditor":
             self.container.close()
         elif selected == "linear" or selected == "smoothstep":
@@ -273,8 +288,14 @@ class KeyFrameEditor(widgets.BaseWidget):
                             keyfr.interpol = selected
             self.draw()
 
-    def getmousekey(self):
-        pass
+    def getposkey(self, pos):
+        dy = self.size[1]/len(self.validKeys)
+        dx = self.zoom
+
+        frame = int((pos[0] - self.textwidth) / dx + 0.5) + 1
+        attrib = int(pos[1] / dy)
+
+        return frame, attrib
 
     def getkeypos(self, key, row):
         dy = len(self.validKeys)
