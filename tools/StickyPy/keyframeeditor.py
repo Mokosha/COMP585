@@ -160,10 +160,10 @@ class KeyFrameEditor(widgets.BaseWidget):
         if not self.hover or not self.selected:
             return
 
+        shift = self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]
         self.drag = self.getdrag()
         if len(self.drag) > 0:
             contains = False
-            shift = self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]
             for key in self.editing:
                 if key in self.drag:
                     contains = True
@@ -176,10 +176,15 @@ class KeyFrameEditor(widgets.BaseWidget):
                 else:
                     self.editing = self.drag
 
-        elif self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
-            self.select = [True, [self.mousepos - self.pos], "lasso"]
         else:
-            self.select = [True, self.mousepos, "box"]
+            if not shift:
+                self.editing = []
+
+            if self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
+                self.select = [True, [self.mousepos - self.pos], "lasso"]
+            else:
+                self.select = [True, self.mousepos, "box"]
+
         self.dragged = deepcopy(self.editing)
         self.dragmouse = self.mousepos
         self.selected = self.drag if len(self.drag) > 0 else None
