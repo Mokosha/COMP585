@@ -192,7 +192,7 @@ class KeyFrameEditor(widgets.BaseWidget):
 
     def lrelease(self):
         if self.container.visible:
-            self.drag = None
+            self.drag = []
             for limb in self.limbs:
                 for attribute in limb.values():
                     if isinstance(attribute, KeyFrame): attribute.clean()
@@ -249,7 +249,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         if self.mousebut[1] and self.selected:
             self.pan += self.mousepos.x - self.oldmousepos.x
 
-        if self.drag != None:
+        if len(self.drag) > 0:
 
             for i in range(len(self.editing)):
                 self.editing[i][2][0] = self.dragged[i][2][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
