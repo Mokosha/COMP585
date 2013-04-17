@@ -131,16 +131,17 @@ class KeyFrameEditor(widgets.BaseWidget):
                 point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
                 point = Vector(int(point.x), int(point.y))
                 if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
-                    collisions.append(key)
+                    collisions.append((self.limbs[0].keys()[i], key))
 
         return collisions
 
     def getdrag(self):
         for kn in range(len(self.validKeys)):
             i = self.validKeys[kn]
-            for key in self.limbs[0][self.limbs[0].keys()[i]].keys:
+            attrname = self.limbs[0].keys()[i]
+            for key in self.limbs[0][attrname].keys:
                 if pygame.Rect(self.getkeypos(key, kn), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
-                    return key
+                    return attrname, key
 
     def mwheelup(self):
         if self.hover:
@@ -158,34 +159,26 @@ class KeyFrameEditor(widgets.BaseWidget):
 
         self.drag = self.getdrag()
         if self.drag != None:
-            if self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]:
-                contains = False
-                for key in self.editing:
+            contains = False
+            shift = self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]
+            for key in self.editing:
+                if key is self.drag:
+                    contains = True
+                    if shift and len(self.editing) > 1: 
+                        self.editing = [k for k in self.editing if not k is key]
+                    break
 
-                    if key is self.drag:
-                        contains = True
-                        if len(self.editing) > 1: 
-                            self.editing = [k for k in self.editing if not k is key]
-                        break
-
-                if not contains: 
+            if not contains:
+                if shift:
                     self.editing += [self.drag]
-            else:
-                contains = False
-                for key in self.editing:
-                    if key is self.drag:
-                        contains = True
-                        break
-
-                if not contains: 
+                else:
                     self.editing = [self.drag]
 
         elif self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
             self.select = [True, [self.mousepos - self.pos], "lasso"]
         else:
             self.select = [True, self.mousepos, "box"]
-        self.dragging = True
-        self.dragpos = deepcopy(self.editing)
+        self.dragged = deepcopy(self.editing)
         self.dragmouse = self.mousepos
         self.selected = self.drag
         self.draw()
@@ -197,7 +190,7 @@ class KeyFrameEditor(widgets.BaseWidget):
                 for attribute in limb.values():
                     if isinstance(attribute, KeyFrame): attribute.clean()
             self.draw()
-                    
+
         if self.select[0]:
             map = pygame.Surface(self.image.get_size())
             map.fill((0,0,0))
@@ -218,7 +211,7 @@ class KeyFrameEditor(widgets.BaseWidget):
 
     def rrelease(self):
         if self.hover and self.selected:
-            self.selectedkey = self.getdrag()
+            _, self.selectedkey = self.getdrag()
 
             menuoptions = []
             if not self.selectedkey == None:
@@ -240,23 +233,44 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.container.window.menu.showmenu(menuoptions, self.container.window.mousepos, self, 15)
 
     def mousemove(self):
+
         if self.select[0] and self.select[2] == "lasso":
             self.select[1] += [self.mousepos - self.pos]
+
         if self.mousebut[1] and self.selected:
             self.pan += self.mousepos.x - self.oldmousepos.x
-        if not self.drag == None:
+
+        if self.drag != None:
+
             for i in range(len(self.editing)):
-                self.editing[i][0] = self.dragpos[i][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
-            for limb in self.limbs:
-                for attr in limb.values():
-                    if isinstance(attr, KeyFrame): attr.sort()
+                self.editing[i][1][0] = self.dragged[i][1][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
+
+            self.updatelimbs()
             self.container.container.changeframe(self.data['frame'])
+
         if self.visible and self.hover:
             self.draw()
 
     def always(self):
         if self.data['playing'] and self.visible:
             self.draw()
+
+    def updatelimbs(self):
+
+        for keyidx in range(len(self.editing)):
+            (attr, newkeyfr) = self.editing[keyidx]
+            (oldattr, oldkeyfr) = self.dragged[keyidx]
+            assert oldattr == attr
+
+            for limb in self.limbs:
+                limb[attr].removeframe(oldkeyfr[0])
+                limb[attr].insertkey(newkeyfr)
+
+        for limb in self.limbs:
+            for attr in limb.values():
+                if isinstance(attr, KeyFrame):
+                    attr.sort()
+                        
     
     def deletekey(self, key):
         for limb in self.limbs:
@@ -264,7 +278,7 @@ class KeyFrameEditor(widgets.BaseWidget):
                 if not isinstance(attr, KeyFrame):
                     continue
 
-                attr.keys = [k for k in attr.keys if not k is key]
+                attr.keys = [k for k in attr.keys if not k is key[1]]
                 attr.setframe(self.data['frame'])
 
     def menuaction(self, selected):
@@ -314,7 +328,7 @@ class KeyFrameEditor(widgets.BaseWidget):
                 for limb in self.limbs:
                     for attr in currkey.values():
                         if isinstance(attr, KeyFrame):
-                            keyfr.interpol = selected
+                            attr.interpol = selected
             self.draw()
 
     def getposkey(self, pos):
@@ -353,7 +367,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             for key in self.limbs[0].values()[i].keys:
                 selected = False
                 for editkey in self.editing:
-                    if key is editkey: selected = True
+                    if key is editkey[1]: selected = True
                 if selected:
                     self.image.blit(self.texkeyon, self.getkeypos(key, kn))
                 else:
