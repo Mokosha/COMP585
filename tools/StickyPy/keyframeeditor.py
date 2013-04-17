@@ -67,7 +67,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.editing = []
         self.texkeyon = self.container.window.resources['key']
         self.texkeyoff = self.container.window.resources['keyoff']
-        self.drag = None
+        self.drag = []
         self.fontsize = 16
         self.select = [False,None, "box"]
         self.zoom = 4
@@ -125,23 +125,26 @@ class KeyFrameEditor(widgets.BaseWidget):
     def getCollide(self, map):
         collisions = []
         for kn in range(len(self.validKeys)):
-
             i = self.validKeys[kn]
-            for key in self.limbs[0].values()[i].keys:
-                point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
-                point = Vector(int(point.x), int(point.y))
-                if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
-                    collisions.append((self.limbs[0].keys()[i], key))
+            for limb in self.limbs:
+                attrname = limb.keys()[i]
+                for key in limb[attrname].keys:
+                    point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
+                    point = Vector(int(point.x), int(point.y))
+                    if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
+                        collisions.append((limb, attrname, key))
 
         return collisions
 
     def getdrag(self):
+        drag = []
         for kn in range(len(self.validKeys)):
-            i = self.validKeys[kn]
-            attrname = self.limbs[0].keys()[i]
-            for key in self.limbs[0][attrname].keys:
-                if pygame.Rect(self.getkeypos(key, kn), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
-                    return attrname, key
+            for limb in self.limbs:
+                attrname = limb.keys()[self.validKeys[kn]]
+                for key in limb[attrname].keys:
+                    if pygame.Rect(self.getkeypos(key, kn), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
+                        drag.append((limb, attrname, key))
+        return drag
 
     def mwheelup(self):
         if self.hover:
@@ -158,21 +161,20 @@ class KeyFrameEditor(widgets.BaseWidget):
             return
 
         self.drag = self.getdrag()
-        if self.drag != None:
+        if len(self.drag) > 0:
             contains = False
             shift = self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]
             for key in self.editing:
-                if key == self.drag:
+                if key in self.drag:
                     contains = True
                     if shift and len(self.editing) > 1: 
-                        self.editing = [k for k in self.editing if not k == key]
-                    break
+                        self.editing.remove(key)
 
             if not contains:
                 if shift:
-                    self.editing += [self.drag]
+                    self.editing += self.drag
                 else:
-                    self.editing = [self.drag]
+                    self.editing = self.drag
 
         elif self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
             self.select = [True, [self.mousepos - self.pos], "lasso"]
@@ -180,7 +182,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.select = [True, self.mousepos, "box"]
         self.dragged = deepcopy(self.editing)
         self.dragmouse = self.mousepos
-        self.selected = self.drag
+        self.selected = self.drag if len(self.drag) > 0 else None
         self.draw()
 
     def lrelease(self):
@@ -215,8 +217,8 @@ class KeyFrameEditor(widgets.BaseWidget):
 
         menuoptions = []
         drag = self.getdrag()
-        if drag != None:
-            _, self.selectedkey = drag
+        if len(drag) > 0:
+            _, _, self.selectedkey = drag[0]
             menuoptions.append(("Cut", "cutkey"))
             menuoptions.append(("Copy", "copykey"))
             menuoptions.append(("Delete keyframe", "deletekey"))
@@ -245,9 +247,8 @@ class KeyFrameEditor(widgets.BaseWidget):
         if self.drag != None:
 
             for i in range(len(self.editing)):
-                self.editing[i][1][0] = self.dragged[i][1][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
+                self.editing[i][2][0] = self.dragged[i][2][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
 
-            self.updatelimbs(True)
             self.container.container.changeframe(self.data['frame'])
 
         if self.visible and self.hover:
@@ -257,63 +258,56 @@ class KeyFrameEditor(widgets.BaseWidget):
         if self.data['playing'] and self.visible:
             self.draw()
 
-    def updatelimbs(self, removeold=False):
+    def updatelimbs(self):
 
-        for keyidx in range(len(self.editing)):
-            (attr, newkeyfr) = self.editing[keyidx]
-
-            if removeold:
-                (oldattr, oldkeyfr) = self.dragged[keyidx]
-                assert oldattr == attr
-
-                for limb in self.limbs:
-                    limb[attr].removeframe(oldkeyfr[0])
-
-            for limb in self.limbs:
-                limb[attr].insertkey(newkeyfr)
+        for (limb, attr, keyfr) in self.editing:
+            limb[attr].insertkey(keyfr)
 
         for limb in self.limbs:
             for attr in limb.values():
                 if isinstance(attr, KeyFrame):
                     attr.sort()
-                        
-    
-    def deletekey(self, key):
-        for limb in self.limbs:
-            attr = limb[key[0]]
 
-            attr.keys = [k for k in attr.keys if k[0] != key[1][0]]
-            attr.setframe(self.data['frame'])
+    def deletekey(self, (limb, attr, key)):
+        limb[attr].removeframe(key[0])
+        limb[attr].setframe(self.data['frame'])
+
+    def constructclipboard(self):
+        self.clipboard = []
+        for (limb, attr, keyframe) in self.editing:
+            self.clipboard.append((limb, attr, deepcopy(keyframe)))
 
     def menuaction(self, selected):
 
         if selected == "deletekey":
-            for key in self.editing:
-                self.deletekey(key)
+            for e in self.editing:
+                self.deletekey(e)
+            self.editing = []
             self.draw()
 
         elif selected == "cutkey":
-            self.clipboard = deepcopy(self.editing)
-            for key in self.editing:
-                self.deletekey(key)
+            self.constructclipboard()
+            for e in self.editing:
+                self.deletekey(e)
+            self.editing = []
             self.draw()
 
         elif selected == "copykey":
-            self.clipboard = deepcopy(self.editing)
+            self.constructclipboard()
             self.draw()
 
         elif selected == "pastekey":
             frame, _ = self.getposkey(self.menumousepos)
             
             offsets = []
-            for i in range(len(self.clipboard)):
-                offsets.append(frame - self.clipboard[i][1][0])
+            for (limb, attr, key) in self.clipboard:
+                offsets.append(frame - key[0])
 
             minoffset = min(offsets)
             offsets = map(lambda x: x-minoffset, offsets)
 
             for i in range(len(self.clipboard)):
-                self.clipboard[i][1][0] += minoffset + offsets[i]
+                self.clipboard[i][2][0] += minoffset + offsets[i]
 
             self.editing = self.clipboard
             self.updatelimbs()
@@ -378,12 +372,11 @@ class KeyFrameEditor(widgets.BaseWidget):
             pygame.draw.line(self.image, (0,0,0), (self.textwidth,self.size[1]/dy*kn+(self.size[1]/dy)/2), (self.size[0],self.size[1]/dy*kn+(self.size[1]/dy)/2))
                 
         for kn in range(len(self.validKeys)):
-            i = self.validKeys[kn]
-            for key in self.limbs[0].values()[i].keys:
-                selected = False
-                for editkey in self.editing:
-                    if key is editkey[1]: selected = True
-                if selected:
+            limb = self.limbs[0]
+            attr = limb.keys()[self.validKeys[kn]]
+
+            for key in limb[attr].keys:
+                if (limb, attr, key) in self.editing:
                     self.image.blit(self.texkeyon, self.getkeypos(key, kn))
                 else:
                     self.image.blit(self.texkeyoff, self.getkeypos(key, kn))
