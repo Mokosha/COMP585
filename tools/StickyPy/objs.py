@@ -106,11 +106,23 @@ class KeyFrame:
             self.keys.sort()
 
     def removeframe(self, frame):
-        self.keys = [self.keys[i] for i in range(len(self.keys)) if not self.keys[i][0] == frame]
+        idx = 0
+        while idx < len(self.keys):
+            if self.keys[idx][0] == frame:
+                del self.keys[idx]
+            else:
+                idx += 1
 
     def removedoubles(self):
-        if len(self.keys) > 1:
-            self.keys = [self.keys[i] for i in range(len(self.keys)) if i == len(self.keys)-1 or not self.keys[i][0] == self.keys[i+1][0]]
+        idx = 0
+        while idx < len(self.keys):
+            if idx == len(self.keys) - 1:
+                break
+
+            if self.keys[idx][0] == self.keys[idx + 1][0]:
+                del self.keys[idx]
+            else:
+                idx += 1
 
 class Vector:
     def __init__(self, x, y=None):
