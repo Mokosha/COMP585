@@ -19,6 +19,7 @@ from copy import deepcopy
 
 #Key: [frame, value]
 class KeyFrame:
+
     def __init__(self, default, keyed = True, interpol="linear"):
         self.interpol = interpol
         self.keyed = keyed
@@ -29,6 +30,13 @@ class KeyFrame:
             self.keys = []
             self.value = default
         self.frame = 1
+
+    def __getattr__(self, name):
+        if name == "keyed":
+            self.keyed = True
+            return self.keyed
+        else:
+            raise AttributeError
 
     def limitkeys(self, limits):
         ret = deepcopy(self)
