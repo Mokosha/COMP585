@@ -162,10 +162,10 @@ class KeyFrameEditor(widgets.BaseWidget):
             contains = False
             shift = self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]
             for key in self.editing:
-                if key is self.drag:
+                if key == self.drag:
                     contains = True
                     if shift and len(self.editing) > 1: 
-                        self.editing = [k for k in self.editing if not k is key]
+                        self.editing = [k for k in self.editing if not k == key]
                     break
 
             if not contains:
@@ -210,27 +210,29 @@ class KeyFrameEditor(widgets.BaseWidget):
         pass
 
     def rrelease(self):
-        if self.hover and self.selected:
-            _, self.selectedkey = self.getdrag()
+        if not self.hover or not self.selected:
+            return
 
-            menuoptions = []
-            if not self.selectedkey == None:
-                menuoptions.append(("Cut", "cutkey"))
-                menuoptions.append(("Copy", "copykey"))
-                menuoptions.append(("Delete keyframe", "deletekey"))
-                menuoptions.append(("Go to frame", "gotoframe"))
-                menuoptions.append(("Set linear interpolation", "linear"))
-                menuoptions.append(("Set smoothstep interpolation", "smoothstep"))
-            else:
-                menuoptions.append(("Insert Keyframe", "insertkey"))
-                menuoptions.append(("Close keyframe editor", "closeeditor"))
+        menuoptions = []
+        drag = self.getdrag()
+        if drag != None:
+            _, self.selectedkey = drag
+            menuoptions.append(("Cut", "cutkey"))
+            menuoptions.append(("Copy", "copykey"))
+            menuoptions.append(("Delete keyframe", "deletekey"))
+            menuoptions.append(("Go to frame", "gotoframe"))
+            menuoptions.append(("Set linear interpolation", "linear"))
+            menuoptions.append(("Set smoothstep interpolation", "smoothstep"))
+        else:
+            menuoptions.append(("Insert Keyframe", "insertkey"))
+            menuoptions.append(("Close keyframe editor", "closeeditor"))
 
-            self.menumousepos = self.mousepos - self.pos
+        self.menumousepos = self.mousepos - self.pos
 
-            if len(self.clipboard) > 0 and self.menumousepos[0] > self.textwidth:
-                menuoptions.append(("Paste", "pastekey"))
+        if len(self.clipboard) > 0 and self.menumousepos[0] > self.textwidth:
+            menuoptions.append(("Paste", "pastekey"))
 
-            self.container.window.menu.showmenu(menuoptions, self.container.window.mousepos, self, 15)
+        self.container.window.menu.showmenu(menuoptions, self.container.window.mousepos, self, 15)
 
     def mousemove(self):
 
@@ -245,7 +247,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             for i in range(len(self.editing)):
                 self.editing[i][1][0] = self.dragged[i][1][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
 
-            self.updatelimbs()
+            self.updatelimbs(True)
             self.container.container.changeframe(self.data['frame'])
 
         if self.visible and self.hover:
@@ -255,15 +257,19 @@ class KeyFrameEditor(widgets.BaseWidget):
         if self.data['playing'] and self.visible:
             self.draw()
 
-    def updatelimbs(self):
+    def updatelimbs(self, removeold=False):
 
         for keyidx in range(len(self.editing)):
             (attr, newkeyfr) = self.editing[keyidx]
-            (oldattr, oldkeyfr) = self.dragged[keyidx]
-            assert oldattr == attr
+
+            if removeold:
+                (oldattr, oldkeyfr) = self.dragged[keyidx]
+                assert oldattr == attr
+
+                for limb in self.limbs:
+                    limb[attr].removeframe(oldkeyfr[0])
 
             for limb in self.limbs:
-                limb[attr].removeframe(oldkeyfr[0])
                 limb[attr].insertkey(newkeyfr)
 
         for limb in self.limbs:
@@ -274,12 +280,10 @@ class KeyFrameEditor(widgets.BaseWidget):
     
     def deletekey(self, key):
         for limb in self.limbs:
-            for attr in limb.values():
-                if not isinstance(attr, KeyFrame):
-                    continue
+            attr = limb[key[0]]
 
-                attr.keys = [k for k in attr.keys if not k is key[1]]
-                attr.setframe(self.data['frame'])
+            attr.keys = [k for k in attr.keys if k[0] != key[1][0]]
+            attr.setframe(self.data['frame'])
 
     def menuaction(self, selected):
 
@@ -289,19 +293,30 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.draw()
 
         elif selected == "cutkey":
-            self.clipboard = []
+            self.clipboard = deepcopy(self.editing)
             for key in self.editing:
-                self.clipboard.append(key)
                 self.deletekey(key)
             self.draw()
 
         elif selected == "copykey":
-            self.clipboard = []
-            for key in self.editing:
-                self.clipboard.append(key)
+            self.clipboard = deepcopy(self.editing)
+            self.draw()
 
         elif selected == "pastekey":
-            pass
+            frame, _ = self.getposkey(self.menumousepos)
+            
+            offsets = []
+            for i in range(len(self.clipboard)):
+                offsets.append(frame - self.clipboard[i][1][0])
+
+            minoffset = min(offsets)
+            offsets = map(lambda x: x-minoffset, offsets)
+
+            for i in range(len(self.clipboard)):
+                self.clipboard[i][1][0] += minoffset + offsets[i]
+
+            self.editing = self.clipboard
+            self.updatelimbs()
 
         elif selected == "gotoframe":
             self.data['frame'] = self.selectedkey[0]
