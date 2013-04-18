@@ -72,9 +72,10 @@ def handleAdministrivia(inputManager):
         pygame.display.toggle_fullscreen()
         sys.exit()
     elif inputManager.isCurrentEvent(Events.PAUSE):
-	PauseMenu().run(display_surface)
+	message = PauseMenu().run(display_surface)
 	pygame.display.flip()
 	inputManager.removeCurrentEvent(Events.PAUSE)
+	return message
 	
 
 def render():
@@ -84,7 +85,7 @@ def render():
 
     pygame.display.update()
 
-def processCamera(world, dt):
+def processCamera(world,dt):
 
     global camera_pos
     global camera_update
@@ -154,8 +155,9 @@ while True:
 
     inputhandler.handleEvents()
     
-    handleAdministrivia(inputhandler)
-
+    if handleAdministrivia(inputhandler) == "Quit Game":
+	break
+	
     world.getPlayer().update(inputhandler)
 
     process(dt)
@@ -163,3 +165,5 @@ while True:
     render()
 
     last_time = cur_time
+
+main()

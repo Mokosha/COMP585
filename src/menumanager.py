@@ -18,6 +18,7 @@ class Screen:
 		self.myOptions = []
 
 	def runMenu(self, menuDrawer):
+		myMessage = ""
 		pygame.display.flip()
 		pygame.event.clear()
 		while not menuDrawer.done:
@@ -45,7 +46,8 @@ class Screen:
 				elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
 					filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style3" + os.sep + "confirm_style_3_001.ogg"
 					pygame.mixer.Sound(filename).play()
-					menuDrawer.execute(self.myOptions[self.currentlySelected].myText)
+					myMessage = menuDrawer.execute(self.myOptions[self.currentlySelected].myText)
+		return myMessage
 
 class Options:
 
@@ -76,7 +78,7 @@ class PauseMenu:
 		pygame.mixer.init()
 		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
 		pygame.mixer.Sound(filename).play()
-		self.initMenu(theSurface, 0)
+		return self.initMenu(theSurface, 0)
 
 	def initMenu(self, theSurface, currentlySelected):
 		myMenu = Screen((150, 100), 300, 400, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
@@ -86,16 +88,17 @@ class PauseMenu:
 			isSelected = (currentlySelected == i)
 			options.append(Options(myMenu, i, 200, 50, text[i], isSelected))
 		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
-		myMenu.runMenu(self)
+		return myMenu.runMenu(self)
 
 	def execute(self, myOption):
 		if myOption == 'Resume':
 			self.done = True
+			return "Quit Pause Menu"
 		if myOption == 'Controls':
-			pass
+			return "Display Controls"
 		if myOption == 'Return to Title':
 			self.done = True
-			pass
+			return "Quit Game"
 
 class TitleMenu:
 
@@ -105,7 +108,7 @@ class TitleMenu:
 		pygame.mixer.init()
 		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
 		pygame.mixer.Sound(filename).play()
-		self.initMenu(theSurface, 0)
+		return self.initMenu(theSurface, 0)
 
 	def initMenu(self, theSurface, currentlySelected):
 		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
@@ -115,16 +118,17 @@ class TitleMenu:
 			isSelected = (currentlySelected == i)
 			options.append(Options(myMenu, i, 200, 50, text[i], isSelected))
 		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
-		myMenu.runMenu(self)
+		return myMenu.runMenu(self)
 
 	def execute(self, myOption):
 		if myOption == 'New Game':
-			pass
+			self.done = True
+			return "Start"
 		if myOption == 'Choose Level':
-			pass
+			return "Level Select"
 		if myOption == 'Controls':
-			pass
+			return "Display Controls"
 		if myOption == 'About':
-			pass
+			return "Display About"
 		if myOption == 'Exit':
-			pass
+			sys.exit()
