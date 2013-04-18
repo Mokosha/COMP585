@@ -16,7 +16,7 @@ pygame.init()
 pygame.display.set_mode((screenSizeX(), screenSizeY()))
 
 import animatedobject, colorvortex, player, world
-from menumanager import PauseMenu
+from menumanager import PauseMenu, TitleMenu
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -63,6 +63,8 @@ paused = False
 
 # Initialize input handler
 inputhandler = InputManager()
+
+TitleMenu().run(display_surface)
 
 world = world.World("start")
 
