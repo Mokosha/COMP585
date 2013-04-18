@@ -15,5 +15,5 @@
   <collider type="box">
     <box x="8.2" y="1.31" width="2.5" height="0.1"/>
   </collider>
-  <colorvortex x="5.0" y="2.75" color="1.0 0.0 0.0" />
+  <colorvortex x="5.0" y="2.65" color="1.0 0.0 0.0" />
 </zone>
