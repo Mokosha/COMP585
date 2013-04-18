@@ -65,7 +65,7 @@ def main(screen):
                     name="root",
                     pos=KeyFrame(Vector(0, 0)), 
                     ang=KeyFrame(90), 
-                    cartesian=KeyFrame(True, False, "const"), 
+                    cartesian=KeyFrame(True, True, "linear"),
                     hidden=KeyFrame(True, False, "const"), 
                     children=[dict(deepcopy(limb), #Torso
                                    name="torso",
