@@ -100,20 +100,23 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.zoom = self.minzoom
         self.range = frame_range
 
-    def changelimbs(self, keys):
-        self.limbs = keys
+    def changelimbs(self, limbs):
+        self.limbs = limbs
         maxwidth = 0
 
         self.keyedattrs = []
         if not self.limbs == []:
-            for item in self.limbs[0].keys():
-                twidth = self.font.render(item, True, (0,0,0)).get_width()
-                if twidth > maxwidth: maxwidth = twidth
+            for limb in self.limbs:
+                for item in limb.keys():
+                    twidth = self.font.render(item, True, (0,0,0)).get_width()
+                    if twidth > maxwidth: maxwidth = twidth
 
-            for i in range(len(self.limbs[0])):
-                kf = self.limbs[0].values()[i]
-                if isinstance(kf, KeyFrame) and kf.keyed:
-                    self.keyedattrs.append(self.limbs[0].keys()[i])
+                for i in range(len(limb)):
+                    kf = limb.values()[i]
+                    if isinstance(kf, KeyFrame) and kf.keyed:
+                        a = limb.keys()[i]
+                        if not a in self.keyedattrs:
+                            self.keyedattrs.append(a)
 
         self.textwidth = maxwidth
 
@@ -375,14 +378,19 @@ class KeyFrameEditor(widgets.BaseWidget):
             pygame.draw.line(self.image, (0,0,0), (self.textwidth,self.size[1]/dy*kn+(self.size[1]/dy)/2), (self.size[0],self.size[1]/dy*kn+(self.size[1]/dy)/2))
                 
         for kn in range(len(self.keyedattrs)):
-            limb = self.limbs[0]
             attr = self.keyedattrs[kn]
 
-            for key in limb[attr].keys:
-                if (limb, attr, key) in self.editing:
-                    self.image.blit(self.texkeyon, self.getkeypos(key, kn))
-                else:
-                    self.image.blit(self.texkeyoff, self.getkeypos(key, kn))
+            drawnkeys = []
+            for limb in self.limbs:
+                for key in limb[attr].keys:
+                    if key[0] in drawnkeys:
+                        continue
+
+                    if (limb, attr, key) in self.editing:
+                        self.image.blit(self.texkeyon, self.getkeypos(key, kn))
+                    else:
+                        self.image.blit(self.texkeyoff, self.getkeypos(key, kn))
+                    drawnkeys.append(key[0])
 
         if self.selected and self.select[0]:
             if self.select[2] == "box":
