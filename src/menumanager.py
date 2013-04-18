@@ -80,7 +80,7 @@ class PauseMenu:
 
 	def initMenu(self, theSurface, currentlySelected):
 		myMenu = Screen((150, 100), 300, 400, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
-		text = ['Resume', 'Help', 'Return to Title']
+		text = ['Resume', 'Controls', 'Return to Title']
 		options = []
 		for i in range(len(text)):
 			isSelected = (currentlySelected == i)
@@ -91,8 +91,40 @@ class PauseMenu:
 	def execute(self, myOption):
 		if myOption == 'Resume':
 			self.done = True
-		if myOption == 'Help':
+		if myOption == 'Controls':
 			pass
 		if myOption == 'Return to Title':
 			self.done = True
+			pass
+
+class TitleMenu:
+
+	done = False
+
+	def run(self, theSurface):
+		pygame.mixer.init()
+		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
+		pygame.mixer.Sound(filename).play()
+		self.initMenu(theSurface, 0)
+
+	def initMenu(self, theSurface, currentlySelected):
+		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
+		text = ['New Game', 'Choose Level', 'Controls', 'About', 'Exit']
+		options = []
+		for i in range(len(text)):
+			isSelected = (currentlySelected == i)
+			options.append(Options(myMenu, i, 200, 50, text[i], isSelected))
+		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
+		myMenu.runMenu(self)
+
+	def execute(self, myOption):
+		if myOption == 'New Game':
+			pass
+		if myOption == 'Choose Level':
+			pass
+		if myOption == 'Controls':
+			pass
+		if myOption == 'About':
+			pass
+		if myOption == 'Exit':
 			pass
