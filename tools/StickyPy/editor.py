@@ -3,6 +3,7 @@ from objs import *
 from defs import *
 
 class StickEditor(widgets.BaseWidget):
+
     def setup(self):
         self.viewdrag = False
         self.image.fill((255,255,255))
@@ -11,6 +12,7 @@ class StickEditor(widgets.BaseWidget):
         self.cameradrag = [0] #0:Off, 1:Camera Drag, 2:Camera Resize
         self.select = [False,None, "box"]
         self.drawonion()
+
     def resize(self, pos, size):
         self.pos = pos
         if size[0] < 1: size[0] = 1
@@ -21,7 +23,6 @@ class StickEditor(widgets.BaseWidget):
 
     def getpos(self):
         return Vector(-(self.size[0] * 0.5), -(self.size[1] * 0.5))
-#        return Vector(self.pos - (self.size[0] * 0.5), self.pos[1] - (self.size[1] * 0.5))
 
     def getmousepos(self):
         mouse_pos_x = self.mousepos[0] - (self.size[0] * 0.5)
@@ -77,14 +78,14 @@ class StickEditor(widgets.BaseWidget):
                             contains = True
                             if len(self.data['editing']) > 1:
                                 self.data['editing'] = [l for l in self.data['editing'] if not l is limb]
-                                self.container.widgets['KeyFrameEditor'].changekeys(self.data['editing'])
+                                self.container.widgets['KeyFrameEditor'].changelimbs(self.data['editing'])
                             break
                     if not contains: self.data['editing'] += [tedit]
 
                 elif not tedit in self.data['editing']:
                     self.data['editing'] = [self.getgrab()]
 
-                self.container.widgets['KeyFrameEditor'].changekeys(self.data['editing'])
+                self.container.widgets['KeyFrameEditor'].changelimbs(self.data['editing'])
                 self.draw()
             elif self.cameraresizeover(self.getmousepos()-self.getpos()):
                 self.cameradrag = [2, deepcopy(self.getmousepos()), deepcopy(self.data['camera']['zoom'].value)]
@@ -118,7 +119,7 @@ class StickEditor(widgets.BaseWidget):
         self.cameradrag[0] = 0
         if not self.data['editing'] == [] and self.selected: self.container.widgets['ShapeEditor'].changelimb()
         if self.hover and self.selected:
-            self.container.widgets['KeyFrameEditor'].changekeys(self.data['editing'])
+            self.container.widgets['KeyFrameEditor'].changelimbs(self.data['editing'])
             self.drawonion()
             self.draw()
 
@@ -226,7 +227,7 @@ class StickEditor(widgets.BaseWidget):
     def menuaction(self, selection):
         if selection == "editkeys":
             self.container.widgets['KeyFrameEditor'].visible = True
-            self.container.widgets['KeyFrameEditor'].changekeys(self.data['editing'])
+            self.container.widgets['KeyFrameEditor'].changelimbs(self.data['editing'])
         elif selection == "editshape":
             self.container.widgets['ShapeEditor'].visible = True
             self.container.widgets['ShapeEditor'].changelimb()

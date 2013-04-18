@@ -31,7 +31,7 @@ class Player(AnimatedObject):
     def __init__(self):
 
         self.currentColor = pygame.color.Color("black")
-        super(Player, self).__init__("smooth-idle", True)
+        super(Player, self).__init__("idle", True)
         self.loadAnim("walk", True)
 
         # Initially start in the middle of the screen.
@@ -58,7 +58,7 @@ class Player(AnimatedObject):
             self.startAnimation("walk", time.time())
 
         if inputManager.isCurrentEvent(Events.JUMP):
-            if self.collidedLastFrame:
+            if self.collidedLastFrame and self.vel.y == 0.0:
                 self.vel = Vector2(0, Player.INITIAL_JUMP)
 
         if inputManager.debounceEvent(Events.CHANGE_COLOR_1):
@@ -78,7 +78,7 @@ class Player(AnimatedObject):
             self.changeColor(self.currentColor)
                 
         if len(inputManager.getCurrentEvents()) == 0:
-            self.startAnimation("smooth-idle", time.time())
+            self.startAnimation("idle", time.time())
             self.vel.x = 0
 
     def colliderResponse(self, collider, n):
@@ -226,9 +226,6 @@ class Player(AnimatedObject):
         # First move the player out of collision.
         self.pos += n * difference
 
-        # Then, set the component of his velocity to be zero in this component...
-        self.vel = Vector2(0,0)
-
     def collide(self, obj):        
         
         if isinstance(obj, Collider) and obj.collide(self):
@@ -243,6 +240,13 @@ class Player(AnimatedObject):
                 direction = Vector2(1 if self.vel.x <= 0 else -1, 0)
 
             self.colliderResponse(obj, direction)
+
+            # Then, set the component of his velocity to be zero in this component...
+            if horiz:
+                self.vel.x = 0.0
+            else:
+                self.vel.y = 0.0
+
             self.collidedLastFrame = True
 
             self.resetAABB()
