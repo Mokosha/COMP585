@@ -104,7 +104,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         self.limbs = keys
         maxwidth = 0
 
-        self.validKeys = []
+        self.keyedattrs = []
         if not self.limbs == []:
             for item in self.limbs[0].keys():
                 twidth = self.font.render(item, True, (0,0,0)).get_width()
@@ -113,7 +113,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             for i in range(len(self.limbs[0])):
                 kf = self.limbs[0].values()[i]
                 if isinstance(kf, KeyFrame) and kf.keyed:
-                    self.validKeys.append(i)
+                    self.keyedattrs.append(self.limbs[0].keys()[i])
 
         self.textwidth = maxwidth
 
@@ -124,10 +124,9 @@ class KeyFrameEditor(widgets.BaseWidget):
 
     def getCollide(self, map):
         collisions = []
-        for kn in range(len(self.validKeys)):
-            i = self.validKeys[kn]
+        for kn in range(len(self.keyedattrs)):
             for limb in self.limbs:
-                attrname = limb.keys()[i]
+                attrname = self.keyedattrs[kn]
                 for key in limb[attrname].keys:
                     point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
                     point = Vector(int(point.x), int(point.y))
@@ -138,9 +137,9 @@ class KeyFrameEditor(widgets.BaseWidget):
 
     def getdrag(self):
         drag = []
-        for kn in range(len(self.validKeys)):
+        for kn in range(len(self.keyedattrs)):
             for limb in self.limbs:
-                attrname = limb.keys()[self.validKeys[kn]]
+                attrname = self.keyedattrs[kn]
                 for key in limb[attrname].keys:
                     if pygame.Rect(self.getkeypos(key, kn), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
                         drag.append((limb, attrname, key))
@@ -326,7 +325,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             frame, attrib = self.getposkey(self.menumousepos)
 
             for limb in self.limbs:
-                k = limb.keys()[self.validKeys[attrib]]
+                k = limb[self.keyedattrs[attrib]]
 
                 oldframe = limb[k].frame
                 limb[k].setframe(frame)
@@ -346,7 +345,7 @@ class KeyFrameEditor(widgets.BaseWidget):
             self.draw()
 
     def getposkey(self, pos):
-        dy = self.size[1]/len(self.validKeys)
+        dy = self.size[1]/len(self.keyedattrs)
         dx = self.zoom
 
         frame = int((pos[0] - self.textwidth) / dx + 0.5) + 1
@@ -355,7 +354,7 @@ class KeyFrameEditor(widgets.BaseWidget):
         return frame, attrib
 
     def getkeypos(self, key, row):
-        dy = len(self.validKeys)
+        dy = len(self.keyedattrs)
         return ((key[0]-1)*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/dy*row+(self.size[1]/dy)/2 - self.texkeyon.get_height()/2)
 
     def draw(self):
@@ -368,17 +367,16 @@ class KeyFrameEditor(widgets.BaseWidget):
         line_x = (self.data['frame'] - 1)*self.zoom+self.textwidth+self.pan
         pygame.draw.line(self.image, (0,0,0), (line_x, 0), (line_x, self.size[1]), 3)
 
-        for kn in range(len(self.validKeys)):
-            i = self.validKeys[kn]
-            fontrender = self.font.render(self.limbs[0].keys()[i], True, (0,0,0))
+        for kn in range(len(self.keyedattrs)):
+            fontrender = self.font.render(self.keyedattrs[kn], True, (0,0,0))
             
-            dy = len(self.validKeys)
+            dy = len(self.keyedattrs)
             self.image.blit(fontrender, (0,self.size[1]/dy*kn+(self.size[1]/dy)/2 - fontrender.get_height()/2))
             pygame.draw.line(self.image, (0,0,0), (self.textwidth,self.size[1]/dy*kn+(self.size[1]/dy)/2), (self.size[0],self.size[1]/dy*kn+(self.size[1]/dy)/2))
                 
-        for kn in range(len(self.validKeys)):
+        for kn in range(len(self.keyedattrs)):
             limb = self.limbs[0]
-            attr = limb.keys()[self.validKeys[kn]]
+            attr = self.keyedattrs[kn]
 
             for key in limb[attr].keys:
                 if (limb, attr, key) in self.editing:
