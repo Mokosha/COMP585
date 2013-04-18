@@ -35,14 +35,21 @@ class ColorVortex(GameObject):
     spritesheet = pygame.transform.smoothscale(spritesheet.convert_alpha(), (2 * COLOR_VORTEX_SCREEN_SIZE, COLOR_VORTEX_SCREEN_SIZE))
 
     def setpos(self, newpos):
+        super(ColorVortex, self).setpos(newpos)
         for emitter in filter(lambda x: x.emitter, self.ps.actions):
             emitter.addPosDomain(CircleDomain(newpos, 0.1))
-        self.__pos = newpos
+
+        self.aabb.removeAll()
+        halfVortexSize = 0.5 * Vector2(COLOR_VORTEX_WORLD_SIZE,COLOR_VORTEX_WORLD_SIZE)
+        self.aabb.add_point(newpos - halfVortexSize)
+        self.aabb.add_point(newpos + halfVortexSize)
+        
 
     def __init__(self, pos, color=pygame.Color("blue")):
         super(ColorVortex, self).__init__()
         self.pos = pos
 
+        self.aabb.removeAll()
         halfVortexSize = 0.5 * Vector2(COLOR_VORTEX_WORLD_SIZE,COLOR_VORTEX_WORLD_SIZE)
         self.aabb.add_point(pos - halfVortexSize)
         self.aabb.add_point(pos + halfVortexSize)
@@ -91,6 +98,7 @@ class ColorVortex(GameObject):
         self.ps.process(dt)
 
     def render(self, surface, campos):
+        super(ColorVortex, self).render(surface, campos)
 
         self.ps.render(surface, campos)
         
@@ -116,6 +124,3 @@ class ColorVortex(GameObject):
 
     def accept(self, event):
         pass
-
-    def collide(self, box):
-        return self.aabb.collide(box)

@@ -78,7 +78,7 @@ class ShapeEditor(widgets.WidgetContainer):
             self.container.organise()
         elif selected == "keys":
             self.container.widgets['KeyFrameEditor'].visible = True
-            self.container.widgets['KeyFrameEditor'].changekeys([self.data['editing'][0]['shape'].values])
+            self.container.widgets['KeyFrameEditor'].changelimbs([self.data['editing'][0]['shape'].values])
     def draw(self):
         self.drawwidgets()
         if self.data['editing'] == []:

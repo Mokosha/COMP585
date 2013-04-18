@@ -1,0 +1,2448 @@
+<limb name="main">
+  <ang>
+    <keyframe value="0" interpol="linear">
+      <key frame="1" value="0"/>
+      <key frame="10" value="0.0"/>
+      <key frame="20" value="0.0"/>
+      <key frame="30" value="0.0"/>
+      <key frame="40" value="0.0"/>
+      <key frame="41" value="0.0"/>
+      <key frame="50" value="0.0"/>
+      <key frame="60" value="0.0"/>
+      <key frame="70" value="0.0"/>
+      <key frame="80" value="0.0"/>
+    </keyframe>
+  </ang>
+  <dist>
+    <keyframe value="0" interpol="linear">
+      <key frame="1" value="0"/>
+      <key frame="10" value="0.0"/>
+      <key frame="20" value="0.0"/>
+      <key frame="30" value="0.0"/>
+      <key frame="40" value="0.0"/>
+      <key frame="41" value="0.0"/>
+      <key frame="50" value="0.0"/>
+      <key frame="60" value="0.0"/>
+      <key frame="70" value="0.0"/>
+      <key frame="80" value="0.0"/>
+    </keyframe>
+  </dist>
+  <pos>
+    <keyframe value="[0, 0]" interpol="linear">
+      <key frame="1" value="[0, 0]"/>
+      <key frame="10" value="[0.0, 0.0]"/>
+      <key frame="20" value="[0.0, 0.0]"/>
+      <key frame="30" value="[0.0, 0.0]"/>
+      <key frame="40" value="[0.0, 0.0]"/>
+      <key frame="41" value="[0.0, 0.0]"/>
+      <key frame="50" value="[0.0, 0.0]"/>
+      <key frame="60" value="[0.0, 0.0]"/>
+      <key frame="70" value="[0.0, 0.0]"/>
+      <key frame="80" value="[0.0, 0.0]"/>
+    </keyframe>
+  </pos>
+  <shape>
+    <texture>
+    <text>
+    <keyframe value="test" interpol="const">
+      <key frame="1" value="test"/>
+      <key frame="10" value="test"/>
+      <key frame="20" value="test"/>
+      <key frame="30" value="test"/>
+      <key frame="40" value="test"/>
+      <key frame="41" value="test"/>
+      <key frame="50" value="test"/>
+      <key frame="60" value="test"/>
+      <key frame="70" value="test"/>
+      <key frame="80" value="test"/>
+    </keyframe>
+    </text>
+    <flip>
+    <keyframe value="True" interpol="const">
+      <key frame="1" value="True"/>
+      <key frame="10" value="True"/>
+      <key frame="20" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="40" value="True"/>
+      <key frame="41" value="True"/>
+      <key frame="50" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="70" value="True"/>
+      <key frame="80" value="True"/>
+    </keyframe>
+    </flip>
+    <caps>
+    <keyframe value="True" interpol="const">
+      <key frame="1" value="True"/>
+      <key frame="10" value="True"/>
+      <key frame="20" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="40" value="True"/>
+      <key frame="41" value="True"/>
+      <key frame="50" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="70" value="True"/>
+      <key frame="80" value="True"/>
+    </keyframe>
+    </caps>
+    <shape>
+    <keyframe value="line" interpol="const">
+      <key frame="1" value="line"/>
+      <key frame="10" value="line"/>
+      <key frame="20" value="line"/>
+      <key frame="30" value="line"/>
+      <key frame="40" value="line"/>
+      <key frame="41" value="line"/>
+      <key frame="50" value="line"/>
+      <key frame="60" value="line"/>
+      <key frame="70" value="line"/>
+      <key frame="80" value="line"/>
+    </keyframe>
+    </shape>
+    <file>
+    <keyframe value="splogoicon.png" interpol="const">
+      <key frame="1" value="splogoicon.png"/>
+      <key frame="10" value="splogoicon.png"/>
+      <key frame="20" value="splogoicon.png"/>
+      <key frame="30" value="splogoicon.png"/>
+      <key frame="40" value="splogoicon.png"/>
+      <key frame="41" value="splogoicon.png"/>
+      <key frame="50" value="splogoicon.png"/>
+      <key frame="60" value="splogoicon.png"/>
+      <key frame="70" value="splogoicon.png"/>
+      <key frame="80" value="splogoicon.png"/>
+    </keyframe>
+    </file>
+    <fill>
+    <keyframe value="False" interpol="const">
+      <key frame="1" value="False"/>
+      <key frame="10" value="False"/>
+      <key frame="20" value="False"/>
+      <key frame="30" value="False"/>
+      <key frame="40" value="False"/>
+      <key frame="41" value="False"/>
+      <key frame="50" value="False"/>
+      <key frame="60" value="False"/>
+      <key frame="70" value="False"/>
+      <key frame="80" value="False"/>
+    </keyframe>
+    </fill>
+    </texture>
+  </shape>
+  <width>
+    <keyframe value="4" interpol="linear">
+      <key frame="1" value="4"/>
+      <key frame="10" value="4.0"/>
+      <key frame="20" value="4.0"/>
+      <key frame="30" value="4.0"/>
+      <key frame="40" value="4.0"/>
+      <key frame="41" value="4.0"/>
+      <key frame="50" value="4.0"/>
+      <key frame="60" value="4.0"/>
+      <key frame="70" value="4.0"/>
+      <key frame="80" value="4.0"/>
+    </keyframe>
+  </width>
+  <colour>
+    <keyframe value="[0, 0, 0]" interpol="linear">
+      <key frame="1" value="[0, 0, 0]"/>
+      <key frame="10" value="[0.0, 0.0, 0.0]"/>
+      <key frame="20" value="[0.0, 0.0, 0.0]"/>
+      <key frame="30" value="[0.0, 0.0, 0.0]"/>
+      <key frame="40" value="[0.0, 0.0, 0.0]"/>
+      <key frame="41" value="[0.0, 0.0, 0.0]"/>
+      <key frame="50" value="[0.0, 0.0, 0.0]"/>
+      <key frame="60" value="[0.0, 0.0, 0.0]"/>
+      <key frame="70" value="[0.0, 0.0, 0.0]"/>
+      <key frame="80" value="[0.0, 0.0, 0.0]"/>
+    </keyframe>
+  </colour>
+  <static>
+    <keyframe value="True" interpol="linear">
+      <key frame="1" value="True"/>
+      <key frame="10" value="True"/>
+      <key frame="20" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="40" value="True"/>
+      <key frame="41" value="1.0"/>
+      <key frame="50" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="70" value="True"/>
+      <key frame="80" value="True"/>
+    </keyframe>
+  </static>
+  <hidden>
+    <keyframe value="True" interpol="linear">
+      <key frame="1" value="True"/>
+      <key frame="10" value="True"/>
+      <key frame="20" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="40" value="True"/>
+      <key frame="41" value="1.0"/>
+      <key frame="50" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="70" value="True"/>
+      <key frame="80" value="True"/>
+    </keyframe>
+  </hidden>
+  <cartesian>
+    <keyframe value="True" interpol="linear">
+      <key frame="1" value="True"/>
+      <key frame="10" value="True"/>
+      <key frame="20" value="True"/>
+      <key frame="30" value="True"/>
+      <key frame="40" value="True"/>
+      <key frame="41" value="1.0"/>
+      <key frame="50" value="True"/>
+      <key frame="60" value="True"/>
+      <key frame="70" value="True"/>
+      <key frame="80" value="True"/>
+    </keyframe>
+  </cartesian>
+  <children>
+    <limb name="root">
+      <ang>
+        <keyframe value="90" interpol="linear">
+          <key frame="1" value="90"/>
+          <key frame="10" value="90"/>
+          <key frame="20" value="90"/>
+          <key frame="30" value="90"/>
+          <key frame="40" value="90"/>
+          <key frame="41" value="90.0"/>
+          <key frame="50" value="90"/>
+          <key frame="60" value="90"/>
+          <key frame="70" value="90"/>
+          <key frame="80" value="90"/>
+        </keyframe>
+      </ang>
+      <dist>
+        <keyframe value="0" interpol="linear">
+          <key frame="1" value="0"/>
+          <key frame="10" value="0"/>
+          <key frame="20" value="0"/>
+          <key frame="30" value="0"/>
+          <key frame="40" value="0"/>
+          <key frame="41" value="0.0"/>
+          <key frame="50" value="0"/>
+          <key frame="60" value="0"/>
+          <key frame="70" value="0"/>
+          <key frame="80" value="0"/>
+        </keyframe>
+      </dist>
+      <pos>
+        <keyframe value="[0.0, 0.0]" interpol="linear">
+          <key frame="1" value="[0.0, 0.0]"/>
+          <key frame="10" value="[0.0, 0.0]"/>
+          <key frame="20" value="[0.0, 0.0]"/>
+          <key frame="30" value="[0.0, 0.0]"/>
+          <key frame="40" value="[0.0, 0.0]"/>
+          <key frame="41" value="[0.0, 0.0]"/>
+          <key frame="50" value="[0.0, 0.0]"/>
+          <key frame="60" value="[0.0, 0.0]"/>
+          <key frame="70" value="[0.0, 0.0]"/>
+          <key frame="80" value="[0.0, 0.0]"/>
+        </keyframe>
+      </pos>
+      <shape>
+        <texture>
+        <text>
+        <keyframe value="test" interpol="const">
+          <key frame="1" value="test"/>
+          <key frame="10" value="test"/>
+          <key frame="20" value="test"/>
+          <key frame="30" value="test"/>
+          <key frame="40" value="test"/>
+          <key frame="41" value="test"/>
+          <key frame="50" value="test"/>
+          <key frame="60" value="test"/>
+          <key frame="70" value="test"/>
+          <key frame="80" value="test"/>
+        </keyframe>
+        </text>
+        <flip>
+        <keyframe value="True" interpol="const">
+          <key frame="1" value="True"/>
+          <key frame="10" value="True"/>
+          <key frame="20" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="40" value="True"/>
+          <key frame="41" value="True"/>
+          <key frame="50" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="70" value="True"/>
+          <key frame="80" value="True"/>
+        </keyframe>
+        </flip>
+        <caps>
+        <keyframe value="True" interpol="const">
+          <key frame="1" value="True"/>
+          <key frame="10" value="True"/>
+          <key frame="20" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="40" value="True"/>
+          <key frame="41" value="True"/>
+          <key frame="50" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="70" value="True"/>
+          <key frame="80" value="True"/>
+        </keyframe>
+        </caps>
+        <shape>
+        <keyframe value="line" interpol="const">
+          <key frame="1" value="line"/>
+          <key frame="10" value="line"/>
+          <key frame="20" value="line"/>
+          <key frame="30" value="line"/>
+          <key frame="40" value="line"/>
+          <key frame="41" value="line"/>
+          <key frame="50" value="line"/>
+          <key frame="60" value="line"/>
+          <key frame="70" value="line"/>
+          <key frame="80" value="line"/>
+        </keyframe>
+        </shape>
+        <file>
+        <keyframe value="splogoicon.png" interpol="const">
+          <key frame="1" value="splogoicon.png"/>
+          <key frame="10" value="splogoicon.png"/>
+          <key frame="20" value="splogoicon.png"/>
+          <key frame="30" value="splogoicon.png"/>
+          <key frame="40" value="splogoicon.png"/>
+          <key frame="41" value="splogoicon.png"/>
+          <key frame="50" value="splogoicon.png"/>
+          <key frame="60" value="splogoicon.png"/>
+          <key frame="70" value="splogoicon.png"/>
+          <key frame="80" value="splogoicon.png"/>
+        </keyframe>
+        </file>
+        <fill>
+        <keyframe value="False" interpol="const">
+          <key frame="1" value="False"/>
+          <key frame="10" value="False"/>
+          <key frame="20" value="False"/>
+          <key frame="30" value="False"/>
+          <key frame="40" value="False"/>
+          <key frame="41" value="False"/>
+          <key frame="50" value="False"/>
+          <key frame="60" value="False"/>
+          <key frame="70" value="False"/>
+          <key frame="80" value="False"/>
+        </keyframe>
+        </fill>
+        </texture>
+      </shape>
+      <width>
+        <keyframe value="4" interpol="linear">
+          <key frame="1" value="4"/>
+          <key frame="10" value="4"/>
+          <key frame="20" value="4"/>
+          <key frame="30" value="4"/>
+          <key frame="40" value="4"/>
+          <key frame="41" value="4.0"/>
+          <key frame="50" value="4"/>
+          <key frame="60" value="4"/>
+          <key frame="70" value="4"/>
+          <key frame="80" value="4"/>
+        </keyframe>
+      </width>
+      <colour>
+        <keyframe value="[0, 0, 0]" interpol="linear">
+          <key frame="1" value="[0, 0, 0]"/>
+          <key frame="10" value="[0, 0, 0]"/>
+          <key frame="20" value="[0, 0, 0]"/>
+          <key frame="30" value="[0, 0, 0]"/>
+          <key frame="40" value="[0, 0, 0]"/>
+          <key frame="41" value="[0.0, 0.0, 0.0]"/>
+          <key frame="50" value="[0, 0, 0]"/>
+          <key frame="60" value="[0, 0, 0]"/>
+          <key frame="70" value="[0, 0, 0]"/>
+          <key frame="80" value="[0, 0, 0]"/>
+        </keyframe>
+      </colour>
+      <static>
+        <keyframe value="False" interpol="const">
+          <key frame="1" value="False"/>
+          <key frame="10" value="False"/>
+          <key frame="20" value="False"/>
+          <key frame="30" value="False"/>
+          <key frame="40" value="False"/>
+          <key frame="41" value="False"/>
+          <key frame="50" value="False"/>
+          <key frame="60" value="False"/>
+          <key frame="70" value="False"/>
+          <key frame="80" value="False"/>
+        </keyframe>
+      </static>
+      <hidden>
+        <keyframe value="True" interpol="const">
+          <key frame="1" value="True"/>
+          <key frame="10" value="True"/>
+          <key frame="20" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="40" value="True"/>
+          <key frame="41" value="True"/>
+          <key frame="50" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="70" value="True"/>
+          <key frame="80" value="True"/>
+        </keyframe>
+      </hidden>
+      <cartesian>
+        <keyframe value="True" interpol="const">
+          <key frame="1" value="True"/>
+          <key frame="10" value="True"/>
+          <key frame="20" value="True"/>
+          <key frame="30" value="True"/>
+          <key frame="40" value="True"/>
+          <key frame="41" value="True"/>
+          <key frame="50" value="True"/>
+          <key frame="60" value="True"/>
+          <key frame="70" value="True"/>
+          <key frame="80" value="True"/>
+        </keyframe>
+      </cartesian>
+      <children>
+        <limb name="torso">
+          <ang>
+            <keyframe value="270" interpol="linear">
+              <key frame="1" value="270"/>
+              <key frame="10" value="279.782407032"/>
+              <key frame="20" value="297.474431626"/>
+              <key frame="30" value="281.309932474"/>
+              <key frame="40" value="281.309932474"/>
+              <key frame="41" value="281.309932474"/>
+              <key frame="50" value="269.0122396"/>
+              <key frame="60" value="281.309932474"/>
+              <key frame="70" value="296.565051177"/>
+              <key frame="80" value="272.862405226"/>
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe value="60" interpol="linear">
+              <key frame="1" value="60"/>
+              <key frame="10" value="60"/>
+              <key frame="20" value="60"/>
+              <key frame="30" value="60"/>
+              <key frame="40" value="60"/>
+              <key frame="41" value="60.0"/>
+              <key frame="50" value="60"/>
+              <key frame="60" value="60"/>
+              <key frame="70" value="60"/>
+              <key frame="80" value="60"/>
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe value="[0, 0]" interpol="linear">
+              <key frame="1" value="[0, 0]"/>
+              <key frame="10" value="[0, 0]"/>
+              <key frame="20" value="[0, 0]"/>
+              <key frame="30" value="[0, 0]"/>
+              <key frame="40" value="[0, 0]"/>
+              <key frame="41" value="[0.0, 0.0]"/>
+              <key frame="50" value="[0, 0]"/>
+              <key frame="60" value="[0, 0]"/>
+              <key frame="70" value="[0, 0]"/>
+              <key frame="80" value="[0, 0]"/>
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe value="test" interpol="const">
+              <key frame="1" value="test"/>
+              <key frame="10" value="test"/>
+              <key frame="20" value="test"/>
+              <key frame="30" value="test"/>
+              <key frame="40" value="test"/>
+              <key frame="41" value="test"/>
+              <key frame="50" value="test"/>
+              <key frame="60" value="test"/>
+              <key frame="70" value="test"/>
+              <key frame="80" value="test"/>
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe value="True" interpol="const">
+              <key frame="1" value="True"/>
+              <key frame="10" value="True"/>
+              <key frame="20" value="True"/>
+              <key frame="30" value="True"/>
+              <key frame="40" value="True"/>
+              <key frame="41" value="True"/>
+              <key frame="50" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="70" value="True"/>
+              <key frame="80" value="True"/>
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe value="True" interpol="const">
+              <key frame="1" value="True"/>
+              <key frame="10" value="True"/>
+              <key frame="20" value="True"/>
+              <key frame="30" value="True"/>
+              <key frame="40" value="True"/>
+              <key frame="41" value="True"/>
+              <key frame="50" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="70" value="True"/>
+              <key frame="80" value="True"/>
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe value="line" interpol="const">
+              <key frame="1" value="line"/>
+              <key frame="10" value="line"/>
+              <key frame="20" value="line"/>
+              <key frame="30" value="line"/>
+              <key frame="40" value="line"/>
+              <key frame="41" value="line"/>
+              <key frame="50" value="line"/>
+              <key frame="60" value="line"/>
+              <key frame="70" value="line"/>
+              <key frame="80" value="line"/>
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe value="splogoicon.png" interpol="const">
+              <key frame="1" value="splogoicon.png"/>
+              <key frame="10" value="splogoicon.png"/>
+              <key frame="20" value="splogoicon.png"/>
+              <key frame="30" value="splogoicon.png"/>
+              <key frame="40" value="splogoicon.png"/>
+              <key frame="41" value="splogoicon.png"/>
+              <key frame="50" value="splogoicon.png"/>
+              <key frame="60" value="splogoicon.png"/>
+              <key frame="70" value="splogoicon.png"/>
+              <key frame="80" value="splogoicon.png"/>
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe value="4" interpol="linear">
+              <key frame="1" value="4"/>
+              <key frame="10" value="4"/>
+              <key frame="20" value="4"/>
+              <key frame="30" value="4"/>
+              <key frame="40" value="4"/>
+              <key frame="41" value="4.0"/>
+              <key frame="50" value="4"/>
+              <key frame="60" value="4"/>
+              <key frame="70" value="4"/>
+              <key frame="80" value="4"/>
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe value="[0, 0, 0]" interpol="linear">
+              <key frame="1" value="[0, 0, 0]"/>
+              <key frame="10" value="[0, 0, 0]"/>
+              <key frame="20" value="[0, 0, 0]"/>
+              <key frame="30" value="[0, 0, 0]"/>
+              <key frame="40" value="[0, 0, 0]"/>
+              <key frame="41" value="[0.0, 0.0, 0.0]"/>
+              <key frame="50" value="[0, 0, 0]"/>
+              <key frame="60" value="[0, 0, 0]"/>
+              <key frame="70" value="[0, 0, 0]"/>
+              <key frame="80" value="[0, 0, 0]"/>
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb name="head">
+              <ang>
+                <keyframe value="0" interpol="linear">
+                  <key frame="1" value="0"/>
+                  <key frame="10" value="0"/>
+                  <key frame="20" value="0"/>
+                  <key frame="30" value="0"/>
+                  <key frame="40" value="0"/>
+                  <key frame="41" value="0.0"/>
+                  <key frame="50" value="0"/>
+                  <key frame="60" value="0"/>
+                  <key frame="70" value="0"/>
+                  <key frame="80" value="0"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe value="36" interpol="linear">
+                  <key frame="1" value="36"/>
+                  <key frame="10" value="36"/>
+                  <key frame="20" value="36"/>
+                  <key frame="30" value="36"/>
+                  <key frame="40" value="36"/>
+                  <key frame="41" value="36.0"/>
+                  <key frame="50" value="36"/>
+                  <key frame="60" value="36"/>
+                  <key frame="70" value="36"/>
+                  <key frame="80" value="36"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe value="[0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="10" value="[0, 0]"/>
+                  <key frame="20" value="[0, 0]"/>
+                  <key frame="30" value="[0, 0]"/>
+                  <key frame="40" value="[0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0]"/>
+                  <key frame="60" value="[0, 0]"/>
+                  <key frame="70" value="[0, 0]"/>
+                  <key frame="80" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe value="test" interpol="const">
+                  <key frame="1" value="test"/>
+                  <key frame="10" value="test"/>
+                  <key frame="20" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="40" value="test"/>
+                  <key frame="41" value="test"/>
+                  <key frame="50" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="70" value="test"/>
+                  <key frame="80" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe value="circle" interpol="const">
+                  <key frame="1" value="circle"/>
+                  <key frame="10" value="circle"/>
+                  <key frame="20" value="circle"/>
+                  <key frame="30" value="circle"/>
+                  <key frame="40" value="circle"/>
+                  <key frame="41" value="circle"/>
+                  <key frame="50" value="circle"/>
+                  <key frame="60" value="circle"/>
+                  <key frame="70" value="circle"/>
+                  <key frame="80" value="circle"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe value="splogoicon.png" interpol="const">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="10" value="splogoicon.png"/>
+                  <key frame="20" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="40" value="splogoicon.png"/>
+                  <key frame="41" value="splogoicon.png"/>
+                  <key frame="50" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="70" value="splogoicon.png"/>
+                  <key frame="80" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe value="4" interpol="linear">
+                  <key frame="1" value="4"/>
+                  <key frame="10" value="4"/>
+                  <key frame="20" value="4"/>
+                  <key frame="30" value="4"/>
+                  <key frame="40" value="4"/>
+                  <key frame="41" value="4.0"/>
+                  <key frame="50" value="4"/>
+                  <key frame="60" value="4"/>
+                  <key frame="70" value="4"/>
+                  <key frame="80" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe value="[0, 0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="10" value="[0, 0, 0]"/>
+                  <key frame="20" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0, 0, 0]"/>
+                  <key frame="40" value="[0, 0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0, 0]"/>
+                  <key frame="60" value="[0, 0, 0]"/>
+                  <key frame="70" value="[0, 0, 0]"/>
+                  <key frame="80" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+            <limb name="arml">
+              <ang>
+                <keyframe value="165.618" interpol="linear">
+                  <key frame="1" value="165.618"/>
+                  <key frame="10" value="165.618"/>
+                  <key frame="20" value="169.951360422"/>
+                  <key frame="30" value="153.740596631"/>
+                  <key frame="40" value="81.5113161753"/>
+                  <key frame="41" value="78.4136425067"/>
+                  <key frame="50" value="134.495774184"/>
+                  <key frame="60" value="154.283073628"/>
+                  <key frame="70" value="154.283073628"/>
+                  <key frame="80" value="165.618"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe value="35.0" interpol="linear">
+                  <key frame="1" value="35.0"/>
+                  <key frame="10" value="35.0"/>
+                  <key frame="20" value="35.0"/>
+                  <key frame="30" value="35.0"/>
+                  <key frame="40" value="35.0"/>
+                  <key frame="41" value="35.0"/>
+                  <key frame="50" value="35.0"/>
+                  <key frame="60" value="35.0"/>
+                  <key frame="70" value="35.0"/>
+                  <key frame="80" value="35.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe value="[0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="10" value="[0, 0]"/>
+                  <key frame="20" value="[0, 0]"/>
+                  <key frame="30" value="[0, 0]"/>
+                  <key frame="40" value="[0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0]"/>
+                  <key frame="60" value="[0, 0]"/>
+                  <key frame="70" value="[0, 0]"/>
+                  <key frame="80" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe value="test" interpol="const">
+                  <key frame="1" value="test"/>
+                  <key frame="10" value="test"/>
+                  <key frame="20" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="40" value="test"/>
+                  <key frame="41" value="test"/>
+                  <key frame="50" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="70" value="test"/>
+                  <key frame="80" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe value="line" interpol="const">
+                  <key frame="1" value="line"/>
+                  <key frame="10" value="line"/>
+                  <key frame="20" value="line"/>
+                  <key frame="30" value="line"/>
+                  <key frame="40" value="line"/>
+                  <key frame="41" value="line"/>
+                  <key frame="50" value="line"/>
+                  <key frame="60" value="line"/>
+                  <key frame="70" value="line"/>
+                  <key frame="80" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe value="splogoicon.png" interpol="const">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="10" value="splogoicon.png"/>
+                  <key frame="20" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="40" value="splogoicon.png"/>
+                  <key frame="41" value="splogoicon.png"/>
+                  <key frame="50" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="70" value="splogoicon.png"/>
+                  <key frame="80" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe value="4" interpol="linear">
+                  <key frame="1" value="4"/>
+                  <key frame="10" value="4"/>
+                  <key frame="20" value="4"/>
+                  <key frame="30" value="4"/>
+                  <key frame="40" value="4"/>
+                  <key frame="41" value="4.0"/>
+                  <key frame="50" value="4"/>
+                  <key frame="60" value="4"/>
+                  <key frame="70" value="4"/>
+                  <key frame="80" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe value="[0, 0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="10" value="[0, 0, 0]"/>
+                  <key frame="20" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0, 0, 0]"/>
+                  <key frame="40" value="[0, 0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0, 0]"/>
+                  <key frame="60" value="[0, 0, 0]"/>
+                  <key frame="70" value="[0, 0, 0]"/>
+                  <key frame="80" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+                <limb name="farml">
+                  <ang>
+                    <keyframe value="3.524" interpol="linear">
+                      <key frame="1" value="3.524"/>
+                      <key frame="10" value="3.524"/>
+                      <key frame="20" value="-76.5490670909"/>
+                      <key frame="30" value="-76.5207455458"/>
+                      <key frame="40" value="-52.3946398402"/>
+                      <key frame="41" value="-46.6566929354"/>
+                      <key frame="50" value="-69.0186864457"/>
+                      <key frame="60" value="-32.6872664385"/>
+                      <key frame="70" value="-32.6872664385"/>
+                      <key frame="80" value="3.524"/>
+                    </keyframe>
+                  </ang>
+                  <dist>
+                    <keyframe value="35.0" interpol="linear">
+                      <key frame="1" value="35.0"/>
+                      <key frame="10" value="35.0"/>
+                      <key frame="20" value="35.0"/>
+                      <key frame="30" value="35.0"/>
+                      <key frame="40" value="35.0"/>
+                      <key frame="41" value="35.0"/>
+                      <key frame="50" value="35.0"/>
+                      <key frame="60" value="35.0"/>
+                      <key frame="70" value="35.0"/>
+                      <key frame="80" value="35.0"/>
+                    </keyframe>
+                  </dist>
+                  <pos>
+                    <keyframe value="[0, 0]" interpol="linear">
+                      <key frame="1" value="[0, 0]"/>
+                      <key frame="10" value="[0, 0]"/>
+                      <key frame="20" value="[0, 0]"/>
+                      <key frame="30" value="[0, 0]"/>
+                      <key frame="40" value="[0, 0]"/>
+                      <key frame="41" value="[0.0, 0.0]"/>
+                      <key frame="50" value="[0, 0]"/>
+                      <key frame="60" value="[0, 0]"/>
+                      <key frame="70" value="[0, 0]"/>
+                      <key frame="80" value="[0, 0]"/>
+                    </keyframe>
+                  </pos>
+                  <shape>
+                    <texture>
+                    <text>
+                    <keyframe value="test" interpol="const">
+                      <key frame="1" value="test"/>
+                      <key frame="10" value="test"/>
+                      <key frame="20" value="test"/>
+                      <key frame="30" value="test"/>
+                      <key frame="40" value="test"/>
+                      <key frame="41" value="test"/>
+                      <key frame="50" value="test"/>
+                      <key frame="60" value="test"/>
+                      <key frame="70" value="test"/>
+                      <key frame="80" value="test"/>
+                    </keyframe>
+                    </text>
+                    <flip>
+                    <keyframe value="True" interpol="const">
+                      <key frame="1" value="True"/>
+                      <key frame="10" value="True"/>
+                      <key frame="20" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="40" value="True"/>
+                      <key frame="41" value="True"/>
+                      <key frame="50" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="70" value="True"/>
+                      <key frame="80" value="True"/>
+                    </keyframe>
+                    </flip>
+                    <caps>
+                    <keyframe value="True" interpol="const">
+                      <key frame="1" value="True"/>
+                      <key frame="10" value="True"/>
+                      <key frame="20" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="40" value="True"/>
+                      <key frame="41" value="True"/>
+                      <key frame="50" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="70" value="True"/>
+                      <key frame="80" value="True"/>
+                    </keyframe>
+                    </caps>
+                    <shape>
+                    <keyframe value="line" interpol="const">
+                      <key frame="1" value="line"/>
+                      <key frame="10" value="line"/>
+                      <key frame="20" value="line"/>
+                      <key frame="30" value="line"/>
+                      <key frame="40" value="line"/>
+                      <key frame="41" value="line"/>
+                      <key frame="50" value="line"/>
+                      <key frame="60" value="line"/>
+                      <key frame="70" value="line"/>
+                      <key frame="80" value="line"/>
+                    </keyframe>
+                    </shape>
+                    <file>
+                    <keyframe value="splogoicon.png" interpol="const">
+                      <key frame="1" value="splogoicon.png"/>
+                      <key frame="10" value="splogoicon.png"/>
+                      <key frame="20" value="splogoicon.png"/>
+                      <key frame="30" value="splogoicon.png"/>
+                      <key frame="40" value="splogoicon.png"/>
+                      <key frame="41" value="splogoicon.png"/>
+                      <key frame="50" value="splogoicon.png"/>
+                      <key frame="60" value="splogoicon.png"/>
+                      <key frame="70" value="splogoicon.png"/>
+                      <key frame="80" value="splogoicon.png"/>
+                    </keyframe>
+                    </file>
+                    <fill>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                    </fill>
+                    </texture>
+                  </shape>
+                  <width>
+                    <keyframe value="4" interpol="linear">
+                      <key frame="1" value="4"/>
+                      <key frame="10" value="4"/>
+                      <key frame="20" value="4"/>
+                      <key frame="30" value="4"/>
+                      <key frame="40" value="4"/>
+                      <key frame="41" value="4.0"/>
+                      <key frame="50" value="4"/>
+                      <key frame="60" value="4"/>
+                      <key frame="70" value="4"/>
+                      <key frame="80" value="4"/>
+                    </keyframe>
+                  </width>
+                  <colour>
+                    <keyframe value="[0, 0, 0]" interpol="linear">
+                      <key frame="1" value="[0, 0, 0]"/>
+                      <key frame="10" value="[0, 0, 0]"/>
+                      <key frame="20" value="[0, 0, 0]"/>
+                      <key frame="30" value="[0, 0, 0]"/>
+                      <key frame="40" value="[0, 0, 0]"/>
+                      <key frame="41" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="50" value="[0, 0, 0]"/>
+                      <key frame="60" value="[0, 0, 0]"/>
+                      <key frame="70" value="[0, 0, 0]"/>
+                      <key frame="80" value="[0, 0, 0]"/>
+                    </keyframe>
+                  </colour>
+                  <static>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                  </static>
+                  <hidden>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                  </hidden>
+                  <cartesian>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                  </cartesian>
+                  <children>
+                  </children>
+                </limb>
+              </children>
+            </limb>
+            <limb name="armr">
+              <ang>
+                <keyframe value="198.43" interpol="linear">
+                  <key frame="1" value="198.43"/>
+                  <key frame="10" value="198.43"/>
+                  <key frame="20" value="230.035373894"/>
+                  <key frame="30" value="238.693942634"/>
+                  <key frame="40" value="238.693942634"/>
+                  <key frame="41" value="235.799666571"/>
+                  <key frame="50" value="223.327335632"/>
+                  <key frame="60" value="209.350176432"/>
+                  <key frame="70" value="209.350176432"/>
+                  <key frame="80" value="198.43"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe value="35.0" interpol="linear">
+                  <key frame="1" value="35.0"/>
+                  <key frame="10" value="35.0"/>
+                  <key frame="20" value="35.0"/>
+                  <key frame="30" value="35.0"/>
+                  <key frame="40" value="35.0"/>
+                  <key frame="41" value="35.0"/>
+                  <key frame="50" value="35.0"/>
+                  <key frame="60" value="35.0"/>
+                  <key frame="70" value="35.0"/>
+                  <key frame="80" value="35.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe value="[0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="10" value="[0, 0]"/>
+                  <key frame="20" value="[0, 0]"/>
+                  <key frame="30" value="[0, 0]"/>
+                  <key frame="40" value="[0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0]"/>
+                  <key frame="60" value="[0, 0]"/>
+                  <key frame="70" value="[0, 0]"/>
+                  <key frame="80" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe value="test" interpol="const">
+                  <key frame="1" value="test"/>
+                  <key frame="10" value="test"/>
+                  <key frame="20" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="40" value="test"/>
+                  <key frame="41" value="test"/>
+                  <key frame="50" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="70" value="test"/>
+                  <key frame="80" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe value="line" interpol="const">
+                  <key frame="1" value="line"/>
+                  <key frame="10" value="line"/>
+                  <key frame="20" value="line"/>
+                  <key frame="30" value="line"/>
+                  <key frame="40" value="line"/>
+                  <key frame="41" value="line"/>
+                  <key frame="50" value="line"/>
+                  <key frame="60" value="line"/>
+                  <key frame="70" value="line"/>
+                  <key frame="80" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe value="splogoicon.png" interpol="const">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="10" value="splogoicon.png"/>
+                  <key frame="20" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="40" value="splogoicon.png"/>
+                  <key frame="41" value="splogoicon.png"/>
+                  <key frame="50" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="70" value="splogoicon.png"/>
+                  <key frame="80" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe value="4" interpol="linear">
+                  <key frame="1" value="4"/>
+                  <key frame="10" value="4"/>
+                  <key frame="20" value="4"/>
+                  <key frame="30" value="4"/>
+                  <key frame="40" value="4"/>
+                  <key frame="41" value="4.0"/>
+                  <key frame="50" value="4"/>
+                  <key frame="60" value="4"/>
+                  <key frame="70" value="4"/>
+                  <key frame="80" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe value="[0, 0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="10" value="[0, 0, 0]"/>
+                  <key frame="20" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0, 0, 0]"/>
+                  <key frame="40" value="[0, 0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0, 0]"/>
+                  <key frame="60" value="[0, 0, 0]"/>
+                  <key frame="70" value="[0, 0, 0]"/>
+                  <key frame="80" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+                <limb name="farmr">
+                  <ang>
+                    <keyframe value="-23.78" interpol="linear">
+                      <key frame="1" value="-23.78"/>
+                      <key frame="10" value="-23.78"/>
+                      <key frame="20" value="-97.6118357146"/>
+                      <key frame="30" value="-118.080277756"/>
+                      <key frame="40" value="-68.4275746828"/>
+                      <key frame="41" value="-66.1177682632"/>
+                      <key frame="50" value="-52.5491221556"/>
+                      <key frame="60" value="-35.7222752416"/>
+                      <key frame="70" value="-35.7222752416"/>
+                      <key frame="80" value="-23.78"/>
+                    </keyframe>
+                  </ang>
+                  <dist>
+                    <keyframe value="35.0" interpol="linear">
+                      <key frame="1" value="35.0"/>
+                      <key frame="10" value="35.0"/>
+                      <key frame="20" value="35.0"/>
+                      <key frame="30" value="35.0"/>
+                      <key frame="40" value="35.0"/>
+                      <key frame="41" value="35.0"/>
+                      <key frame="50" value="35.0"/>
+                      <key frame="60" value="35.0"/>
+                      <key frame="70" value="35.0"/>
+                      <key frame="80" value="35.0"/>
+                    </keyframe>
+                  </dist>
+                  <pos>
+                    <keyframe value="[0, 0]" interpol="linear">
+                      <key frame="1" value="[0, 0]"/>
+                      <key frame="10" value="[0, 0]"/>
+                      <key frame="20" value="[0, 0]"/>
+                      <key frame="30" value="[0, 0]"/>
+                      <key frame="40" value="[0, 0]"/>
+                      <key frame="41" value="[0.0, 0.0]"/>
+                      <key frame="50" value="[0, 0]"/>
+                      <key frame="60" value="[0, 0]"/>
+                      <key frame="70" value="[0, 0]"/>
+                      <key frame="80" value="[0, 0]"/>
+                    </keyframe>
+                  </pos>
+                  <shape>
+                    <texture>
+                    <text>
+                    <keyframe value="test" interpol="const">
+                      <key frame="1" value="test"/>
+                      <key frame="10" value="test"/>
+                      <key frame="20" value="test"/>
+                      <key frame="30" value="test"/>
+                      <key frame="40" value="test"/>
+                      <key frame="41" value="test"/>
+                      <key frame="50" value="test"/>
+                      <key frame="60" value="test"/>
+                      <key frame="70" value="test"/>
+                      <key frame="80" value="test"/>
+                    </keyframe>
+                    </text>
+                    <flip>
+                    <keyframe value="True" interpol="const">
+                      <key frame="1" value="True"/>
+                      <key frame="10" value="True"/>
+                      <key frame="20" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="40" value="True"/>
+                      <key frame="41" value="True"/>
+                      <key frame="50" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="70" value="True"/>
+                      <key frame="80" value="True"/>
+                    </keyframe>
+                    </flip>
+                    <caps>
+                    <keyframe value="True" interpol="const">
+                      <key frame="1" value="True"/>
+                      <key frame="10" value="True"/>
+                      <key frame="20" value="True"/>
+                      <key frame="30" value="True"/>
+                      <key frame="40" value="True"/>
+                      <key frame="41" value="True"/>
+                      <key frame="50" value="True"/>
+                      <key frame="60" value="True"/>
+                      <key frame="70" value="True"/>
+                      <key frame="80" value="True"/>
+                    </keyframe>
+                    </caps>
+                    <shape>
+                    <keyframe value="line" interpol="const">
+                      <key frame="1" value="line"/>
+                      <key frame="10" value="line"/>
+                      <key frame="20" value="line"/>
+                      <key frame="30" value="line"/>
+                      <key frame="40" value="line"/>
+                      <key frame="41" value="line"/>
+                      <key frame="50" value="line"/>
+                      <key frame="60" value="line"/>
+                      <key frame="70" value="line"/>
+                      <key frame="80" value="line"/>
+                    </keyframe>
+                    </shape>
+                    <file>
+                    <keyframe value="splogoicon.png" interpol="const">
+                      <key frame="1" value="splogoicon.png"/>
+                      <key frame="10" value="splogoicon.png"/>
+                      <key frame="20" value="splogoicon.png"/>
+                      <key frame="30" value="splogoicon.png"/>
+                      <key frame="40" value="splogoicon.png"/>
+                      <key frame="41" value="splogoicon.png"/>
+                      <key frame="50" value="splogoicon.png"/>
+                      <key frame="60" value="splogoicon.png"/>
+                      <key frame="70" value="splogoicon.png"/>
+                      <key frame="80" value="splogoicon.png"/>
+                    </keyframe>
+                    </file>
+                    <fill>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                    </fill>
+                    </texture>
+                  </shape>
+                  <width>
+                    <keyframe value="4" interpol="linear">
+                      <key frame="1" value="4"/>
+                      <key frame="10" value="4"/>
+                      <key frame="20" value="4"/>
+                      <key frame="30" value="4"/>
+                      <key frame="40" value="4"/>
+                      <key frame="41" value="4.0"/>
+                      <key frame="50" value="4"/>
+                      <key frame="60" value="4"/>
+                      <key frame="70" value="4"/>
+                      <key frame="80" value="4"/>
+                    </keyframe>
+                  </width>
+                  <colour>
+                    <keyframe value="[0, 0, 0]" interpol="linear">
+                      <key frame="1" value="[0, 0, 0]"/>
+                      <key frame="10" value="[0, 0, 0]"/>
+                      <key frame="20" value="[0, 0, 0]"/>
+                      <key frame="30" value="[0, 0, 0]"/>
+                      <key frame="40" value="[0, 0, 0]"/>
+                      <key frame="41" value="[0.0, 0.0, 0.0]"/>
+                      <key frame="50" value="[0, 0, 0]"/>
+                      <key frame="60" value="[0, 0, 0]"/>
+                      <key frame="70" value="[0, 0, 0]"/>
+                      <key frame="80" value="[0, 0, 0]"/>
+                    </keyframe>
+                  </colour>
+                  <static>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                  </static>
+                  <hidden>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                  </hidden>
+                  <cartesian>
+                    <keyframe value="False" interpol="const">
+                      <key frame="1" value="False"/>
+                      <key frame="10" value="False"/>
+                      <key frame="20" value="False"/>
+                      <key frame="30" value="False"/>
+                      <key frame="40" value="False"/>
+                      <key frame="41" value="False"/>
+                      <key frame="50" value="False"/>
+                      <key frame="60" value="False"/>
+                      <key frame="70" value="False"/>
+                      <key frame="80" value="False"/>
+                    </keyframe>
+                  </cartesian>
+                  <children>
+                  </children>
+                </limb>
+              </children>
+            </limb>
+          </children>
+        </limb>
+        <limb name="legl">
+          <ang>
+            <keyframe value="74.32" interpol="linear">
+              <key frame="1" value="74.32"/>
+              <key frame="10" value="67.380135052"/>
+              <key frame="20" value="59.7435628365"/>
+              <key frame="30" value="36.0273733851"/>
+              <key frame="40" value="-14.6208739886"/>
+              <key frame="41" value="-11.9611733453"/>
+              <key frame="50" value="11.9761324442"/>
+              <key frame="60" value="46.0809241867"/>
+              <key frame="70" value="40.91438322"/>
+              <key frame="80" value="74.32"/>
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe value="40.0" interpol="linear">
+              <key frame="1" value="40.0"/>
+              <key frame="10" value="40.0"/>
+              <key frame="20" value="40.0"/>
+              <key frame="30" value="40.0"/>
+              <key frame="40" value="40.0"/>
+              <key frame="41" value="40.0"/>
+              <key frame="50" value="40.0"/>
+              <key frame="60" value="40.0"/>
+              <key frame="70" value="40.0"/>
+              <key frame="80" value="40.0"/>
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe value="[0, 0]" interpol="linear">
+              <key frame="1" value="[0, 0]"/>
+              <key frame="10" value="[0, 0]"/>
+              <key frame="20" value="[0, 0]"/>
+              <key frame="30" value="[0, 0]"/>
+              <key frame="40" value="[0, 0]"/>
+              <key frame="41" value="[0.0, 0.0]"/>
+              <key frame="50" value="[0, 0]"/>
+              <key frame="60" value="[0, 0]"/>
+              <key frame="70" value="[0, 0]"/>
+              <key frame="80" value="[0, 0]"/>
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe value="test" interpol="const">
+              <key frame="1" value="test"/>
+              <key frame="10" value="test"/>
+              <key frame="20" value="test"/>
+              <key frame="30" value="test"/>
+              <key frame="40" value="test"/>
+              <key frame="41" value="test"/>
+              <key frame="50" value="test"/>
+              <key frame="60" value="test"/>
+              <key frame="70" value="test"/>
+              <key frame="80" value="test"/>
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe value="True" interpol="const">
+              <key frame="1" value="True"/>
+              <key frame="10" value="True"/>
+              <key frame="20" value="True"/>
+              <key frame="30" value="True"/>
+              <key frame="40" value="True"/>
+              <key frame="41" value="True"/>
+              <key frame="50" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="70" value="True"/>
+              <key frame="80" value="True"/>
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe value="True" interpol="const">
+              <key frame="1" value="True"/>
+              <key frame="10" value="True"/>
+              <key frame="20" value="True"/>
+              <key frame="30" value="True"/>
+              <key frame="40" value="True"/>
+              <key frame="41" value="True"/>
+              <key frame="50" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="70" value="True"/>
+              <key frame="80" value="True"/>
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe value="line" interpol="const">
+              <key frame="1" value="line"/>
+              <key frame="10" value="line"/>
+              <key frame="20" value="line"/>
+              <key frame="30" value="line"/>
+              <key frame="40" value="line"/>
+              <key frame="41" value="line"/>
+              <key frame="50" value="line"/>
+              <key frame="60" value="line"/>
+              <key frame="70" value="line"/>
+              <key frame="80" value="line"/>
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe value="splogoicon.png" interpol="const">
+              <key frame="1" value="splogoicon.png"/>
+              <key frame="10" value="splogoicon.png"/>
+              <key frame="20" value="splogoicon.png"/>
+              <key frame="30" value="splogoicon.png"/>
+              <key frame="40" value="splogoicon.png"/>
+              <key frame="41" value="splogoicon.png"/>
+              <key frame="50" value="splogoicon.png"/>
+              <key frame="60" value="splogoicon.png"/>
+              <key frame="70" value="splogoicon.png"/>
+              <key frame="80" value="splogoicon.png"/>
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe value="4" interpol="linear">
+              <key frame="1" value="4"/>
+              <key frame="10" value="4"/>
+              <key frame="20" value="4"/>
+              <key frame="30" value="4"/>
+              <key frame="40" value="4"/>
+              <key frame="41" value="4.0"/>
+              <key frame="50" value="4"/>
+              <key frame="60" value="4"/>
+              <key frame="70" value="4"/>
+              <key frame="80" value="4"/>
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe value="[0, 0, 0]" interpol="linear">
+              <key frame="1" value="[0, 0, 0]"/>
+              <key frame="10" value="[0, 0, 0]"/>
+              <key frame="20" value="[0, 0, 0]"/>
+              <key frame="30" value="[0, 0, 0]"/>
+              <key frame="40" value="[0, 0, 0]"/>
+              <key frame="41" value="[0.0, 0.0, 0.0]"/>
+              <key frame="50" value="[0, 0, 0]"/>
+              <key frame="60" value="[0, 0, 0]"/>
+              <key frame="70" value="[0, 0, 0]"/>
+              <key frame="80" value="[0, 0, 0]"/>
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb name="shinl">
+              <ang>
+                <keyframe value="22.484" interpol="linear">
+                  <key frame="1" value="22.484"/>
+                  <key frame="10" value="47.159675696"/>
+                  <key frame="20" value="64.9477058211"/>
+                  <key frame="30" value="102.031638177"/>
+                  <key frame="40" value="137.944253864"/>
+                  <key frame="41" value="134.339734815"/>
+                  <key frame="50" value="81.2566176893"/>
+                  <key frame="60" value="34.5958388412"/>
+                  <key frame="70" value="71.9758389338"/>
+                  <key frame="80" value="22.484"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe value="40.0" interpol="linear">
+                  <key frame="1" value="40.0"/>
+                  <key frame="10" value="40.0"/>
+                  <key frame="20" value="40.0"/>
+                  <key frame="30" value="40.0"/>
+                  <key frame="40" value="40.0"/>
+                  <key frame="41" value="40.0"/>
+                  <key frame="50" value="40.0"/>
+                  <key frame="60" value="40.0"/>
+                  <key frame="70" value="40.0"/>
+                  <key frame="80" value="40.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe value="[0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="10" value="[0, 0]"/>
+                  <key frame="20" value="[0, 0]"/>
+                  <key frame="30" value="[0, 0]"/>
+                  <key frame="40" value="[0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0]"/>
+                  <key frame="60" value="[0, 0]"/>
+                  <key frame="70" value="[0, 0]"/>
+                  <key frame="80" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe value="test" interpol="const">
+                  <key frame="1" value="test"/>
+                  <key frame="10" value="test"/>
+                  <key frame="20" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="40" value="test"/>
+                  <key frame="41" value="test"/>
+                  <key frame="50" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="70" value="test"/>
+                  <key frame="80" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe value="line" interpol="const">
+                  <key frame="1" value="line"/>
+                  <key frame="10" value="line"/>
+                  <key frame="20" value="line"/>
+                  <key frame="30" value="line"/>
+                  <key frame="40" value="line"/>
+                  <key frame="41" value="line"/>
+                  <key frame="50" value="line"/>
+                  <key frame="60" value="line"/>
+                  <key frame="70" value="line"/>
+                  <key frame="80" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe value="splogoicon.png" interpol="const">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="10" value="splogoicon.png"/>
+                  <key frame="20" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="40" value="splogoicon.png"/>
+                  <key frame="41" value="splogoicon.png"/>
+                  <key frame="50" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="70" value="splogoicon.png"/>
+                  <key frame="80" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe value="4" interpol="linear">
+                  <key frame="1" value="4"/>
+                  <key frame="10" value="4"/>
+                  <key frame="20" value="4"/>
+                  <key frame="30" value="4"/>
+                  <key frame="40" value="4"/>
+                  <key frame="41" value="4.0"/>
+                  <key frame="50" value="4"/>
+                  <key frame="60" value="4"/>
+                  <key frame="70" value="4"/>
+                  <key frame="80" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe value="[0, 0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="10" value="[0, 0, 0]"/>
+                  <key frame="20" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0, 0, 0]"/>
+                  <key frame="40" value="[0, 0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0, 0]"/>
+                  <key frame="60" value="[0, 0, 0]"/>
+                  <key frame="70" value="[0, 0, 0]"/>
+                  <key frame="80" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+          </children>
+        </limb>
+        <limb name="legr">
+          <ang>
+            <keyframe value="88.726" interpol="linear">
+              <key frame="1" value="88.726"/>
+              <key frame="10" value="78.1113419604"/>
+              <key frame="20" value="77.7995312726"/>
+              <key frame="30" value="106.557071376"/>
+              <key frame="40" value="91.6365770416"/>
+              <key frame="41" value="90.0"/>
+              <key frame="50" value="77.3196165082"/>
+              <key frame="60" value="67.5205656029"/>
+              <key frame="70" value="67.0112831979"/>
+              <key frame="80" value="88.726"/>
+            </keyframe>
+          </ang>
+          <dist>
+            <keyframe value="40.0" interpol="linear">
+              <key frame="1" value="40.0"/>
+              <key frame="10" value="40.0"/>
+              <key frame="20" value="40.0"/>
+              <key frame="30" value="40.0"/>
+              <key frame="40" value="40.0"/>
+              <key frame="41" value="40.0"/>
+              <key frame="50" value="40.0"/>
+              <key frame="60" value="40.0"/>
+              <key frame="70" value="40.0"/>
+              <key frame="80" value="40.0"/>
+            </keyframe>
+          </dist>
+          <pos>
+            <keyframe value="[0, 0]" interpol="linear">
+              <key frame="1" value="[0, 0]"/>
+              <key frame="10" value="[0, 0]"/>
+              <key frame="20" value="[0, 0]"/>
+              <key frame="30" value="[0, 0]"/>
+              <key frame="40" value="[0, 0]"/>
+              <key frame="41" value="[0.0, 0.0]"/>
+              <key frame="50" value="[0, 0]"/>
+              <key frame="60" value="[0, 0]"/>
+              <key frame="70" value="[0, 0]"/>
+              <key frame="80" value="[0, 0]"/>
+            </keyframe>
+          </pos>
+          <shape>
+            <texture>
+            <text>
+            <keyframe value="test" interpol="const">
+              <key frame="1" value="test"/>
+              <key frame="10" value="test"/>
+              <key frame="20" value="test"/>
+              <key frame="30" value="test"/>
+              <key frame="40" value="test"/>
+              <key frame="41" value="test"/>
+              <key frame="50" value="test"/>
+              <key frame="60" value="test"/>
+              <key frame="70" value="test"/>
+              <key frame="80" value="test"/>
+            </keyframe>
+            </text>
+            <flip>
+            <keyframe value="True" interpol="const">
+              <key frame="1" value="True"/>
+              <key frame="10" value="True"/>
+              <key frame="20" value="True"/>
+              <key frame="30" value="True"/>
+              <key frame="40" value="True"/>
+              <key frame="41" value="True"/>
+              <key frame="50" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="70" value="True"/>
+              <key frame="80" value="True"/>
+            </keyframe>
+            </flip>
+            <caps>
+            <keyframe value="True" interpol="const">
+              <key frame="1" value="True"/>
+              <key frame="10" value="True"/>
+              <key frame="20" value="True"/>
+              <key frame="30" value="True"/>
+              <key frame="40" value="True"/>
+              <key frame="41" value="True"/>
+              <key frame="50" value="True"/>
+              <key frame="60" value="True"/>
+              <key frame="70" value="True"/>
+              <key frame="80" value="True"/>
+            </keyframe>
+            </caps>
+            <shape>
+            <keyframe value="line" interpol="const">
+              <key frame="1" value="line"/>
+              <key frame="10" value="line"/>
+              <key frame="20" value="line"/>
+              <key frame="30" value="line"/>
+              <key frame="40" value="line"/>
+              <key frame="41" value="line"/>
+              <key frame="50" value="line"/>
+              <key frame="60" value="line"/>
+              <key frame="70" value="line"/>
+              <key frame="80" value="line"/>
+            </keyframe>
+            </shape>
+            <file>
+            <keyframe value="splogoicon.png" interpol="const">
+              <key frame="1" value="splogoicon.png"/>
+              <key frame="10" value="splogoicon.png"/>
+              <key frame="20" value="splogoicon.png"/>
+              <key frame="30" value="splogoicon.png"/>
+              <key frame="40" value="splogoicon.png"/>
+              <key frame="41" value="splogoicon.png"/>
+              <key frame="50" value="splogoicon.png"/>
+              <key frame="60" value="splogoicon.png"/>
+              <key frame="70" value="splogoicon.png"/>
+              <key frame="80" value="splogoicon.png"/>
+            </keyframe>
+            </file>
+            <fill>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+            </fill>
+            </texture>
+          </shape>
+          <width>
+            <keyframe value="4" interpol="linear">
+              <key frame="1" value="4"/>
+              <key frame="10" value="4"/>
+              <key frame="20" value="4"/>
+              <key frame="30" value="4"/>
+              <key frame="40" value="4"/>
+              <key frame="41" value="4.0"/>
+              <key frame="50" value="4"/>
+              <key frame="60" value="4"/>
+              <key frame="70" value="4"/>
+              <key frame="80" value="4"/>
+            </keyframe>
+          </width>
+          <colour>
+            <keyframe value="[0, 0, 0]" interpol="linear">
+              <key frame="1" value="[0, 0, 0]"/>
+              <key frame="10" value="[0, 0, 0]"/>
+              <key frame="20" value="[0, 0, 0]"/>
+              <key frame="30" value="[0, 0, 0]"/>
+              <key frame="40" value="[0, 0, 0]"/>
+              <key frame="41" value="[0.0, 0.0, 0.0]"/>
+              <key frame="50" value="[0, 0, 0]"/>
+              <key frame="60" value="[0, 0, 0]"/>
+              <key frame="70" value="[0, 0, 0]"/>
+              <key frame="80" value="[0, 0, 0]"/>
+            </keyframe>
+          </colour>
+          <static>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </static>
+          <hidden>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </hidden>
+          <cartesian>
+            <keyframe value="False" interpol="const">
+              <key frame="1" value="False"/>
+              <key frame="10" value="False"/>
+              <key frame="20" value="False"/>
+              <key frame="30" value="False"/>
+              <key frame="40" value="False"/>
+              <key frame="41" value="False"/>
+              <key frame="50" value="False"/>
+              <key frame="60" value="False"/>
+              <key frame="70" value="False"/>
+              <key frame="80" value="False"/>
+            </keyframe>
+          </cartesian>
+          <children>
+            <limb name="shinr">
+              <ang>
+                <keyframe value="19.267" interpol="linear">
+                  <key frame="1" value="19.267"/>
+                  <key frame="10" value="41.331657278"/>
+                  <key frame="20" value="43.8113473505"/>
+                  <key frame="30" value="10.3469652636"/>
+                  <key frame="40" value="36.6563070416"/>
+                  <key frame="41" value="37.146686698"/>
+                  <key frame="50" value="25.3761232077"/>
+                  <key frame="60" value="44.6721272383"/>
+                  <key frame="70" value="78.4089638263"/>
+                  <key frame="80" value="19.267"/>
+                </keyframe>
+              </ang>
+              <dist>
+                <keyframe value="40.0" interpol="linear">
+                  <key frame="1" value="40.0"/>
+                  <key frame="10" value="40.0"/>
+                  <key frame="20" value="40.0"/>
+                  <key frame="30" value="40.0"/>
+                  <key frame="40" value="40.0"/>
+                  <key frame="41" value="40.0"/>
+                  <key frame="50" value="40.0"/>
+                  <key frame="60" value="40.0"/>
+                  <key frame="70" value="40.0"/>
+                  <key frame="80" value="40.0"/>
+                </keyframe>
+              </dist>
+              <pos>
+                <keyframe value="[0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0]"/>
+                  <key frame="10" value="[0, 0]"/>
+                  <key frame="20" value="[0, 0]"/>
+                  <key frame="30" value="[0, 0]"/>
+                  <key frame="40" value="[0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0]"/>
+                  <key frame="60" value="[0, 0]"/>
+                  <key frame="70" value="[0, 0]"/>
+                  <key frame="80" value="[0, 0]"/>
+                </keyframe>
+              </pos>
+              <shape>
+                <texture>
+                <text>
+                <keyframe value="test" interpol="const">
+                  <key frame="1" value="test"/>
+                  <key frame="10" value="test"/>
+                  <key frame="20" value="test"/>
+                  <key frame="30" value="test"/>
+                  <key frame="40" value="test"/>
+                  <key frame="41" value="test"/>
+                  <key frame="50" value="test"/>
+                  <key frame="60" value="test"/>
+                  <key frame="70" value="test"/>
+                  <key frame="80" value="test"/>
+                </keyframe>
+                </text>
+                <flip>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </flip>
+                <caps>
+                <keyframe value="True" interpol="const">
+                  <key frame="1" value="True"/>
+                  <key frame="10" value="True"/>
+                  <key frame="20" value="True"/>
+                  <key frame="30" value="True"/>
+                  <key frame="40" value="True"/>
+                  <key frame="41" value="True"/>
+                  <key frame="50" value="True"/>
+                  <key frame="60" value="True"/>
+                  <key frame="70" value="True"/>
+                  <key frame="80" value="True"/>
+                </keyframe>
+                </caps>
+                <shape>
+                <keyframe value="line" interpol="const">
+                  <key frame="1" value="line"/>
+                  <key frame="10" value="line"/>
+                  <key frame="20" value="line"/>
+                  <key frame="30" value="line"/>
+                  <key frame="40" value="line"/>
+                  <key frame="41" value="line"/>
+                  <key frame="50" value="line"/>
+                  <key frame="60" value="line"/>
+                  <key frame="70" value="line"/>
+                  <key frame="80" value="line"/>
+                </keyframe>
+                </shape>
+                <file>
+                <keyframe value="splogoicon.png" interpol="const">
+                  <key frame="1" value="splogoicon.png"/>
+                  <key frame="10" value="splogoicon.png"/>
+                  <key frame="20" value="splogoicon.png"/>
+                  <key frame="30" value="splogoicon.png"/>
+                  <key frame="40" value="splogoicon.png"/>
+                  <key frame="41" value="splogoicon.png"/>
+                  <key frame="50" value="splogoicon.png"/>
+                  <key frame="60" value="splogoicon.png"/>
+                  <key frame="70" value="splogoicon.png"/>
+                  <key frame="80" value="splogoicon.png"/>
+                </keyframe>
+                </file>
+                <fill>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+                </fill>
+                </texture>
+              </shape>
+              <width>
+                <keyframe value="4" interpol="linear">
+                  <key frame="1" value="4"/>
+                  <key frame="10" value="4"/>
+                  <key frame="20" value="4"/>
+                  <key frame="30" value="4"/>
+                  <key frame="40" value="4"/>
+                  <key frame="41" value="4.0"/>
+                  <key frame="50" value="4"/>
+                  <key frame="60" value="4"/>
+                  <key frame="70" value="4"/>
+                  <key frame="80" value="4"/>
+                </keyframe>
+              </width>
+              <colour>
+                <keyframe value="[0, 0, 0]" interpol="linear">
+                  <key frame="1" value="[0, 0, 0]"/>
+                  <key frame="10" value="[0, 0, 0]"/>
+                  <key frame="20" value="[0, 0, 0]"/>
+                  <key frame="30" value="[0, 0, 0]"/>
+                  <key frame="40" value="[0, 0, 0]"/>
+                  <key frame="41" value="[0.0, 0.0, 0.0]"/>
+                  <key frame="50" value="[0, 0, 0]"/>
+                  <key frame="60" value="[0, 0, 0]"/>
+                  <key frame="70" value="[0, 0, 0]"/>
+                  <key frame="80" value="[0, 0, 0]"/>
+                </keyframe>
+              </colour>
+              <static>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </static>
+              <hidden>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </hidden>
+              <cartesian>
+                <keyframe value="False" interpol="const">
+                  <key frame="1" value="False"/>
+                  <key frame="10" value="False"/>
+                  <key frame="20" value="False"/>
+                  <key frame="30" value="False"/>
+                  <key frame="40" value="False"/>
+                  <key frame="41" value="False"/>
+                  <key frame="50" value="False"/>
+                  <key frame="60" value="False"/>
+                  <key frame="70" value="False"/>
+                  <key frame="80" value="False"/>
+                </keyframe>
+              </cartesian>
+              <children>
+              </children>
+            </limb>
+          </children>
+        </limb>
+      </children>
+    </limb>
+  </children>
+</limb>

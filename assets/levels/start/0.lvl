@@ -1,6 +1,19 @@
 <zone>
+  <playerstart x="4.0" y="3.0" />
   <collider type="box">
-    <box x="0.0" y="0.0" width="10.0" height="2.0" />
+    <box x="0.0" y="3.5" width="4.0" height="0.1" angle="90" />
   </collider>
-  <colorvortex x="5.0" y="2.75" color="1.0 0.5 0.5" />
+  <collider type="box">
+    <box x="1.0" y="1.8" width="2.0" height="0.1" />
+  </collider>
+  <collider type="box">
+    <box x="3.2" y="1.63" width="2.5" height="0.1" angle="-8.0"/>
+  </collider>
+  <collider type="box">
+    <box x="5.7" y="1.38" width="2.5" height="0.1" angle="-3.0"/>
+  </collider>
+  <collider type="box">
+    <box x="8.2" y="1.31" width="2.5" height="0.1"/>
+  </collider>
+  <colorvortex x="5.0" y="2.75" color="1.0 0.0 0.0" />
 </zone>

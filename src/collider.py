@@ -16,25 +16,33 @@ from gameobject import *
 from utils import *
 
 class Collider(GameObject):
-    DEBUG = False
-    
     def __init__(self, pos, width, height, angle):
         super(Collider, self).__init__()
         self.pos = pos
         self.angle = angle
         
         diag = Vector2(width * 0.5, height * 0.5)
+        self.aabb.removeAll()
         self.aabb.add_point(pos - diag)
         self.aabb.add_point(pos + diag)
 
-    def render(self, surface, campos):
-        if Collider.DEBUG:
-            topleft = Vector2(self.aabb.minval.x, self.aabb.maxval.y)
-            left = world2screenPos(campos, topleft).x
-            top = world2screenPos(campos, topleft).y
-            width = world2screen(self.aabb.maxx() - self.aabb.minx())
-            height = world2screen(self.aabb.maxy() - self.aabb.miny())
-            r = pygame.Rect(left, top, width, height)
-            c = pygame.Color(255, 128, 128, 255)
-            pygame.draw.rect(surface, c, r, 2)
-            
+    def getPoints(self):
+        pts = self.aabb.getPoints()
+
+        pts = map(lambda x: x - self.pos, pts)
+        pts = map(lambda x: x.rotateDeg(self.angle), pts)
+        pts = map(lambda x: self.pos + x, pts)
+
+        return pts
+
+    def collide(self, obj):
+        
+        # Rotate all the points of the colliders so that
+        # this collider lines up with the x/y axes
+        pts = obj.aabb.getPoints()
+
+        pts = map(lambda x: x - self.pos, pts)
+        pts = map(lambda x: x.rotateDeg(-self.angle), pts)
+        pts = map(lambda x: self.pos + x, pts)
+
+        return self.aabb.collidePolygon(pts)

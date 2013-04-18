@@ -18,6 +18,8 @@ import pygame, widgets
 from objs import *
 from defs import *
 
+W_SZ_Y = 100
+
 class KeyFrameWidget(widgets.WidgetContainer):
     def __init__(self, pos, size, container, mainwindow, data):
         self.setupcontainer(pos, size, mainwindow, container, data)
@@ -26,123 +28,178 @@ class KeyFrameWidget(widgets.WidgetContainer):
         self.order = ['KeyFrameEditor', 'CloseKeyEditorButton']
         self.visible = False
         self.organise()
+
     def resize(self, pos, size):
         self.pos = pos
-        #self.image.fill((0,0,0))if size[0] < 1: size[0] = 1
         if size[1] < 1: size[1] = 1
         self.size = size
         self.image = pygame.Surface(self.size)
         self.setup()
         self.organise()
         self.draw()
-    def changekeys(self, keys):
-        self.widgets['KeyFrameEditor'].changekeys(keys)
+
+    def changelimbs(self, limbs):
+        self.widgets['KeyFrameEditor'].changelimbs(limbs)
+
+    def updatezoom(self, frame_range):
+        self.widgets['KeyFrameEditor'].updatezoom(frame_range)
+
     def close(self):
         self.visible = False
         self.window.fullredraw = True
         self.container.organise()
+
     def show(self):
         self.visible = True
         self.window.fullredraw = True
         self.container.organise()
+
     def draw(self):
         self.drawwidgets()
         self.redraw = True
+
     def organise(self):
         self.widgets['KeyFrameEditor'].resize(Vector(30,0), self.size - Vector(30,0))
 
 class KeyFrameEditor(widgets.BaseWidget):
+
     def setup(self):
         self.editing = []
         self.texkeyon = self.container.window.resources['key']
         self.texkeyoff = self.container.window.resources['keyoff']
-        self.drag = None
+        self.drag = []
         self.fontsize = 16
         self.select = [False,None, "box"]
         self.zoom = 4
+        self.maxzoom = 48.0
+        self.minzoom = 0.01
         self.pan = 0
         self.visible = True
         self.font = pygame.font.Font(pygame.font.get_default_font(), self.fontsize)
+
+        self.limbs = []
+        self.textwidth = 0
+        self.range = [1, 2]
+
+        self.clipboard = []
+
     def resize(self, pos, size):
         self.pos = pos
         self.size = size
         self.image = pygame.Surface(self.size)
         if self.container.visible: self.draw()
-    def changekeys(self, keys):
-        self.keys = keys
+
+    def updatezoom(self, frame_range=None):
+
+        if frame_range == None:
+            frame_range = self.range
+
+        width = self.size.x - self.textwidth - 2*self.texkeyoff.get_size()[0]
+        self.minzoom = float(width) / (frame_range[1] - frame_range[0])
+
+        self.zoom = self.minzoom
+        self.range = frame_range
+
+    def changelimbs(self, limbs):
+        self.limbs = limbs
         maxwidth = 0
-        if not self.keys == []:
-            for item in self.keys[0].keys():
-                twidth = self.font.render(item, True, (0,0,0)).get_width()
-                if twidth > maxwidth: maxwidth = twidth
+
+        self.keyedattrs = []
+        if not self.limbs == []:
+            for limb in self.limbs:
+                for item in limb.keys():
+                    twidth = self.font.render(item, True, (0,0,0)).get_width()
+                    if twidth > maxwidth: maxwidth = twidth
+
+                for i in range(len(limb)):
+                    kf = limb.values()[i]
+                    if isinstance(kf, KeyFrame) and kf.keyed:
+                        a = limb.keys()[i]
+                        if not a in self.keyedattrs:
+                            self.keyedattrs.append(a)
+
         self.textwidth = maxwidth
+
+        self.updatezoom()
         if self.visible:
             self.draw()
             self.container.organise()
+
     def getCollide(self, map):
-        list = []
-        for currkey in self.keys:
-            for i in range(len(currkey)):
-                if isinstance(currkey.values()[i], KeyFrame):
-                    for key in currkey.values()[i].keys:
-                        point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, i)
-                        if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
-                            list.append(key)
-        return list
+        collisions = []
+        for kn in range(len(self.keyedattrs)):
+            for limb in self.limbs:
+                attrname = self.keyedattrs[kn]
+                for key in limb[attrname].keys:
+                    point = Vector(self.texkeyoff.get_size())/2 + self.getkeypos(key, kn)
+                    point = Vector(int(point.x), int(point.y))
+                    if point[0] > 0 and point[0] < self.size.x and map.get_at(point)[0] > 150:
+                        collisions.append((limb, attrname, key))
+
+        return collisions
+
     def getdrag(self):
-        for currkey in self.keys:
-            for i in range(len(currkey)):
-                if isinstance(currkey[currkey.keys()[i]], KeyFrame):
-                    for key in currkey[currkey.keys()[i]].keys:
-                        if pygame.Rect(self.getkeypos(key, i), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
-                            return key
+        drag = []
+        for kn in range(len(self.keyedattrs)):
+            for limb in self.limbs:
+                attrname = self.keyedattrs[kn]
+                for key in limb[attrname].keys:
+                    if pygame.Rect(self.getkeypos(key, kn), self.texkeyon.get_size()).collidepoint(self.mousepos-self.pos):
+                        drag.append((limb, attrname, key))
+        return drag
+
     def mwheelup(self):
         if self.hover:
-            self.zoom *= 1.2
-            if self.zoom > 48: self.zoom = 48
+            self.zoom = min(self.zoom * 1.2, self.maxzoom)
             self.draw()
+
     def mwheeldown(self):
         if self.hover:
-            self.zoom /= 1.2
-            if self.zoom < 0.01: self.zoom = 0.01
+            self.zoom = max(self.zoom / 1.2, self.minzoom)
             self.draw()
+
     def lclick(self):
-        if self.hover and self.selected:
-            self.drag = self.getdrag()
-            if not self.drag == None:
-                if self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]:
-                    contains = False
-                    for key in self.editing:
-                        if key is self.drag:
-                            contains = True
-                            if len(self.editing) > 1: self.editing = [k for k in self.editing if not k is key]
-                            break
-                    #print self.data['editing']
-                    if not contains: self.editing += [self.drag]
+        if not self.hover or not self.selected:
+            return
+
+        shift = self.keyboard[pygame.K_RSHIFT] or self.keyboard[pygame.K_LSHIFT]
+        self.drag = self.getdrag()
+        if len(self.drag) > 0:
+            contains = False
+            for key in self.editing:
+                if key in self.drag:
+                    contains = True
+                    if shift and len(self.editing) > 1: 
+                        self.editing.remove(key)
+
+            if not contains:
+                if shift:
+                    self.editing += self.drag
                 else:
-                    contains = False
-                    for key in self.editing:
-                        if key is self.drag:
-                            contains = True
-                            break
-                    if not contains: self.editing = [self.drag]
-            elif self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
+                    self.editing = self.drag
+
+        else:
+            if not shift:
+                self.editing = []
+
+            if self.keyboard[pygame.K_LCTRL] or self.keyboard[pygame.K_RCTRL]:
                 self.select = [True, [self.mousepos - self.pos], "lasso"]
             else:
                 self.select = [True, self.mousepos, "box"]
-            self.dragging = True
-            self.dragpos = deepcopy(self.editing)
-            self.dragmouse = self.mousepos
-            self.selected = self.drag
-            self.draw()
+
+        self.dragged = deepcopy(self.editing)
+        self.dragmouse = self.mousepos
+        self.selected = self.drag if len(self.drag) > 0 else None
+        self.draw()
+
     def lrelease(self):
         if self.container.visible:
-            self.drag = None
-            for currkey in self.keys:
-                for key in currkey.values():
-                    if isinstance(key, KeyFrame): key.clean()
+            self.drag = []
+            for limb in self.limbs:
+                for attribute in limb.values():
+                    if isinstance(attribute, KeyFrame): attribute.clean()
             self.draw()
-                    
+
         if self.select[0]:
             map = pygame.Surface(self.image.get_size())
             map.fill((0,0,0))
@@ -157,85 +214,184 @@ class KeyFrameEditor(widgets.BaseWidget):
                 self.editing = self.getCollide(map)
             self.select[0] = False
             self.draw()
+
     def mclick(self):
         pass
+
     def rrelease(self):
-        if self.hover and self.selected:
-            self.selectedkey = self.getdrag()
-            if not self.selectedkey == None:
-                self.container.window.menu.showmenu([("Delete keyframe", "deletekey"), ("Go to frame", "gotoframe")], self.container.window.mousepos, self, 15)
-            else:
-                self.container.window.menu.showmenu([("Insert Keyframe", "insertkey"), ("Close keyframe editor", "closeeditor")], self.container.window.mousepos, self, 15)
+        if not self.hover or not self.selected:
+            return
+
+        menuoptions = []
+        drag = self.getdrag()
+        if len(drag) > 0:
+            _, _, self.selectedkey = drag[0]
+            menuoptions.append(("Cut", "cutkey"))
+            menuoptions.append(("Copy", "copykey"))
+            menuoptions.append(("Delete keyframe", "deletekey"))
+            menuoptions.append(("Go to frame", "gotoframe"))
+            menuoptions.append(("Set linear interpolation", "linear"))
+            menuoptions.append(("Set smoothstep interpolation", "smoothstep"))
+        else:
+            menuoptions.append(("Insert Keyframe", "insertkey"))
+            menuoptions.append(("Close keyframe editor", "closeeditor"))
+
+        self.menumousepos = self.mousepos - self.pos
+
+        if len(self.clipboard) > 0 and self.menumousepos[0] > self.textwidth:
+            menuoptions.append(("Paste", "pastekey"))
+
+        self.container.window.menu.showmenu(menuoptions, self.container.window.mousepos, self, 15)
+
     def mousemove(self):
+
         if self.select[0] and self.select[2] == "lasso":
             self.select[1] += [self.mousepos - self.pos]
-        #print self.drag
+
         if self.mousebut[1] and self.selected:
             self.pan += self.mousepos.x - self.oldmousepos.x
-        if not self.drag == None:
+
+        if len(self.drag) > 0:
+
             for i in range(len(self.editing)):
-                #self.editing[i] = [self.dragpos[i][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom, self.editing[i][1]] #self.mousepos.x / 4 - self.textwidth / 4
-                self.editing[i][0] = self.dragpos[i][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
-                
-            #print self.drag
-            for currkey in self.keys:
-                for key in currkey.values():
-                    if isinstance(key, KeyFrame): key.sort()
+                self.editing[i][2][0] = self.dragged[i][2][0] + (self.mousepos.x - self.dragmouse.x) / self.zoom
+
             self.container.container.changeframe(self.data['frame'])
+
         if self.visible and self.hover:
             self.draw()
+
     def always(self):
         if self.data['playing'] and self.visible:
             self.draw()
+
+    def updatelimbs(self):
+
+        for (limb, attr, keyfr) in self.editing:
+            limb[attr].insertkey(keyfr)
+
+        for limb in self.limbs:
+            for attr in limb.values():
+                if isinstance(attr, KeyFrame):
+                    attr.sort()
+
+    def deletekey(self, (limb, attr, key)):
+        limb[attr].removeframe(key[0])
+        limb[attr].setframe(self.data['frame'])
+
+    def constructclipboard(self):
+        self.clipboard = []
+        for (limb, attr, keyframe) in self.editing:
+            self.clipboard.append((limb, attr, deepcopy(keyframe)))
+
     def menuaction(self, selected):
+
         if selected == "deletekey":
-            for key in self.editing:
-                for currkey in self.keys:
-                    for keyfr in currkey.values():
-                        if isinstance(keyfr, KeyFrame):
-                            #print "test", keyfr.keys, self.selected
-                            #for i in range(keyfr.keys.count(key)):
-                            keyfr.keys = [k for k in keyfr.keys if not k is key]
-                            keyfr.setframe(self.data['frame'])
+            for e in self.editing:
+                self.deletekey(e)
+            self.editing = []
             self.draw()
+
+        elif selected == "cutkey":
+            self.constructclipboard()
+            for e in self.editing:
+                self.deletekey(e)
+            self.editing = []
+            self.draw()
+
+        elif selected == "copykey":
+            self.constructclipboard()
+            self.draw()
+
+        elif selected == "pastekey":
+            frame, _ = self.getposkey(self.menumousepos)
+            
+            offsets = []
+            for (limb, attr, key) in self.clipboard:
+                offsets.append(frame - key[0])
+
+            minoffset = min(offsets)
+            offsets = map(lambda x: x-minoffset, offsets)
+
+            for i in range(len(self.clipboard)):
+                self.clipboard[i][2][0] += minoffset + offsets[i]
+
+            self.editing = self.clipboard
+            self.updatelimbs()
+
         elif selected == "gotoframe":
             self.data['frame'] = self.selectedkey[0]
             self.container.changeframe(self.data['frame'])
             self.draw()
+
         elif selected == "insertkey":
-            self.container.window.menu.showmenu([("Not supported yet", "none")], self.mousepos, self, 20)
+            frame, attrib = self.getposkey(self.menumousepos)
+
+            for limb in self.limbs:
+                k = limb[self.keyedattrs[attrib]]
+
+                oldframe = limb[k].frame
+                limb[k].setframe(frame)
+                limb[k].insertkey()
+                limb[k].setframe(oldframe)
+            
+            self.draw()
+
         elif selected == "closeeditor":
             self.container.close()
+        elif selected == "linear" or selected == "smoothstep":
+            for key in self.editing:
+                for limb in self.limbs:
+                    for attr in currkey.values():
+                        if isinstance(attr, KeyFrame):
+                            attr.interpol = selected
+            self.draw()
+
+    def getposkey(self, pos):
+        dy = self.size[1]/len(self.keyedattrs)
+        dx = self.zoom
+
+        frame = int((pos[0] - self.textwidth) / dx + 0.5) + 1
+        attrib = int(pos[1] / dy)
+
+        return frame, attrib
+
     def getkeypos(self, key, row):
-        return (key[0]*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/len(self.keys[0])*row+(self.size[1]/len(self.keys[0]))/2 - self.texkeyon.get_height()/2)
+        dy = len(self.keyedattrs)
+        return ((key[0]-1)*self.zoom+self.textwidth+self.pan - self.texkeyoff.get_width()/2, self.size[1]/dy*row+(self.size[1]/dy)/2 - self.texkeyon.get_height()/2)
+
     def draw(self):
-        if not self.container.visible: return
+
+        if not self.container.visible: 
+            return
+
         self.image.fill((100,100,100))
-        if not self.keys == [] and self.keys[0].keys().count('colour') > 0 and False:
-            for i in range(200):
-                colour = deepcopy(self.keys[0]['colour'])
-                rect = pygame.Rect((i*self.zoom+self.textwidth+self.pan, self.size[1]/len(self.keys[0])* self.keys[0].keys().index('colour') +(self.size[1]/len(self.keys[0]))/2 - 10), (self.zoom, 20))
-                pygame.draw.rect(self.image, colour.setframe(i), rect)
-        #TODO: textwidth?
-        pygame.draw.line(self.image, (0,0,0), (self.data['frame']*self.zoom+self.textwidth+self.pan,0), (self.data['frame']*self.zoom+self.textwidth+self.pan,self.size[1]), 3)
-        if not self.keys == []:
-            for i in range(len(self.keys[0])):
-                fontrender = self.font.render(self.keys[0].keys()[i], True, (0,0,0))
-                self.image.blit(fontrender, (0,self.size[1]/len(self.keys[0])*i+(self.size[1]/len(self.keys[0]))/2 - fontrender.get_height()/2))
-                pygame.draw.line(self.image, (0,0,0), (self.textwidth,self.size[1]/len(self.keys[0])*i+(self.size[1]/len(self.keys[0]))/2), (self.size[0],self.size[1]/len(self.keys[0])*i+(self.size[1]/len(self.keys[0]))/2))
+
+        line_x = (self.data['frame'] - 1)*self.zoom+self.textwidth+self.pan
+        pygame.draw.line(self.image, (0,0,0), (line_x, 0), (line_x, self.size[1]), 3)
+
+        for kn in range(len(self.keyedattrs)):
+            fontrender = self.font.render(self.keyedattrs[kn], True, (0,0,0))
+            
+            dy = len(self.keyedattrs)
+            self.image.blit(fontrender, (0,self.size[1]/dy*kn+(self.size[1]/dy)/2 - fontrender.get_height()/2))
+            pygame.draw.line(self.image, (0,0,0), (self.textwidth,self.size[1]/dy*kn+(self.size[1]/dy)/2), (self.size[0],self.size[1]/dy*kn+(self.size[1]/dy)/2))
                 
-        for currkey in self.keys:
-            for i in range(len(currkey)):
-                if isinstance(currkey.values()[i], KeyFrame):
-                    for key in currkey.values()[i].keys:
-                        selected = False
-                        for editkey in self.editing:
-                            if key is editkey: selected = True
-                        if selected:
-                            self.image.blit(self.texkeyon, self.getkeypos(key, i))
-                        else:
-                            self.image.blit(self.texkeyoff, self.getkeypos(key, i))
-                            
+        for kn in range(len(self.keyedattrs)):
+            attr = self.keyedattrs[kn]
+
+            drawnkeys = []
+            for limb in self.limbs:
+                for key in limb[attr].keys:
+                    if key[0] in drawnkeys:
+                        continue
+
+                    if (limb, attr, key) in self.editing:
+                        self.image.blit(self.texkeyon, self.getkeypos(key, kn))
+                    else:
+                        self.image.blit(self.texkeyoff, self.getkeypos(key, kn))
+                    drawnkeys.append(key[0])
+
         if self.selected and self.select[0]:
             if self.select[2] == "box":
                 pygame.draw.rect(self.image, (0,0,0), pygame.Rect(self.select[1] - self.pos, self.mousepos - self.select[1]), 2)

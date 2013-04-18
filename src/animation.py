@@ -56,9 +56,10 @@ class AnimationAttribute:
         assert self.initialValue != None
 
         self.interpolationType = keyframe.get("interpol")
-        assert self.interpolationType != None
 
         self.animationKeys = {int(key.get("frame")):self.loadValue(key.get("value")) for key in keyframe}
+
+        assert len(self.animationKeys) == 0 or self.interpolationType != None
 
         if len(self.animationKeys.keys()) > 0:
             self.maxFrame = max(self.animationKeys.keys())
@@ -180,13 +181,7 @@ class Limb:
     def getAttrValue(self, name, frame):
         return self.attribs[name].getValue(frame)
 
-    def draw(self, frame, surface, pos, ang, colorOverride=None):
-    
-        color = colorOverride
-        if color == None:
-            colorVec = self.getAttrValue('colour', frame)
-            color = pygame.Color(int(colorVec.x), int(colorVec.y), int(colorVec.z), 255)
-
+    def computeNewPos(self, frame, pos, ang):
         if self.getAttrValue('cartesian', frame):
             newAng = ang
             newPos = pos + self.getAttrValue('pos', frame)
@@ -196,6 +191,17 @@ class Limb:
             dist = self.getAttrValue('dist', frame)
             
             newPos = pos + polar2cart(newAng, dist)
+
+        return newPos, newAng
+
+    def draw(self, frame, surface, pos, ang, colorOverride=None):
+    
+        color = colorOverride
+        if color == None:
+            colorVec = self.getAttrValue('colour', frame)
+            color = pygame.Color(int(colorVec.x), int(colorVec.y), int(colorVec.z), 255)
+
+        newPos, newAng = self.computeNewPos(frame, pos, ang)
 
         if not self.getAttrValue('hidden', frame):
             width = self.getAttrValue('width', frame)
