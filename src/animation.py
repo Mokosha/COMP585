@@ -56,9 +56,10 @@ class AnimationAttribute:
         assert self.initialValue != None
 
         self.interpolationType = keyframe.get("interpol")
-        assert self.interpolationType != None
 
         self.animationKeys = {int(key.get("frame")):self.loadValue(key.get("value")) for key in keyframe}
+
+        assert len(self.animationKeys) == 0 or self.interpolationType != None
 
         if len(self.animationKeys.keys()) > 0:
             self.maxFrame = max(self.animationKeys.keys())
