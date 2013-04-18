@@ -18,6 +18,10 @@ from lib.euclid import *
 def lerp(a, b, t):
     return (1.0 - t)*a + t*b
 
+def smoothstep(a, b, t):
+    t = t * t * (3.0 - (2.0 * t))
+    return lerp(a, b, t)
+
 def polar2cart(angle, dist):
 
     angle *= math.pi / 180.0
