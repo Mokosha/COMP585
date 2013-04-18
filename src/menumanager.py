@@ -32,7 +32,7 @@ class Screen:
 						self.currentlySelected = len(self.myOptions) - 1
 					else:
 						self.currentlySelected = self.currentlySelected - 1
-					menuDrawer.initMenu(self.drawSurface, self.currentlySelected)
+					return menuDrawer.initMenu(self.drawSurface, self.currentlySelected)
 				elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
 					filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Cursor_tones" + os.sep  + "cursor_style_2.ogg"
 					pygame.mixer.Sound(filename).play()
@@ -40,7 +40,7 @@ class Screen:
 						self.currentlySelected = 0
 					else:
 						self.currentlySelected = self.currentlySelected + 1
-					menuDrawer.initMenu(self.drawSurface, self.currentlySelected)
+					return menuDrawer.initMenu(self.drawSurface, self.currentlySelected)
 				elif event.type == pygame.KEYDOWN and (event.key == pygame.K_ESCAPE or event.key == pygame.K_p):
 					menuDrawer.done = True
 				elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
