@@ -439,8 +439,8 @@ p148
 g90
 S'The text to be displayed as the limb'
 p150
-sg110
-S'Adds round caps to the end of the line'
+sg139
+S'Fills the circle with the limb colour'
 p151
 sg101
 S"Flips the shape so it isn't upside down when rotated"
@@ -448,8 +448,8 @@ p152
 sg129
 S'Name of image file to be displayed'
 p153
-sg139
-S'Fills the circle with the limb colour'
+sg110
+S'Adds round caps to the end of the line'
 p154
 ssbsS'ang'
 p155
@@ -939,13 +939,13 @@ sbssg148
 (dp302
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -1402,13 +1402,13 @@ sbssg148
 (dp436
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -1819,13 +1819,13 @@ sbssg148
 (dp555
 g90
 g150
-sg139
+sg110
 g154
 sg101
 g152
 sg129
 g153
-sg110
+sg139
 g151
 ssbsg155
 (iobjs
@@ -2264,13 +2264,13 @@ sbssg148
 (dp683
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -2718,13 +2718,13 @@ sbssg148
 (dp814
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -3172,13 +3172,13 @@ sbssg148
 (dp945
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -3626,13 +3626,13 @@ sbssg148
 (dp1076
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -4004,13 +4004,13 @@ sbssg148
 (dp1181
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -4364,13 +4364,13 @@ sbssg148
 (dp1280
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -4724,13 +4724,13 @@ sbssg148
 (dp1379
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
@@ -5084,13 +5084,13 @@ sbssg148
 (dp1478
 g90
 g150
-sg110
+sg139
 g151
 sg101
 g152
 sg129
 g153
-sg139
+sg110
 g154
 ssbsg155
 (iobjs
