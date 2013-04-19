@@ -96,7 +96,7 @@ class Player(AnimatedObject):
         cpts = collider.getPoints()
         canchor = None
         for pt in cpts:
-            behind = all(map(lambda x: (x - pt).dot(n) <= 0, [p for p in cpts if not p is pt]))
+            behind = all([(x - pt).dot(n) <= 0 for x in [p for p in cpts if not p is pt]])
             if behind:
                 canchor = pt
                 break
@@ -132,11 +132,11 @@ class Player(AnimatedObject):
                     return False
             return True
 
-        lowerShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), lowerShell)
+        lowerShell = [Vector2(v.dot(xAxis), v.dot(yAxis)) for v in lowerShell]
         if not monotonic(lowerShell):
             lowerShell = list(reversed(lowerShell))
 
-        upperShell = map(lambda v: Vector2(v.dot(xAxis), v.dot(yAxis)), upperShell)
+        upperShell = [Vector2(v.dot(xAxis), v.dot(yAxis)) for v in upperShell]
         if not monotonic(upperShell):
             upperShell = list(reversed(upperShell))
 
@@ -160,10 +160,10 @@ class Player(AnimatedObject):
                 j += 1
 
         if i < len(lowerShell):
-            shellPts += map(lambda x: ShellPt(x, False), lowerShell[i:])
+            shellPts += [ShellPt(x, False) for x in lowerShell[i:]]
 
         if j < len(upperShell):
-            shellPts += map(lambda x: ShellPt(x, True), upperShell[j:])
+            shellPts += [ShellPt(x, True) for x in upperShell[j:]]
 
         # Search for largest difference
         difference = 0.0
@@ -208,6 +208,8 @@ class Player(AnimatedObject):
                     b = lup.y - m * lup.x
                     uy = m * sp.pos.x + b
 
+                lastLowerPoint = sp
+
             # Last lower point exists here...
             else: #sp.upper
 
@@ -220,6 +222,8 @@ class Player(AnimatedObject):
                     m = (nlp.y - llp.y) / (nlp.x - llp.x)
                     b = llp.y - m * llp.x
                     ly = m * sp.pos.x + b
+
+                lastUpperPoint = sp
 
             d = uy - ly
             if d > difference: difference = d
