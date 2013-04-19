@@ -45,7 +45,6 @@ class Player(AnimatedObject):
         self.dynamic = True
 	
     def changeColor(self,toChangeColor):
-	myLimb = self.currentAnim.limb
         self.color = self.currentColor
 
     def update(self, inputManager):
@@ -272,7 +271,11 @@ class Player(AnimatedObject):
     def collide(self, obj):        
         
         if isinstance(obj, Collider) and obj.collide(self):
-            self.colliderResponse(obj)
+            if obj.color != None:
+                if obj.color == self.color:
+                    self.colliderResponse(obj)
+            else:
+                self.colliderResponse(obj)
         elif isinstance(obj, ColorVortex) and obj.aabb.collideBox(self.aabb):
             # !TODO! Handle color vortex logic
             pass

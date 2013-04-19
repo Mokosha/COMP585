@@ -46,24 +46,37 @@ class Zone:
 
     def loadCollider(self, node):
         children = list(node)
-        assert len(children) == 1
+        assert len(children) <= 2
 
-        child = children[0]
-        if child.tag == "box":
-            x = float(child.attrib["x"])
-            y = float(child.attrib["y"])
+        collider = None
+        collider_color = None
+        for child in children:
 
-            width = float(child.attrib["width"])
-            height = float(child.attrib["height"])
+            if child.tag == "box":
+                x = float(child.attrib["x"])
+                y = float(child.attrib["y"])
 
-            angle = 0.0
-            if "angle" in child.attrib.iterkeys():
-                angle = float(child.attrib["angle"])
+                width = float(child.attrib["width"])
+                height = float(child.attrib["height"])
+
+                angle = 0.0
+                if "angle" in child.attrib.iterkeys():
+                    angle = float(child.attrib["angle"])
             
-            collider = Collider(Vector2(x, y), width, height, angle)
-            return collider
-        else:
-            raise NameError(child.tag + ": Undefined collider")
+                collider = Collider(Vector2(x, y), width, height, angle)
+
+            elif child.tag == "color":
+                r = int(child.attrib["r"])
+                g = int(child.attrib["g"])
+                b = int(child.attrib["b"])
+
+                collider_color = pygame.color.Color(r, g, b, 255)
+
+        if collider == None:
+            raise NameError(child.tag + ": Collider has no box child")
+
+        collider.color = collider_color
+        return collider
 
     def loadColorVortex(self, node):
         assert len(list(node)) == 0

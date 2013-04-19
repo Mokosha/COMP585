@@ -20,6 +20,7 @@ class Collider(GameObject):
         super(Collider, self).__init__()
         self.pos = pos
         self.angle = angle
+        self.color = None
         
         diag = Vector2(width * 0.5, height * 0.5)
         self.aabb.removeAll()
