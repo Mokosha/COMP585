@@ -1,32 +1,39 @@
 <zone>
+   <playerstart x="24.0" y="3.0" />
    <collider type = "box">
-   <box x = "20.3" y="1.7" width="1" height="0.1" angle="-8" />
+      <box x = "20.3" y="1.7" width="1" height="0.1" angle="-8" />
    </collider>
    <collider type = "box">
-   <box x = "21" y="1.6" width="0.5" height="0.1" />
+      <box x = "21" y="1.6" width="0.5" height="0.1" />
    </collider>
    <collider type = "box">
-   <box x = "21.6" y="1.65" width="0.7" height="0.1" angle="11"/>
+      <box x = "21.6" y="1.65" width="0.7" height="0.1" angle="11"/>
    </collider>
    <collider type = "box">
-   <box x = "22.3" y="1.8" width="0.7" height="0.1" angle="8"/>
+      <box x = "22.3" y="1.8" width="0.7" height="0.1" angle="8"/>
    </collider>
    <collider type = "box">
-   <box x = "22.9" y="1.9" width="0.6" height="0.1" />
+      <box x = "22.9" y="1.9" width="0.6" height="0.1" />
    </collider>
    <collider type = "box">
-  <box x = "23.65" y="1.79" width="0.9" height="0.1" angle="-16"/>
+      <box x = "23.65" y="1.79" width="0.9" height="0.1" angle="-16"/>
    </collider>
    <collider type = "box">
-   <box x = "24.7" y="1.58" width="1.2" height="0.1" />
+     <box x = "24.7" y="1.58" width="1.2" height="0.1" />
    </collider>
    <collider type = "box">
-   <box x="25.7" y="1.1" width="1.2" height="0.1" angle="-55"/>
+     <box x="25.5" y="1.4" width="0.6" height="0.1" angle="-37"/>
    </collider>
    <collider type = "box">
-   <box x="27.5" y="0.5" width="3" height="0.1" />
+     <box x="25.8" y="0.9" width="0.6" height="0.1" angle="-72"/>
    </collider>
    <collider type = "box">
-   <box x="29" y="2" width="4" height="0.1" angle="270" />
+     <box x="26.2" y="0.55" width="0.6" height="0.1" angle="-12"/>
+   </collider>
+   <collider type = "box">
+     <box x="27.6" y="0.5" width="2.5" height="0.1" />
+   </collider>
+   <collider type = "box">
+     <box x="29" y="2" width="4" height="0.1" angle="270" />
    </collider>
 </zone>

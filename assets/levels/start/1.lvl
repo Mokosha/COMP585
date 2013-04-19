@@ -1,4 +1,5 @@
 <zone>
+  <playerstart x="14.0" y="3.0" />
    <collider type="box">
       <box x="10.05" y="1.94" width="0.2" height="0.1" angle="90"/>
    </collider>
