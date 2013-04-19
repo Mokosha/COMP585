@@ -106,6 +106,13 @@ def processCamera(wld, dt):
     elif p.pos.y < cammin.y:
         camera_pos.y = p.pos.y - CAMERA_BOUNDARY_SIZE
 
+    # Bound camera...
+    if camera_pos.y < 0:
+        camera_pos.y = 0
+
+    cam_limit_x = float(len(wld.zones)) * world.Zone.ZONE_SIZE_X - screen2world(screenSizeX())
+    camera_pos.x = clamp(camera_pos.x, 0, cam_limit_x)
+
 def process(wld, camera_pos, dt):
     wld.process(camera_pos, dt)
     processCamera(wld, dt)
