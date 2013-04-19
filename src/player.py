@@ -86,9 +86,9 @@ class Player(AnimatedObject):
         pts = self.aabb.getPoints()
 
         anchor = None
-        for pt in self.aabb.getPoints():
+        for pt in pts:
 
-            behind = any(map(lambda x: (x - pt).dot(n) < 0, pts))
+            behind = any(map(lambda x: (x - pt).dot(n) < 0, [p for p in pts if not p is pt]))
             if not behind:
                 anchor = pt
                 break
@@ -144,6 +144,9 @@ class Player(AnimatedObject):
             def __init__(self, pos, upper):
                 self.pos = pos
                 self.upper = upper
+
+            def __str__(self):
+                return "{pos: "+str(self.pos)+", upper: "+self.upper+"}"
 
         # Merge sort...
         shellPts = []
@@ -224,7 +227,7 @@ class Player(AnimatedObject):
         # End for loop
 
         # First move the player out of collision.
-        self.pos += n * difference
+        self.pos += n * (difference + 1e-5)
 
     def collide(self, obj):        
         
@@ -237,7 +240,23 @@ class Player(AnimatedObject):
 
             direction = Vector2(0, 1 if self.vel.y <= 0 else -1)
             if horiz:
-                direction = Vector2(1 if self.vel.x <= 0 else -1, 0)
+                if self.vel.x == 0:
+
+                    # !HACK! If we're not going anywhere in the x direction and
+                    # we're still colliding, then we need to resolve the collision
+                    # somehow... Just look at how separated the center of the collider
+                    # is versus the player. The bug here is that if the velocity is 0,
+                    # we shouldn't have moved into a state where we're colliding...
+                    objpts = obj.getPoints()
+                    cc = Vector2(0, 0)
+                    for pt in objpts:
+                        cc = cc + pt
+                    cc = cc / float(len(objpts))
+                    cen = self.aabb.center()
+                    d = cen - cc
+                    direction = Vector2(1 if d[0] > 0 else -1, 0)
+                else:
+                    direction = Vector2(1 if self.vel.x <= 0 else -1, 0)
 
             self.colliderResponse(obj, direction)
 

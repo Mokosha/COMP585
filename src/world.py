@@ -176,10 +176,11 @@ class World:
     # !FIXME! This function also assumes that we have no vertically spaced zones.
     def render(self, surface, campos):
 
-        for zone in self.getVisibleZones(campos):
+        inzone = lambda x: x >= 0 and x < len(self.zones)
+        visibleZones = filter(inzone, self.getVisibleZones(campos))
 
-            if zone >= len(self.zones):
-                continue
+        # Render zone backgrounds
+        for zone in visibleZones:
 
             zoneSize = Vector2(Zone.ZONE_SIZE_X, Zone.ZONE_SIZE_Y)
             zonePos = Vector2(zone * Zone.ZONE_SIZE_X, Zone.ZONE_SIZE_Y )
@@ -194,6 +195,9 @@ class World:
                 screenZoneSize.y)
 
             surface.blit( self.zones[zone].background, zoneRect )
+
+        # Render zone objects
+        for zone in visibleZones:
 
             for obj in self.queryObjects(zone):
                 obj.render(surface, campos)

@@ -1,2 +1,26 @@
 <zone>
+   <collider type="box">
+      <box x="10.05" y="1.97" width="0.3" height="0.1" angle="90"/>
+   </collider>
+   <collider type="box">
+      <box x="10.6" y="2.07" width="1.14" height="0.1" />
+   </collider>
+   <collider type="box">
+      <box x="11.15" y="1.97" width="0.3" height="0.1" angle="90"/>
+   </collider>
+   <collider type="box">
+      <box x="12.5" y="1.36" width="1.5" height="0.1" />
+   </collider>
+   <collider type="box">
+      <box x="14.0" y="1.38" width="1.5" height="0.1" angle="3.0" />
+   </collider>
+   <collider type="box">
+      <box x="15.5" y="1.48" width="1.4" height="0.1" angle="2.8" />
+   </collider>
+   <collider type="box">
+      <box x="17.3" y="1.66" width="2.1" height="0.1" angle="4.7" />
+   </collider>
+   <collider type="box">
+      <box x="18.9" y="1.8" width="1.8" height="0.1" />
+   </collider>
 </zone>
