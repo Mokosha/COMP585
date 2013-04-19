@@ -9,6 +9,7 @@
 ################################################################################
 
 import xml.etree.ElementTree as ET
+import copy
 from utils import *
 from gameobject import *
 from collider import *
@@ -131,14 +132,14 @@ class World:
                 sys.exit(1)
 
             self.player = Player()
-            self.player.pos = ps.pos
+            self.player.pos = copy.deepcopy(ps.pos)
             zone.objects.append(self.player)
         else:
             for zone in self.zones:
                 ps = zone.getPlayerStartGizmo()
                 if ps != None:
                     self.player = Player()
-                    self.player.pos = ps.pos
+                    self.player.pos = copy.deepcopy(ps.pos)
                     zone.objects.append(self.player)
                     break
 
@@ -162,6 +163,13 @@ class World:
 
         return range(visibleStart, visibleEnd + 1)
 
+    def changezone(self, obj, zone):
+        if zone != obj.zone:
+            zoneObjs = self.queryObjects(obj.zone)
+            self.zones[obj.zone].objects = [x for x in zoneObjs if not x is obj]
+            self.zones[zone].objects.append(obj)
+            obj.zone = zone
+
     def process(self, campos, dt):
 
         objs = set()
@@ -173,11 +181,7 @@ class World:
 
             # Make sure that all objects return to their proper zones...
             objz = int(obj.pos.x / 10)
-            if objz != obj.zone:
-                zoneObjs = self.queryObjects(zone)
-                self.zones[zone].objects = [x for x in zoneObjs if not x is obj]
-                self.zones[objz].objects.append(obj)
-                obj.zone = objz
+            self.changezone(obj, objz)
 
         # Do collision detection for dynamic objects
         dynamicObjs = filter(lambda x: x.dynamic, objs)
@@ -185,6 +189,26 @@ class World:
         for collision in collisions:
             a, b = collision
             a.collide(b)
+
+        # !HACK! If the player goes below the level then reset him to his zone's
+        # starting position..
+        if self.player.pos.y < 0:
+
+            search = max(0, self.player.zone - 1)
+            numzones = len(self.zones)
+
+            ps = None
+            for i in range(numzones):
+                zone = ((search - i) + numzones) % numzones
+                ps = self.zones[zone].getPlayerStartGizmo()
+                if ps != None:
+                    self.player.pos = copy.deepcopy(ps.pos)
+                    self.changezone(self.player, zone)
+                    break
+
+            if ps == None:
+                print "ERROR: No player start gizmo to place dead player"
+                sys.exit(1)
 
     # !FIXME! This returns all of the objects in the visible zones. It doesn't check
     # to see whether or not the objects are actually visible...
