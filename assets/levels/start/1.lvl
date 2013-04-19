@@ -1,12 +1,12 @@
 <zone>
    <collider type="box">
-      <box x="10.05" y="1.97" width="0.3" height="0.1" angle="90"/>
+      <box x="10.05" y="1.94" width="0.2" height="0.1" angle="90"/>
    </collider>
    <collider type="box">
-      <box x="10.6" y="2.07" width="1.14" height="0.1" />
+      <box x="10.6" y="2.04" width="1.14" height="0.1" />
    </collider>
    <collider type="box">
-      <box x="11.15" y="1.97" width="0.3" height="0.1" angle="90"/>
+      <box x="11.15" y="1.94" width="0.2" height="0.1" angle="90"/>
    </collider>
    <collider type="box">
       <box x="12.5" y="1.36" width="1.5" height="0.1" />
