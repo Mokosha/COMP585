@@ -134,6 +134,8 @@ class World:
             self.player = Player()
             self.player.pos = copy.deepcopy(ps.pos)
             zone.objects.append(self.player)
+
+            self.player.zone = self.zones.index(zone)
         else:
             for zone in self.zones:
                 ps = zone.getPlayerStartGizmo()
@@ -141,6 +143,8 @@ class World:
                     self.player = Player()
                     self.player.pos = copy.deepcopy(ps.pos)
                     zone.objects.append(self.player)
+
+                    self.player.zone = self.zones.index(zone)
                     break
 
         if self.player == None:
@@ -166,7 +170,9 @@ class World:
     def changezone(self, obj, zone):
         if zone != obj.zone:
             zoneObjs = self.queryObjects(obj.zone)
-            self.zones[obj.zone].objects = [x for x in zoneObjs if not x is obj]
+            assert obj in zoneObjs
+            zoneObjs.remove(obj)
+
             self.zones[zone].objects.append(obj)
             obj.zone = zone
 
