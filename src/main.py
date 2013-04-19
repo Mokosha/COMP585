@@ -141,7 +141,7 @@ while True:
     TitleMenu().run(display_surface)
 
     resetCamera()
-    w = world.World("start")
+    w = world.World("start") if len(sys.argv) == 1 else world.World("start", int(sys.argv[1]))
 
     last_time = time.time()
 

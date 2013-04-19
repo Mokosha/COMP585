@@ -101,7 +101,8 @@ class Zone:
 
 class World:
 
-    def __init__(self, levelname):
+    def __init__(self, levelname, startZone = None):
+        self.startZone = startZone
         self.loadLevel(levelname)
 
     def loadLevel(self, levelname):
@@ -118,16 +119,31 @@ class World:
             except IOError:
                 break;
 
-        for zone in self.zones:
+        if self.startZone != None:
+            if self.startZone < 0 or self.startZone >= len(self.zones):
+                print "ERROR: No such zone number"
+                sys.exit(1)
+
+            zone = self.zones[self.startZone]
             ps = zone.getPlayerStartGizmo()
-            if ps != None:
-                self.player = Player()
-                self.player.pos = ps.pos
-                zone.objects.append(self.player)
-                break
+            if ps == None:
+                print "ERROR: Zone " + str(self.startZone) + " has no player start gizmo!"
+                sys.exit(1)
+
+            self.player = Player()
+            self.player.pos = ps.pos
+            zone.objects.append(self.player)
+        else:
+            for zone in self.zones:
+                ps = zone.getPlayerStartGizmo()
+                if ps != None:
+                    self.player = Player()
+                    self.player.pos = ps.pos
+                    zone.objects.append(self.player)
+                    break
 
         if self.player == None:
-            print "WARNING: Level " + levelname + " has no player start gizmos!"
+            print "ERROR: Level " + levelname + " has no player start gizmos!"
             exit(1)
 
     def getPlayer(self):
