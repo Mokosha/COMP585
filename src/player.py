@@ -15,6 +15,7 @@ from eventmanager import Events, InputManager
 from animatedobject import *
 from utils import *
 from collider import *
+from colorvortex import *
 
 # Simple game object that we put in our level definition files to figure out
 # where to load the player in each zone...
@@ -81,8 +82,34 @@ class Player(AnimatedObject):
             self.startAnimation("idle", time.time())
             self.vel.x = 0
 
-    def colliderResponse(self, collider, n):
+    def colliderResponse(self, collider):
 
+        # Figure out the direction at which we want to push the player out of
+        # the collider. 
+        n = Vector2(0, 1).rotateDeg(collider.angle)
+        horiz = abs(n.dot(Vector2(0, 1))) < abs(n.dot(Vector2(1, 0)))
+
+        direction = Vector2(0, 1 if self.vel.y <= 0 else -1)
+        if horiz:
+            if self.vel.x == 0:
+
+                # !HACK! If we're not going anywhere in the x direction and
+                # we're still colliding, then we need to resolve the collision
+                # somehow... Just look at how separated the center of the collider
+                # is versus the player. The bug here is that if the velocity is 0,
+                # we shouldn't have moved into a state where we're colliding...
+                objpts = collider.getPoints()
+                cc = Vector2(0, 0)
+                for pt in objpts:
+                    cc = cc + pt
+                cc = cc / float(len(objpts))
+                cen = self.aabb.center()
+                d = cen - cc
+                direction = Vector2(1 if d[0] > 0 else -1, 0)
+            else:
+                direction = Vector2(1 if self.vel.x <= 0 else -1, 0)
+
+        n = direction
         pts = self.aabb.getPoints()
 
         anchor = None
@@ -233,46 +260,22 @@ class Player(AnimatedObject):
         # First move the player out of collision.
         self.pos += n * (difference + 1e-5)
 
+        # Then, set the component of his velocity to be zero in this component...
+        if horiz:
+            self.vel.x = 0.0
+        else:
+            self.vel.y = 0.0
+
+        self.collidedLastFrame = True
+        self.resetAABB()
+
     def collide(self, obj):        
         
         if isinstance(obj, Collider) and obj.collide(self):
-
-            # Figure out the direction at which we want to push the player out of
-            # the collider. 
-            n = Vector2(0, 1).rotateDeg(obj.angle)
-            horiz = abs(n.dot(Vector2(0, 1))) < abs(n.dot(Vector2(1, 0)))
-
-            direction = Vector2(0, 1 if self.vel.y <= 0 else -1)
-            if horiz:
-                if self.vel.x == 0:
-
-                    # !HACK! If we're not going anywhere in the x direction and
-                    # we're still colliding, then we need to resolve the collision
-                    # somehow... Just look at how separated the center of the collider
-                    # is versus the player. The bug here is that if the velocity is 0,
-                    # we shouldn't have moved into a state where we're colliding...
-                    objpts = obj.getPoints()
-                    cc = Vector2(0, 0)
-                    for pt in objpts:
-                        cc = cc + pt
-                    cc = cc / float(len(objpts))
-                    cen = self.aabb.center()
-                    d = cen - cc
-                    direction = Vector2(1 if d[0] > 0 else -1, 0)
-                else:
-                    direction = Vector2(1 if self.vel.x <= 0 else -1, 0)
-
-            self.colliderResponse(obj, direction)
-
-            # Then, set the component of his velocity to be zero in this component...
-            if horiz:
-                self.vel.x = 0.0
-            else:
-                self.vel.y = 0.0
-
-            self.collidedLastFrame = True
-
-            self.resetAABB()
+            self.colliderResponse(obj)
+        elif isinstance(obj, ColorVortex) and obj.aabb.collideBox(self.aabb):
+            # !TODO! Handle color vortex logic
+            pass
 
     def process(self, dt): 
         self.vel += self.acc * dt	
