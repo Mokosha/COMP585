@@ -327,21 +327,24 @@ class World:
             for obj in self.queryObjects(zone):
                 obj.render(surface, campos)
 
-        self.drawColorBars(surface)
+	self.drawColorBars(surface)
 
     def drawColorBars(self, surface):
-
-        colors = ['red', 'green', 'blue']
-
-        for i in range(len(colors)):
-                xcoord = i * 280 + 20
-                colorRect = pygame.Rect(xcoord, 20, 150, 20)
-                pygame.draw.rect(surface, pygame.Color(colors[i]), colorRect, 3)
-                colorValue = self.player.colorReserves[i]
-                for j in range(colorValue):
-                        amountRect = pygame.Rect((j * 15) + xcoord, 20, 15, 20)
-                        pygame.draw.rect(surface, pygame.Color(colors[i]), amountRect)
-                colorFont = pygame.font.Font(None, 30)
-                colorSurface = colorFont.render(str(colorValue), False, pygame.Color("black"))
-                surface.blit(colorSurface, (xcoord + 180, 20))
-
+	
+	colors = ['red', 'green', 'blue']
+	
+	for i in range(len(colors)):
+		xcoord = i * 280 + 20
+		colorRect = pygame.Rect(xcoord, 20, 150, 20)
+		pygame.draw.rect(surface, pygame.Color(colors[i]), colorRect, 3)
+		colorValue = self.player.colorReserves[i]
+		for j in range(colorValue):
+			amountRect = pygame.Rect((j * 15) + xcoord, 20, 15, 20)
+			pygame.draw.rect(surface, pygame.Color(colors[i]), amountRect)
+		colorFont = pygame.font.Font(None, 30)
+		colorSurface = colorFont.render(str(colorValue), False, pygame.Color("black"))
+		surface.blit(colorSurface, (xcoord + 180, 20))
+		if self.player.colorNum == i:
+			self.player.colorReserves[self.player.colorNum] = self.player.colorReserves[self.player.colorNum] + 1
+			if self.player.colorReserves[self.player.colorNum] >= 10:
+				self.player.colorNum = -1
