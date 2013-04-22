@@ -32,7 +32,7 @@ class Player(AnimatedObject):
     def __init__(self):
 
         self.currentColor = pygame.color.Color("black")
-	self.colorReserves = [0, 0, 0]
+        self.colorReserves = [0, 0, 0]
         super(Player, self).__init__("idle", True)
         self.loadAnim("walk", True)
 
@@ -44,7 +44,7 @@ class Player(AnimatedObject):
         self.collidedLastFrame = False
 
         self.dynamic = True
-	
+        
     def changeColor(self,toChangeColor):
         self.color = self.currentColor
 
@@ -63,28 +63,28 @@ class Player(AnimatedObject):
                 self.vel = Vector2(0, Player.INITIAL_JUMP)
 
         if inputManager.debounceEvent(Events.CHANGE_COLOR_1):
-	    if self.colorReserves[0] > 0 and self.currentColor.r < 255:
-            	self.currentColor.r = min(self.currentColor.r + 128, 255)
-            	self.changeColor(self.currentColor)
-		self.colorReserves[0] = self.colorReserves[0] - 1
-	    else:
-		pass
+            if self.colorReserves[0] > 0 and self.currentColor.r < 255:
+                self.currentColor.r = min(self.currentColor.r + 128, 255)
+                self.changeColor(self.currentColor)
+                self.colorReserves[0] = self.colorReserves[0] - 1
+            else:
+                pass
 
         if inputManager.debounceEvent(Events.CHANGE_COLOR_2):
-	    if self.colorReserves[1] > 0 and self.currentColor.g < 255:
-            	self.currentColor.g = min(self.currentColor.g + 128, 255)
-            	self.changeColor(self.currentColor)
-		self.colorReserves[1] = self.colorReserves[1] - 1
-	    else:
-		pass
+            if self.colorReserves[1] > 0 and self.currentColor.g < 255:
+                self.currentColor.g = min(self.currentColor.g + 128, 255)
+                self.changeColor(self.currentColor)
+                self.colorReserves[1] = self.colorReserves[1] - 1
+            else:
+                pass
 
         if inputManager.debounceEvent(Events.CHANGE_COLOR_3):
-	    if self.colorReserves[2] > 0 and self.currentColor.b < 255:
-            	self.currentColor.b = min(self.currentColor.b + 128, 255)
-            	self.changeColor(self.currentColor)
-		self.colorReserves[2] = self.colorReserves[2] - 1
-	    else:
-		pass
+            if self.colorReserves[2] > 0 and self.currentColor.b < 255:
+                self.currentColor.b = min(self.currentColor.b + 128, 255)
+                self.changeColor(self.currentColor)
+                self.colorReserves[2] = self.colorReserves[2] - 1
+            else:
+                pass
 
         if inputManager.debounceEvent(Events.RESET_COLOR):
             self.currentColor = pygame.color.Color("black")
@@ -291,15 +291,15 @@ class Player(AnimatedObject):
                 self.colliderResponse(obj)
         elif isinstance(obj, ColorVortex) and obj.aabb.collideBox(self.aabb):
             if obj.color == pygame.Color("red"):
-	   	self.colorReserves[0] = 10
-	    elif obj.color == pygame.Color("green"):
-		self.colorReserves[1] = 10
-	    elif obj.color == pygame.Color("blue"):
-		self.colorReserves[2] = 10
+                self.colorReserves[0] = 10
+            elif obj.color == pygame.Color("green"):
+                self.colorReserves[1] = 10
+            elif obj.color == pygame.Color("blue"):
+                self.colorReserves[2] = 10
 
 
     def process(self, dt): 
-        self.vel += self.acc * dt	
+        self.vel += self.acc * dt       
         self.pos += self.vel * dt
 
         if self.collidedLastFrame:
@@ -308,3 +308,4 @@ class Player(AnimatedObject):
         self.collidedLastFrame = False
 
         super(Player, self).process(dt)
+
