@@ -248,6 +248,9 @@ class World:
                 print "ERROR: No player start gizmo to place dead player"
                 sys.exit(1)
 
+            self.player.currentColor = pygame.Color("black")
+            self.player.changeColor(self.player.currentColor)
+
     # !FIXME! This returns all of the objects in the visible zones. It doesn't check
     # to see whether or not the objects are actually visible...
     #
