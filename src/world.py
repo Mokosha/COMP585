@@ -89,6 +89,22 @@ class Zone:
 
         return ColorVortex(Vector2(wx, wy), pygame.Color(colors[0], colors[1], colors[2], 255))
 
+    def loadSprite(self, node):
+        assert len(list(node)) == 0 # Sprites have no children
+
+        wx = float(node.attrib["x"])
+        wy = float(node.attrib["y"])
+
+        fname = node.attrib["filename"]
+
+        width, height = None, None
+        if "width" in node.attrib.iterkeys():
+            width = float(node.attrib["width"])
+        if "height" in node.attrib.iterkeys():
+            height = float(node.attrib["height"])
+
+        return Sprite(Vector2(wx, wy), fname, width, height)
+
     def loadPlayer(self, node):
 
         if self.playerStart != None:
@@ -111,6 +127,8 @@ class Zone:
             return self.loadColorVortex(node)
         elif node.tag == "playerstart":
             return self.loadPlayer(node)
+        elif node.tag == "sprite":
+            return self.loadSprite(node)
         else:
             raise NameError(node.tag + ": Undefined object")
 

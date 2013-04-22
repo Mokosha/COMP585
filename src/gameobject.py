@@ -154,3 +154,35 @@ class GameObject(object):
 
     def collide(self, obj):
         return False
+
+class Sprite(GameObject):
+    def __init__(self, world_pos, fname, width = None, height = None):
+        super(Sprite, self).__init__()
+        self.isurf = pygame.image.load(getRootPath() + os.sep + "assets" + os.sep + fname)
+        aspect = float(self.isurf.get_width()) / float(self.isurf.get_height())
+        self.pos = world_pos
+
+        if width != None or height != None:
+            if width != None:
+                self.screenwidth = int(world2screen(width))
+                if height == None:
+                    self.screenheight = int(self.screenwidth / aspect)
+
+            if height != None:
+                self.screenheight = int(world2screen(height))
+                if width == None:
+                    self.screenwidth = int(self.screenheight * aspect)
+
+            self.isurf = pygame.transform.scale(self.isurf,(self.screenwidth, self.screenheight))
+        else:
+            self.screenwidth = self.isurf.get_width()
+            self.screenheight = self.isurf.get_height()
+
+    def render(self, surface, campos):
+
+        screenpos = world2screenPos(campos, self.pos)
+        screenpos.y -= (self.screenheight / 2)
+        screenpos.x -= (self.screenwidth / 2)
+
+        surface.blit(self.isurf, screenpos)
+
