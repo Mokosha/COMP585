@@ -166,7 +166,7 @@ class EmitAction(ParticleAction):
         if particle.alive:
             return
 
-        freq = self.rate / self.numDead
+        freq = self.rate * dt / self.numDead
         if random.random() < freq:
             particle.reinit()
             particle.alive = True
