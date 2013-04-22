@@ -58,7 +58,7 @@ class ColorVortex(GameObject):
         self.elapsed = 0.0
 
         self.ps = ParticleSystem(20)
-        emitter = EmitAction(0.08)
+        emitter = EmitAction(5.0)
         emitter.addPosDomain(CircleDomain(self.pos, 0.07))
         emitter.addVelDomain(CircleDomain(Vector2(0.0, 1.5), 0.7))
         emitter.addColorDomain(PointDomain(Vector3(color.r, color.g, color.b)))
