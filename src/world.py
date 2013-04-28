@@ -256,7 +256,7 @@ class World:
 
         # !HACK! If the player goes below the level then reset him to his zone's
         # starting position..
-        if self.player.pos.y < 0:
+        if self.player.dead or self.player.pos.y < 0:
 
             search = max(0, self.player.zone - 1)
             numzones = len(self.zones)
@@ -276,6 +276,7 @@ class World:
 
             self.player.currentColor = pygame.Color("black")
             self.player.changeColor(self.player.currentColor)
+            self.player.dead = False
 
     # !FIXME! This returns all of the objects in the visible zones. It doesn't check
     # to see whether or not the objects are actually visible...

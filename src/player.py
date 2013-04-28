@@ -16,6 +16,7 @@ from animatedobject import *
 from utils import *
 from collider import *
 from colorvortex import *
+from laser import Laser
 
 # Simple game object that we put in our level definition files to figure out
 # where to load the player in each zone...
@@ -44,6 +45,7 @@ class Player(AnimatedObject):
         self.collidedLastFrame = False
 
         self.dynamic = True
+        self.dead = False
         
     def changeColor(self,toChangeColor):
         self.color = self.currentColor
@@ -296,6 +298,9 @@ class Player(AnimatedObject):
                 self.colorReserves[1] = 10
             elif obj.color == pygame.Color("blue"):
                 self.colorReserves[2] = 10
+        elif isinstance(obj, Laser) and obj.aabb.collideBox(self.aabb):
+            if obj.color != self.color:
+                self.dead = True
 
 
     def process(self, dt): 

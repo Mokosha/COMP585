@@ -88,12 +88,3 @@ class Laser(GameObject):
         surface.blit(self.sprite, pygame.Rect(tl, (self.spritewidth, self.spriteheight)))
         super(Laser, self).render(surface, campos)
 
-    def accept(self, event):
-        pass
-
-    def process(self, dt):
-        pass
-
-    def collide(self, obj):
-        return False
-
