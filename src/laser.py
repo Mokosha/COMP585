@@ -41,8 +41,6 @@ class Laser(GameObject):
         if screenlen < 0:
             print "WARNING: Laser length shorter than top sprite!"
 
-        print screenlen
-
         numsections = max(0, int(math.ceil(screenlen / Laser.LASER_SECTION.get_height())))
 
         self.spritewidth = int(Laser.LASER_TOP.get_width())
@@ -69,16 +67,26 @@ class Laser(GameObject):
                          pygame.Rect((0, 0), 
                                      (self.spritewidth, self.spriteheight - Laser.LASER_HILT.get_height())))
         self.sprite.blit(masksurf, srrect, None, pygame.BLEND_RGBA_MULT)
-
         self.sprite.blit(Laser.LASER_HILT, dest)
 
-    def render(self, surface, campos):
+        self.aabb.removeAll()
         
+        pt = self.pos + screen2world(Vector2(-self.spritewidth*0.5, self.spriteheight))
+        pt.y -= screen2world(Laser.LASER_HILT.get_height() * 0.5)
+        self.aabb.add_point(pt)
+
+        pt.x += screen2world(self.spritewidth)
+        pt.y -= screen2world(self.spriteheight - Laser.LASER_HILT.get_height())
+        self.aabb.add_point(pt)
+
+    def render(self, surface, campos):
+
         worldoffset = screen2world(Vector2(-self.spritewidth * 0.5, self.spriteheight))
         worldoffset.y -= screen2world(Laser.LASER_HILT.get_height()) * 0.5
         tl = world2screenPos(campos, self.pos + worldoffset)
 
         surface.blit(self.sprite, pygame.Rect(tl, (self.spritewidth, self.spriteheight)))
+        super(Laser, self).render(surface, campos)
 
     def accept(self, event):
         pass
