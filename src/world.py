@@ -14,7 +14,8 @@ import pygame
 from utils import *
 from gameobject import *
 from collider import *
-from colorvortex import *
+from colorvortex import ColorVortex
+from laser import Laser
 from player import *
 
 class Zone:
@@ -105,6 +106,29 @@ class Zone:
 
         return Sprite(Vector2(wx, wy), fname, width, height)
 
+    def loadLaser(self, node):
+        # Only child required and allowed for a laser is a color...
+        assert len(list(node)) == 1
+        assert list(node)[0].tag == "color"
+
+        wx = float(node.attrib["x"])
+        wy = float(node.attrib["y"])
+
+        length = float(node.attrib["length"])
+
+        angle = 0
+        if "angle" in node.attrib.iterkeys():
+            angle = float(node.attrib["angle"])
+
+        colornode = list(node)[0]
+        r = int(colornode.attrib["r"])
+        g = int(colornode.attrib["g"])
+        b = int(colornode.attrib["b"])
+
+        color = pygame.color.Color(r, g, b, 255)
+
+        return Laser(Vector2(wx, wy), length, color, angle)
+
     def loadPlayer(self, node):
 
         if self.playerStart != None:
@@ -129,6 +153,8 @@ class Zone:
             return self.loadPlayer(node)
         elif node.tag == "sprite":
             return self.loadSprite(node)
+        elif node.tag == "laser":
+            return self.loadLaser(node)
         else:
             raise NameError(node.tag + ": Undefined object")
 
