@@ -65,6 +65,9 @@ def getRootPath():
     root_path = os.path.realpath(__file__).split(os.sep)[:-2]
     return os.sep.join(root_path)
 
+def getAssetsPath():
+    return getRootPath() + os.sep + "assets"
+
 #
 # Camera 
 #
