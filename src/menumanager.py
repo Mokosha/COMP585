@@ -132,3 +132,53 @@ class TitleMenu:
 			return "Display About"
 		if myOption == 'Exit':
 			sys.exit()
+
+class FinishLevelMenu:
+
+	done = False
+
+	def run(self, theSurface):
+		pygame.mixer.init()
+		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
+		pygame.mixer.Sound(filename).play()
+		return self.initMenu(theSurface, 0)
+
+	def initMenu(self, theSurface, currentlySelected):
+		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
+		text = ['Next Level']
+		options = []
+		for i in range(len(text)):
+			isSelected = (currentlySelected == i)
+			options.append(Options(myMenu, i, 200, 50, text[i], isSelected))
+		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
+		return myMenu.runMenu(self)
+
+	def execute(self, myOption):
+		if myOption == 'Next Level':
+			self.done = True
+			return "Start"
+
+class FinishGameMenu:
+
+	done = False
+
+	def run(self, theSurface):
+		pygame.mixer.init()
+		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
+		pygame.mixer.Sound(filename).play()
+		return self.initMenu(theSurface, 0)
+
+	def initMenu(self, theSurface, currentlySelected):
+		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
+		text = ['Main menu']
+		options = []
+		for i in range(len(text)):
+			isSelected = (currentlySelected == i)
+			options.append(Options(myMenu, i, 200, 50, text[i], isSelected))
+		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
+		return myMenu.runMenu(self)
+
+	def execute(self, myOption):
+		if myOption == 'Main Menu':
+			self.done = True
+			return "Start"

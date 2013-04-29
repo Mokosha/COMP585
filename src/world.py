@@ -172,6 +172,7 @@ class Zone:
 class World:
 
     def __init__(self, levelname, startZone = None):
+        self.levelname = levelname
         self.startZone = startZone
         self.loadLevel(levelname)
 
@@ -288,6 +289,11 @@ class World:
             self.player.currentColor = pygame.Color("black")
             self.player.changeColor(self.player.currentColor)
             self.player.dead = False
+
+        if self.player.finished:
+            return "FINISH"
+        else:
+            return "OK"
 
     # !FIXME! This returns all of the objects in the visible zones. It doesn't check
     # to see whether or not the objects are actually visible...

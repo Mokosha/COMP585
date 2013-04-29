@@ -35,7 +35,7 @@ print "Software surface pixel alpha blitting is accelerated: " + str(display_inf
 window_w, window_h = display_info.current_w, display_info.current_h
 
 import animatedobject, colorvortex, player, world
-from menumanager import PauseMenu, TitleMenu
+from menumanager import PauseMenu, TitleMenu, FinishLevelMenu, FinishGameMenu
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -114,8 +114,9 @@ def processCamera(wld, dt):
     camera_pos.x = clamp(camera_pos.x, 0, cam_limit_x)
 
 def process(wld, camera_pos, dt):
-    wld.process(camera_pos, dt)
+    retval = wld.process(camera_pos, dt)
     processCamera(wld, dt)
+    return retval
 
 # Define current camera
 camera_pos = Vector2(0, 0)
@@ -167,9 +168,17 @@ while True:
 
         w.getPlayer().update(inputhandler)
 
-        process(w, camera_pos, dt)
+        if process(w, camera_pos, dt) == "FINISH":
+            if w.levelname == "start":
+                FinishLevelMenu().run(display_surface)
+                w = world.World("next")
+            else:
+                FinishGameMenu().run(display_surface)
+                break
 
-        render(w, camera_pos, display_surface)
-        pygame.display.update()
+            last_time = time.time()
+        else:
+            render(w, camera_pos, display_surface)
+            pygame.display.update()
 
-        last_time = cur_time
+            last_time = cur_time
