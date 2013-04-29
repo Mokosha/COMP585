@@ -1,0 +1,7 @@
+<zone>
+<playerstart x="38.0" y="3.0" />
+<collider type = "box">
+<box x = "41.7" y="2.58" width="1.5" height="0.2" />
+<color r="0" g="128" b="0" />
+</collider>
+</zone>
