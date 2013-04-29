@@ -169,6 +169,7 @@ while True:
         w.getPlayer().update(inputhandler)
 
         if process(w, camera_pos, dt) == "FINISH":
+            inputhandler.clearEvents()
             if w.levelname == "start":
                 FinishLevelMenu().run(display_surface)
                 w = world.World("next")

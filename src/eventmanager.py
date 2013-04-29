@@ -65,3 +65,6 @@ class InputManager:
         fired = self.isCurrentEvent(event)
         self.removeCurrentEvent(event)
         return fired
+
+    def clearEvents(self):
+        self.currentEvents = []
