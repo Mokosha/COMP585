@@ -16,6 +16,7 @@ from gameobject import *
 from collider import *
 from colorvortex import ColorVortex
 from laser import Laser
+from finish import FinishObject
 from player import *
 
 class Zone:
@@ -79,6 +80,14 @@ class Zone:
 
         collider.color = collider_color
         return collider
+
+    def loadFinish(self, node):
+        assert len(list(node)) == 0
+
+        wx = float(node.attrib["x"])
+        wy = float(node.attrib["y"])
+
+        return FinishObject(Vector2(wx, wy))
 
     def loadColorVortex(self, node):
         assert len(list(node)) == 0
@@ -155,6 +164,8 @@ class Zone:
             return self.loadSprite(node)
         elif node.tag == "laser":
             return self.loadLaser(node)
+        elif node.tag == "finish":
+            return self.loadFinish(node)
         else:
             raise NameError(node.tag + ": Undefined object")
 
