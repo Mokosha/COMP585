@@ -25,7 +25,36 @@ class ParticleDomain(object):
     def within(self, pt):
         pass
 
+    def dimension(self):
+        raise AttributeError
+
+class SphereDomain(ParticleDomain):
+    def __init__(self, center, radius):
+        super(ParticleDomain, self).__init__()
+        self.center = center
+        self.radius = radius
+
+    def random(self):
+
+        r = Vector3(0.0, 0.0, 0.0)
+        while True:
+            r.x = 2.0 * random.random() - 1.0
+            r.y = 2.0 * random.random() - 1.0
+            r.z = 2.0 * random.random() - 1.0
+            r *= self.radius
+
+            r += self.center
+            if self.within(r):
+               return r
+
+    def within(self, pos):
+        return (self.center - pos).magnitude() < self.radius
+
+    def dimension(self):
+        return 3
+
 class CircleDomain(ParticleDomain):
+
     def __init__(self, center, radius):
         super(ParticleDomain, self).__init__()
         self.center = center
@@ -42,7 +71,10 @@ class CircleDomain(ParticleDomain):
         return self.center + Vector2(dx, dy)
 
     def within(self, pos):
-        return (self.center - pos).magnitude < self.radius
+        return (self.center - pos).magnitude() < self.radius
+
+    def dimension(self):
+        return 2
 
 class PointDomain(ParticleDomain):
     def __init__(self, pt):
@@ -54,6 +86,9 @@ class PointDomain(ParticleDomain):
 
     def within(self, pos):
         return (self.pt - pos).magnitude < 1e-6
+
+    def dimension(self):
+        return len(self.pt)
 
 class Particle(object):
 
@@ -154,12 +189,15 @@ class EmitAction(ParticleAction):
         self.emitter = True
 
     def addPosDomain(self, d):
+        assert d.dimension() == 2
         self.posDomain = d
 
     def addVelDomain(self, d):
+        assert d.dimension() == 2
         self.velDomain = d
 
     def addColorDomain(self, d):
+        assert d.dimension() == 3
         self.colDomain = d
 
     def act(self, particle, dt):
