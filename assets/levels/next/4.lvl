@@ -1,5 +1,9 @@
 <zone>
    <playerstart x="41" y="3.0" />
+   <colorvortex x="41" y="2" color="1.0 0.0 0.0" />
+   <colorvortex x="41" y="2" color="0.0 1.0 0.0" />
+   <colorvortex x="41" y="2" color="0.0 0.0 1.0" />
+   <colorvortex x="41" y="2" color="1.0 1.0 1.0" />
    <collider type = "box">
      <box x="45" y=".6" width="8.8" height="0.1"/>
    </collider>
@@ -12,4 +16,25 @@
    <collider type = "box">
      <box x="49.62" y="1.7" width=".55" height="0.1" angle="115"/>
    </collider>
+   <laser x="43.0" y=".5" length="5.0" >  
+      <color r="0" g="0" b="128" />
+	  <color r="0" g="128" b="0" /> 
+	  <color r="128" g="0" b="0" />
+   </laser>
+   <laser x="45.0" y=".5" length="5.0" >  
+	  <color r="128" g="128" b="0" />
+	  <color r="128" g="0" b="128" />
+	  <color r="0" g="128" b="128" />
+	  <color r="128" g="128" b="128" />
+   </laser>
+   <laser x="47.0" y=".5" length="5.0" >  
+	  <color r="255" g="128" b="128" />
+	  <color r="128" g="255" b="128" />
+	  <color r="128" g="128" b="255" />
+	  <color r="255" g="255" b="0" />
+	  <color r="0" g="255" b="255" />
+	  <color r="255" g="0" b="255" />
+	  <color r="255" g="255" b="255" />
+   </laser>
+   <finish x="48.5" y="1.2" />
 </zone>
