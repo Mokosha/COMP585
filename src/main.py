@@ -202,7 +202,6 @@ while True:
                 w = world.World("start")
                 stopSound()
                 setLevelSound("start")
-                break
 
             last_time = time.time()
         else:
