@@ -1,7 +1,31 @@
 <zone>
-<playerstart x="38.0" y="3.0" />
-<collider type = "box">
-<box x = "41.7" y="2.58" width="1.5" height="0.2" />
-<color r="0" g="128" b="0" />
-</collider>
+   <playerstart x="17.0" y="5.0" />
+   <collider type = "box">
+      <box x = "21.75" y="2.55" width="1.51" height="0.2" />
+      <color r="0" g="128" b="0" />
+   </collider>
+   <collider type = "box">
+      <box x = "24.35" y="1.55" width="1.6" height="0.2" />
+      <color r="0" g="0" b="128" />
+   </collider>
+   <colorvortex x="24.4" y="2" color="1.0 0.0 0.0" />
+   <collider type = "box">
+      <box x = "26.5" y="1.98" width="1.6" height="0.2" />
+      <color r="128" g="0" b="128" />
+   </collider>
+   <collider type = "box">
+     <box x="28.2" y="2.02" width=".6" height="0.1"/>
+   </collider>
+   <collider type = "box">
+     <box x="28.6" y="1.88" width=".3" height="0.1" angle="-40"/>
+   </collider>
+   <collider type = "box">
+     <box x="29" y="1.785" width=".6" height="0.1"/>
+   </collider>
+   <collider type = "box">
+     <box x="29.45" y="1.84" width=".3" height="0.1" angle="10"/>
+   </collider>
+   <collider type = "box">
+     <box x="29.75" y="1.82" width=".4" height="0.1"/>
+   </collider>
 </zone>
