@@ -9,7 +9,7 @@
 #
 ################################################################################
 
-import pygame, sys
+import pygame, sys, random
 
 from lib.euclid import *
 from utils import *
@@ -30,14 +30,33 @@ class Laser(GameObject):
     assert LASER_HILT.get_width() == LASER_SECTION.get_width()
     assert LASER_HILT.get_width() == LASER_TOP.get_width()
 
-    def __init__(self, pos, length, color, angle = 0):
+    def __init__(self, pos, length, colors, angle = 0):
         super(Laser, self).__init__()
 
         self.pos = pos
-        self.color = color
+        self.colors = colors
+	self.random = False
+	if len(self.colors) > 1:
+		self.random = True
+	self.color = random.choice(self.colors)
         self.angle = angle
+	self.length = length
+	if self.random:
+		self.timer = 2.0
+	self.resetSprite()
 
-        screenlen = world2screen(length) - Laser.LASER_TOP.get_height()
+        self.aabb.removeAll()
+        
+        pt = self.pos + screen2world(Vector2(-self.spritewidth*0.5, self.spriteheight))
+        pt.y -= screen2world(Laser.LASER_HILT.get_height() * 0.5)
+        self.aabb.add_point(pt)
+
+        pt.x += screen2world(self.spritewidth)
+        pt.y -= screen2world(self.spriteheight - Laser.LASER_HILT.get_height())
+        self.aabb.add_point(pt)
+
+    def resetSprite(self):
+        screenlen = world2screen(self.length) - Laser.LASER_TOP.get_height()
         if screenlen < 0:
             print "WARNING: Laser length shorter than top sprite!"
 
@@ -69,15 +88,6 @@ class Laser(GameObject):
         self.sprite.blit(masksurf, srrect, None, pygame.BLEND_RGBA_MULT)
         self.sprite.blit(Laser.LASER_HILT, dest)
 
-        self.aabb.removeAll()
-        
-        pt = self.pos + screen2world(Vector2(-self.spritewidth*0.5, self.spriteheight))
-        pt.y -= screen2world(Laser.LASER_HILT.get_height() * 0.5)
-        self.aabb.add_point(pt)
-
-        pt.x += screen2world(self.spritewidth)
-        pt.y -= screen2world(self.spriteheight - Laser.LASER_HILT.get_height())
-        self.aabb.add_point(pt)
 
     def render(self, surface, campos):
 
@@ -88,3 +98,11 @@ class Laser(GameObject):
         surface.blit(self.sprite, pygame.Rect(tl, (self.spritewidth, self.spriteheight)))
         super(Laser, self).render(surface, campos)
 
+    def process(self, dt):
+
+	if self.random:
+		self.timer = self.timer - dt
+		if self.timer <= 0:
+	     		self.timer = 2.0
+			self.color = random.choice(self.colors)
+			self.resetSprite()

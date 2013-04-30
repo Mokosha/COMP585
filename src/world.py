@@ -117,7 +117,7 @@ class Zone:
 
     def loadLaser(self, node):
         # Only child required and allowed for a laser is a color...
-        assert len(list(node)) == 1
+        #assert len(list(node)) == 1
         assert list(node)[0].tag == "color"
 
         wx = float(node.attrib["x"])
@@ -128,15 +128,11 @@ class Zone:
         angle = 0
         if "angle" in node.attrib.iterkeys():
             angle = float(node.attrib["angle"])
+	mycolors = []
+	for colornode in list(node):
+		mycolors.append(pygame.color.Color(int(colornode.attrib["r"]), int(colornode.attrib["g"]), int(colornode.attrib["b"]), 255))
 
-        colornode = list(node)[0]
-        r = int(colornode.attrib["r"])
-        g = int(colornode.attrib["g"])
-        b = int(colornode.attrib["b"])
-
-        color = pygame.color.Color(r, g, b, 255)
-
-        return Laser(Vector2(wx, wy), length, color, angle)
+        return Laser(Vector2(wx, wy), length, mycolors, angle)
 
     def loadPlayer(self, node):
 
