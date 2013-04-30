@@ -34,8 +34,8 @@ print "Software surface colorkey blitting is accelerated: " + str(display_info.b
 print "Software surface pixel alpha blitting is accelerated: " + str(display_info.blit_sw_A)
 window_w, window_h = display_info.current_w, display_info.current_h
 
-import animatedobject, colorvortex, player, world
-from menumanager import PauseMenu, TitleMenu, FinishLevelMenu, FinishGameMenu
+import animatedobject, colorvortex, player, world, dialogmenu
+from menumanager import PauseMenu, TitleMenu
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -130,6 +130,24 @@ def resetCamera():
     global camera_pos
     camera_pos = Vector2(0, 0)
 
+def runTitleMenu(mysurface):
+    pygame.mixer.init()
+    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + "TitleScreen.ogg")
+    mysound.play(loops=-1)
+    result = TitleMenu().run(mysurface)
+    mysound.fadeout(2000)
+    return result
+
+def setLevelSound(levelName):
+    pygame.mixer.init()
+    global mysound
+    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + levelName + ".ogg")
+    mysound.play(loops=-1, fade_ms=2000)
+
+def stopSound():
+    global mysound
+    mysound.fadeout(2000)
+
 # Initialize input handler
 inputhandler = InputManager()
 
@@ -138,11 +156,13 @@ while True:
 
     window_w, window_h = display_info.current_w, display_info.current_h
     display_surface = pygame.display.get_surface()
-
-    TitleMenu().run(display_surface)
-
+    mylevel = "start"
+    option = runTitleMenu(display_surface)
+    if option != None:
+	mylevel = option
     resetCamera()
-    w = world.World("start") if len(sys.argv) == 1 else world.World("start", int(sys.argv[1]))
+    w = world.World(mylevel) if len(sys.argv) == 1 else world.World(mylevel, int(sys.argv[1]))
+    setLevelSound(mylevel)
 
     last_time = time.time()
 
@@ -171,10 +191,14 @@ while True:
         if process(w, camera_pos, dt) == "FINISH":
             inputhandler.clearEvents()
             if w.levelname == "start":
-                FinishLevelMenu().run(display_surface)
+		if dialogmenu.makeNextLevelScreen(display_surface, w.levelname) == "Back":
+			break
                 w = world.World("next")
+		stopSound()
+		setLevelSound("next")
             else:
-                FinishGameMenu().run(display_surface)
+                finishmenu = DialogBox(display_surface, "Demo finished", ["Play Again", "Return to Title"], getAssetsPath() + os.sep + "rainbow.png")
+		finishmenu.runMenu()
                 break
 
             last_time = time.time()
