@@ -1,5 +1,5 @@
 <zone>
-   <playerstart x="17.0" y="5.0" />
+   <playerstart x="29.5" y="3.0" />
    <collider type = "box">
       <box x = "21.75" y="2.55" width="1.51" height="0.2" />
       <color r="0" g="128" b="0" />

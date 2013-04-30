@@ -23,7 +23,7 @@
       <color r="255" g="255" b="255" />
    </collider>
    <collider type = "box">
-     <box x="39.7" y="1.53" width=".3" height="0.1"/>
+     <box x="39.75" y="1.53" width=".3" height="0.1"/>
    </collider>
    <collider type = "box">
      <box x="39.95" y="1.13" width=".85" height="0.1" angle="90"/>
