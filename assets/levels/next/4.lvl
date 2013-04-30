@@ -1,2 +1,15 @@
 <zone>
+   <playerstart x="41" y="3.0" />
+   <collider type = "box">
+     <box x="45" y=".6" width="8.8" height="0.1"/>
+   </collider>
+   <collider type = "box">
+     <box x="49.5" y=".7" width=".5" height="0.1" angle="35"/>
+   </collider>
+   <collider type = "box">
+     <box x="49.7" y="1.2" width=".6" height="0.1" angle="90"/>
+   </collider>
+   <collider type = "box">
+     <box x="49.62" y="1.7" width=".55" height="0.1" angle="115"/>
+   </collider>
 </zone>
