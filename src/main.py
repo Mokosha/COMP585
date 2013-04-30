@@ -132,7 +132,7 @@ def resetCamera():
 
 def runTitleMenu(mysurface):
     pygame.mixer.init()
-    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Chroma Music" + os.sep + "Title Screen.ogg")
+    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + "TitleScreen.ogg")
     mysound.play(loops=-1)
     TitleMenu().run(mysurface)
     mysound.fadeout(2000)
@@ -140,7 +140,7 @@ def runTitleMenu(mysurface):
 def setLevelSound(levelName):
     pygame.mixer.init()
     global mysound
-    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Chroma Music" + os.sep + levelName + ".ogg")
+    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + levelName + ".ogg")
     mysound.play(loops=-1, fade_ms=2000)
 
 def stopSound():
