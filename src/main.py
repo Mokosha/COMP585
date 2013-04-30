@@ -134,8 +134,9 @@ def runTitleMenu(mysurface):
     pygame.mixer.init()
     mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + "TitleScreen.ogg")
     mysound.play(loops=-1)
-    TitleMenu().run(mysurface)
+    result = TitleMenu().run(mysurface)
     mysound.fadeout(2000)
+    return result
 
 def setLevelSound(levelName):
     pygame.mixer.init()
@@ -155,12 +156,13 @@ while True:
 
     window_w, window_h = display_info.current_w, display_info.current_h
     display_surface = pygame.display.get_surface()
-
-    runTitleMenu(display_surface)
-
+    mylevel = "start"
+    option = runTitleMenu(display_surface)
+    if option != None:
+	mylevel = option
     resetCamera()
-    w = world.World("start") if len(sys.argv) == 1 else world.World("start", int(sys.argv[1]))
-    setLevelSound("start")
+    w = world.World(mylevel) if len(sys.argv) == 1 else world.World(mylevel, int(sys.argv[1]))
+    setLevelSound(mylevel)
 
     last_time = time.time()
 
