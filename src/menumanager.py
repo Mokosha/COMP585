@@ -194,6 +194,19 @@ class LevelSelectMenu:
 	done = False
 
 	def run(self, theSurface):
+		self.levels = [
+			['Tutorial','start'],
+			['Level One','next'],
+			['Level Two','Level2'],
+			['Level Three','Level3'],
+			['Level Four','Level4'],
+			['Level Five','Level5'],
+			['Level Six','Level6'],
+			['Level Seven','Level7'],
+			['Boss Fight','Achroma'],
+			['Back','Back']
+		]
+
 		pygame.mixer.init()
 		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
 		pygame.mixer.Sound(filename).play()
@@ -201,14 +214,16 @@ class LevelSelectMenu:
 
 	def initMenu(self, theSurface, currentlySelected):
 		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
-		text = ['start', 'next', 'Level 2', 'Level 3', 'Level 4', 'Level 5', 'Level 6', 'Level 7', 'Achroma', 'Back']
 		options = []
-		for i in range(len(text)):
+		for i in range(len(self.levels)):
 			isSelected = (currentlySelected == i)
-			options.append(Options(myMenu, i, 200, 30, text[i], isSelected))
+			options.append(Options(myMenu, i, 200, 30, self.levels[i][0], isSelected))
 		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
 		return myMenu.runMenu(self)
 
 	def execute(self, myOption):
 		self.done = True
-		return myOption
+		for pair in self.levels:
+			if pair[0] == myOption:
+				return pair[1]
+		return None
