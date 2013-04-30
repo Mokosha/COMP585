@@ -297,11 +297,11 @@ class Player(AnimatedObject):
         elif isinstance(obj, ColorVortex) and obj.aabb.collideBox(self.aabb):
             #self.colorNums = []
             if obj.color.r > 0:
-                self.colorNums.append(0)
+                if not 0 in self.colorNums: self.colorNums.append(0)
             if obj.color.g > 0: 
-                self.colorNums.append(1)
+                if not 1 in self.colorNums: self.colorNums.append(1)
             if obj.color.b > 0:
-                self.colorNums.append(2)
+                if not 2 in self.colorNums: self.colorNums.append(2)
 
         elif isinstance(obj, Laser) and obj.aabb.collideBox(self.aabb):
             if obj.color != self.color:
