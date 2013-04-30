@@ -34,8 +34,8 @@ print "Software surface colorkey blitting is accelerated: " + str(display_info.b
 print "Software surface pixel alpha blitting is accelerated: " + str(display_info.blit_sw_A)
 window_w, window_h = display_info.current_w, display_info.current_h
 
-import animatedobject, colorvortex, player, world
-from menumanager import PauseMenu, TitleMenu, FinishLevelMenu, FinishGameMenu
+import animatedobject, colorvortex, player, world, dialogmenu
+from menumanager import PauseMenu, TitleMenu
 from eventmanager import Events, InputManager
 from lib.euclid import *
 
@@ -191,12 +191,14 @@ while True:
         if process(w, camera_pos, dt) == "FINISH":
             inputhandler.clearEvents()
             if w.levelname == "start":
-                FinishLevelMenu().run(display_surface)
+		if dialogmenu.makeNextLevelScreen(display_surface, w.levelname) == "Back":
+			break
                 w = world.World("next")
 		stopSound()
 		setLevelSound("next")
             else:
-                FinishGameMenu().run(display_surface)
+                finishmenu = DialogBox(display_surface, "Demo finished", ["Play Again", "Return to Title"], getAssetsPath() + os.sep + "rainbow.png")
+		finishmenu.runMenu()
                 break
 
             last_time = time.time()
