@@ -130,6 +130,23 @@ def resetCamera():
     global camera_pos
     camera_pos = Vector2(0, 0)
 
+def runTitleMenu(mysurface):
+    pygame.mixer.init()
+    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Chroma Music" + os.sep + "Title Screen.ogg")
+    mysound.play(loops=-1)
+    TitleMenu().run(mysurface)
+    mysound.fadeout(2000)
+
+def setLevelSound(levelName):
+    pygame.mixer.init()
+    global mysound
+    mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Chroma Music" + os.sep + levelName + ".ogg")
+    mysound.play(loops=-1, fade_ms=2000)
+
+def stopSound():
+    global mysound
+    mysound.fadeout(2000)
+
 # Initialize input handler
 inputhandler = InputManager()
 
@@ -139,10 +156,11 @@ while True:
     window_w, window_h = display_info.current_w, display_info.current_h
     display_surface = pygame.display.get_surface()
 
-    TitleMenu().run(display_surface)
+    runTitleMenu(display_surface)
 
     resetCamera()
     w = world.World("start") if len(sys.argv) == 1 else world.World("start", int(sys.argv[1]))
+    setLevelSound("start")
 
     last_time = time.time()
 
@@ -173,6 +191,8 @@ while True:
             if w.levelname == "start":
                 FinishLevelMenu().run(display_surface)
                 w = world.World("next")
+		stopSound()
+		setLevelSound("next")
             else:
                 FinishGameMenu().run(display_surface)
                 break
