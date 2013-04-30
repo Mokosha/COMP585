@@ -9,7 +9,7 @@ def makeNextLevelScreen(surface, levelName):
 	mytext = "Completed the level " + levelName
 	options = ["Next Level", "Return to Title"]
 	if levelName == "start":
-		imagename = "halfrainbow"
+		imagename = "emptyhalfrainbow"
 	if levelName == "next":
 		imagename = "rainbow"
 	return NextLevelScreen(surface, mytext, options, getAssetsPath() + os.sep + imagename + ".png").runMenu()
@@ -21,14 +21,14 @@ class DialogBox(object):
 		self.currentlySelected = 0
 		self.text = text
 		self.options = options
-		self.image = image
+		self.image = pygame.image.load(image)
 		self.drawSurface.fill(pygame.Color('white'))
 		self.drawMenu()
 
 	def drawMenu(self):
 		self.drawSurface.fill(pygame.Color('white'))
 		self.drawSurface.blit(pygame.font.SysFont("comicsansms", 32).render(self.text, False, pygame.Color('black')), (250, 60))
-		self.drawSurface.blit(pygame.image.load(self.image), (50, 100))
+		self.drawSurface.blit(self.image, (50, 130))
 		for i in range(len(self.options)):
 			textsize = 24
 			if self.currentlySelected == i:
@@ -72,4 +72,3 @@ class NextLevelScreen(DialogBox):
 		else:
 			return "Back"
 
-		
