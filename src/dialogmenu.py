@@ -5,6 +5,11 @@ import pygame
 
 from eventmanager import Events, InputManager
 
+def makeFinishGameScreen(surface, levelName):
+	mytext = "Completed the game!"
+	options = ["Play again", "Return to Title"]
+	return NextLevelScreen(surface, mytext, options, getAssetsPath() + os.sep + "rainbow.png").runMenu()
+
 def makeNextLevelScreen(surface, levelName):
 	mytext = "Completed the level " + levelName
 	options = ["Next Level", "Return to Title"]

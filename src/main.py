@@ -191,14 +191,17 @@ while True:
         if process(w, camera_pos, dt) == "FINISH":
             inputhandler.clearEvents()
             if w.levelname == "start":
-		if dialogmenu.makeNextLevelScreen(display_surface, w.levelname) == "Back":
-			break
+                if dialogmenu.makeNextLevelScreen(display_surface, w.levelname) == "Back":
+                    break
                 w = world.World("next")
-		stopSound()
-		setLevelSound("next")
+                stopSound()
+                setLevelSound("next")
             else:
-                finishmenu = DialogBox(display_surface, "Demo finished", ["Play Again", "Return to Title"], getAssetsPath() + os.sep + "rainbow.png")
-		finishmenu.runMenu()
+                if dialogmenu.makeFinishGameScreen(display_surface, w.levelname) == "Back":
+                    break
+                w = world.World("start")
+                stopSound()
+                setLevelSound("start")
                 break
 
             last_time = time.time()
