@@ -295,7 +295,7 @@ class Player(AnimatedObject):
             else:
                 self.colliderResponse(obj)
         elif isinstance(obj, ColorVortex) and obj.aabb.collideBox(self.aabb):
-            self.colorNums = []
+            #self.colorNums = []
             if obj.color.r > 0:
                 self.colorNums.append(0)
             if obj.color.g > 0: 
