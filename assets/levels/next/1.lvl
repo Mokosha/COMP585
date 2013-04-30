@@ -1,5 +1,15 @@
 <zone>
    <playerstart x="17.0" y="5" />
+   <laser x="12.0" y="1.2" length="3.0">
+     <color r="0" g="0" b="128" />
+   </laser>
+   <laser x="14.0" y="2.7" length="3.0">
+     <color r="0" g="0" b="128" />
+     <color r="0" g="0" b="255" />
+   </laser>
+   <laser x="16.0" y="3.5" length="3.0">
+     <color r="0" g="0" b="0" />
+   </laser>
    <collider type = "box">
      <box x="10.2" y="1.1" width=".6" height="0.1" angle="15"/>
    </collider>

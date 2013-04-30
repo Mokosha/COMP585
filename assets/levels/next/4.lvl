@@ -1,9 +1,9 @@
 <zone>
    <playerstart x="41" y="3.0" />
-   <colorvortex x="41" y="2" color="1.0 0.0 0.0" />
-   <colorvortex x="41" y="2" color="0.0 1.0 0.0" />
-   <colorvortex x="41" y="2" color="0.0 0.0 1.0" />
-   <colorvortex x="41" y="2" color="1.0 1.0 1.0" />
+   <colorvortex x="41" y="1.4" color="1.0 0.0 0.0" />
+   <colorvortex x="41" y="1.4" color="0.0 1.0 0.0" />
+   <colorvortex x="41" y="1.4" color="0.0 0.0 1.0" />
+   <colorvortex x="41" y="1.4" color="1.0 1.0 1.0" />
    <collider type = "box">
      <box x="45" y=".6" width="8.8" height="0.1"/>
    </collider>
