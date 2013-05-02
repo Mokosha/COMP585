@@ -10,7 +10,7 @@ class AboutBox:
 	def __init__(self, drawSurface, text):
 		self.text = text
 		self.drawSurface = drawSurface
-		self.drawSurface.fill(pygame.Color("white"))
+		self.drawSurface.fill(pygame.Color("orange"))
 		font = pygame.font.SysFont('comicsansms', 24)
 		lines = text.splitlines()
 		for i in range(len(lines)):
