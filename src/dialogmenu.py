@@ -26,14 +26,18 @@ class DialogBox(object):
 		self.currentlySelected = 0
 		self.text = text
 		self.options = options
-		self.image = pygame.image.load(image)
+		if image != None:
+			self.image = pygame.image.load(image)
+		else:
+			self.image = None
 		self.drawSurface.fill(pygame.Color('white'))
 		self.drawMenu()
 
 	def drawMenu(self):
 		self.drawSurface.fill(pygame.Color('white'))
 		self.drawSurface.blit(pygame.font.SysFont("comicsansms", 32).render(self.text, False, pygame.Color('black')), (250, 60))
-		self.drawSurface.blit(self.image, (50, 130))
+		if self.image != None:
+			self.drawSurface.blit(self.image, (50, 130))
 		for i in range(len(self.options)):
 			textsize = 24
 			if self.currentlySelected == i:
@@ -76,4 +80,3 @@ class NextLevelScreen(DialogBox):
 			return "Next"
 		else:
 			return "Back"
-

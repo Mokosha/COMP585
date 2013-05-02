@@ -3,7 +3,9 @@ from utils import *
 
 import pygame
 
+import eventmanager
 from eventmanager import Events, InputManager
+from aboutbox import AboutBox
 
 class Screen:
 
@@ -140,7 +142,8 @@ class TitleMenu:
 			ControlsSelect().run(self.surface)
 			return "Update"
 		if myOption == 'About':
-			return None
+			AboutBox(self.surface, "Chroma is a platformer game developed by Bowei Dong,\nDavid Bencuya, Jessica Golden, and Pavel Krajcevski for\nCOMP585, designed to teach color combinations and provide an\nartistic interpretation to the idea of colors. Images used in the\ngame are designed in-group. Credit to music used in the game\ngoes to Phobe and JimeCide on Soundcloud and NOLISTENTOME\non Tindeck.").runAboutMenu()
+			return "Update"
 		if myOption == "Music":
 			pygame.mixer.stop()
 			MusicMenu().run(self.surface)
