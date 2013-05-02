@@ -190,10 +190,10 @@ while True:
         if process(w, camera_pos, dt) == "FINISH":
             inputhandler.clearEvents()
             if w.levelname == "start":
+                stopSound()
                 if dialogmenu.makeNextLevelScreen(display_surface, w.levelname) == "Back":
                     break
                 w = world.World("next")
-                stopSound()
                 setLevelSound("next")
             else:
 		stopSound()
