@@ -34,6 +34,36 @@ keyboardMapping = {
     pygame.K_e : Events.CHANGE_COLOR_3,
 }
 
+nameMapping = {
+    "Pause" : Events.PAUSE,
+    "Quit" : Events.QUIT,
+    "Jump" : Events.JUMP,
+    "Right" : Events.MOVE_RIGHT,
+    "Left" : Events.MOVE_LEFT,
+    "Reset Color" : Events.RESET_COLOR,
+    "Use Color 1" : Events.CHANGE_COLOR_1,
+    "Use Color 2" : Events.CHANGE_COLOR_2,
+    "Use Color 3" : Events.CHANGE_COLOR_3
+}
+
+cheesyReverseMapping = {
+    Events.PAUSE : pygame.K_p,
+    Events.QUIT : pygame.K_ESCAPE,
+    Events.JUMP : pygame.K_SPACE,
+    Events.MOVE_RIGHT : pygame.K_RIGHT,
+    Events.MOVE_LEFT : pygame.K_LEFT,
+    Events.RESET_COLOR : pygame.K_r,
+    Events.CHANGE_COLOR_1 : pygame.K_q,
+    Events.CHANGE_COLOR_2 : pygame.K_w,
+    Events.CHANGE_COLOR_3 : pygame.K_e
+}
+
+def changeMappings(key, event):
+    oldKey = cheesyReverseMapping[event]
+    keyboardMapping[key] = event
+    keyboardMapping[oldKey] = 0
+    cheesyReverseMapping[event] = key
+
 class InputManager:
 
     def __init__(self):

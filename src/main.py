@@ -135,7 +135,7 @@ def runTitleMenu(mysurface):
     mysound = pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + "TitleScreen.ogg")
     mysound.play(loops=-1)
     result = TitleMenu().run(mysurface)
-    mysound.fadeout(2000)
+    pygame.mixer.stop()
     return result
 
 def setLevelSound(levelName):
@@ -145,8 +145,7 @@ def setLevelSound(levelName):
     mysound.play(loops=-1, fade_ms=2000)
 
 def stopSound():
-    global mysound
-    mysound.fadeout(2000)
+    pygame.mixer.stop()
 
 # Initialize input handler
 inputhandler = InputManager()
@@ -197,10 +196,10 @@ while True:
                 stopSound()
                 setLevelSound("next")
             else:
+		stopSound()
                 if dialogmenu.makeFinishGameScreen(display_surface, w.levelname) == "Back":
                     break
                 w = world.World("start")
-                stopSound()
                 setLevelSound("start")
 
             last_time = time.time()

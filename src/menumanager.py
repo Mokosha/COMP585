@@ -47,6 +47,8 @@ class Screen:
 					filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style3" + os.sep + "confirm_style_3_001.ogg"
 					pygame.mixer.Sound(filename).play()
 					myMessage = menuDrawer.execute(self.myOptions[self.currentlySelected].myText)
+					if (myMessage == "Update"):
+						return menuDrawer.initMenu(self.drawSurface, self.currentlySelected)
 		return myMessage
 
 class Options:
@@ -76,6 +78,7 @@ class PauseMenu:
 
 	def run(self, theSurface):
 		pygame.mixer.init()
+		self.surface = theSurface
 		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
 		pygame.mixer.Sound(filename).play()
 		return self.initMenu(theSurface, 0)
@@ -95,7 +98,8 @@ class PauseMenu:
 			self.done = True
 			return "Quit Pause Menu"
 		if myOption == 'Controls':
-			return "Display Controls"
+			ControlsSelect().run(self.surface)
+			return "Update"
 		if myOption == 'Return to Title':
 			self.done = True
 			return "Quit Game"
@@ -113,7 +117,7 @@ class TitleMenu:
 
 	def initMenu(self, theSurface, currentlySelected):
 		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
-		text = ['New Game', 'Choose Level', 'Controls', 'About', 'Exit']
+		text = ['New Game', 'Choose Level', 'Controls', 'About', 'Music', 'Exit']
 		options = []
 		for i in range(len(text)):
 			isSelected = (currentlySelected == i)
@@ -127,15 +131,21 @@ class TitleMenu:
 			return "start"
 		if myOption == 'Choose Level':
 			result = LevelSelectMenu().run(self.surface)
-			if result == "Back":
-				return self.initMenu(self.surface, 0)
-			else:
+			if result == "start" or result == "next":
 				self.done = True
 				return result
+			else:
+				return self.initMenu(self.surface, 0)
 		if myOption == 'Controls':
-			return None
+			ControlsSelect().run(self.surface)
+			return "Update"
 		if myOption == 'About':
 			return None
+		if myOption == "Music":
+			pygame.mixer.stop()
+			MusicMenu().run(self.surface)
+			pygame.mixer.Sound(getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + "TitleScreen.ogg").play()
+			return "Update"
 		if myOption == 'Exit':
 			sys.exit()
 
@@ -177,3 +187,102 @@ class LevelSelectMenu:
 			if pair[0] == myOption:
 				return pair[1]
 		return None
+
+class ControlsSelect:
+
+	done = False
+
+	def run(self, theSurface):
+		self.controls = ["Jump", "Right", "Left", "Reset Color", "Use Color 1", "Use Color 2", "Use Color 3", "Done"]
+		self.surface = theSurface
+		pygame.mixer.init()
+		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
+		pygame.mixer.Sound(filename).play()
+		return self.initMenu(theSurface, 0)
+
+	def initMenu(self, theSurface, currentlySelected):
+		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
+		options = []
+		for i in range(len(self.controls)):
+			isSelected = (currentlySelected == i)
+			buttontext = self.controls[i]
+			if self.controls[i] != "Done":
+				buttontext = buttontext + ": " + pygame.key.name(eventmanager.cheesyReverseMapping[eventmanager.nameMapping[self.controls[i]]])
+			options.append(Options(myMenu, i, 200, 30, buttontext, isSelected))
+		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
+		return myMenu.runMenu(self)
+
+	def execute(self, myOption):
+		if myOption == "Done":
+			self.done = True
+		else:
+			changed = False
+			while True:
+				for event in pygame.event.get():
+					if event.type == pygame.QUIT:
+						sys.exit()
+					if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+						return ""
+					elif event.type == pygame.KEYDOWN:
+						name = myOption.partition(':')[0]
+						eventmanager.changeMappings(event.key, eventmanager.nameMapping[name])				
+						return "Update"		
+
+class MusicMenu:
+
+	done = False
+
+	def run(self, theSurface):
+		self.surface = theSurface
+		pygame.mixer.init()
+		filename = getRootPath() + os.sep + "assets" + os.sep + "sound" + os.sep + "Confirm_tones" + os.sep + "style2" + os.sep + "confirm_style_2_001.ogg"
+		pygame.mixer.Sound(filename).play()
+		return self.initMenu(theSurface, 0)
+
+	def initMenu(self, theSurface, currentlySelected):
+		myMenu = Screen((0, 0), 800, 600, 'vert', pygame.Color('orange'), theSurface, currentlySelected)
+		options = []
+		myMusic = ["Power", "Bioluminescence", "Some things are...", "Scarleted", "Light", "Fire tundra", "Drops of Glass", "Void", "to make suffer", "Start New Game?", "Done"]
+		for i in range(len(myMusic)):
+			isSelected = (currentlySelected == i)
+			options.append(Options(myMenu, i, 200, 30, myMusic[i], isSelected))
+		myMenu.drawSurface.blit(myMenu.mySurface, myMenu.loc)
+		return myMenu.runMenu(self)
+
+	def execute(self, myOption):
+		if myOption == "Done":
+			self.done = True
+		else:
+			track = ""
+			if myOption == "Some things are...":
+				track = "Level2"
+			if myOption == "Bioluminescence":
+				track = "next"
+			if myOption == "Power":
+				track = "start"
+			if myOption == "Void":
+				track = "Level7b"
+			if myOption == "Start New Game?":
+				track = "TitleScreen"
+			if myOption == "Scarleted":
+				track = "Level4"
+			if myOption == "Light":
+				track = "Level5"
+			if myOption == "Fire tundra":
+				track = "Level6"
+			if myOption == "Drops of Glass":
+				track = "Level7a"
+			if myOption == "to make suffer":
+				track = "Level7c"
+			self.runTrack(track)
+			while True:
+				for event in pygame.event.get():
+					if event.type == pygame.QUIT:
+						sys.exit()
+					if event.type == pygame.KEYDOWN:
+						pygame.mixer.stop()
+						return "Update"
+
+	def runTrack(self, trackName):
+		filename = getAssetsPath() + os.sep + "sound" + os.sep + "Music" + os.sep + trackName + ".ogg"
+		pygame.mixer.Sound(filename).play()
