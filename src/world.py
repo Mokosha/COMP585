@@ -217,6 +217,9 @@ class World:
             print "ERROR: Level " + levelname + " has no player start gizmos!"
             exit(1)
 
+        self.player.currentColor = pygame.Color("black")
+        self.player.changeColor(self.player.currentColor)
+
     def getPlayer(self):
         return self.player
 
@@ -264,7 +267,7 @@ class World:
 
         # !HACK! If the player goes below the level then reset him to his zone's
         # starting position..
-        if self.player.dead or self.player.pos.y < 0:
+        if self.player.pos.y < 0:
 
             search = max(0, self.player.zone - 1)
             numzones = len(self.zones)

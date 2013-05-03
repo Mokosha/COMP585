@@ -61,6 +61,9 @@ def processCamera(wld, dt):
 
     p = wld.getPlayer()
 
+    if p.dead:
+        return
+
     windowSzX = screen2world(window_w)
     windowSzY = screen2world(window_h)
     

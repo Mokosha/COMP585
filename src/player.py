@@ -34,10 +34,14 @@ class Player(AnimatedObject):
     def __init__(self):
 
         self.currentColor = pygame.color.Color("black")
+        self.changeColor(self.currentColor)
+
 	self.colorReserves = [0, 0, 0]
 	self.colorNums = []
         super(Player, self).__init__("idle", True)
         self.loadAnim("walk", True)
+        self.loadAnim("fall", False)
+        self.loadAnim("jump", False)
 
         # Initially start in the middle of the screen.
         self.pos = screen2worldPos(Vector2(0, 0), 0.5 * Vector2(screenSizeX(), screenSizeY()))
@@ -53,19 +57,28 @@ class Player(AnimatedObject):
     def changeColor(self,toChangeColor):
         self.color = self.currentColor
 
+    def jumping(self):
+        return not (self.collidedLastFrame and self.vel.y == 0.0)
+
     def update(self, inputManager):
+
+        if self.dead:
+            return
 
         if inputManager.isCurrentEvent(Events.MOVE_LEFT):
             self.vel.x = -Player.MOVE_SPEED_X
-            self.startAnimation("walk", time.time())
+            if not self.jumping():
+                self.startAnimation("walk", time.time())
 
         if inputManager.isCurrentEvent(Events.MOVE_RIGHT):
             self.vel.x = Player.MOVE_SPEED_X
-            self.startAnimation("walk", time.time())
+            if not self.jumping():
+                self.startAnimation("walk", time.time())
 
         if inputManager.isCurrentEvent(Events.JUMP):
-            if self.collidedLastFrame and self.vel.y == 0.0:
+            if not self.jumping():
                 self.vel = Vector2(0, Player.INITIAL_JUMP)
+#                self.startAnimation("jump", time.time())
 
         if inputManager.debounceEvent(Events.CHANGE_COLOR_1):
 	    if self.colorReserves[0] > 0 and self.currentColor.r < 255:
@@ -286,7 +299,10 @@ class Player(AnimatedObject):
         self.collidedLastFrame = True
         self.resetAABB()
 
-    def collide(self, obj):        
+    def collide(self, obj):
+
+        if self.dead:
+            return
         
         if isinstance(obj, Collider) and obj.collide(self):
             if obj.color != None:
@@ -306,6 +322,9 @@ class Player(AnimatedObject):
         elif isinstance(obj, Laser) and obj.aabb.collideBox(self.aabb):
             if obj.color != self.color:
                 self.dead = True
+                self.startAnimation("fall", time.time()) 
+                self.vel.x = -self.vel.x
+                self.vel.y = Player.INITIAL_JUMP
         elif isinstance(obj, FinishObject) and obj.aabb.collideBox(self.aabb):
             self.finished = True
 
